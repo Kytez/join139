@@ -1,0 +1,15 @@
+SCHREIBWEISEN:
+CSS-Klassen: binde-strich
+ID's: camelCase
+wichtige Variablen: CAPS_UNTERSTRICH
+
+
+FARBEN:
+Grau (Hintergrund): #2A3647
+Blau (Akzentfarbe): #29ABE2
+
+Rot (Urgent): #FF3D00
+Gelb (Medium): #FFA800
+Grün (Low): #7AE229
+
+Kontakte: diverse?
