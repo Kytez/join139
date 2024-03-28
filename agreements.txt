@@ -1,6 +1,6 @@
 SCHREIBWEISEN:
 CSS-Klassen: binde-strich
-ID's: camelCase
+ID's & JS-Funktionen: camelCase
 wichtige Variablen: CAPS_UNTERSTRICH
 
 
