@@ -6,18 +6,40 @@
     <title>Join</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login_signup.css">
 </head>
 <body>
     <section class="header">
-        <img src="assets/img/header_logo.png" alt="Join Logo">
+        <img src="assets/img/header/header_logo.png" alt="Join Logo">
     </section>
 
     <section class="log-in-body">
-
+        <div class="headline-and-placeholder">
+            <h1>Log in</h1>
+            <div class="placeholder-blue"></div>
+        </div>
+        <div class="inputs-login">
+            <input id="emailInputLogin" type="email" placeholder="Email" required>
+            <input id="passwordInputLogin" type="password" placeholder="Password" required>
+        </div>
+        <div class="checkbox-remember">
+            <input type="checkbox">
+            <span>Remember me</span>
+        </div>
+        <div class="btns-login">
+            <button class="btn-dark-large" id="btnLogin">Log in</button>
+            <button class="btn-light-large" id="btnGuestLogin">Guest Log in</button>
+        </div>
     </section>
 
     <section class="sign-up">
-        
+        <span>Not a Join user?</span>
+        <a class="btn-dark-small" href="#">Sign up</a>
+    </section>
+
+    <section class="legal-footer">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Legal Notice</a>
     </section>
 </body>
 </html>
