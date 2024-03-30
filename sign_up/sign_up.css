@@ -1,0 +1,92 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#nameInputSignup {
+    background-image: url(../assets/img/icons/person.png);
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+}
+
+#emailInputSignup {
+    background-image: url(../assets/img/icons/mail.png);
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+}
+
+#passwordInputSignup {
+    background-image: url(../assets/img/icons/lock.png);
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+}
+
+#confirmPasswordInputSignup {
+    background-image: url(../assets/img/icons/lock.png);
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+}
+
+.header img {
+    padding-top: 37px;
+    padding-left: 38px;
+    width: 64px;
+}
+
+.sign-up-body {
+    background-color: white;
+    margin: 0 16px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 0;
+    box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
+    position: relative;
+}
+
+.backArrow {
+    position: absolute;
+    top: 45px;
+    left: 16px;
+}
+
+.inputs-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.inputs-signup input {
+    max-width: 322px;
+    width: calc(90% - 42px);
+    height: 24px;
+    padding: 12px 21px;
+    font-size: 20px;
+    color: #D1D1D1;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.checkbox-privacy-policy {
+    display: flex;
+    gap: 8px;
+}
+
+.checkbox-privacy-policy a {
+    color: #29ABE2;
+}
+
+.legal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.legal-footer a {
+    color: #A8A8A8;
+}
