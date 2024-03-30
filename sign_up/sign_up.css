@@ -5,6 +5,10 @@ body {
     justify-content: space-between;
 }
 
+h1 {
+    text-align: center;
+}
+
 #nameInputSignup {
     background-image: url(../assets/img/icons/person.png);
     background-repeat: no-repeat;
@@ -37,7 +41,6 @@ body {
 
 .sign-up-body {
     background-color: white;
-    margin: 0 16px;
     border-radius: 30px;
     display: flex;
     flex-direction: column;

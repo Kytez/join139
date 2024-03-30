@@ -5,6 +5,10 @@ body {
     justify-content: space-between;
 }
 
+h1 {
+    text-align: center;
+}
+
 #emailInputLogin {
     background-image: url(./assets/img/icons/mail.png);
     background-repeat: no-repeat;
@@ -25,7 +29,6 @@ body {
 
 .log-in-body {
     background-color: white;
-    margin: 0 16px;
     border-radius: 30px;
     display: flex;
     flex-direction: column;

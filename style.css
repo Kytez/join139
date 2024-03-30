@@ -13,6 +13,10 @@ a {
   text-decoration: none;
 }
 
+.margin-body-mobile {
+  margin: 0 16px;
+}
+
 .placeholder-blue {
   height: 3px;
   width: 88px;
@@ -20,12 +24,21 @@ a {
   border-radius: 32px;
 }
 
+.fw-bold {
+  font-weight: 700;
+}
+
 h1 {
   font-size: 47px;
   font-weight: 700;
-  text-align: center;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-block-start: 10px;
 }
 
 .headline-and-placeholder {
