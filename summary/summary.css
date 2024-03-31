@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    font-size: 14px;
+    margin-top: 32px;
 }
 
 .summary-part-area {
@@ -19,16 +21,18 @@
 .tasks-first-row {
     display: flex;
     gap: 16px;
+    max-width: 388px;
 }
 
 .count-and-text {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .urgent-area {
-    width: 396px;
+    width: 388px;
     max-width: 100%;
     display: flex;
     justify-content: center;
@@ -57,4 +61,14 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+#summaryUrgentDeadlineDate {
+    font-size: 16px;
+}
+
+.tasks-third-row {
+    display: flex;
+    gap: 16px;
+    max-width: 388px;
 }
