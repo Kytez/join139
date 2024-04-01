@@ -114,10 +114,6 @@ h1 {
     animation: loading 3s ease infinite;
 }
 
-.pokeloader {
-    
-}
-
 .loader--hidden {
     opacity: 0;
     visibility: hidden;
