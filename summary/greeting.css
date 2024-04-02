@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* calc 100vh - header - navbar */
+    height: calc(100vh - 160px);
     font-size: 36px;
     color: #2A3647;
 }
@@ -12,4 +12,12 @@
     color: #29ABE2;
     font-size: 47px;
     font-weight: 700;
+}
+
+
+
+@media(min-width: 992px) {
+    #greetingText {
+        align-items: flex-start;
+    }
 }

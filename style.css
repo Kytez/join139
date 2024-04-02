@@ -115,3 +115,19 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+
+.d-none {
+  display: none;
+}
+
+/* //////////////////////////////////////////// RESPONSIVE /////////////////////////////////////////////////// */
+
+@media(min-width: 992px) {
+  h1 {
+    font-size: 61px;
+  }
+
+  h3 {
+    font-size: 27px;
+  }
+}
