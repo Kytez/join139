@@ -11,3 +11,7 @@
   a {
     text-decoration: underline;
   }
+
+  h1 {
+    word-break: break-word;
+  }
