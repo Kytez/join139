@@ -105,7 +105,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.75s, visibility 0.75s
+    transition: opacity 0.75s, visibility 0.75s;
 }
 
 .animationLogo{
