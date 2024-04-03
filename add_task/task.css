@@ -1,0 +1,186 @@
+body {
+    background-color: #F6F7F8;
+}
+
+span{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.headline-section{
+    width: 428px;
+    height: 112px;
+    display: flex;
+    align-items: end;
+    padding-left: 16px;
+}
+
+.add-task-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.add-task-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 428px;
+}
+
+.prio-button-section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 18px;
+}
+
+.prio-container {
+    width: 396px;
+}
+
+.prio-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 41px;
+    width: -webkit-fill-available;
+    padding-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #DDDDDD; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,4,0), 0 6px 20px 0 rgba(0,0,0,0.05);
+}
+
+.arrow{
+    display: flex;
+    flex-direction: column;
+}
+
+.arrow img{
+    width: 20px;
+}
+
+.arrow-up img{
+    width: 20px;
+    height: 8.76px;
+}
+
+.create-task{
+    width: 396px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.red{
+    color: #FF8190;
+}
+
+.create-task img{
+    height: 24px;
+}
+
+.flex{
+    display: flex;
+}
+
+select{
+    width: -webkit-fill-available;
+    height: 48px;
+    border-radius: 10px;
+    border-color: #000000;
+    border: 1px solid #DDDDDD; 
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+textarea{
+    width: -webkit-fill-available;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid #DDDDDD;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 88px;
+}
+
+textarea::placeholder {
+    padding-top: 16px;
+    padding-left: 16px;
+    color: #D1D1D1;
+}
+
+input{
+    width: -webkit-fill-available;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #DDDDDD;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+input[type="date"] {
+    padding-left: 16px;
+    content: attr(placeholder) !important;
+    color: #aaa;
+    background: url(/join139/assets/img/icons/calendar.png);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: 95%;
+}
+
+/* Hier auf das Kalender Icon zugreifen */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    padding-right: 16px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input::placeholder {
+    padding-left: 8px;
+    color: #D1D1D1;
+}
+
+button{
+    gap: 8px;
+    color: rgb(0, 0, 0);
+    background-color: #FFFFFF;
+    border: none;
+}
+
+.btn-dark{
+    color: white;
+    background-color: #2A3647;
+    border-radius: 8px;
+    border: none;
+    width: 183px;
+    height: 56px;
+    font-size: 21px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.size-100{
+    width: 396px;
+}
+
+.padding-top-big{
+    padding-top: 16px;
+}
+
+.padding-top-small{
+    padding-top: 8px;
+}
+
+.padding-all{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}

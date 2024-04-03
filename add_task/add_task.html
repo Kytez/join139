@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="task.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="add-task-card">
+        <section class="headline-section">
+            <h1>Add Task</h1>
+        </section>
+        <section class="add-task-section">
+            <div class="size-100 padding-top-big"> 
+                <div>
+                    <span>Title</span><span class="red">*</span>
+                </div>
+                <input type="text" placeholder="Enter a title" required minlength="4" >
+            </div>
+            <div class="size-100 padding-top-big">
+                <div>
+                    <span>Description</span>
+                </div>
+                <textarea placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
+            </div>
+            <div class="size-100 padding-top-big">
+                <div>
+                    <span>Assigned to</span>
+                </div>
+                <select name="contacts" id="contact-select">
+                    <option value="">Select contacts to assign</option>
+                  </select>
+            </div>
+            <div class="size-100 padding-top-big"> 
+                <div>
+                    <span>Due date</span><span class="red">*</span>
+                </div>
+                <input type="date" placeholder="dd.mm.yyyy">
+            </div>
+            <div class="prio-container padding-top-big">
+                <span>Prio</span>
+                <section class="prio-button-section">
+                    <button class="prio-button">
+                        Urgent 
+                        <div class="arrow">
+                            <img src="/join139/assets/img/icons/arrow-up.png">
+                        </div>
+                    </button>
+                    <button class="prio-button">
+                        Medium 
+                        <div class="arrow">
+                            <img src="/join139/assets/img/icons/line.png">
+                        </div>
+                    </button>
+                    <button class="prio-button">
+                        Low
+                        <div class="arrow">
+                            <img src="/join139/assets/img/icons/arrow-down.png">
+                        </div>
+                    </button>
+                </section>
+            </div>
+            <div class="create-task flex padding-top-big">
+                <span><span class="red">*</span>This field is required</span>
+                <button class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>
+            </div>
+        </section>  
+    </div>
+</body>
+</html>
