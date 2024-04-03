@@ -1,0 +1,17 @@
+.headline-and-back-button {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+  
+  p {
+    margin-bottom: 24px;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+
+  h1 {
+    word-break: break-word;
+  }

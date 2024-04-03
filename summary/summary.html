@@ -1,81 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Summary - Join</title>
 
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="summary.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="summary.css" />
+    <link rel="stylesheet" href="greeting.css" />
 
-    <div class="center-content">
-
-    <div class="headline-area margin-body-mobile">
-        <h1>Join 360</h1>
-        <h3>Key Metrics at a Glance</h3>
-        <div class="placeholder-blue"></div>
-    </div>
-
-    <div class="summary-body margin-body-mobile">
-        <div class="tasks-first-row">
-            <div class="summary-part-area">
-                <img src="../assets/img/icons/to_do_icon.png" alt="To Do Icon">
-                <div class="count-and-text">
-                    <h1 id="summaryToDoCount">0</h1>
-                    <span>To-do</span>
-                </div>
-            </div>
-            <div class="summary-part-area">
-                <img src="../assets/img/icons/check_icon.png" alt="Done Icon">
-                <div class="count-and-text">
-                    <h1 id="summaryDoneCount">0</h1>
-                    <span>Done</span>
-                </div>
-            </div>
+    <script src="greeting.js"></script>
+  </head>
+  <body>
+    <div class="horizontal-view-desktop-size">
+      <div class="center-content">
+        <div class="headline-area margin-body-mobile">
+          <h1>Join 360</h1>
+          <div class="h3-and-placeholder">
+            <h3>Key Metrics at a Glance</h3>
+            <div class="placeholder-blue"></div>
+          </div>
         </div>
 
-        <div class="tasks-second-row">
+        <div class="summary-body margin-body-mobile">
+          <div class="tasks-first-row">
+            <div class="summary-part-area">
+              <img src="../assets/img/icons/to_do_icon.png" alt="To Do Icon" />
+              <div class="count-and-text">
+                <h1 id="summaryToDoCount">0</h1>
+                <span>To-do</span>
+              </div>
+            </div>
+            <div class="summary-part-area">
+              <img src="../assets/img/icons/check_icon.png" alt="Done Icon" />
+              <div class="count-and-text">
+                <h1 id="summaryDoneCount">0</h1>
+                <span>Done</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tasks-second-row">
             <div class="urgent-area summary-part-area">
-                <div class="urgent-area-left-side">
-                    <img src="../assets/img/icons/urgent_icon_red_circle.png" alt="Icon Urgent">
-                    <div class="count-and-text">
-                        <h1 id="summaryUrgentCount">0</h1>
-                        <span>Urgent</span>
-                    </div>
+              <div class="urgent-area-left-side">
+                <img
+                  src="../assets/img/icons/urgent_icon_red_circle.png"
+                  alt="Icon Urgent"
+                />
+                <div class="count-and-text">
+                  <h1 id="summaryUrgentCount">0</h1>
+                  <span>Urgent</span>
                 </div>
-                <div class="urgent-area-placeholder"></div>
-                <div class="urgent-area-right-side">
-                    <span id="summaryUrgentDeadlineDate" class="fw-bold">October 16, 2022</span>
-                    <span>Upcoming Deadline</span>
-                </div>
+              </div>
+              <div class="urgent-area-placeholder"></div>
+              <div class="urgent-area-right-side">
+                <span id="summaryUrgentDeadlineDate" class="fw-bold"
+                  >October 16, 2022</span
+                >
+                <span>Upcoming Deadline</span>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <div class="tasks-third-row">
+          <div class="tasks-third-row">
             <div class="summary-part-area">
-                <div class="count-and-text">
-                    <h1 id="summaryTaskBoardCount">0</h1>
-                    <span>Tasks in<br>Board</span>
-                </div>
+              <div class="count-and-text">
+                <h1 id="summaryTaskBoardCount">0</h1>
+                <span>Tasks in<br />Board</span>
+              </div>
             </div>
             <div class="summary-part-area">
-                <div class="count-and-text">
-                    <h1 id="summaryTasksProgressCount">0</h1>
-                    <span>Tasks in<br>Progress</span>
-                </div>
+              <div class="count-and-text">
+                <h1 id="summaryTasksProgressCount">0</h1>
+                <span>Tasks in<br />Progress</span>
+              </div>
             </div>
             <div class="summary-part-area">
-                <div class="count-and-text">
-                    <h1 id="summaryTasksFeedbackCount">0</h1>
-                    <span>Awaiting<br>Feedback</span>
-                </div>
+              <div class="count-and-text">
+                <h1 id="summaryTasksFeedbackCount">0</h1>
+                <span>Awaiting<br />Feedback</span>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+
+      <div id="greetingText">
+        Good morning,<br /><span class="greetingUserName">Sofia Müller</span>
+      </div>
     </div>
-
-</div>
-    
-</body>
+  </body>
 </html>
