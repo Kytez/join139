@@ -127,6 +127,10 @@
         display: flex;
     }
 
+    .summary-body {
+        font-size: 16px;
+    }
+
     .summary-part-area {
         height: 168px;
     }
@@ -146,6 +150,10 @@
 
     .urgent-area {
         gap: 74px;
+    }
+
+    #summaryUrgentDeadlineDate {
+        font-size: 21px;
     }
 
 }
