@@ -128,6 +128,42 @@ h1 {
     #signUpSectionDesktop {
         display: flex;
     }
+}
 
 
+/*ANIMATION SECTION*/
+
+#loadAnimation{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #2A3647;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.75s, visibility 0.75s
+}
+
+.animationLogo{
+    height: 121.97px;
+    position: absolute;
+    animation: loading 3s ease infinite;
+}
+
+.loader--hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes loading {
+    from {
+        margin-left: 0%;
+      }
+    
+      to {
+        margin-bottom: 90%;
+        margin-right: 100%;
+
+      }
 }
