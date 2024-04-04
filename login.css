@@ -107,34 +107,6 @@ h1 {
   color: #a8a8a8;
 }
 
-@media (min-width: 445px) {
-  .checkbox-remember {
-    padding-left: calc(50% - 80px);
-  }
-}
-
-@media (min-width: 992px) {
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 80px 77px 0 77px;
-  }
-
-  .header img {
-    padding-top: 0;
-    padding-left: 0;
-  }
-
-  #signUpSectionMobile {
-    display: none;
-  }
-
-  #signUpSectionDesktop {
-    display: flex;
-  }
-}
-
 /* ////////////////////////////////////////////// ANIMATION SECTION ///////////////////////////////////////////////// */
 
 #loadAnimation {
@@ -169,3 +141,33 @@ h1 {
     height: 79px;
   }
 }
+
+/* ////////////////////////////////////////////// RESPONSIVE ///////////////////////////////////////////////// */
+
+@media (min-width: 445px) {
+    .checkbox-remember {
+      padding-left: calc(50% - 80px);
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 77px 0 77px;
+    }
+  
+    .header img {
+      padding-top: 0;
+      padding-left: 0;
+    }
+  
+    #signUpSectionMobile {
+      display: none;
+    }
+  
+    #signUpSectionDesktop {
+      display: flex;
+    }
+  }
