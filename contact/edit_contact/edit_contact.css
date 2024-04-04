@@ -1,0 +1,162 @@
+body{
+    margin: 0;
+    background-color: white;
+}
+
+.container{
+    border-radius: 30px;
+    border: solid 1px;
+    height: 100vh;
+    /* height: calc(100vh - 160px); */
+}
+
+.top-bg-contact{
+    background-color: #2a3647 ;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 50vh;
+}
+
+.bottom-bg-contact{
+    /* padding: 70px 20px 70px 20px; */
+    height: 50vh;
+}
+
+.p-relative{
+    position: relative;
+}
+
+.contact-header{
+    padding: 100px 24px 66px 24px
+}
+
+.d-flex{
+    display: flex;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.w100{
+    width: 100%;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+
+.head-title-contact{
+    font-weight: 700;
+    font-size: 37px;
+    color: white;
+}
+
+
+.underline{
+    background-color: #29abe2;
+    width: 60px;
+    height: 2px;
+    margin-top: 5px;
+}
+
+.person-circle{
+    border: solid 2px white;
+    background: #FF7A00;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    margin-top: -50px;
+    z-index: 2;
+}
+
+.contact-letters{
+    color: white;
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.close{
+    width: 13.5px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+.input-container{
+    margin-top: 25px;
+}
+
+.input{
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    background-size: 16px;
+    margin: 0 10px 12px 10px;
+    padding: 5px 15px 5px 15px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+}
+
+input[type]:focus{
+    outline-color: #29abe2;
+    outline-width: thin;
+}
+
+input[type=text]{
+    font-size: 20px;
+}
+
+::placeholder{
+    font-size: 16px;
+    color: #d1d1d1;
+    font-family: Inter, sans-serif;
+}
+
+#input-person {
+    background-image: url('../../assets/img/icons/person.png');
+}
+
+#input-mail {
+    background-image: url('../../assets/img/icons/mail.png');
+}
+
+#input-phone {
+    background-image: url('../../assets/img/contacts/call.png');
+}
+
+.btn-delete{
+    border: solid 1px #2a3647;
+    border-radius: 10px;
+    margin-right: 10px;
+    /* width: 80px; */
+    height: 40px;
+    margin-top: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.btn-save{
+    margin-top: 15px;
+    width: 80px;
+    height: 40px;
+}
+
+.btn-txt{
+    margin-right: 5px;
+}

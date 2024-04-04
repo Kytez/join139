@@ -1,0 +1,172 @@
+body{
+    background-color: white;
+
+}
+
+.d-flex{
+    display: flex;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.w100{
+    width: 100%;
+}
+
+.view-container{
+    margin-left: 16px;
+    height: calc(100vh - 160px);
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.underline{
+    background-color: #29abe2;
+    width: 90px;
+    height: 3px;
+    margin-top: 10px;
+}
+
+h3{
+  /* margin-block-start: 0; */
+  margin-block-end: 0;
+
+}
+
+.top{
+    margin-top: 40px;
+}
+
+.bottom{
+    margin-top: 30px;
+}
+
+.person-circle{
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    background: #FF7A00;
+    border: 3px solid white;
+    margin-right: 10px;
+}
+
+.contact-letters{
+    font-size: 27px;
+    color: white;
+}
+
+.info{
+    margin-bottom: 15px;
+}
+
+.txt{
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;    
+}
+
+.person-mail{
+    margin-bottom: 15px;
+    color:#007CEE;
+}
+
+.return-arrow{
+    position: absolute;
+    right: 16px;
+
+}
+
+.toggle{
+    width: 45px;
+    height: 45px;
+    background-color: #2A3647;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 14px;
+    bottom: 20px;
+}
+
+.toggle-img{
+    width: 55%;
+    height: auto;
+}
+
+/* CSS für join contact list */
+
+.list-container{
+    margin-left: 14px;
+    margin-right: 14px;
+    height: calc(100vh - 160px);
+}
+
+.margin-block0{
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.letter{
+    padding: 24px;
+}
+
+.contact{
+    padding: 15px;
+}
+
+.contact-circle{
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+    background: #FF7A00;
+    border: 2px solid white;
+    margin-right: 25px;
+}
+
+.contact-letters{
+    font-size: 11px;
+    color: white;
+}
+
+.mail{
+    font-size: 16px;
+    font-weight: 400;
+    color:#007CEE;
+}
+
+.seperator{
+    background-color: #d1d1d1;
+    width: 100%;
+    height: 1px;
+}
+
+.person-add{
+    width: 45px;
+    height: 45px;
+    background-color: #2A3647;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 14px;
+    bottom: 20px;
+}
+
+.add-img{
+    width: 55%;
+    height: auto;
+}
