@@ -71,6 +71,10 @@ h1 {
   padding-left: 28px;
 }
 
+.checkbox-remember input:hover {
+    cursor: pointer;
+}
+
 .btns-login {
   display: flex;
   flex-direction: column;
