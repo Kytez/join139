@@ -5,6 +5,13 @@ body {
     justify-content: space-between;
 }
 
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 h1 {
     text-align: center;
 }
@@ -49,6 +56,8 @@ h1 {
     padding: 32px 0;
     box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
     position: relative;
+    max-width: 598px;
+    width: calc(100% - 32px);
 }
 
 .backArrow {
@@ -62,10 +71,11 @@ h1 {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    width: 100%;
 }
 
 .inputs-signup input {
-    max-width: 322px;
+    max-width: 422px;
     width: calc(90% - 42px);
     height: 24px;
     padding: 12px 21px;
@@ -94,3 +104,18 @@ h1 {
     color: #A8A8A8;
 }
 
+
+
+@media (min-width: 992px) {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 77px 0 77px;
+    }
+  
+    .header img {
+      padding-top: 0;
+      padding-left: 0;
+    }
+}
