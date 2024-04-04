@@ -32,6 +32,10 @@ a {
   color: #29ABE2;
 }
 
+.d-none {
+  display: none;
+}
+
 h1 {
   font-size: 47px;
   font-weight: 700;
