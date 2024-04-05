@@ -89,6 +89,14 @@
     flex: 1;
 }
 
+#navDesktop {
+    display: none;
+}
+
+#headerDesktop {
+    display: none;
+}
+
 /* //////////////////////////////////// RESPONSIVE //////////////////////////////////////////////// */
 
 @media(min-width: 450px) {
@@ -157,6 +165,22 @@
 
     #summaryUrgentDeadlineDate {
         font-size: 21px;
+    }
+
+    #navMobile {
+        display: none;
+    }
+
+    #headerMobile {
+        display: none;
+    }
+
+    #navDesktop {
+        display: flex;
+    }
+
+    #headerDesktop {
+        display: flex;
     }
 
 }

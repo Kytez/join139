@@ -1,72 +1,68 @@
-.nav-bar{
-    height: 100vh;
-    width: 232px;
-    background-color: #2A3647;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.nav-bar-desktop {
+  height: 100vh;
+  width: 232px;
+  background-color: #2a3647;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-.logo-weiß{
-    width: 100px;
-    padding-top: 64px;
-    padding-bottom: 64px;
+.logo-weiß {
+  width: 100px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
-.menu-button-container{
-    height: 229px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 15px;
+.letter-desktop {
+  color: #9a9ea3;
+  width: 80px;
 }
 
-
-.menu-aktiv-button{
-    background-color: #091931;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 1;
-    width: 232px;
-    height: 46px;
-    color: aliceblue;
-    cursor: pointer;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    gap: 20px;
+.letter-desktop-aktiv {
+  color: white;
 }
 
-
-.menu-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    gap: 20px;
-    width: 232px;
-    height: 46px;
-    color: aliceblue;
-    padding-top: 8px;
-    padding-bottom: 8px;
+.menu-button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
 }
 
-.menu-button img{
-    height: 25px;
+.menu-aktiv-button-desktop {
+  background-color: #091931;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  cursor: pointer;
+  gap: 20px;
 }
 
-.link{
-    height: 317px;
-    padding-top: 243px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-    
+.menu-button-desktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  cursor: pointer;
+  gap: 20px;
 }
 
-a{
-    color: #797D84;
+.menu-button-desktop img {
+  height: 25px;
+}
+
+.link {
+  height: 45%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  gap: 8px;
+}
+
+a {
+  color: #797d84;
 }

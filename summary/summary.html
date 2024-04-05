@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="summary.css" />
     <link rel="stylesheet" href="greeting.css" />
     <link rel="stylesheet" href="../assets/templates/nav.css">
+    <link rel="stylesheet" href="../assets/templates/navDesktop.css">
     <link rel="stylesheet" href="../assets/templates/header.css">
 
     <script src="../script.js"></script>
@@ -16,7 +17,10 @@
   </head>
   <body>
 
-    <div id="" w3-include-html="../assets/templates/header.html"></div>
+    <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
+
+    <!-- <div id="headerDesktop" w3-include-html="../assets/templates/header.html"></div> -->
+
 
     <div class="horizontal-view-desktop-size">
       <div class="center-content">
@@ -96,7 +100,9 @@
       </div>
     </div>
 
-    <div w3-include-html="../assets/templates/navAktivMobile/navSummary.html"></div>
+    <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navSummary.html"></div>
+
+    <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navSummaryDesktop.html"></div>
 
     <script>
       includeHTML();
