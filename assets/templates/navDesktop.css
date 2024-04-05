@@ -1,0 +1,52 @@
+.nav-bar{
+    height: 100vh;
+    width: 232px;
+    background-color: #2A3647;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-weiß{
+    width: 100px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.menu-button-container{
+    height: 229px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    gap: 20px;
+    color: aliceblue;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.menu-button img{
+    height: 25px;
+}
+
+.link{
+    height: 317px;
+    padding-top: 243px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    
+}
+
+a{
+    color: #797D84;
+}
