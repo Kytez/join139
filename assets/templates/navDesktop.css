@@ -22,12 +22,32 @@
     gap: 15px;
 }
 
+
+.menu-aktiv-button{
+    background-color: #091931;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1;
+    width: 232px;
+    height: 46px;
+    color: aliceblue;
+    cursor: pointer;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    gap: 20px;
+}
+
+
 .menu-button {
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     gap: 20px;
+    width: 232px;
+    height: 46px;
     color: aliceblue;
     padding-top: 8px;
     padding-bottom: 8px;

@@ -27,7 +27,43 @@ header {
     gap: 8px;
 }
 
+.menu-aktiv{
+    border-radius: 16px;
+    background-color: #091931;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 76px;
+    width: 80px;
+    cursor: pointer;
+}
+
 .menu-button{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 76px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.menu-aktiv-button{
+    background-color: #091931;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 76px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.menu-aktiv-button{
     margin: 10px;
     display: flex;
     justify-content: center;
@@ -43,6 +79,11 @@ header {
 }
 
 .letter{
+    
+    color: #9A9EA3;
+}
+
+.letter-aktiv{
     color: #FFFFFF;
 }
 
