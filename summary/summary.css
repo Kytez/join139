@@ -136,6 +136,7 @@
 
     .horizontal-view-desktop-size {
         display: flex;
+        margin-left: 232px;
     }
 
     .summary-body {
@@ -157,6 +158,7 @@
     .horizontal-view-desktop-size {
         align-items: center;
         justify-content: center;
+        width: calc(100% - 232px);
     }
 
     .urgent-area {
