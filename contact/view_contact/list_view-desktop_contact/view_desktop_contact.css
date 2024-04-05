@@ -21,8 +21,7 @@
 
 .view-container{
     margin-left: 50px;
-    margin-top: 80px;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 96px);
     background-color: #f5f5f5;
     width: 60%;
 }
@@ -108,5 +107,15 @@ h3{
 @media(max-width: 992px){
     .view-container{
         display: none;
+    }
+}
+
+@media(min-width: 992px){
+    h2{
+        font-size: 27px;
+    }
+
+    h1{
+        font-size: 47px;
     }
 }
