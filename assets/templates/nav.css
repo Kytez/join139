@@ -1,84 +1,74 @@
-body{
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+.nav-bar {
+  height: 80px;
+  width: 100vw;
+  background-color: #2a3647;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  z-index: 99;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
-header {
-    height: 50px;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.menu-aktiv {
+  border-radius: 16px;
+  background-color: #091931;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 76px;
+  width: 80px;
+  cursor: pointer;
+  gap: 4px;
 }
 
-.nav-bar{
-    height: 80px;
-    width: 100%;
-    background-color: #2A3647;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 8px;
-}
-
-.menu-aktiv{
-    border-radius: 16px;
-    background-color: #091931;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 76px;
-    width: 80px;
-    cursor: pointer;
-}
-
-.menu-button{
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 76px;
-    width: 80px;
-    cursor: pointer;
-}
-
-.menu-aktiv-button{
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 76px;
-    width: 80px;
-    cursor: pointer;
+.menu-button {
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 76px;
+  width: 80px;
+  cursor: pointer;
+  gap: 4px;
 }
 
 .menu-button img {
-    width: 24px;
+  width: 24px;
 }
 
-.letter{
-    
-    color: #9A9EA3;
+.letter {
+  color: #9a9ea3;
 }
 
-.letter-aktiv{
-    color: #FFFFFF;
+.letter-aktiv {
+  color: #ffffff;
 }
 
-.layout{
-    width: 76px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.layout {
+  width: 76px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ///////////////////////////////////////////// RESPONSIVE //////////////////////////////////////////////// */
+
+@media (max-width: 400px) {
+  .menu-button {
+    width: 72px;
+    margin: 0 2px;
+  }
+
+  .menu-aktiv {
+    width: 72px;
+    margin: 0 2px;
+  }
 }

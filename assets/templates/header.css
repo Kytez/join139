@@ -1,9 +1,15 @@
 .header {
-    padding: 20px 16px;
+    padding: 0 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+    width: calc(100vw - 32px);
+    height: 80px;
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .user-icon {
