@@ -20,10 +20,12 @@
 }
 
 .view-container{
-    margin-left: 50px;
-    height: calc(100vh - 96px);
+    height: 100vh;
     background-color: #f5f5f5;
-    width: 60%;
+    width: 65%;
+    /* margin-top: 80px; */
+    padding-top: 50px;
+    padding-left: 30px;
 }
 
 .pointer{
