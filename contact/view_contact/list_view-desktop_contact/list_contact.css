@@ -1,3 +1,7 @@
+body{
+    background-color: white;
+}
+
 
 .list-container{
     height: 100vh;
@@ -6,6 +10,7 @@
     overflow: auto;
     padding-left: 38px;
     padding-right: 38px;
+    margin-top: 80px;
 }
 
 ::-webkit-scrollbar {
@@ -93,6 +98,10 @@
     height: auto;
 }
 
+#headerMobile{
+    background-color: white;
+}
+
 @media(min-width: 992px) {
     .list-container{
         box-shadow: 4px 0px 6px 0px #00000014;
@@ -145,6 +154,11 @@
     }
 
     .person-add{
+        display: none;
+    }
+
+    #headerMobile,
+    #navMobile{
         display: none;
     }
 }

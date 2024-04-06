@@ -6,9 +6,19 @@
     <link rel="stylesheet" href="../../../style.css">
     <link rel="stylesheet" href="./list_contact.css">
     <link rel="stylesheet" href="./view_desktop_contact.css">
+
+    <link rel="stylesheet" href="../../../assets/templates/nav.css">
+    <link rel="stylesheet" href="../../../assets/templates/navDesktop.css">
+    <link rel="stylesheet" href="../../../assets/templates/header.css">
     <title>List and View-Desktop</title>
+
+    <script src="../../../script.js"></script>
+    <script src="../view_contact.js"></script>
+
 </head>
-<body>
+<body onload="includeHTML()">
+    <div id="headerMobile" w3-include-html="../../../assets/templates/header.html"></div>
+
     <div class="container d-flex">
         <div class="list-container">
             <div class="add-container">
@@ -124,5 +134,8 @@
             </div>
         </div>
     </div>
+
+    <div id="navMobile" w3-include-html="../../../assets/templates/navAktivMobile/navContacts.html"></div>
+
 </body>
 </html>
