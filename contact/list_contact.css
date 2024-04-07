@@ -47,7 +47,7 @@ body{
     margin-block-end: 0;
 }
 
-.letter{
+.letter-i{
     padding: 24px;
 }
 
@@ -147,7 +147,7 @@ body{
 
     }
 
-    .letter{
+    .letter-i{
         /* padding: 0; */
         /* padding-top: 24px; */
         padding-left: 10px;

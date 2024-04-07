@@ -105,11 +105,20 @@ h3{
     color:#007CEE;
 }
 
+#headerDesktop{
+    display: none;
+}
+
+#navDesktop{
+    display: none;
+}
+
 
 @media(max-width: 992px){
     .view-container{
         display: none;
     }
+
 }
 
 @media(min-width: 992px){
@@ -120,4 +129,21 @@ h3{
     h1{
         font-size: 47px;
     }
+
+    #headerDesktop{
+        display: flex;
+    }
+
+    #navDesktop{
+        display: flex;
+    }
+
+    #headerMobile{
+        display: none;
+    }
+
+    #navMobile{
+        display: none;
+    }
+
 }
