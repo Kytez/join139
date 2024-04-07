@@ -1,4 +1,4 @@
-.header {
+.header-mobile {
     padding: 0 16px;
     display: flex;
     justify-content: space-between;
@@ -12,25 +12,32 @@
     left: 0;
 }
 
-.user-icon {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
 .header-logo {
     width: 32px;
 }
 
 .header-circle {
-    width: 40px;
+    width: 41px;
 }
 
-#userInitials {
+.user-icon {
+    position: relative;
+    height: 41px;
+}
+
+.user-initials-div {
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
     position: absolute;
-    left: calc(50% - 15px);
-    width: 30px;
-    text-align: center;
+    top: 1px;
+    left: 1px;
+}
+
+#userInitials{
     color: #29ABE2;
     font-weight: 600;
 }

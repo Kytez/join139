@@ -1,8 +1,10 @@
-header{
+.header-desktop {
     height: 96px;
-    width: 100%;
+    width: calc(100% - 348px);
     background-color: #FFFFFF;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: -1;
     display: flex;
     justify-content: space-between;  
@@ -12,24 +14,36 @@ header{
 }
 
 .kanban-letter{
-
+    font-size: 20px;
 }
 
-.header-circle{
+.header-circle-desktop {
     display: flex;
     align-items: center;
     position: relative;
     gap: 20px;
-    width: 40px;
     height: 40px;
-    padding-right: 400px;
+    padding-right: 16px;
+}
+
+.user-icon {
+    position: relative;
+    height: 41px;
+}
+
+.user-initials-div {
+    height: 38px;
+    width: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
 }
 
 #userInitials{
-    position: absolute;
-    left: calc(14% - 17px);
-    width: 30px;
-    text-align: center;
     color: #29ABE2;
     font-weight: 600;
 }
