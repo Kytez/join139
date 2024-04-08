@@ -104,6 +104,10 @@ h1 {
     color: #A8A8A8;
 }
 
+.legal-footer a:hover {
+    color: #29ABE2;
+  }
+
 
 
 @media (min-width: 992px) {
