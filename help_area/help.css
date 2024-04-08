@@ -11,3 +11,36 @@ p {
 a {
   text-decoration: underline;
 }
+
+#navDesktop {
+  display: none;
+}
+
+#headerDesktop {
+  display: none;
+}
+
+
+
+@media(min-width: 992px) {
+  #navMobile {
+      display: none;
+  }
+
+  #headerMobile {
+      display: none;
+  }
+
+  #navDesktop {
+      display: flex;
+  }
+
+  #headerDesktop {
+      display: flex;
+  }
+
+  .margin-body-mobile {
+    margin: 96px 16px 16px 232px;
+    padding: 32px 0 32px 64px;
+  }
+}

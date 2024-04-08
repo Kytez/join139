@@ -8,10 +8,21 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="summary.css" />
     <link rel="stylesheet" href="greeting.css" />
+    <link rel="stylesheet" href="../assets/templates/nav.css">
+    <link rel="stylesheet" href="../assets/templates/navDesktop.css">
+    <link rel="stylesheet" href="../assets/templates/header.css">
+    <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
 
+    <script src="../script.js"></script>
     <script src="greeting.js"></script>
   </head>
   <body>
+
+    <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
+
+    <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
+
+
     <div class="horizontal-view-desktop-size">
       <div class="center-content">
         <div class="headline-area margin-body-mobile">
@@ -89,5 +100,13 @@
         Good morning,<br /><span class="greetingUserName">Sofia Müller</span>
       </div>
     </div>
+
+    <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navSummary.html"></div>
+
+    <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navSummaryDesktop.html"></div>
+
+    <script>
+      includeHTML();
+    </script>
   </body>
 </html>

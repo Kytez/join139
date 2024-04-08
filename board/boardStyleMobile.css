@@ -27,6 +27,10 @@ body{
     margin-top: 24px;
 }
 
+.flex{
+    display: flex;
+}
+
 .find-task{
     height: 48px;
     border-radius: 10px;
@@ -67,6 +71,41 @@ body{
 
 .task-padding{
     padding: 16px;
+}
+
+.task-title{
+    height: 27px;
+    width: 113px;
+    background-color: #0038FF;
+    color: #DDDDDD;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtasks{
+    font-size: 12px;
+    color: #000000;
+    margin-top: 28px;
+}
+
+.task-description{
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.user-circle{
+    height: 24px;
+    width: 24px;
+    font-size: 12px;
+    color: #DDDDDD;
+    background-color: #d15b5b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tasks{

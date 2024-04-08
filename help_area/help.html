@@ -7,8 +7,20 @@
 
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="help.css" />
+    <link rel="stylesheet" href="../assets/templates/nav.css">
+    <link rel="stylesheet" href="../assets/templates/navDesktop.css">
+    <link rel="stylesheet" href="../assets/templates/header.css">
+    <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
+
+
+    <script src="../script.js"></script>
   </head>
   <body class="margin-body-mobile">
+
+    <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
+
+    <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
+
     <div class="headline-and-back-button">
       <h1>Help</h1>
       <a href="#"
@@ -91,5 +103,14 @@
     </p>
 
     <h2>Enjoy using Join!</h2>
+
+    <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navSummary.html"></div>
+
+    <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navSummaryDesktop.html"></div>
+
+    <script>
+      includeHTML();
+    </script>
+
   </body>
 </html>

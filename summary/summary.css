@@ -1,10 +1,13 @@
+.horizontal-view-desktop-size {
+    width: 100%;
+}
 
 .center-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 160px);
+    height: 100vh;
 }
 
 .headline-area {
@@ -86,6 +89,14 @@
     flex: 1;
 }
 
+#navDesktop {
+    display: none;
+}
+
+#headerDesktop {
+    display: none;
+}
+
 /* //////////////////////////////////// RESPONSIVE //////////////////////////////////////////////// */
 
 @media(min-width: 450px) {
@@ -125,6 +136,7 @@
 
     .horizontal-view-desktop-size {
         display: flex;
+        margin-left: 232px;
     }
 
     .summary-body {
@@ -146,6 +158,7 @@
     .horizontal-view-desktop-size {
         align-items: center;
         justify-content: center;
+        width: calc(100% - 232px);
     }
 
     .urgent-area {
@@ -154,6 +167,22 @@
 
     #summaryUrgentDeadlineDate {
         font-size: 21px;
+    }
+
+    #navMobile {
+        display: none;
+    }
+
+    #headerMobile {
+        display: none;
+    }
+
+    #navDesktop {
+        display: flex;
+    }
+
+    #headerDesktop {
+        display: flex;
     }
 
 }

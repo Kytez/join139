@@ -14,7 +14,8 @@ a {
 }
 
 .margin-body-mobile {
-  margin: 0 16px;
+  margin: 80px 16px;
+  padding: 16px 0;
 }
 
 .placeholder-blue {
