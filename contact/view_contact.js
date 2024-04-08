@@ -28,14 +28,24 @@ function closeContact(){
 }
 
 function addNewContact(){
-    if(window.innerWidth < 992 ){
-        document.getElementById('add-contact').classList.remove('d-non')
-    }
+    // document.getElementById('add-contact').classList.remove('d-non')
 
+    if(window.innerWidth < 992 ){
+        document.getElementById('add-contact').style = 'transform: translateY(0)'
+    }
+    if(window.innerWidth > 992){
+        document.getElementById('add-contact').style = 'transform: translateX(0)'
+    }
 };
 
 function cancelAddContact(){
+    // document.getElementById('add-contact').classList.add('d-non')
+
     if(window.innerWidth < 992 ){
-        document.getElementById('add-contact').classList.add('d-non')
+        document.getElementById('add-contact').style = 'transform: translateY(200%)'
     }
+    if(window.innerWidth > 992){
+        document.getElementById('add-contact').style = 'transform: translateX(200%)'
+    }
+
 }

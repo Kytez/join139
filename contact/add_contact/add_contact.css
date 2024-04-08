@@ -7,13 +7,15 @@ body{
     border-radius: 30px;
     border: solid 1px;
     /* height: calc(100vh - 170px); */
-    position: absolute;
+    position: fixed;
     top: 85px;
     background-color: white;
     left: 15px;
     right: 15px;
     /* width: 95%; */
     z-index: 999;
+    transform:translateY(200%);
+    transition: transform 400ms ease-in-out;
 }
 
 .top-bg-contact{
@@ -119,7 +121,7 @@ body{
 .close-w{
     width: 13.5px;
     position: absolute;
-    top: -50px;
+    top: -20px;
     right: 24px;
 }
 
@@ -177,13 +179,10 @@ input[type]:focus{
 }
 
 @media(min-width: 992px){
-
-
     .container-add{
         border-radius: 30px;
         border: solid 1px;
         /* height: calc(100vh - 96px); */
-        position: absolute;
         top: 170px;
         left:90px;
         background-color: white;
@@ -192,6 +191,9 @@ input[type]:focus{
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        transform: translateX(200%);
+        transition: transform 400ms ease-in-out;
+
     }
 
     .logo{

@@ -30,7 +30,7 @@
         <div id="contact-list" class="list-container">
             <div class="add-container">
             </div>
-            <div class="add-contact d-non align-center">
+            <div onclick="addNewContact()" class="add-contact d-non align-center">
                 <h3>Add new contact</h3>
                 <img src="../assets/img/contacts/person_add.png" alt="">
             </div>
@@ -164,18 +164,18 @@
 
     </div>
     
-    <div id="add-contact" class="container-add d-non">
+    <div id="add-contact" class="container-add">
         <div class="top-bg-contact p-relative">
             <div class="d-flex column justify-center contact-header">
                 <img class="logo" src="../../assets/img/logo_white.png" alt="">
                 <h1 class="head-title-contact">Add contact</h1>
                 <h3 class="sub-title-contact">Tasks are better with a team!</h3>
                 <div class="underline-add"></div>
-                <img class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
+                <img onclick="cancelAddContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
             </div>
         </div>
         <div class="bottom-bg-contact d-flex align-center p-relative">
-            <img class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+            <img onclick="cancelAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
             <div class="person-circle-add"><img class="person-img" src="../../assets/img/contacts/person-white.png" alt="">
             </div>
             <div class="p-relative d-flex align-center justify-center column width100">
