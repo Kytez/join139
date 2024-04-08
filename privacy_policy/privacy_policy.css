@@ -12,6 +12,10 @@
     text-decoration: underline;
   }
 
+  a:hover {
+    transform: scale(1.05);
+  }
+
   h1 {
     word-break: break-word;
   }

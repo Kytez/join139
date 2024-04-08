@@ -67,3 +67,24 @@
 a {
   color: #797d84;
 }
+
+/* HOVER SECTION */
+
+.menu-button-desktop:hover {
+  background-color: #2A3D59;
+}
+
+.menu-button-desktop:hover img,
+.menu-button-desktop:hover span {
+    transform: scale(1.05);
+}
+
+.privacy-policy:hover {
+    transform: scale(1.05);
+    color: #29ABE2;
+}
+
+.legal-notice:hover {
+    transform: scale(1.05);
+    color: #29ABE2;
+}
