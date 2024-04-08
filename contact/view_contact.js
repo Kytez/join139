@@ -26,3 +26,16 @@ function closeContact(){
     document.getElementById('contact1').classList.add('d-non')
     document.getElementById('contact-list').classList.remove('d-non')
 }
+
+function addNewContact(){
+    if(window.innerWidth < 992 ){
+        document.getElementById('add-contact').classList.remove('d-non')
+    }
+
+};
+
+function cancelAddContact(){
+    if(window.innerWidth < 992 ){
+        document.getElementById('add-contact').classList.add('d-non')
+    }
+}

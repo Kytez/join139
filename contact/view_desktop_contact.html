@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./add_contact/add_contact.css">
     <link rel="stylesheet" href="./list_contact.css">
     <link rel="stylesheet" href="./view_mobile_contact.css">
     <link rel="stylesheet" href="./view_desktop_contact.css">
@@ -19,7 +20,7 @@
 
 
 </head>
-<body onload="newIncludeHTML()">
+<body onload="newIncludeHTML()" class="p-relative">
     <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
 
     <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
@@ -103,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <div class="person-add pointer">
+            <div onclick="addNewContact()" class="person-add pointer">
                 <img class="add-img" src="../assets/img/contacts/person_add.png" alt="">
             </div>
         </div>
@@ -159,6 +160,41 @@
                 <span>+49 1111 111 11 1</span>
             </div>
             <div class="toggle pointer"><img src="../assets/img/contacts/more_vert.png" alt=""></div>
+        </div>
+
+    </div>
+    
+    <div id="add-contact" class="container-add d-non">
+        <div class="top-bg-contact p-relative">
+            <div class="d-flex column justify-center contact-header">
+                <img class="logo" src="../../assets/img/logo_white.png" alt="">
+                <h1 class="head-title-contact">Add contact</h1>
+                <h3 class="sub-title-contact">Tasks are better with a team!</h3>
+                <div class="underline-add"></div>
+                <img class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
+            </div>
+        </div>
+        <div class="bottom-bg-contact d-flex align-center p-relative">
+            <img class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+            <div class="person-circle-add"><img class="person-img" src="../../assets/img/contacts/person-white.png" alt="">
+            </div>
+            <div class="p-relative d-flex align-center justify-center column width100">
+                <div class="w100 d-flex column input-container">
+                    <input id="input-person" class="input" placeholder="Name" type="text">
+                    <input id="input-mail" class="input" placeholder="Email" type="text">
+                    <input id="input-phone" class="input" placeholder="Phone" type="text">
+                </div>
+                <div class="buttons">
+                    <div onclick="cancelAddContact()" id="cancel" class="btn-create btn-dark-large pointer">
+                        <span class="btn-txt">Cancel</span>
+                        <img src="../../assets/img/contacts/close-dark.png" alt="">
+                    </div>
+                    <div class="btn-create btn-dark-large pointer">
+                        <span class="btn-txt">Create contact</span>
+                        <img src="../../assets/img/contacts/check.png" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

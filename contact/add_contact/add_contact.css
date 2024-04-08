@@ -3,25 +3,34 @@ body{
     background-color: white;
 }
 
-.container{
+.container-add{
     border-radius: 30px;
     border: solid 1px;
-    height: 100vh;
-    /* height: calc(100vh - 160px); */
+    /* height: calc(100vh - 170px); */
+    position: absolute;
+    top: 85px;
+    background-color: white;
+    left: 15px;
+    right: 15px;
+    /* width: 95%; */
+    z-index: 999;
 }
 
 .top-bg-contact{
     background-color: #2a3647 ;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    height: 50vh;
+    /* height: 50vh; */
 }
 
 .bottom-bg-contact{
     /* padding: 70px 20px 70px 20px; */
-    height: 50vh;
+    /* height: 50vh; */
     flex-direction: column;
-
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: white;
+    justify-content: center
 }
 
 .p-relative{
@@ -74,13 +83,13 @@ body{
 
 }
 
-.underline{
+.underline-add{
     background-color: #29abe2;
     width: 60px;
     height: 2px;
 }
 
-.person-circle{
+.person-circle-add{
     border: solid 2px white;
     background-color: #d1d1d1;
     border-radius: 70px;
@@ -91,7 +100,6 @@ body{
     align-items: center;
     position: absolute;
     top: 0;
-    /* transform: translate(0%, -50%); */
     margin-top: -50px;
     z-index: 2;
 }
@@ -111,7 +119,7 @@ body{
 .close-w{
     width: 13.5px;
     position: absolute;
-    top: 24px;
+    top: -50px;
     right: 24px;
 }
 
@@ -124,11 +132,10 @@ body{
     background-position-x: 95%;
     background-position-y: 50%;
     background-size: 16px;
-    margin: 0 10px 12px 10px;
+    margin: 0 10px 5px 10px;
     padding: 5px 15px 5px 15px;
     border: 1px solid #d1d1d1;
     border-radius: 10px;
-    /* width: 100%; */
 
 }
 
@@ -160,7 +167,7 @@ input[type]:focus{
 }
 
 .btn-create{
-    margin-top: 15px;
+    /* margin-top: 15px; */
     width: 170px;
     height: 40px;
 }
@@ -170,14 +177,21 @@ input[type]:focus{
 }
 
 @media(min-width: 992px){
-    /* .row{
-        flex-direction: row;
-    } */
-    .container{
+
+
+    .container-add{
+        border-radius: 30px;
+        border: solid 1px;
+        /* height: calc(100vh - 96px); */
+        position: absolute;
+        top: 170px;
+        left:90px;
+        background-color: white;
+        width: 90%;
+        height: 45%;
         display: flex;
-        height: 100%;
-        width: 80%;
         align-items: center;
+        justify-content: space-evenly;
     }
 
     .logo{
@@ -187,11 +201,12 @@ input[type]:focus{
     }
 
     .top-bg-contact{
-        border-top-right-radius: 0;
         border-bottom-left-radius: 30px;
         width: 35%;
         display: flex;
-        align-items: center;    
+        align-items: center;   
+        height: 100%;
+        border-top-right-radius: 0; 
     }
 
     .bottom-bg-contact{
@@ -204,7 +219,7 @@ input[type]:focus{
      display: none;   
     }
 
-    .person-circle{
+    .person-circle-add{
         position: static;
         margin-top: 0;
         width: 120px;
@@ -213,7 +228,6 @@ input[type]:focus{
 
     .input-container{
         width: auto;
-        /* margin-right: 25px */
     }
     .input{
         margin-bottom: 20px;
