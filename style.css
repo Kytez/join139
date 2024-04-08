@@ -83,6 +83,7 @@ h3 {
 
 .btn-dark-large:hover {
   background-color: #29ABE2;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .btn-dark-small {
@@ -103,6 +104,7 @@ h3 {
 
 .btn-dark-small:hover {
   background-color: #29ABE2;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .btn-light-large {
@@ -124,6 +126,7 @@ h3 {
 .btn-light-large:hover {
   border: 1px solid #29ABE2;
   color: #29ABE2;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .btn-light-small {
@@ -145,6 +148,7 @@ h3 {
 .btn-light-small:hover {
   border: 1px solid #29ABE2;
   color: #29ABE2;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;;
 }
 
 /* ////////////////////////////////////////// RESPONSIVE /////////////////////////////////////////////////////// */

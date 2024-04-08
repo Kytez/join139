@@ -97,6 +97,18 @@
     display: none;
 }
 
+/* HOVER */
+
+.summary-part-area:hover {
+    cursor: pointer;
+    -moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    background-color: #2A3647;
+    color: aliceblue;
+    scale: 1.05;
+}
+
 /* //////////////////////////////////// RESPONSIVE //////////////////////////////////////////////// */
 
 @media(min-width: 450px) {

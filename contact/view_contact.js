@@ -1,5 +1,6 @@
 async function init() {
     await newIncludeHTML();
+
 }
 
 async function newIncludeHTML() {
@@ -14,4 +15,14 @@ async function newIncludeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+}
+
+function viewContact(){
+    document.getElementById('contact-list').classList.add('d-non')
+    document.getElementById('contact1').classList.remove('d-non')
+}
+
+function closeContact(){
+    document.getElementById('contact1').classList.add('d-non')
+    document.getElementById('contact-list').classList.remove('d-non')
 }
