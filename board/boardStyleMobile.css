@@ -1,0 +1,79 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.max-width{
+    min-width: 396px;
+    max-width: 800px;
+}
+
+.board{
+    margin-bottom: 24px;
+}
+
+.space-between{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.width-100{
+    width: 100%;
+}
+
+.abstand-24{
+    margin-top: 24px;
+}
+
+.find-task{
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid #DDDDDD;
+    size: 20px;
+    background-image: url(../assets/img/icons/search.png);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: 95%;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.no-taskts-to-do{
+    background-color: #E7E7E7E7;
+    color: #A8A8A8;
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    border-style: dotted;
+    margin-top: 16px;
+}
+
+.plus-img{
+    height: 30px;
+    cursor: pointer;
+}
+
+.plus-img-dark{
+    height: 40px;
+    cursor: pointer;
+}
+
+.task-padding{
+    padding: 16px;
+}
+
+.tasks{
+    height: 263px;
+    width: 252px;
+    background-color: #FFFFFF;
+    border-radius: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
