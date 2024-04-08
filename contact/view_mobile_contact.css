@@ -97,6 +97,14 @@ h3{
     bottom: 20px;
 }
 
+.toggle:hover{
+    background-color: #29ABE2;
+}
+
+.toggle:active{
+    background-color: #29ABE2;
+}
+
 .toggle-img{
     width: 55%;
     height: auto;

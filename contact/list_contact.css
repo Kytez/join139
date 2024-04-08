@@ -53,8 +53,22 @@ body{
 
 .contact{
     padding: 15px;
-
 }
+
+.contact:hover{
+    background-color: #F9F9F9;
+    border-radius: 10px;
+}
+
+.contact:focus{
+    background-color: #2A3647;
+    border-radius: 10px;
+}
+.contact:focus h3{
+    color: white;
+}
+
+
 
 .margin{
     margin-left: 15px;
@@ -97,8 +111,18 @@ body{
     align-items: center;
     position: fixed;
     right: 14px;
-    bottom: 20px;
+    bottom: 100px;
 }
+
+.person-add:hover{
+    background-color: #29ABE2;
+}
+
+.person-add:active{
+    background-color: #29ABE2;
+}
+
+
 
 .add-img{
     width: 55%;
@@ -128,12 +152,12 @@ body{
 
     }
 
-    .focus{
+    .contact:focus{
         background-color: #2A3647;
         border-radius: 10px;
         margin-top: 10px;
     }
-
+    
     .contact{
         margin-left: 0px;
         padding-left: 0;
@@ -157,9 +181,9 @@ body{
         font-size: 20px;
         color: #2A3647;
     }
-    .focus h3{
+    /* .focus h3{
         color: white;
-    }
+    } */
 
     .add-container{
         position: fixed;
@@ -192,6 +216,11 @@ body{
         /* padding: 0px 30px 0px 30px; */
         background-color: #2A3647;
         z-index: 2;
+    }
+
+    .add-contact:hover{
+        background-color: #29ABE2;
+        border: none;
     }
 
     .add-contact h3{
