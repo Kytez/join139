@@ -47,5 +47,9 @@ function cancelAddContact(){
     if(window.innerWidth > 992){
         document.getElementById('add-contact').style = 'transform: translateX(200%)'
     }
-
 }
+
+function showOptions(){
+    document.getElementById('toggle-options').style = 'transform: translateX(0)';
+}
+
