@@ -220,7 +220,7 @@ button{
     }
   
     .margin-body-mobile {
-      margin: 96px 16px 16px 232px;
-      padding: 32px 0 32px 64px;
+      margin: 96px 16px 16px 232px !important;
+      padding: 32px 0 32px 64px !important;
     }
   }
