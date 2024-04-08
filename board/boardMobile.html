@@ -6,8 +6,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="boardStyleMobile.css">
+    <link rel="stylesheet" href="../assets/templates/nav.css">
+    <link rel="stylesheet" href="../assets/templates/navDesktop.css">
+    <link rel="stylesheet" href="../assets/templates/header.css">
+    <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
+
+    <script src="../script.js"></script>
 </head>
-<body>
+<body class="margin-body-mobile">
+
+    <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
+
+    <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
+
     <section class="center max-width">
 
         <div class="board space-between">
@@ -56,5 +67,14 @@
         </div>
 
     </section>
+
+    <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navBoard.html"></div>
+
+    <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navBoardDesktop.html"></div>
+
+    <script>
+      includeHTML();
+    </script>
+
 </body>
 </html>
