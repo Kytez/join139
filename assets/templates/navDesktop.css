@@ -24,6 +24,7 @@
 
 .letter-desktop-aktiv {
   color: white;
+  width: 80px;
 }
 
 .menu-button-container {
@@ -62,6 +63,7 @@
   justify-content: flex-end;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 16px;
 }
 
 a {
