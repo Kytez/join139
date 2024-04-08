@@ -22,26 +22,8 @@
   width: 80px;
 }
 
-<<<<<<< HEAD
-
-.menu-aktiv-button{
-    background-color: #091931;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 1;
-    width: 232px;
-    height: 46px;
-    color: aliceblue;
-    cursor: pointer;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    gap: 20px;
-=======
 .letter-desktop-aktiv {
   color: white;
->>>>>>> c4af9f14435ffddcc6cea4372ee917d019131d17
 }
 
 .menu-button-container {
