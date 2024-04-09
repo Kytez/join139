@@ -1,13 +1,3 @@
-body{
-    display: flex;
-    justify-content: center;
-}
-
-.max-width{
-    min-width: 396px;
-    max-width: 800px;
-}
-
 .board{
     margin-bottom: 24px;
 }
@@ -16,7 +6,6 @@ body{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .width-100{
@@ -128,7 +117,6 @@ body{
 }
 
 .tasks{
-    height: 263px;
     width: 252px;
     background-color: #FFFFFF;
     border-radius: 24px;
@@ -136,13 +124,41 @@ body{
     margin-bottom: 16px;
 }
 
+.add-task-button {
+    color: white;
+    background-color: #2A3647;
+    border-radius: 8px;
+    border: none;
+    width: 300px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 225ms;
+    margin-left: 24px;
+  }
+
+.add-task-button img{
+    margin-left: 8px;
+}
+
+.progress-section{
+    display: block;
+    align-items: baseline;
+    gap: 26px;
+}
+
+
 #navDesktop {
     display: none;
-  }
+}
   
-  #headerDesktop {
+#headerDesktop {
     display: none;
-  }
+}
   
   /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
   
@@ -166,5 +182,41 @@ body{
     .margin-body-mobile {
       margin: 96px 16px 16px 232px;
       padding: 32px 0 32px 64px;
+    }
+
+    .board img{
+        display: none;
+    }
+
+    body{
+        justify-content: flex-start;
+        display: block;
+    }
+
+    .progress-section{
+        display: flex;
+    }
+
+    .plus-img {
+        height: 24px;
+    }
+
+    .max-width {
+        margin-right: 88px !important;
+    }
+
+    .tasks{
+        width: -webkit-fill-available;
+    }
+  }
+
+  @media(max-width: 992px){
+    .add-task-button{
+        display: none;
+    }
+
+    
+    .board-container{
+        display: block;
     }
   }

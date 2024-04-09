@@ -19,53 +19,65 @@
 
     <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
 
-    <section class="center max-width">
-
-        <div class="board space-between">
-            <h1>Board</h1> 
-            <img class="plus-img-dark" src="../assets/img/icons/plus add task mobile.png">
+    <section class="max-width">
+        <div class="board-container flex width-100">
+            <div class="board space-between">
+                <h1>Board</h1> 
+                <img class="plus-img-dark" src="../assets/img/icons/plus add task mobile.png">
+            </div>
+    
+            <input class="find-task space-between" type="search" placeholder="Find Task" id="site-search" name="q" />    
+            <button class="add-task-button">Add Task <img src="../assets/img/icons/add-white.png" alt=""></button>
         </div>
-
-        <input class="find-task space-between" type="search" placeholder="Find Task" id="site-search" name="q" />
-
-        <div class="abstand-24 space-between">
-            <h2>To do</h2>
-            <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
-        </div>
-        <div class="center no-taskts-to-do">No tasks To do</div>
-
-        <div class="width-100">
-            <div class="abstand-24 space-between">
-                <h2>In progress</h2>
-            <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
-
+        <div class="progress-section">
+            <div class="width-100">
+                <div class="abstand-24 space-between">
+                    <h2>To do</h2>
+                    <div>
+                        <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
+                    </div>
+                </div>
+                <div class="center no-taskts-to-do">No tasks To do</div>
             </div>
             
+            <div class="width-100">
+                <div class="abstand-24 space-between">
+                    <h2>In progress</h2>
+                <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
+    
+            </div>
+                
             <div class="tasks">
                 <div class="task-padding">
                     <div class="task-title">User Story</div>
                     <span class="task-description">Kochwelt Page & Recipe Recommender</span> <br>
                     <span>Build start page with recipe recoomendation...</span> <br>
                     <div class="subtasks">
-                        <span>1/2 Subtasks</span>   
+                    <span>1/2 Subtasks</span>   
+                </div>
+                <div class="user-container flex">
+                    <div class="flex">
+                        <div class="user-circle"><span>AM</span></div>
+                        <div class="margin-left user-circle"><span>AM</span></div>
                     </div>
-                    <div class="user-container flex">
-                        <div class="flex">
-                            <div class="user-circle"><span>AM</span></div>
-                            <div class="margin-left user-circle"><span>AM</span></div>
-                        </div>
                         <img class="priority" src="../assets/img/icons/line.png" alt="">
-                    </div> 
+                        </div> 
+                    </div>
                 </div>
             </div>
+    
+            <div class="space-between">
+                <h2>Await feedback</h2>
+                <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
+            </div>
+
+            <div class="space-between">
+                <h2>Done</h2>
+                
+            </div>
+    
         </div>
-
-
-        <div class="space-between">
-            <h2>Await feedback</h2>
-            <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
-        </div>
-
+        
     </section>
 
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navBoard.html"></div>
