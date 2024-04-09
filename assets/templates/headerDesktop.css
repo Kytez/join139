@@ -26,21 +26,31 @@
     padding-right: 16px;
 }
 
+.help-btn:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .user-icon {
     position: relative;
     height: 41px;
 }
 
 .user-initials-div {
-    height: 38px;
-    width: 38px;
+    height: 34px;
+    width: 34px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     position: absolute;
-    top: 1px;
-    left: 1px;
+    top: 3px;
+    left: 3px;
+}
+
+.user-initials-div:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
 }
 
 #userInitials{
