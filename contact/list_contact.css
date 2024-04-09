@@ -155,19 +155,24 @@ body{
 
 @media(min-width: 992px) {
     .container{
-        margin-top: 80px;
+        margin-top: 96px;
     }
 
     .list-container{
         box-shadow: 4px 0px 6px 0px #00000014;
         margin:0;
-        margin-top: 100px;
         margin-left: 232px;
         width: 456px;
         height: calc(100vh - 96px);
         padding-left: 0;
         padding-right: 20px;
+        padding-top: 80px;
+        position: relative;
+    }
 
+    .overflow-auto {
+        overflow: auto;
+        height: calc(100vh - 96px - 88px);
     }
 
     .contact:focus{
@@ -219,21 +224,22 @@ body{
     }
 
     .add-contact{
-        position: fixed;
+        position: absolute;
         justify-content: center;
-        top: 100px;
-        left: 248px;
-        height: 56px;
-        width: 25%;
-        /* margin-left: 232px; */
-        box-shadow: 4px 0 6px 0px #00000014;
-
+        top: 0;
+        left: 0;
+        height: 88px;
+        width: 100%;
+        background-color: white;
         display: flex;
-        border: solid 1px;
-        border-radius: 10px;
-        /* padding: 0px 30px 0px 30px; */
+    }
+
+    .add-contact button {
         background-color: #2A3647;
-        z-index: 2;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        gap: 24px;
     }
 
     .add-contact:hover{
