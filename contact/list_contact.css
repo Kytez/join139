@@ -156,6 +156,7 @@ body{
 @media(min-width: 992px) {
     .container{
         margin-top: 96px;
+        height: calc(100vh - 96px);
     }
 
     .list-container{
@@ -163,7 +164,7 @@ body{
         margin:0;
         margin-left: 232px;
         width: 456px;
-        height: calc(100vh - 96px);
+        /* height: calc(100vh - 96px); */
         padding-left: 0;
         padding-right: 20px;
         padding-top: 80px;
@@ -242,7 +243,7 @@ body{
         gap: 24px;
     }
 
-    .add-contact:hover{
+    .add-contact button:hover{
         background-color: #29ABE2;
         border: none;
     }
@@ -282,6 +283,8 @@ body{
         display: none;
     }
 }
+
+
 
 
 

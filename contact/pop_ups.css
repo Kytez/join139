@@ -1,17 +1,16 @@
-.toggle-options{
-    width: 116px;
-    height: 90px;
+.popup{
+    width: 326px;
+    height: 74px;
     padding: 5px;
-    background-color: white;
-    border-radius: 20px 20px 0px 20px;
+    background-color: #2a3647;
+    border-radius:20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    color: white;
+    font-size: 20px;
     position: fixed;
-    right: 14px;
-    bottom: 100px;
-    box-shadow: 0px 2px 5px grey;
 }
 
 

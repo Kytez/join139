@@ -20,7 +20,6 @@
 }
 
 .view-container{
-    height: 100vh;
     background-color: #f5f5f5;
     width: calc(100% - 465px);
     /* margin-top: 80px; */

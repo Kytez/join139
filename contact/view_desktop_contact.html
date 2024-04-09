@@ -30,7 +30,7 @@
         <div id="contact-list" class="list-container">
            
             <div class="add-contact d-non align-center">
-                <button class="btn-dark-large" onclick="addNewContact()">Add new contact<img src="../assets/img/contacts/person_add.png" alt=""></button>
+                <button class="btn-dark-large" onclick="showAddNewContact()">Add new contact<img src="../assets/img/contacts/person_add.png" alt=""></button>
             </div>
 
 
@@ -105,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            <div onclick="addNewContact()" class="person-add pointer">
+            <div onclick="showAddNewContact()" class="person-add pointer">
                 <img class="add-img" src="../assets/img/contacts/person_add.png" alt="">
             </div>
         </div>
@@ -173,6 +173,11 @@
                     <span style="margin-left: 12px;">Delete</span>
                 </div>
             </div>
+            <div id="success-popup" class="popup">
+                <div>
+                    <span>Contact successfully created</span>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -184,11 +189,11 @@
                 <h1 class="head-title-contact">Add contact</h1>
                 <h3 class="sub-title-contact">Tasks are better with a team!</h3>
                 <div class="underline-add"></div>
-                <img onclick="cancelAddContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
+                <img onclick="closeAddContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
             </div>
         </div>
         <div class="bottom-bg-contact d-flex align-center p-relative">
-            <img onclick="cancelAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+            <img onclick="closeAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
             <div class="person-circle-add"><img class="person-img" src="../../assets/img/contacts/person-white.png" alt="">
             </div>
             <div class="p-relative d-flex align-center justify-center column width100">
@@ -198,11 +203,11 @@
                     <input id="input-phone" class="input" placeholder="Phone" type="text">
                 </div>
                 <div class="buttons">
-                    <div onclick="cancelAddContact()" id="cancel" class="btn-create btn-dark-large pointer">
+                    <div onclick="closeAddContact()" id="cancel" class="btn-create btn-dark-large pointer">
                         <span class="btn-txt">Cancel</span>
                         <img src="../../assets/img/contacts/close-dark.png" alt="">
                     </div>
-                    <div class="btn-create btn-dark-large pointer">
+                    <div onclick="createNewContact()" class="btn-create btn-dark-large pointer">
                         <span class="btn-txt">Create contact</span>
                         <img src="../../assets/img/contacts/check.png" alt="">
                     </div>

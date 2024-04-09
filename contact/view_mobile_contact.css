@@ -114,8 +114,32 @@ h3{
     height: auto;
 }
 
+.popup{
+    width: 326px;
+    height: 74px;
+    padding: 5px;
+    background-color: #2a3647;
+    border-radius:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    position: fixed;
+    bottom: 150px;
+    transform: translateY(275%);
+    transition: 225ms ease-in-out;
+}
+
 @media(min-width:992px){
     .contact-container{
         display: none;
+    }
+}
+
+@media(max-width:375px){
+    .popup{
+        width: 280px;
     }
 }

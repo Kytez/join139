@@ -14,7 +14,7 @@ body{
     right: 15px;
     /* width: 95%; */
     z-index: 999;
-    transform:translateY(200%);
+    transform:translateY(275%);
     transition: transform 400ms ease-in-out;
 }
 
@@ -121,8 +121,8 @@ body{
 .close-w{
     width: 13.5px;
     position: absolute;
-    top: -20px;
-    right: 24px;
+    top: 20px;
+    right: 55px;
 }
 
 .input-container{
@@ -215,6 +215,7 @@ input[type]:focus{
         flex-direction: row;
         width: 65%;
         justify-content: space-evenly;
+        border-top-right-radius: 30px;
     }
 
     .close-b{
