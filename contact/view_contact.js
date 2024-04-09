@@ -63,7 +63,7 @@ function closeAddContact(){
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(275%)'
     }
-    if(window.innerWidth > 992){
+    else{
         document.getElementById('add-contact').style = 'transform: translateX(200%)'
     }
 }
@@ -71,6 +71,10 @@ function closeAddContact(){
 function createNewContact(){
     if(window.innerWidth < 992){
         viewContact();
+        closeAddContact();
+        successPopUp();
+    }
+    else{
         closeAddContact();
         successPopUp();
     }
@@ -82,10 +86,31 @@ function showOptions(){
 
 
 function successPopUp(){
-    setTimeout(() => {
-        document.getElementById('success-popup').style = 'transform: translateY(0)'
+    
+    if(window.innerWidth < 992){
         setTimeout(() => {
-            document.getElementById('success-popup').style = 'transform: translateY(275%)'
-        }, 1000);
-    }, 200);
+            document.getElementById('success-popup').style = `transform: translateY(0)`
+            setTimeout(() => {
+                document.getElementById('success-popup').style = `transform: translateY(275%)`
+            }, 1000);
+        }, 200);
+    }
+    else{
+        setTimeout(() => {
+            document.getElementById('success-popup-desktop').style = `transform: translateX(0)`
+            setTimeout(() => {
+                document.getElementById('success-popup-desktop').style = `transform: translateX(300%)`
+            }, 1000);
+        }, 200);
+    }
+    
 }
+
+
+// document.getElementById('cancel-btn').addEventListener("mouseenter", () => {
+//     document.getElementById('cancel-btn').classList.add('blue-border')
+// });
+
+// document.getElementById('cancel-btn').addEventListener("mouseleave", () => {
+//     document.getElementById('cancel-btn').classList.remove('blue-border')
+// });

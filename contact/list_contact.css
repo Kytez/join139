@@ -5,17 +5,22 @@ body{
 
 
 .list-container{
-    height: calc(100vh - 160px);
+    /* height: calc(100vh - 160px); */
     width: 100%;
     background-color: white;
-    overflow: auto;
+    /* overflow: auto; */
     /* padding-left: 38px;
     padding-right: 38px; */
     margin-top: 80px;
 }
 
+.overflow-auto{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 1px;
   }
 
 .d-non{
@@ -70,10 +75,10 @@ body{
 
 
 
-.margin{
+/* .margin{
     margin-left: 15px;
 
-}
+} */
 
 .contact-circle{
     width: 35px;
@@ -166,7 +171,7 @@ body{
         width: 456px;
         /* height: calc(100vh - 96px); */
         padding-left: 0;
-        padding-right: 20px;
+        /* padding-right: 20px; */
         padding-top: 80px;
         position: relative;
     }
@@ -188,12 +193,12 @@ body{
         padding-right: 0;
     }
 
-    .margin{
+    /* .margin{
         padding-left: 20px;
         margin-right: 20px;
         margin-left: 0px;
 
-    }
+    } */
 
     .letter-i{
         /* padding: 0; */

@@ -128,13 +128,27 @@ h3{
     font-size: 20px;
     position: fixed;
     bottom: 150px;
+}
+
+.transform-mobile{
     transform: translateY(275%);
     transition: 225ms ease-in-out;
+}
+
+.transform-desktop{
+    transform: translateX(300%);
+    transition: 225ms ease-in-out;
+
 }
 
 @media(min-width:992px){
     .contact-container{
         display: none;
+    }
+
+    .popup{
+        bottom: 95px;
+        right: 100px;
     }
 }
 
