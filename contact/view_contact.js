@@ -9,20 +9,8 @@ async function init() {
 }
 
     window.onclick = function(event) {
-    if(event.target == 'div.toggle.pointer' || event.target == 'div#toggle-options.toggle-options'){
-        console.log('success')
-        // showOptions();
-    }
-    else if (event.target != 'div#toggle-options.toggle-options') {
-        console.log('fail')
-    // //   toggle.style.display = 'none';
-    //     let toggle = document.getElementById('toggle-options')
-    //     toggle.style.transform = 'translateX(200%)';
-
-    }
-    
-
-    console.log(event)
+    if(event.target.classList.contains('open-opt')) showOptions();
+    else closeOptions();
   }
 
 
@@ -105,6 +93,10 @@ function createNewContact(){
 
 function showOptions(){
     document.getElementById('toggle-options').style = 'transform: translateX(0)';
+}
+
+function closeOptions(){
+    document.getElementById('toggle-options').style = 'transform: translateX(200%)';
 }
 
 
