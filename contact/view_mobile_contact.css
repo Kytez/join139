@@ -61,6 +61,19 @@ h3{
     margin-right: 10px;
 }
 
+#circle-edit{
+    background: #FF7A00;
+    font-size: 47px;
+    color: white;
+}
+
+.edit-buttons button{
+    width: 100px;
+    height: 40px;
+    margin-right: 15px;
+    margin-bottom: 25px;
+}
+
 .contact-letters-m{
     font-size: 27px;
     color: white;

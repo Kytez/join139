@@ -20,7 +20,7 @@
 
 
 </head>
-<body onload="includeHTML()" class="p-relative">
+<body id="body" onload="includeHTML()" class="p-relative">
     <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
 
     <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
@@ -38,7 +38,7 @@
             <div class="d-flex column justify-center margin w100">
                 <h3 class="margin-block0 letter-i">A</h3>
                 <div class="seperator"></div>
-                <div class="d-flex align-center contact">
+                <div onclick="viewContact()" class="d-flex align-center contact">
                     <div class="contact-circle d-flex justify-center align-center">
                         <span class="contact-letters">AM</span>
                     </div>
@@ -47,7 +47,7 @@
                         <a class="mail">antom@gmail.com</a>
                     </div>
                 </div>
-                <div class="d-flex contact">
+                <div onclick="viewContact()" class="d-flex contact">
                     <div class="contact-circle d-flex justify-center align-center">
                         <span class="contact-letters">AS</span>
                     </div>
@@ -73,7 +73,7 @@
             <div class="d-flex column justify-center margin w100">
                 <h3 class="margin-block0 letter-i">D</h3>
                 <div class="seperator"></div>
-                <div class="d-flex contact">
+                <div onclick="viewContact()" class="d-flex contact">
                     <div class="contact-circle d-flex justify-center align-center">
                         <span class="contact-letters">DE</span>
                     </div>
@@ -86,7 +86,7 @@
             <div class="d-flex column justify-center margin w100">
                 <h3 class="margin-block0 letter-i">E</h3>
                 <div class="seperator"></div>
-                <div class="d-flex contact">
+                <div onclick="viewContact()" class="d-flex contact">
                     <div class="contact-circle d-flex justify-center align-center">
                         <span class="contact-letters">EF</span>
                     </div>
@@ -95,7 +95,7 @@
                         <a class="mail">Effi@gmail.com</a>
                     </div>
                 </div>
-                <div class="d-flex contact">
+                <div onclick="viewContact()" class="d-flex contact">
                     <div class="contact-circle d-flex justify-center align-center">
                         <span class="contact-letters">EM</span>
                     </div>
@@ -164,7 +164,7 @@
             </div>
             <div onclick="showOptions()" class="toggle pointer"><img src="../assets/img/contacts/more_vert.png" alt=""></div>
             <div id="toggle-options" class="toggle-options">
-                <div class="pointer">
+                <div onclick="showEditContact()" class="pointer">
                     <img src="../assets/img/contacts/edit.png" alt="">
                     <span style="padding-left: 10px;">Edit</span>
                 </div>
@@ -218,6 +218,47 @@
                         <span class="btn-txt">Create contact</span>
                         <img src="../../assets/img/contacts/check.png" alt="">
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit-contact" class="container-add">
+        <div class="top-bg-contact p-relative">
+            <div class="d-flex column justify-center contact-header">
+                <img class="logo" src="../../assets/img/logo_white.png" alt="">
+                <h1 class="head-title-contact">Edit contact</h1>
+                <div class="underline-add"></div>
+                <img onclick="closeEditContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
+            </div>
+        </div>
+        <div class="bottom-bg-contact d-flex align-center p-relative">
+            <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+            <div id="circle-edit" class="person-circle-add">
+                <h1>AM</h1>
+            </div>
+            <div class="p-relative d-flex align-center justify-center column width100">
+                <div class="w100 d-flex column input-container">
+                    <input id="input-person" class="input" placeholder="Name" type="text">
+                    <input id="input-mail" class="input" placeholder="Email" type="text">
+                    <input id="input-phone" class="input" placeholder="Phone" type="text">
+                </div>
+                <!-- <div class="buttons">
+                    <div onclick="closeEditContact()" id="cancel-btn" class="btn-create pointer cancel">
+                        <div id="cancel" class="blue">
+                            <span class="btn-txt">Cancel</span>
+                            <img class="blue" src="../../assets/img/contacts/close-dark.png" alt="">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="d-flex edit-buttons">
+                    <button id="delete" class="btn btn-dark-large pointer">
+                        <span class="btn-txt">Delete</span>
+                    </button>
+                    <button class="btn btn-dark-large pointer">
+                        <span class="btn-txt">Save</span>
+                        <img src="../assets/img/contacts/check.png" alt="">
+                    </button>
                 </div>
             </div>
         </div>

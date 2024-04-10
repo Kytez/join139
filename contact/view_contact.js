@@ -1,9 +1,32 @@
 async function init() {
     await newIncludeHTML();
-
+    // document.getElementById('container').addEventListener("click", (e) => {
+    //     let clickElement = e.target;
+    //     let elementClassName = e.target.className;
+    //     console.log(e.target.className);
+    //     console.log(e);
+    // });
 }
 
-let contactOpen = false;
+    window.onclick = function(event) {
+    if(event.target == 'div.toggle.pointer' || event.target == 'div#toggle-options.toggle-options'){
+        console.log('success')
+        // showOptions();
+    }
+    else if (event.target != 'div#toggle-options.toggle-options') {
+        console.log('fail')
+    // //   toggle.style.display = 'none';
+    //     let toggle = document.getElementById('toggle-options')
+    //     toggle.style.transform = 'translateX(200%)';
+
+    }
+    
+
+    console.log(event)
+  }
+
+
+let contactViewOpen;
 
 async function newIncludeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -20,7 +43,7 @@ async function newIncludeHTML() {
 }
 
 function viewContact(){
-    contactOpen = true;
+    contactViewOpen = true;
     if(window.innerWidth < 992){
         document.getElementById('contact-list').classList.add('d-non')
         document.getElementById('contact1').classList.remove('d-non')
@@ -28,19 +51,19 @@ function viewContact(){
 }
 
 function closeContact(){
-    contactOpen = false;
+    contactViewOpen = false;
     document.getElementById('contact1').classList.add('d-non')
     document.getElementById('contact-list').classList.remove('d-non')
 }
 
 
 window.addEventListener("resize", () => {
-    if(contactOpen && window.innerWidth > 992){
+    if(contactViewOpen && window.innerWidth > 992){
         document.getElementById('contact1').classList.add('d-non')
         document.getElementById('contact-list').classList.remove('d-non')
     }
 
-    if(contactOpen && window.innerWidth < 992){
+    if(contactViewOpen && window.innerWidth < 992){
             document.getElementById("contact1").classList.remove("d-non");
             document.getElementById("contact-list").classList.add("d-non");
         }
@@ -106,11 +129,26 @@ function successPopUp(){
     
 }
 
+function showEditContact(){
+    if(window.innerWidth < 992 ){
+        document.getElementById('edit-contact').style = 'transform: translateY(0)'
+    }
+    if(window.innerWidth > 992){
+        document.getElementById('edit-contact').style = 'transform: translateX(0)'
+    }
+}
+function closeEditContact(){
+    if(window.innerWidth < 992 ){
+        document.getElementById('edit-contact').style = 'transform: translateY(275%)'
+    }
+    else{
+        document.getElementById('edit-contact').style = 'transform: translateX(200%)'
+    }
+}
 
-// document.getElementById('cancel-btn').addEventListener("mouseenter", () => {
-//     document.getElementById('cancel-btn').classList.add('blue-border')
-// });
 
-// document.getElementById('cancel-btn').addEventListener("mouseleave", () => {
-//     document.getElementById('cancel-btn').classList.remove('blue-border')
+
+
+// toggle.addEventListener("mouseleave", () => {
 // });
+    
