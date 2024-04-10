@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/templates/navDesktop.css">
     <link rel="stylesheet" href="../assets/templates/header.css">
     <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
-
+    <script src="/join139/board/board.js"></script>
     <script src="../script.js"></script>
 </head>
 <body class="margin-body-mobile">
@@ -46,7 +46,7 @@
                     <h2>In progress</h2>
                 <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
             </div>
-            <div class="tasks">
+            <div onclick="showTask()" class="tasks">
                 <div class="task-padding">
                     <div class="task-title">User Story</div>
                     <span class="task-description">Kochwelt Page & Recipe Recommender</span> <br>
@@ -79,8 +79,8 @@
         </div>
     </section>
 
-    <section class="pop-up-section">
-        <div class="pop-up">
+    <section id="tasks" class="pop-up-section">
+        <div id="taskPopUp" class="pop-up">
             <div class="task-padding gap">
                 <div class="task-title">User Story</div>
                 <span class="pop-up-headline">Kochwelt Page & Recipe Recommender</span> <br>
@@ -132,6 +132,106 @@
             </div>
         </div>
     </section>
+
+
+    <section id="addTaskSektion">
+        <div class="add-task-card margin-body-mobile-pop-up">
+            <section class="headline-section">
+                <h1>Add Task</h1>
+            </section>
+            <section class="add-task">
+    
+                <section class="add-task-section">
+                    <div class="size-100 padding-top-big"> 
+                        <div>
+                            <span>Title</span><span class="red">*</span>
+                        </div>
+                        <input type="text" placeholder="Enter a title" required minlength="4" >
+                    </div>
+                    <div class="size-100 padding-top-big">
+                        <div>
+                            <span>Description</span>
+                        </div>
+                        <textarea placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
+                    </div>
+                    <div class="size-100 padding-top-big">
+                        <div>
+                            <span>Assigned to</span>
+                        </div>
+                        <select name="contacts" id="contact-select">
+                            <option value="">Select contacts to assign</option>
+                          </select>
+                    </div>
+                </section>
+                
+                <div class="line">
+    
+                </div>
+    
+    
+    
+                <section class="add-task-section"> 
+                    <div class="size-100 padding-top-big"> 
+                        <div>
+                            <span>Due date</span><span class="red">*</span>
+                        </div>
+                        <input type="date">
+                    </div>
+                    <div class="prio-container padding-top-big">
+                        <span>Prio</span>
+                        <section class="prio-button-section">
+                            <button class="prio-button">
+                                Urgent 
+                                <div class="arrow">
+                                    <img src="/join139/assets/img/icons/arrow-up.png">
+                                </div>
+                            </button>
+                            <button class="prio-button">
+                                Medium 
+                                <div class="arrow">
+                                    <img src="/join139/assets/img/icons/line.png">
+                                </div>
+                            </button>
+                            <button class="prio-button">
+                                Low
+                                <div class="arrow">
+                                    <img src="/join139/assets/img/icons/arrow-down.png">
+                                </div>
+                            </button>
+                        </section>
+                        <div class="size-100 padding-top-big">
+                            <div>
+                                <span>Category <span class="red">*</span></span>
+                            </div>
+                            <select name="contacts" id="contact-select">
+                                <option value="">Select task category</option>
+                              </select>
+                        </div>
+                        <div class="size-100 subtask-container padding-top-big"> 
+                            <div>
+                                <span>Subtasks</span>
+                            </div>
+                            <div class="flex subtask">
+                                <input type="text" placeholder="Add new subtask" required minlength="4" >
+                                <img onclick="addSubtask()" src="/join139/assets/img/icons/add.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </section>
+            </section>  
+    
+            <div class="button-container flex">
+                <span><span class="red">*</span>This field is required</span>
+                <div class="flex">
+                    <button class="btn-white">Clear <img src="/join139/assets/img/icons/x.png" alt=""></button>
+                    <button class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
+                </div>
+            </div>
+        
+        </div>
+    </section>
+    
                 
 
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navBoard.html"></div>

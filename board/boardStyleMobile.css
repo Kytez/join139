@@ -252,6 +252,267 @@
 #headerDesktop {
     display: none;
 }
+
+  /* ///////////////////////////////////////// ADD TASK ////////////////////////////////////////////////// */
+
+body {
+    background-color: #F6F7F8;
+}
+
+span{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.headline-section{
+    width: 100%;
+    height: 112px;
+    display: flex;
+    align-items: end;
+    padding-left: 16px;
+}
+
+#addTaskSektion{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.add-task{
+    width: 100%;
+    display: flex;
+}
+
+.add-task-section{
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.line{
+    height: 424px;
+    width: 1px;
+    background-color: #000000;
+    margin-left: 48px;
+    margin-right: 48px;
+}
+
+.add-task-card{
+    width: -webkit-fill-available;
+    padding: 16px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+
+.prio-button-section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 18px;
+}
+
+.prio-container {
+    width: 100%;
+}
+
+#contact-select {
+    padding-left: 16px;
+    background: url(/join139/assets/img/icons/arrow_drop_down.png);
+    background-size: 7px;
+    background-repeat: no-repeat;
+    background-position: 95%;
+    cursor: pointer;
+    appearance: none;
+}
+
+.prio-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 41px;
+    width: -webkit-fill-available;
+    padding-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #DDDDDD; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,4,0), 0 6px 20px 0 rgba(0,0,0,0.05);
+}
+
+.arrow{
+    display: flex;
+    flex-direction: column;
+}
+
+.arrow img{
+    width: 20px;
+}
+
+.arrow-up img{
+    width: 20px;
+    height: 8.76px;
+}
+
+.create-task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.red{
+    color: #FF8190;
+}
+
+.create-task img{
+    height: 24px;
+}
+
+.flex{
+    display: flex;
+}
+
+select{
+    width: -webkit-fill-available;
+    height: 48px;
+    border-radius: 10px;
+    border-color: #000000;
+    border: 1px solid #DDDDDD; 
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+textarea{
+    width: -webkit-fill-available;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid #DDDDDD;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 88px;
+}
+
+textarea::placeholder {
+    padding-top: 16px;
+    padding-left: 16px;
+    color: #D1D1D1;
+}
+
+input{
+    width: -webkit-fill-available;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #DDDDDD;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+input[type="date"] {
+    padding-left: 16px;
+    content: attr(placeholder) !important;
+    color: #aaa;
+    background: url(/join139/assets/img/icons/calendar.png);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: 96%;
+}
+
+/* Hier auf das Kalender Icon zugreifen */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    padding-right: 56px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input::placeholder {
+    padding-left: 8px;
+    color: #D1D1D1;
+}
+
+button{
+    gap: 8px;
+    color: rgb(0, 0, 0);
+    background-color: #FFFFFF;
+    border: none;
+}
+
+.btn-dark{
+    color: white;
+    background-color: #2A3647;
+    border-radius: 8px;
+    border: none;
+    width: 183px;
+    height: 56px;
+    font-size: 21px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-white {
+    color: #2A3647;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #2A3647;
+    width: 110px;
+    height: 56px;
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 225ms;
+}
+
+.btn-white img{
+    height: 11px;
+    width: 11px;
+}
+
+
+.size-100{
+    width: 100%;
+}
+
+.padding-top-big{
+    padding-top: 16px;
+}
+
+.padding-top-small{
+    padding-top: 8px;
+}
+
+.padding-all{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.subtask{
+    align-items: center;
+
+}
+
+.subtask img{
+    height: 14px;
+    margin-left: -30px;
+    cursor: pointer;
+}
   
   /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
   
@@ -275,6 +536,10 @@
     .margin-body-mobile {
       margin: 96px 16px 16px 232px;
       padding: 32px 0 32px 64px;
+    }
+
+    .margin-body-mobile-pop-up {
+      margin: 120px 42px 32px 280px;
     }
 
     .board img{
