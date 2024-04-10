@@ -221,6 +221,7 @@ input[type]:focus{
         width: 65%;
         justify-content: space-evenly;
         border-top-right-radius: 30px;
+        height: 100%;
     }
 
     .close-b{
@@ -236,6 +237,7 @@ input[type]:focus{
 
     .input-container{
         width: auto;
+        margin-top: 0;
     }
     .input{
         margin-bottom: 20px;
@@ -281,7 +283,7 @@ input[type]:focus{
     .close-w{
         display: none;
     }
-    #cancel{
+    .cancel{
         display: none;
     }
 }
