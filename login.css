@@ -116,6 +116,41 @@ h1 {
   color: #a8a8a8;
 }
 
+#msgBox {
+  width: 60%;
+  position: absolute;
+  top: 8px;
+  left: 20%;
+}
+
+.showFeedback {
+  animation: showSignUpFeedback 300ms ease-in-out;
+}
+
+.hideFeedback {
+  animation: hideSignUpFeedback 300ms ease-in-out;
+}
+
+@keyframes showSignUpFeedback {
+  from {
+    top: -50px;
+  }
+
+  to {
+    top: 8px;
+  }
+}
+
+@keyframes HideSignUpFeedback {
+  from {
+    top: 8px;
+  }
+
+  to {
+    top: -50px;
+  }
+}
+
 /* ////////////////////////////////////////////// ANIMATION SECTION ///////////////////////////////////////////////// */
 
 #loadAnimation {

@@ -25,7 +25,7 @@
     </section>
 
     <div class="center-content">
-      <section class="log-in-body margin-body-mobile">
+      <form onsubmit="logIn(); return false" class="log-in-body margin-body-mobile">
         <div class="headline-and-placeholder">
           <h1>Log in</h1>
           <div class="placeholder-blue"></div>
@@ -49,12 +49,12 @@
           <span>Remember me</span>
         </div>
         <div class="btns-login">
-          <button class="btn-dark-large" id="btnLogin">Log in</button>
+          <button class="btn-dark-large" id="btnLogin" type="submit">Log in</button>
           <button class="btn-light-large" id="btnGuestLogin">
             Guest Log in
           </button>
         </div>
-      </section>
+      </form>
     </div>
 
     <section id="signUpSectionMobile" class="sign-up">
@@ -66,5 +66,17 @@
       <a href="./privacy_policy/privacy_policy.html">Privacy Policy</a>
       <a href="./legal_notice/legal_notice.html">Legal Notice</a>
     </section>
+
+    <div class="btn-dark-large d-none" id="msgBox"></div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const msg = urlParams.get('msg');
+
+      if(msg) {
+        msgBox.innerHTML = msg;
+      }
+    </script>
+
   </body>
 </html>
