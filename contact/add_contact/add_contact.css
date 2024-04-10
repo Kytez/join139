@@ -14,7 +14,7 @@ body{
     right: 15px;
     /* width: 95%; */
     z-index: 999;
-    transform:translateY(275%);
+    transform:translateX(275%);
     transition: transform 400ms ease-in-out;
 }
 
