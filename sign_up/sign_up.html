@@ -16,7 +16,10 @@
     </section>
 
     <div class="center-content">
-      <section class="sign-up-body margin-body-mobile">
+      <form
+        onsubmit="signUp(); return false;"
+        class="sign-up-body margin-body-mobile"
+      >
         <a class="backArrow" href="../index.html"
           ><img
             src="../assets/img/icons/arrow-left-line.png"
@@ -27,32 +30,37 @@
           <div class="placeholder-blue"></div>
         </div>
         <div class="inputs-signup">
-          <input id="nameInputSignup" type="text" placeholder="Name" required />
+          <input id="nameInputSignUp" type="text" placeholder="Name" required />
           <input
-            id="emailInputSignup"
+            id="emailInputSignUp"
             type="email"
             placeholder="Email"
             required
           />
           <input
-            id="passwordInputSignup"
+            id="passwordInputSignUp"
             type="password"
             placeholder="Password"
             required
           />
           <input
-            id="confirmPasswordInputSignup"
+            id="confirmPasswordInputSignUp"
             type="password"
             placeholder="Confirm Password"
             required
           />
         </div>
         <div class="checkbox-privacy-policy">
-          <input type="checkbox" />
-          <span>I accept the <a href="../privacy_policy/privacy_policy.html">Privacy Policy</a></span>
+          <input id="privacyCheckboxInputSignUp" type="checkbox" required/>
+          <span
+            >I accept the
+            <a href="../privacy_policy/privacy_policy.html"
+              >Privacy Policy</a
+            ></span
+          >
         </div>
-        <button class="btn-dark-large" id="btnLogin">Sign up</button>
-      </section>
+        <button type="submit" class="btn-dark-large" id="btnSignUp">Sign up</button>
+      </form>
     </div>
 
     <section class="legal-footer">
