@@ -156,11 +156,11 @@ input[type]:focus{
     font-family: Inter, sans-serif;
 }
 
-#input-person {
+#input-name {
     background-image: url('../../assets/img/icons/person.png');
 }
 
-#input-mail {
+#input-email {
     background-image: url('../../assets/img/icons/mail.png');
 }
 
@@ -181,6 +181,28 @@ input[type]:focus{
 .blue-border{
     border-color: #29abe2;
     /* color: #29abe2; */
+}
+
+.delete{
+    background-color: white;
+    border-color: #2a3647;
+    border: solid 1px;
+    color: #2a3647;
+    width: 110px;
+    margin-right: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 225ms;
+}
+
+.delete:hover{
+    border-color: #29abe2;
+
 }
 
 @media(min-width: 992px){
@@ -267,6 +289,11 @@ input[type]:focus{
         cursor: pointer;
         transition: 225ms;
     }
+
+    .cancel:hover{
+        border-color: #29abe2;
+    }
+    
 
     .blue-border{
         border-color: #29abe2;
