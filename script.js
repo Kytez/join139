@@ -41,6 +41,9 @@ async function signUp() {
 
     btnSignUp.disabled = true;
 
+    if (users.some(user => user.email === email.value)) {
+        alert('This Email already exist');
+    } else {
     users.push({
         name: name.value,
         email: email.value,
@@ -51,7 +54,21 @@ async function signUp() {
 
     resetForm(name, email, password, btnSignUp);
     moveToLogIn();
-    showSignedUpFeedback();
+}
+}
+
+function checkPasswordMatch() {
+    let password = document.getElementById('passwordInputSignUp');
+    let confirmPassword = document.getElementById('confirmPasswordInputSignUp');
+    let tooltip = document.getElementById('tooltipPasswordNotMatching');
+
+    if(password.value !== confirmPassword.value) {
+        confirmPassword.classList.add('border-red', 'border-red:focus');
+        tooltip.classList.remove('d-none');
+    } else {
+        confirmPassword.classList.remove('border-red', 'border-red:focus');
+        tooltip.classList.add('d-none');
+    }
 }
 
 function resetForm(name, email, password, btnSignUp) {

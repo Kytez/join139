@@ -43,12 +43,17 @@
             placeholder="Password"
             required
           />
+          <div class="input-and-tooltip">
           <input
             id="confirmPasswordInputSignUp"
             type="password"
             placeholder="Confirm Password"
             required
+            onkeyup="checkPasswordMatch()"
+            onchange="checkPasswordMatch()"
           />
+        <p id="tooltipPasswordNotMatching" class="d-none">Ups! Password don't match. Try again.</p>
+        </div>
         </div>
         <div class="checkbox-privacy-policy">
           <input id="privacyCheckboxInputSignUp" type="checkbox" required/>

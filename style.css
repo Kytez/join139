@@ -37,6 +37,15 @@ a {
   display: none !important;
 }
 
+.border-red {
+  border: 1px solid red !important;
+  outline: none;
+}
+
+.border-red:focus {
+  border: 2px solid red !important;
+}
+
 h1 {
   font-size: 47px;
   font-weight: 700;
