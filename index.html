@@ -10,8 +10,9 @@
 
     <script src="animation.js"></script>
     <script src="script.js"></script>
+    <script src="login.js"></script>
 </head>
-<body onload="init()">
+<body onload="loadUsers()">
     <div id="loadAnimation">
         <img class="animationLogo" src="./assets/img/logo_white.png">
     </div>
@@ -49,10 +50,10 @@
           <span>Remember me</span>
         </div>
         <div class="btns-login">
-          <button class="btn-dark-large" id="btnLogin" type="submit">Log in</button>
-          <button class="btn-light-large" id="btnGuestLogin">
+          <button type="submit" class="btn-dark-large" id="btnLogin" type="submit">Log in</button>
+          <a href="summary/summary.html" class="btn-light-large" id="btnGuestLogin">
             Guest Log in
-          </button>
+          </a>
         </div>
       </form>
     </div>

@@ -3,17 +3,13 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let users = [];
 
+let activeUser;
+
 
 async function init() {
+    await includeHTML();
+    renderUserInitials();
     loadUsers();
-}
-
-async function loadUsers() {
-    try {
-        users = JSON.parse(await getItem('users'));
-    } catch(e) {
-        console.error('Loading error:', e);
-    }
 }
 
 
@@ -33,59 +29,12 @@ async function getItem(key) {
 }
 
 
-async function signUp() {
-    let name = document.getElementById('nameInputSignUp');
-    let email = document.getElementById('emailInputSignUp');
-    let password = document.getElementById('passwordInputSignUp');
-    let btnSignUp = document.getElementById('btnSignUp');
-
-    btnSignUp.disabled = true;
-
-    if (users.some(user => user.email === email.value)) {
-        alert('This Email already exist');
-    } else {
-    users.push({
-        name: name.value,
-        email: email.value,
-        password: password.value
-    });
-
-    await setItem('users', JSON.stringify(users));
-
-    resetForm(name, email, password, btnSignUp);
-    moveToLogIn();
-}
-}
-
-function checkPasswordMatch() {
-    let password = document.getElementById('passwordInputSignUp');
-    let confirmPassword = document.getElementById('confirmPasswordInputSignUp');
-    let tooltip = document.getElementById('tooltipPasswordNotMatching');
-
-    if(password.value !== confirmPassword.value) {
-        confirmPassword.classList.add('border-red', 'border-red:focus');
-        tooltip.classList.remove('d-none');
-    } else {
-        confirmPassword.classList.remove('border-red', 'border-red:focus');
-        tooltip.classList.add('d-none');
+async function loadUsers() {
+    try {
+        users = JSON.parse(await getItem('users'));
+    } catch(e) {
+        console.error('Loading error:', e);
     }
-}
-
-function resetForm(name, email, password, btnSignUp) {
-    let confirmPassword = document.getElementById('confirmPasswordInputSignUp');
-    let privacyCheckboxInputSignUp = document.getElementById('privacyCheckboxInputSignUp');
-
-    name.value = '';
-    email.value = '';
-    password.value = '';
-    confirmPassword.value = '';
-    privacyCheckboxInputSignUp.checked = false;
-
-    btnSignUp.disabled = false;
-}
-
-function moveToLogIn() {
-    window.location.href = '../index.html?msg=You signed up successfully';
 }
 
 
@@ -101,4 +50,17 @@ async function includeHTML() {
           element.innerHTML = 'Page not found';
       }
   }
+}
+
+function renderUserInitials() {
+    let userInitials = document.getElementById('userInitials');
+    let userInitialsDesktop = document.getElementById('userInitialsDesktop');
+
+    if(activeUser) {
+        userInitials.innerHTML = 'AC';
+        userInitialsDesktop.innerHTML = 'AC';
+    } else {
+        userInitials.innerHTML = 'G';
+        userInitialsDesktop.innerHTML = 'G';
+    }
 }
