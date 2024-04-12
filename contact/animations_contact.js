@@ -1,14 +1,9 @@
-async function init() {
+async function initContacts() {
     await newIncludeHTML();
-    // document.getElementById('container').addEventListener("click", (e) => {
-    //     let clickElement = e.target;
-    //     let elementClassName = e.target.className;
-    //     console.log(e.target.className);
-    //     console.log(e);
-    // });
+    // renderContacts();
 }
 
-    window.onclick = function(event) {
+window.onclick = function(event) {
     if(event.target.classList.contains('open-opt')) showOptions();
     else closeOptions();
   }
@@ -30,47 +25,46 @@ async function newIncludeHTML() {
     }
 }
 
-function viewContact(){
+function viewContact(userName, email, phone){
     contactViewOpen = true;
     if(window.innerWidth < 992){
         document.getElementById('contact-list').classList.add('d-non')
-        document.getElementById('contact1').classList.remove('d-non')
+        document.getElementById('viewedContact').classList.remove('d-non')
     }
+    renderViewedContact(userName, email, phone);
 }
 
 function closeContact(){
     contactViewOpen = false;
-    document.getElementById('contact1').classList.add('d-non')
+    document.getElementById('viewedContact').classList.add('d-non')
     document.getElementById('contact-list').classList.remove('d-non')
 }
 
 
 window.addEventListener("resize", () => {
     if(contactViewOpen && window.innerWidth > 992){
-        document.getElementById('contact1').classList.add('d-non')
+        document.getElementById('viewedContact').classList.add('d-non')
         document.getElementById('contact-list').classList.remove('d-non')
+
+
     }
 
     if(contactViewOpen && window.innerWidth < 992){
-            document.getElementById("contact1").classList.remove("d-non");
+            document.getElementById("viewedContact").classList.remove("d-non");
             document.getElementById("contact-list").classList.add("d-non");
         }
 });
 
 function showAddNewContact(){
-    // document.getElementById('add-contact').classList.remove('d-non')
-
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(0)'
     }
-    if(window.innerWidth > 992){
+    else{
         document.getElementById('add-contact').style = 'transform: translateX(0)'
     }
 };
 
 function closeAddContact(){
-    // document.getElementById('add-contact').classList.add('d-non')
-
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(275%)'
     }
@@ -125,7 +119,7 @@ function showEditContact(){
     if(window.innerWidth < 992 ){
         document.getElementById('edit-contact').style = 'transform: translateY(0)'
     }
-    if(window.innerWidth > 992){
+    else{
         document.getElementById('edit-contact').style = 'transform: translateX(0)'
     }
 }
@@ -138,9 +132,4 @@ function closeEditContact(){
     }
 }
 
-
-
-
-// toggle.addEventListener("mouseleave", () => {
-// });
     

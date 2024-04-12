@@ -18,7 +18,7 @@
 
     <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
 
-    <div class="add-task-card margin-body-mobile">
+    <form class="add-task-card margin-body-mobile">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -43,7 +43,7 @@
                     </div>
                     <select name="contacts" id="contact-select">
                         <option value="">Select contacts to assign</option>
-                      </select>
+                    </select>
                 </div>
             </section>
             
@@ -86,7 +86,9 @@
                         </div>
                         <select name="contacts" id="contact-select">
                             <option value="">Select task category</option>
-                          </select>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
                     </div>
                     <div class="size-100 subtask-container padding-top-big"> 
                         <div>
@@ -110,7 +112,7 @@
             </div>
         </div>
     
-    </div>
+    </form>
 
    
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navAddTask.html"></div>
