@@ -342,6 +342,23 @@ span{
     appearance: none;
 }
 
+.dropbox {
+    background-color: #333;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .draggable {
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid black;
+    cursor: move;
+  }
+  
+  .draggable.dragging {
+    opacity: .5;
+  }
+
 .prio-button{
     display: flex;
     justify-content: center;
@@ -576,12 +593,24 @@ button{
     .tasks{
         width: -webkit-fill-available;
     }
+
   }
 
   @media(max-width: 992px){
     .add-task-button{
         display: none;
     }
+
+    .body{
+        
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
 
     
     .board-container{
