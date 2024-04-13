@@ -8,8 +8,9 @@ let activeUser;
 
 async function init() {
     await includeHTML();
-    renderUserInitials();
     loadUsers();
+    await setActiveUser();
+    renderUserInitials();
 }
 
 
@@ -52,15 +53,57 @@ async function includeHTML() {
   }
 }
 
+
+async function logIn() {
+    let emailLogin = document.getElementById('emailInputLogin');
+    let passwordLogin = document.getElementById('passwordInputLogin');
+
+    let userFound = users.find(function(user) {
+        return user.email === emailLogin.value;
+    });
+
+    if (userFound) {
+        if (userFound.password === passwordLogin.value) {
+            await moveToSummary();
+            await setActiveUser(userFound);
+        } else {
+          alert("Email and Password is not matching");
+        }
+      } else {
+        alert("Email/User do not exist");
+      }
+}
+
 function renderUserInitials() {
     let userInitials = document.getElementById('userInitials');
     let userInitialsDesktop = document.getElementById('userInitialsDesktop');
 
     if(activeUser) {
-        userInitials.innerHTML = 'AC';
-        userInitialsDesktop.innerHTML = 'AC';
+        let initials = createInitialsFromUsername();
+
+        userInitials.innerHTML = initials;
+        userInitialsDesktop.innerHTML = initials;
     } else {
         userInitials.innerHTML = 'G';
         userInitialsDesktop.innerHTML = 'G';
     }
+}
+
+function createInitialsFromUsername() {
+    let splitName = activeUser.split(" ");
+    let initials = "";
+
+        for(let i = 0; i < splitName.length; i++) {
+            initials += splitName[i][0].toUpperCase();
+        }
+
+    return initials;
+}
+
+async function setActiveUser(user) {
+    activeUser = user.name;
+}
+
+function moveToSummary() {
+    window.location.href = 'summary/summary.html';
 }
