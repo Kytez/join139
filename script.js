@@ -3,17 +3,14 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let users = [];
 
+let activeUser;
+
 
 async function init() {
+    await includeHTML();
     loadUsers();
-}
-
-async function loadUsers() {
-    try {
-        users = JSON.parse(await getItem('users'));
-    } catch(e) {
-        console.error('Loading error:', e);
-    }
+    await setActiveUser();
+    renderUserInitials();
 }
 
 
@@ -33,59 +30,12 @@ async function getItem(key) {
 }
 
 
-async function signUp() {
-    let name = document.getElementById('nameInputSignUp');
-    let email = document.getElementById('emailInputSignUp');
-    let password = document.getElementById('passwordInputSignUp');
-    let btnSignUp = document.getElementById('btnSignUp');
-
-    btnSignUp.disabled = true;
-
-    if (users.some(user => user.email === email.value)) {
-        alert('This Email already exist');
-    } else {
-    users.push({
-        name: name.value,
-        email: email.value,
-        password: password.value
-    });
-
-    await setItem('users', JSON.stringify(users));
-
-    resetForm(name, email, password, btnSignUp);
-    moveToLogIn();
-}
-}
-
-function checkPasswordMatch() {
-    let password = document.getElementById('passwordInputSignUp');
-    let confirmPassword = document.getElementById('confirmPasswordInputSignUp');
-    let tooltip = document.getElementById('tooltipPasswordNotMatching');
-
-    if(password.value !== confirmPassword.value) {
-        confirmPassword.classList.add('border-red', 'border-red:focus');
-        tooltip.classList.remove('d-none');
-    } else {
-        confirmPassword.classList.remove('border-red', 'border-red:focus');
-        tooltip.classList.add('d-none');
+async function loadUsers() {
+    try {
+        users = JSON.parse(await getItem('users'));
+    } catch(e) {
+        console.error('Loading error:', e);
     }
-}
-
-function resetForm(name, email, password, btnSignUp) {
-    let confirmPassword = document.getElementById('confirmPasswordInputSignUp');
-    let privacyCheckboxInputSignUp = document.getElementById('privacyCheckboxInputSignUp');
-
-    name.value = '';
-    email.value = '';
-    password.value = '';
-    confirmPassword.value = '';
-    privacyCheckboxInputSignUp.checked = false;
-
-    btnSignUp.disabled = false;
-}
-
-function moveToLogIn() {
-    window.location.href = '../index.html?msg=You signed up successfully';
 }
 
 
@@ -101,4 +51,59 @@ async function includeHTML() {
           element.innerHTML = 'Page not found';
       }
   }
+}
+
+
+async function logIn() {
+    let emailLogin = document.getElementById('emailInputLogin');
+    let passwordLogin = document.getElementById('passwordInputLogin');
+
+    let userFound = users.find(function(user) {
+        return user.email === emailLogin.value;
+    });
+
+    if (userFound) {
+        if (userFound.password === passwordLogin.value) {
+            await moveToSummary();
+            await setActiveUser(userFound);
+        } else {
+          alert("Email and Password is not matching");
+        }
+      } else {
+        alert("Email/User do not exist");
+      }
+}
+
+function renderUserInitials() {
+    let userInitials = document.getElementById('userInitials');
+    let userInitialsDesktop = document.getElementById('userInitialsDesktop');
+
+    if(activeUser) {
+        let initials = createInitialsFromUsername();
+
+        userInitials.innerHTML = initials;
+        userInitialsDesktop.innerHTML = initials;
+    } else {
+        userInitials.innerHTML = 'G';
+        userInitialsDesktop.innerHTML = 'G';
+    }
+}
+
+function createInitialsFromUsername() {
+    let splitName = activeUser.split(" ");
+    let initials = "";
+
+        for(let i = 0; i < splitName.length; i++) {
+            initials += splitName[i][0].toUpperCase();
+        }
+
+    return initials;
+}
+
+async function setActiveUser(user) {
+    activeUser = user.name;
+}
+
+function moveToSummary() {
+    window.location.href = 'summary/summary.html';
 }

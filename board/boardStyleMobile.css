@@ -8,6 +8,10 @@
     justify-content: space-between;
 }
 
+.close-img{
+    width: 13.5px;
+}
+
 .width-100{
     width: 100%;
 }

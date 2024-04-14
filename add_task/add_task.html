@@ -12,7 +12,7 @@
 
     <script src="../script.js"></script>
 </head>
-<body>
+<body onload="init()">
 
     <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
 
@@ -43,7 +43,7 @@
                     </div>
                     <select name="contacts" id="contact-select">
                         <option value="">Select contacts to assign</option>
-                      </select>
+                    </select>
                 </div>
             </section>
             
@@ -86,7 +86,9 @@
                         </div>
                         <select name="contacts" id="contact-select">
                             <option value="">Select task category</option>
-                          </select>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
                     </div>
                     <div class="size-100 subtask-container padding-top-big"> 
                         <div>
@@ -116,10 +118,6 @@
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navAddTask.html"></div>
 
     <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navAddTaskDesktop.html"></div>
-
-    <script>
-      includeHTML();
-    </script>
 
 </body>
 </html>
