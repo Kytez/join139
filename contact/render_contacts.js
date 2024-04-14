@@ -1,24 +1,69 @@
 
 let contacts = [];
+const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
 
-function renderContacts(){
-    let aContacts = document.getElementById('a-contacts')
-    aContacts.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        aContacts.innerHTML += /*html*/`
-            <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}')" class="d-flex contact">
-                <div class="contact-circle d-flex justify-center align-center">
-                    <span class="contact-letters">${getInitials(contact.userName)}</span>
-                </div>
-                <div class="d-flex column">
-                    <h3 class="margin-block0">${contact.userName}</h3>
-                    <a class="mail">${contact.email}</a>
-                </div>
-            </div>
-        `
+
+function renderContactList(){
+    let listDiv = document.getElementById('list');
+    listDiv.innerHTML ='';
+    for (let i = 0; i < alphabet.length; i++) {
+        const letter = alphabet[i];
+        let list = contacts.filter(contact => contact.userName.charAt(0) == letter);
+        sortContactsList(list);
+        if(list.length > 0){
+            listDiv.innerHTML += returnContactListSectionHTML(letter, list);
+            console.log(contacts);
+
+        }
     }
 }
+
+function deleteContact(c){
+    contacts.splice(c, 1)
+    console.log(contacts);
+    renderContactList();
+    closeContact();
+    document.getElementById('viewedContactDesktop').innerHTML = ""
+
+}
+
+function returnContactListSectionHTML(letter, list){
+    return /*html*/`
+        <div id="${letter}-section" class="column justify-center margin w100">
+            <h3 class="margin-block0 letter-i">${letter}</h3>
+            <div class="seperator"></div>
+            <div id="${letter}-contacts">
+            ${contactListPerLetterTemplate(list)}
+            </div>
+        </div>
+    `
+}
+
+
+function contactListPerLetterTemplate(list){
+    let htmlText = ""
+    for (let c = 0; c < list.length; c++) {
+        const contact = list[c];
+        htmlText += returnContactHTML(contact);
+    }
+    return htmlText
+}
+
+
+function returnContactHTML(contact){
+    return /*html*/`
+        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}', '${contact.c_id}')" class="d-flex contact">
+            <div class="contact-circle d-flex justify-center align-center">
+                <span class="contact-letters">${getInitials(contact.userName)}</span>
+            </div>
+            <div class="d-flex column">
+                <h3 class="margin-block0">${contact.userName}</h3>
+                <a class="mail">${contact.email}</a>
+            </div>
+        </div>
+    `
+}
+
 
 function addNewContact(){
     let userName = document.getElementById('input-name')
@@ -26,24 +71,24 @@ function addNewContact(){
     let phone = document.getElementById('input-phone')
 
     pushContactsArray(userName, email, phone);
-    sortContactsArray();
-    renderContacts();
+    renderContactList();
     closeAddContact();
     clearContactInputs(userName, email, phone);
 }
 
-function sortContactsArray(){
-    contacts.sort((a, b) => a.userName.localeCompare(b.userName));
-    console.log(contacts);
+function sortContactsList(list){
+    list.sort((a, b) => a.userName.localeCompare(b.userName));
 }
+
 
 function pushContactsArray(userName, email, phone){
     contacts.push({
         userName: userName.value,
         email: email.value,
-        phone: phone.value
+        phone: phone.value,
     });
 }
+
 
 function clearContactInputs(userName, email, phone){
     userName.value = '';
@@ -79,7 +124,7 @@ function renderViewedContact(userName, email, phone){
                     <img src="../assets/img/contacts/edit.png" alt="">
                     <span style="padding-left: 10px;">Edit</span>
                 </div>
-                <div class="pointer">
+                <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="pointer">
                     <img style="margin-left: 12px;" src="../assets/img/contacts/delete.png" alt="">
                     <span style="margin-left: 12px;">Delete</span>
                 </div>
@@ -102,7 +147,7 @@ function renderViewedContact(userName, email, phone){
                     <div onclick="showEditContact()" class="blue edit d-flex align-center pointer">
                         <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
                         Edit</div>
-                    <div class="d-flex blue align-center pointer">
+                    <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="d-flex blue align-center pointer">
                         <img class="bin" style="margin-right: 10px;" src="../assets/img/contacts/delete.png" alt="">
                         Delete</div>
                 </div>
@@ -125,9 +170,6 @@ function getInitials(name) {
     for (let i = 0; i < words.length; i++) {
         initials += words[i][0].toUpperCase() + " ";
     }
-    // words.forEach(word => {
-    //     initials += word[0].toUpperCase();
-    // });
 
     return initials;
 }
