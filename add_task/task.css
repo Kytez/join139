@@ -68,8 +68,10 @@ span{
     justify-content: center;
     align-items: center;
     height: 41px;
+    gap: 8px;
     width: -webkit-fill-available;
     padding-right: 10px;
+    padding-left: 10px;
     border-radius: 10px;
     cursor: pointer;
     border: 1px solid #DDDDDD; 

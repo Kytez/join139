@@ -1,5 +1,5 @@
 let allTasks = [];
-
+let prio = '';
 function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
@@ -11,6 +11,7 @@ function addTask() {
         'description': description.value,
         'assignedTo': assignedTo.value,
         'category': category.value,
+        'prio': prio,
         createdAt: new Date().getDate()
     };
 
@@ -28,6 +29,10 @@ function loadAllTasks() {
     }
 }
 
+function selectPrio(i) {
+    prio = i;
+    console.log(prio);
+}
 
 function taskHtml() {
     return html`

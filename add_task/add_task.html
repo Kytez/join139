@@ -48,9 +48,7 @@
                 </div>
             </section>
             
-            <div class="line">
-
-            </div>
+            <div class="line"></div>
 
             <section class="add-task-section">
                 <div class="size-100 padding-top-big"> 
@@ -62,20 +60,20 @@
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
                     <section class="prio-button-section">
-                        <div onclick="selectPrio()" class="prio-button">
-                            Urgent 
+                        <div onclick="selectPrio('urgent')" class="prio-button">
+                            <span id="urgent">Urgent</span> 
                             <div class="arrow">
                                 <img src="/join139/assets/img/icons/arrow-up.png">
                             </div>
                         </div>
-                        <div onclick="selectPrio()" class="prio-button">
-                            Medium 
+                        <div onclick="selectPrio('medium')" class="prio-button">
+                            <span id="medium">Medium</span>  
                             <div class="arrow">
                                 <img src="/join139/assets/img/icons/line.png">
                             </div>
                         </div>
-                        <div onclick="selectPrio()" class="prio-button">
-                            Low
+                        <div onclick="selectPrio('low')" class="prio-button">
+                            <span id="low">Low</span>
                             <div class="arrow">
                                 <img src="/join139/assets/img/icons/arrow-down.png">
                             </div>
