@@ -7,9 +7,8 @@ let activeUser;
 
 
 async function init() {
-    await includeHTML();
-    loadUsers();
-    await setActiveUser();
+    includeHTML();
+    await loadActiveUser();
     renderUserInitials();
 }
 
@@ -30,6 +29,21 @@ async function getItem(key) {
 }
 
 
+async function includeHTML() {
+    let includeElements = document.querySelectorAll('[w3-include-html]');
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html");
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = 'Page not found';
+        }
+    }
+  }
+
+
 async function loadUsers() {
     try {
         users = JSON.parse(await getItem('users'));
@@ -39,18 +53,9 @@ async function loadUsers() {
 }
 
 
-async function includeHTML() {
-  let includeElements = document.querySelectorAll('[w3-include-html]');
-  for (let i = 0; i < includeElements.length; i++) {
-      const element = includeElements[i];
-      file = element.getAttribute("w3-include-html");
-      let resp = await fetch(file);
-      if (resp.ok) {
-          element.innerHTML = await resp.text();
-      } else {
-          element.innerHTML = 'Page not found';
-      }
-  }
+async function guestLogIn() {
+    await setItem('activeUser', '');
+    moveToSummary();
 }
 
 
@@ -64,8 +69,8 @@ async function logIn() {
 
     if (userFound) {
         if (userFound.password === passwordLogin.value) {
+            await saveActiveUser(userFound);
             await moveToSummary();
-            await setActiveUser(userFound);
         } else {
           alert("Email and Password is not matching");
         }
@@ -74,11 +79,24 @@ async function logIn() {
       }
 }
 
+function saveActiveUser(user) {
+    setItem('activeUser', user);
+}
+
+async function loadActiveUser() {
+    if(activeUser !== 'guest') {
+    let activeUserArray = JSON.parse(await getItem('activeUser'));
+    activeUser = activeUserArray['name'];
+    } else {
+        activeUser = 'guest';
+    }
+}
+
 function renderUserInitials() {
     let userInitials = document.getElementById('userInitials');
     let userInitialsDesktop = document.getElementById('userInitialsDesktop');
 
-    if(activeUser) {
+    if(activeUser !== 'guest') {
         let initials = createInitialsFromUsername();
 
         userInitials.innerHTML = initials;
@@ -98,10 +116,6 @@ function createInitialsFromUsername() {
         }
 
     return initials;
-}
-
-async function setActiveUser(user) {
-    activeUser = user.name;
 }
 
 function moveToSummary() {
