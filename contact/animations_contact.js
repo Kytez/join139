@@ -1,6 +1,6 @@
 async function initContacts() {
     await newIncludeHTML();
-    // renderContacts();
+    renderContactList();
 }
 
 window.onclick = function(event) {
@@ -25,13 +25,13 @@ async function newIncludeHTML() {
     }
 }
 
-function viewContact(userName, email, phone){
+function viewContact(userName, email, phone, c){
     contactViewOpen = true;
     if(window.innerWidth < 992){
         document.getElementById('contact-list').classList.add('d-non')
         document.getElementById('viewedContact').classList.remove('d-non')
     }
-    renderViewedContact(userName, email, phone);
+    renderViewedContact(userName, email, phone, c);
 }
 
 function closeContact(){

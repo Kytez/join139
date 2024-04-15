@@ -36,7 +36,7 @@
     height: 41px;
 }
 
-.user-initials-div {
+.user-initials-div-desktop {
     height: 34px;
     width: 34px;
     display: flex;
@@ -48,12 +48,12 @@
     left: 3px;
 }
 
-.user-initials-div:hover {
+.user-initials-div-desktop:hover {
     background-color: #f5f5f5;
     cursor: pointer;
 }
 
-#userInitials{
+#userInitialsDesktop{
     color: #29ABE2;
     font-weight: 600;
 }
