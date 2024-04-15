@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
 
     <script src="../script.js"></script>
+    <script src="/join139/add_task/tasks.js"></script>
 </head>
 <body onload="init()">
 
@@ -18,7 +19,7 @@
 
     <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
 
-    <form class="add-task-card margin-body-mobile">
+    <form onsubmit="addSubtask()" class="add-task-card margin-body-mobile">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -29,19 +30,19 @@
                     <div>
                         <span>Title</span><span class="red">*</span>
                     </div>
-                    <input type="text" placeholder="Enter a title" required minlength="4" >
+                    <input required id="title" type="text" placeholder="Enter a title" required minlength="4" >
                 </div>
                 <div class="size-100 padding-top-big">
                     <div>
                         <span>Description</span>
                     </div>
-                    <textarea placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
+                    <textarea id="description" placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
                 </div>
                 <div class="size-100 padding-top-big">
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <select name="contacts" id="contact-select">
+                    <select id="contact-select" name="contacts" id="contact-select">
                         <option value="">Select contacts to assign</option>
                     </select>
                 </div>
@@ -61,30 +62,30 @@
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
                     <section class="prio-button-section">
-                        <button onclick="selectPrio()" class="prio-button">
+                        <div onclick="selectPrio()" class="prio-button">
                             Urgent 
                             <div class="arrow">
                                 <img src="/join139/assets/img/icons/arrow-up.png">
                             </div>
-                        </button>
-                        <button onclick="selectPrio()" class="prio-button">
+                        </div>
+                        <div onclick="selectPrio()" class="prio-button">
                             Medium 
                             <div class="arrow">
                                 <img src="/join139/assets/img/icons/line.png">
                             </div>
-                        </button>
-                        <button onclick="selectPrio()" class="prio-button">
+                        </div>
+                        <div onclick="selectPrio()" class="prio-button">
                             Low
                             <div class="arrow">
                                 <img src="/join139/assets/img/icons/arrow-down.png">
                             </div>
-                        </button>
+                        </div>
                     </section>
                     <div class="size-100 padding-top-big">
                         <div>
                             <span>Category <span class="red">*</span></span>
                         </div>
-                        <select name="contacts" id="contact-select">
+                        <select name="contacts" id="category">
                             <option value="">Select task category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
@@ -96,7 +97,7 @@
                         </div>
                         <div class="flex subtask">
                             <input type="text" placeholder="Add new subtask" required minlength="4" >
-                            <img onclick="addSubtask()" src="/join139/assets/img/icons/add.png" alt="">
+                            <img src="/join139/assets/img/icons/add.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -108,7 +109,7 @@
             <span><span class="red">*</span>This field is required</span>
             <div class="flex">
                 <button class="btn-white">Clear <img src="/join139/assets/img/icons/x.png" alt=""></button>
-                <button class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
+                <button onclick="addTask()" class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
             </div>
         </div>
     

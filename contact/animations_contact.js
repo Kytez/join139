@@ -25,13 +25,13 @@ async function newIncludeHTML() {
     }
 }
 
-function viewContact(userName, email, phone, c){
+function viewContact(userName, email, phone){
     contactViewOpen = true;
     if(window.innerWidth < 992){
         document.getElementById('contact-list').classList.add('d-non')
         document.getElementById('viewedContact').classList.remove('d-non')
     }
-    renderViewedContact(userName, email, phone, c);
+    renderViewedContact(userName, email, phone);
 }
 
 function closeContact(){

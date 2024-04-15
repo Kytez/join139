@@ -1,3 +1,34 @@
+let allTasks = [];
+
+function addTask() {
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+    let assignedTo = document.getElementById('contact-select');
+    let category = document.getElementById('category');
+
+    let task = {
+        'title': title.value,
+        'description': description.value,
+        'assignedTo': assignedTo.value,
+        'category': category.value,
+        createdAt: new Date().getDate()
+    };
+
+    allTasks.push(task);
+    console.log(allTasks);
+
+    let allTasksAsString = JSON.stringify(allTasks);;
+    localStorage.setItem('allTasks', allTasksAsString);
+}
+
+function loadAllTasks() {
+    let allTasksAsString = localStorage.getItem('allTasks');
+    if (allTasksAsString) {
+        allTasks = JSON.parse(allTasksAsString);
+    }
+}
+
+
 function taskHtml() {
     return html`
     <div onclick="showTask()" class="tasks">
@@ -19,16 +50,4 @@ function taskHtml() {
                 </div>
             </div>
             `;
-}
-
-function resetForm(name, email, password, btnSignUp) {
-    let title = document.getElementById('confirmPasswordInputSignUp');
-    let description = document.getElementById('privacyCheckboxInputSignUp');
-
-    title.value = '';
-    description.value = '';
-    assignedTo.value = '';
-    date.value = '';
-
-    btnSignUp.disabled = false;
 }

@@ -52,7 +52,7 @@ function contactListPerLetterTemplate(list){
 
 function returnContactHTML(contact){
     return /*html*/`
-        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}', '${contact.c_id}')" class="d-flex contact">
+        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}')" class="d-flex contact">
             <div class="contact-circle d-flex justify-center align-center">
                 <span class="contact-letters">${getInitials(contact.userName)}</span>
             </div>
@@ -75,6 +75,65 @@ function addNewContact(){
     closeAddContact();
     clearContactInputs(userName, email, phone);
 }
+
+function editContact(user, mail, number){
+    generateEditContainer(user);
+    let userName = document.getElementById('edit-name');
+    let email = document.getElementById('edit-email');
+    let phone = document.getElementById('edit-phone');
+    userName.value = user;
+    email.value = mail;
+    phone.value = number;  
+    showEditContact();
+}
+
+
+function generateEditContainer(user){
+    let editContainer = document.getElementById('edit-input-container')
+    editContainer.innerHTML = /*html*/`
+        <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+        <div id="circle-edit" class="person-circle-add">
+            <h1 id="edit-initials">${getInitials(user)}</h1>
+        </div>
+        <div class="p-relative d-flex align-center justify-center column width100">
+            <div class="w100 d-flex column input-container">
+                <input id="edit-name" class="input" placeholder="Name" type="text">
+                <input id="edit-email" class="input" placeholder="Email" type="text">
+                <input id="edit-phone" class="input" placeholder="Phone" type="text">
+            </div>
+            <div class="d-flex edit-buttons">
+                <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == user)})" id="delete-btn" class="btn-create pointer delete">
+                    <div id="delete" class="blue">
+                        <span class="btn-txt">Delete</span>
+                    </div>
+                </div>
+                <div onclick="updateContact(${contacts.findIndex(contact => contact.userName == user)})" id="save-btn" class="btn-create btn-dark-large pointer">
+                    <span class="btn-txt">Save</span>
+                    <img src="../../assets/img/contacts/check.png" alt="">
+                </div>
+            </div>
+        </div>
+        
+    `
+}
+
+function updateContact(c){
+    let userName = document.getElementById('edit-name');
+    let email = document.getElementById('edit-email');
+    let phone = document.getElementById('edit-phone');
+    let contact = contacts[c]
+
+    contact.userName = userName.value;
+    contact.email = email.value;
+    contact.phone = phone.value;
+
+    closeEditContact();
+    renderViewedContact(contact.userName, contact.email, contact.phone);
+    console.log(contacts)
+    renderContactList();
+
+}
+
 
 function sortContactsList(list){
     list.sort((a, b) => a.userName.localeCompare(b.userName));
@@ -120,7 +179,7 @@ function renderViewedContact(userName, email, phone){
             </div>
             <div class="toggle pointer open-opt"><img class="open-opt" src="../assets/img/contacts/more_vert.png" alt=""></div>
             <div id="toggle-options" class="toggle-options">
-                <div onclick="showEditContact()" class="pointer">
+                <div onclick="editContact('${userName}', '${email}', '${phone}')" class="pointer">
                     <img src="../assets/img/contacts/edit.png" alt="">
                     <span style="padding-left: 10px;">Edit</span>
                 </div>
@@ -144,7 +203,7 @@ function renderViewedContact(userName, email, phone){
             <div class="d-flex column">
                 <h1>${userName}</h1>
                 <div class="d-flex options align-center">
-                    <div onclick="showEditContact()" class="blue edit d-flex align-center pointer">
+                    <div onclick="editContact('${userName}', '${email}', '${phone}')" class="blue edit d-flex align-center pointer">
                         <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
                         Edit</div>
                     <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="d-flex blue align-center pointer">
