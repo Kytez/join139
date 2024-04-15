@@ -18,11 +18,13 @@ function renderContactList(){
     }
 }
 
-function deleteContact(c){
+async function deleteContact(c){
+    let empty = '';
     contacts.splice(c, 1)
-    console.log(contacts);
+    await saveContacts();
     renderContactList();
     closeContact();
+    closeEditContact();
     document.getElementById('viewedContactDesktop').innerHTML = ""
 
 }
@@ -65,14 +67,25 @@ function returnContactHTML(contact){
 }
 
 
-function addNewContact(){
+async function loadContacts(){
+    try {
+        contacts = JSON.parse(await getItem('contacts'));
+        renderContactList();
+    } catch(e) {
+        console.error('Loading error:', e);
+    }
+}
+
+async function addNewContact(){
     let userName = document.getElementById('input-name')
     let email = document.getElementById('input-email')
     let phone = document.getElementById('input-phone')
 
     pushContactsArray(userName, email, phone);
+    await saveContacts();
     renderContactList();
     closeAddContact();
+    createNewContact(userName.value, email.value, phone.value);
     clearContactInputs(userName, email, phone);
 }
 
@@ -117,7 +130,7 @@ function generateEditContainer(user){
     `
 }
 
-function updateContact(c){
+async function updateContact(c){
     let userName = document.getElementById('edit-name');
     let email = document.getElementById('edit-email');
     let phone = document.getElementById('edit-phone');
@@ -128,6 +141,7 @@ function updateContact(c){
     contact.phone = phone.value;
 
     closeEditContact();
+    await saveContacts();
     renderViewedContact(contact.userName, contact.email, contact.phone);
     console.log(contacts)
     renderContactList();
@@ -146,6 +160,11 @@ function pushContactsArray(userName, email, phone){
         email: email.value,
         phone: phone.value,
     });
+}
+
+async function saveContacts(){
+    setItem('contacts', JSON.stringify(contacts));
+
 }
 
 

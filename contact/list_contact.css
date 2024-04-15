@@ -84,7 +84,6 @@ body{
     width: 35px;
     height: 35px;
     border-radius: 100px;
-    background: #FF7A00;
     border: 2px solid white;
     margin-right: 25px;
 }
@@ -155,6 +154,11 @@ body{
     box-shadow: 0px 2px 5px grey;
     transform: translateX(200%);
     transition: transform 800ms ease-in-out;
+}
+
+
+.red{
+    background-color: red;
 }
 
 
@@ -288,6 +292,8 @@ body{
         display: none;
     }
 }
+
+
 
 
 

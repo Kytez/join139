@@ -13,6 +13,7 @@ async function init() {
     await loadUsers();
     await loadActiveUser();
     renderUserInitials();
+    await loadContacts();
 }
 
 
