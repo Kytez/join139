@@ -73,9 +73,9 @@ function closeAddContact(){
     }
 }
 
-function createNewContact(){
+function createNewContact(userName, email, phone){
     if(window.innerWidth < 992){
-        viewContact();
+        viewContact(userName, email, phone);
         closeAddContact();
         successPopUp();
     }

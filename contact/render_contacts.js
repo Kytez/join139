@@ -85,6 +85,7 @@ async function addNewContact(){
     await saveContacts();
     renderContactList();
     closeAddContact();
+    createNewContact(userName.value, email.value, phone.value);
     clearContactInputs(userName, email, phone);
 }
 
