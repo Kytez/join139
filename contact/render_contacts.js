@@ -18,9 +18,10 @@ function renderContactList(){
     }
 }
 
-function deleteContact(c){
+async function deleteContact(c){
+    let empty = '';
     contacts.splice(c, 1)
-    console.log(contacts);
+    await saveContacts();
     renderContactList();
     closeContact();
     document.getElementById('viewedContactDesktop').innerHTML = ""
@@ -79,7 +80,8 @@ async function addNewContact(){
     let email = document.getElementById('input-email')
     let phone = document.getElementById('input-phone')
 
-    await pushContactsArray(userName, email, phone);
+    pushContactsArray(userName, email, phone);
+    await saveContacts();
     renderContactList();
     closeAddContact();
     clearContactInputs(userName, email, phone);
@@ -126,7 +128,7 @@ function generateEditContainer(user){
     `
 }
 
-function updateContact(c){
+async function updateContact(c){
     let userName = document.getElementById('edit-name');
     let email = document.getElementById('edit-email');
     let phone = document.getElementById('edit-phone');
@@ -137,6 +139,7 @@ function updateContact(c){
     contact.phone = phone.value;
 
     closeEditContact();
+    await saveContacts();
     renderViewedContact(contact.userName, contact.email, contact.phone);
     console.log(contacts)
     renderContactList();
@@ -149,13 +152,17 @@ function sortContactsList(list){
 }
 
 
-async function pushContactsArray(userName, email, phone){
+function pushContactsArray(userName, email, phone){
     contacts.push({
         userName: userName.value,
         email: email.value,
         phone: phone.value,
     });
-    await setItem('contacts', JSON.stringify(contacts));
+}
+
+async function saveContacts(){
+    setItem('contacts', JSON.stringify(contacts));
+
 }
 
 
