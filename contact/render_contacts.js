@@ -65,12 +65,21 @@ function returnContactHTML(contact){
 }
 
 
-function addNewContact(){
+async function loadContacts(){
+    try {
+        contacts = JSON.parse(await getItem('contacts'));
+        renderContactList();
+    } catch(e) {
+        console.error('Loading error:', e);
+    }
+}
+
+async function addNewContact(){
     let userName = document.getElementById('input-name')
     let email = document.getElementById('input-email')
     let phone = document.getElementById('input-phone')
 
-    pushContactsArray(userName, email, phone);
+    await pushContactsArray(userName, email, phone);
     renderContactList();
     closeAddContact();
     clearContactInputs(userName, email, phone);
@@ -140,12 +149,13 @@ function sortContactsList(list){
 }
 
 
-function pushContactsArray(userName, email, phone){
+async function pushContactsArray(userName, email, phone){
     contacts.push({
         userName: userName.value,
         email: email.value,
         phone: phone.value,
     });
+    await setItem('contacts', JSON.stringify(contacts));
 }
 
 

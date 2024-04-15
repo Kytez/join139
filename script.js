@@ -10,6 +10,7 @@ async function init() {
     includeHTML();
     await loadActiveUser();
     renderUserInitials();
+    await loadContacts();
 }
 
 

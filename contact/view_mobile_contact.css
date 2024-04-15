@@ -56,13 +56,11 @@ h3{
     width: 80px;
     height: 80px;
     border-radius: 100px;
-    background: #FF7A00;
     border: 3px solid white;
     margin-right: 10px;
 }
 
 #circle-edit{
-    background: #FF7A00;
     font-size: 47px;
     color: white;
 }
