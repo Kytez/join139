@@ -5,9 +5,12 @@ let users = [];
 
 let activeUser;
 
+const guestArray = [{'name': 'Guest'}];
+
 
 async function init() {
     includeHTML();
+    await loadUsers();
     await loadActiveUser();
     renderUserInitials();
 }
@@ -54,7 +57,8 @@ async function loadUsers() {
 
 
 async function guestLogIn() {
-    await setItem('activeUser', '');
+    activeUser = 'Guest';
+    await saveActiveUser(guestArray);
     moveToSummary();
 }
 
@@ -70,7 +74,7 @@ async function logIn() {
     if (userFound) {
         if (userFound.password === passwordLogin.value) {
             await saveActiveUser(userFound);
-            await moveToSummary();
+            moveToSummary();
         } else {
           alert("Email and Password is not matching");
         }
@@ -84,11 +88,14 @@ function saveActiveUser(user) {
 }
 
 async function loadActiveUser() {
-    if(activeUser !== 'guest') {
     let activeUserArray = JSON.parse(await getItem('activeUser'));
+
+    console.log(activeUserArray);
+
+    if(activeUserArray['name'] !== 'Guest') {
     activeUser = activeUserArray['name'];
     } else {
-        activeUser = 'guest';
+        activeUser = 'Guest';
     }
 }
 
@@ -96,7 +103,7 @@ function renderUserInitials() {
     let userInitials = document.getElementById('userInitials');
     let userInitialsDesktop = document.getElementById('userInitialsDesktop');
 
-    if(activeUser !== 'guest') {
+    if(activeUser !== 'Guest') {
         let initials = createInitialsFromUsername();
 
         userInitials.innerHTML = initials;
