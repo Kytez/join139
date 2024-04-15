@@ -21,7 +21,7 @@
 
 
 </head>
-<body id="body" onload="init(); initContacts()" class="p-relative">
+<body id="body" onload="init()" class="p-relative">
     <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
 
     <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
@@ -37,216 +37,6 @@
 
             <div class="overflow-auto">
                 <div id="list">
-                    <!-- <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">A</h3>
-                        <div class="seperator"></div>
-                        <div id="A-contacts">
-                            <div onclick="viewContact()" class="d-flex align-center contact">
-                                <div class="contact-circle d-flex justify-center align-center">
-                                    <span class="contact-letters">AM</span>
-                                </div>
-                                <div class="d-flex column">
-                                    <h3 class="margin-block0">Anton Mayer</h3>
-                                    <a class="mail">antom@gmail.com</a>
-                                </div>
-                            </div>
-                            <div onclick="viewContact()" class="d-flex contact">
-                                <div class="contact-circle d-flex justify-center align-center">
-                                    <span class="contact-letters">AS</span>
-                                </div>
-                                <div class="d-flex column">
-                                    <h3 class="margin-block0">Anja Schulz</h3>
-                                    <a class="mail">anjasch@gmail.com</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">B</h3>
-                        <div class="seperator"></div>
-                        <div id="B-contacts">
-                            <div onclick="viewContact()" class="d-flex contact focus align-center" tabindex="0">
-                                <div class="contact-circle d-flex justify-center align-center">
-                                    <span class="contact-letters">BZ</span>
-                                </div>
-                                <div class="d-flex column">
-                                    <h3 class="margin-block0">Benedikt Ziegler</h3>
-                                    <a class="mail">benez@gmail.com</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">C</h3>
-                        <div class="seperator"></div>
-                        <div id="C-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">D</h3>
-                        <div class="seperator"></div>
-                        <div id="D-contacts">
-                            <div onclick="viewContact()" class="d-flex contact">
-                                <div class="contact-circle d-flex justify-center align-center">
-                                    <span class="contact-letters">DE</span>
-                                </div>
-                                <div class="d-flex column">
-                                    <h3 class="margin-block0">David Eisenberg</h3>
-                                    <a class="mail">davei@gmail.com</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">E</h3>
-                        <div class="seperator"></div>
-                        <div id="E-contacts">
-                            <div onclick="viewContact()" class="d-flex contact">
-                                <div class="contact-circle d-flex justify-center align-center">
-                                    <span class="contact-letters">EF</span>
-                                </div>
-                                <div class="d-flex column">
-                                    <h3 class="margin-block0">Eva Fischer</h3>
-                                    <a class="mail">Effi@gmail.com</a>
-                                </div>
-                            </div>
-                            <div onclick="viewContact()" class="d-flex contact">
-                                <div class="contact-circle d-flex justify-center align-center">
-                                    <span class="contact-letters">EM</span>
-                                </div>
-                                <div class="d-flex column">
-                                    <h3 class="margin-block0">Emmanuel Mauer</h3>
-                                    <a class="mail">Emmuel@gmail.com</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">F</h3>
-                        <div class="seperator"></div>
-                        <div id="F-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">G</h3>
-                        <div class="seperator"></div>
-                        <div id="G-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">H</h3>
-                        <div class="seperator"></div>
-                        <div id="H-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">I</h3>
-                        <div class="seperator"></div>
-                        <div id="I-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">J</h3>
-                        <div class="seperator"></div>
-                        <div id="J-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">K</h3>
-                        <div class="seperator"></div>
-                        <div id="K-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">L</h3>
-                        <div class="seperator"></div>
-                        <div id="L-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">M</h3>
-                        <div class="seperator"></div>
-                        <div id="M-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">N</h3>
-                        <div class="seperator"></div>
-                        <div id="N-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">O</h3>
-                        <div class="seperator"></div>
-                        <div id="O-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">P</h3>
-                        <div class="seperator"></div>
-                        <div id="P-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">Q</h3>
-                        <div class="seperator"></div>
-                        <div id="Q-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">R</h3>
-                        <div class="seperator"></div>
-                        <div id="R-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">S</h3>
-                        <div class="seperator"></div>
-                        <div id="S-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">T</h3>
-                        <div class="seperator"></div>
-                        <div id="T-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">U</h3>
-                        <div class="seperator"></div>
-                        <div id="U-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">V</h3>
-                        <div class="seperator"></div>
-                        <div id="V-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">W</h3>
-                        <div class="seperator"></div>
-                        <div id="W-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">X</h3>
-                        <div class="seperator"></div>
-                        <div id="X-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">Y</h3>
-                        <div class="seperator"></div>
-                        <div id="Y-contacts">
-                        </div>
-                    </div>
-                    <div class="d-flex column justify-center margin w100">
-                        <h3 class="margin-block0 letter-i">Z</h3>
-                        <div class="seperator"></div>
-                        <div id="Z-contacts">
-                        </div>
-                    </div> -->
                 </div>
             <div onclick="showAddNewContact()" class="person-add pointer">
                 <img class="add-img" src="../assets/img/contacts/person_add.png" alt="">
@@ -267,7 +57,7 @@
         </div>
 
         <div id="viewedContact" class="contact-container d-non">
-            <!-- <div>
+            <div>
                 <img onclick="closeContact()" class="return-arrow pointer" src="../assets/img/icons/arrow-left-line.png" alt="">
                 <div class="d-flex column top">
                     <h1>Contacts</h1>
@@ -301,7 +91,7 @@
                         <span>Contact successfully created</span>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
         <div id="success-popup-desktop" class="popup transform-desktop">
             <div>
@@ -358,31 +148,25 @@
                 <img onclick="closeEditContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
             </div>
         </div>
-        <div class="bottom-bg-contact d-flex align-center p-relative">
+        <div id="edit-input-container" class="bottom-bg-contact d-flex align-center p-relative">
             <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
             <div id="circle-edit" class="person-circle-add">
-                <h1>AM</h1>
+                <h1 id="edit-initials">AM</h1>
             </div>
             <div class="p-relative d-flex align-center justify-center column width100">
                 <div class="w100 d-flex column input-container">
-                    <input id="input-person" class="input" placeholder="Name" type="text">
-                    <input id="input-mail" class="input" placeholder="Email" type="text">
-                    <input id="input-phone" class="input" placeholder="Phone" type="text">
+                    <input id="edit-name" class="input" placeholder="Name" type="text">
+                    <input id="edit-email" class="input" placeholder="Email" type="text">
+                    <input id="edit-phone" class="input" placeholder="Phone" type="text">
                 </div>
                 <div class="d-flex edit-buttons">
-                    <!-- <button id="delete" class="pointer">
-                        <div class="blue">
-                            <span class="btn-txt">Delete</span>
-                        </div>
-                    </button> -->
-                    
                     <div id="delete-btn" class="btn-create pointer delete">
                         <div id="delete" class="blue">
                             <span class="btn-txt">Delete</span>
                         </div>
                     </div>
 
-                    <div class="btn-create btn-dark-large pointer">
+                    <div id="save-btn" class="btn-create btn-dark-large pointer">
                         <span class="btn-txt">Save</span>
                         <img src="../../assets/img/contacts/check.png" alt="">
                     </div>
