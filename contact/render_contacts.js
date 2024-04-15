@@ -24,6 +24,7 @@ async function deleteContact(c){
     await saveContacts();
     renderContactList();
     closeContact();
+    closeEditContact();
     document.getElementById('viewedContactDesktop').innerHTML = ""
 
 }
