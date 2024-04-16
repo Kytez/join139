@@ -5,15 +5,20 @@ let users = [];
 
 let activeUser = [];
 
-// const guestArray = [{'name': 'Guest'}];
-
 
 async function init() {
     await includeHTML();
     await loadActiveUser();
     renderUserInitials();
-    await loadContacts();
-    loadUsers();
+    loadContacts();
+}
+
+async function initSummary() {
+    await loadActiveUser();
+    setGreetingUserName();
+    await includeHTML();
+    renderUserInitials();
+    loadContacts();
 }
 
 
