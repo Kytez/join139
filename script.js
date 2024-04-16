@@ -3,17 +3,17 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let users = [];
 
-let activeUser;
+let activeUser = [];
 
-const guestArray = [{'name': 'Guest'}];
+// const guestArray = [{'name': 'Guest'}];
 
 
 async function init() {
-    includeHTML();
-    await loadUsers();
+    await includeHTML();
     await loadActiveUser();
     renderUserInitials();
     await loadContacts();
+    loadUsers();
 }
 
 
@@ -57,14 +57,13 @@ async function loadUsers() {
 }
 
 
-async function guestLogIn() {
-    activeUser = 'Guest';
-    await saveActiveUser(guestArray);
-    moveToSummary();
+function guestLogIn() {
+    setItem('activeUser', activeUser);
+    setTimeout(moveToSummary, 1500);
 }
 
 
-async function logIn() {
+function logIn() {
     let emailLogin = document.getElementById('emailInputLogin');
     let passwordLogin = document.getElementById('passwordInputLogin');
 
@@ -74,27 +73,25 @@ async function logIn() {
 
     if (userFound) {
         if (userFound.password === passwordLogin.value) {
-            await saveActiveUser(userFound);
-            moveToSummary();
+            saveActiveUser(userFound);
+            setTimeout(moveToSummary, 1500);
         } else {
-          alert("Email and Password is not matching");
+          alert("Email and Password do not match");
         }
       } else {
-        alert("Email/User do not exist");
+        alert("Email/User does not exist");
       }
 }
 
-function saveActiveUser(user) {
-    setItem('activeUser', user);
+function saveActiveUser(userFound) {
+    setItem('activeUser', userFound);
 }
 
 async function loadActiveUser() {
     let activeUserArray = JSON.parse(await getItem('activeUser'));
 
-    console.log(activeUserArray);
-
-    if(activeUserArray['name'] !== 'Guest') {
-    activeUser = activeUserArray['name'];
+    if (activeUserArray && activeUserArray['name']) {
+        activeUser = activeUserArray['name'];
     } else {
         activeUser = 'Guest';
     }
@@ -104,14 +101,14 @@ function renderUserInitials() {
     let userInitials = document.getElementById('userInitials');
     let userInitialsDesktop = document.getElementById('userInitialsDesktop');
 
-    if(activeUser !== 'Guest') {
+    if(activeUser === 'Guest') {
+        userInitials.innerHTML = 'G';
+        userInitialsDesktop.innerHTML = 'G';
+    } else {
         let initials = createInitialsFromUsername();
 
         userInitials.innerHTML = initials;
         userInitialsDesktop.innerHTML = initials;
-    } else {
-        userInitials.innerHTML = 'G';
-        userInitialsDesktop.innerHTML = 'G';
     }
 }
 
@@ -127,5 +124,5 @@ function createInitialsFromUsername() {
 }
 
 function moveToSummary() {
-    window.location.href = 'summary/summary.html';
+    window.location.assign('summary/summary.html');
 }
