@@ -2,6 +2,43 @@
 let contacts = [];
 const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
 
+async function saveContacts(){
+    setItem('contacts', JSON.stringify(contacts));
+
+}
+
+async function loadContacts(){
+    try {
+        contacts = JSON.parse(await getItem('contacts'));
+        renderContactList();
+    } catch(e) {
+        console.error('Loading error:', e);
+    }
+}
+
+
+async function addNewContact(){
+    let userName = document.getElementById('input-name')
+    let email = document.getElementById('input-email')
+    let phone = document.getElementById('input-phone')
+    let colour = assignCircleColor();
+
+    pushContactsArray(userName, email, phone, colour);
+    await saveContacts();
+    renderContactList();
+    closeAddContact();
+    createNewContact(userName.value, email.value, phone.value, colour);
+    clearContactInputs(userName, email, phone);
+}
+
+function pushContactsArray(userName, email, phone, colour){
+    contacts.push({
+        userName: userName.value,
+        email: email.value,
+        phone: phone.value,
+        colour: colour
+    });
+}
 
 function renderContactList(){
     let listDiv = document.getElementById('list');
@@ -18,16 +55,7 @@ function renderContactList(){
     }
 }
 
-async function deleteContact(c){
-    let empty = '';
-    contacts.splice(c, 1)
-    await saveContacts();
-    renderContactList();
-    closeContact();
-    closeEditContact();
-    document.getElementById('viewedContactDesktop').innerHTML = ""
 
-}
 
 function returnContactListSectionHTML(letter, list){
     return /*html*/`
@@ -53,9 +81,10 @@ function contactListPerLetterTemplate(list){
 
 
 function returnContactHTML(contact){
+
     return /*html*/`
-        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}')" class="d-flex contact">
-            <div class="contact-circle d-flex justify-center align-center">
+        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}', '${contact.colour}')" class="d-flex contact">
+            <div id="listCircle" class="contact-circle d-flex justify-center align-center" style="background: ${contact.colour};">
                 <span class="contact-letters">${getInitials(contact.userName)}</span>
             </div>
             <div class="d-flex column">
@@ -67,30 +96,8 @@ function returnContactHTML(contact){
 }
 
 
-async function loadContacts(){
-    try {
-        contacts = JSON.parse(await getItem('contacts'));
-        renderContactList();
-    } catch(e) {
-        console.error('Loading error:', e);
-    }
-}
-
-async function addNewContact(){
-    let userName = document.getElementById('input-name')
-    let email = document.getElementById('input-email')
-    let phone = document.getElementById('input-phone')
-
-    pushContactsArray(userName, email, phone);
-    await saveContacts();
-    renderContactList();
-    closeAddContact();
-    createNewContact(userName.value, email.value, phone.value);
-    clearContactInputs(userName, email, phone);
-}
-
-function editContact(user, mail, number){
-    generateEditContainer(user);
+function editContact(user, mail, number, colour){
+    generateEditContainer(user, colour);
     let userName = document.getElementById('edit-name');
     let email = document.getElementById('edit-email');
     let phone = document.getElementById('edit-phone');
@@ -101,11 +108,11 @@ function editContact(user, mail, number){
 }
 
 
-function generateEditContainer(user){
+function generateEditContainer(user, colour){
     let editContainer = document.getElementById('edit-input-container')
     editContainer.innerHTML = /*html*/`
         <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
-        <div id="circle-edit" class="person-circle-add">
+        <div id="circle-edit" class="person-circle-add" style="background: ${colour};">
             <h1 id="edit-initials">${getInitials(user)}</h1>
         </div>
         <div class="p-relative d-flex align-center justify-center column width100">
@@ -130,51 +137,14 @@ function generateEditContainer(user){
     `
 }
 
-async function updateContact(c){
-    let userName = document.getElementById('edit-name');
-    let email = document.getElementById('edit-email');
-    let phone = document.getElementById('edit-phone');
-    let contact = contacts[c]
-
-    contact.userName = userName.value;
-    contact.email = email.value;
-    contact.phone = phone.value;
-
-    closeEditContact();
-    await saveContacts();
-    renderViewedContact(contact.userName, contact.email, contact.phone);
-    console.log(contacts)
-    renderContactList();
-
-}
 
 
-function sortContactsList(list){
-    list.sort((a, b) => a.userName.localeCompare(b.userName));
-}
 
 
-function pushContactsArray(userName, email, phone){
-    contacts.push({
-        userName: userName.value,
-        email: email.value,
-        phone: phone.value,
-    });
-}
-
-async function saveContacts(){
-    setItem('contacts', JSON.stringify(contacts));
-
-}
 
 
-function clearContactInputs(userName, email, phone){
-    userName.value = '';
-    email.value = '';
-    phone.value = '';
-}
 
-function renderViewedContact(userName, email, phone){
+function renderViewedContact(userName, email, phone, colour){
     let contact = document.getElementById('viewedContact')
     let contactDesktop = document.getElementById('viewedContactDesktop')
     contact.innerHTML = /*html*/`
@@ -187,7 +157,7 @@ function renderViewedContact(userName, email, phone){
             </div>
             <div class="d-flex column bottom">
                 <div class="d-flex align-center">
-                    <div class="person-circle-m d-flex justify-center align-center"><span class="contact-letters-m">${getInitials(userName)}</span></div>
+                    <div class="person-circle-m d-flex justify-center align-center" style="background: ${colour};"><span class="contact-letters-m">${getInitials(userName)}</span></div>
                     <h2>${userName}</h2>
                 </div>
                 <h3 class="info-m">Contact Informationen</h3>
@@ -198,7 +168,7 @@ function renderViewedContact(userName, email, phone){
             </div>
             <div class="toggle pointer open-opt"><img class="open-opt" src="../assets/img/contacts/more_vert.png" alt=""></div>
             <div id="toggle-options" class="toggle-options">
-                <div onclick="editContact('${userName}', '${email}', '${phone}')" class="pointer">
+                <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="pointer">
                     <img src="../assets/img/contacts/edit.png" alt="">
                     <span style="padding-left: 10px;">Edit</span>
                 </div>
@@ -216,13 +186,13 @@ function renderViewedContact(userName, email, phone){
     `
     contactDesktop.innerHTML = /*html*/`
         <div class="d-flex align-center">
-            <div class="person-circle d-flex justify-center align-center">
+            <div id="viewedCircleDesktop" class="person-circle d-flex justify-center align-center" style="background: ${colour};">
                 <h1 class="viewed-letters">${getInitials(userName)}</h1>
             </div>
             <div class="d-flex column">
                 <h1>${userName}</h1>
                 <div class="d-flex options align-center">
-                    <div onclick="editContact('${userName}', '${email}', '${phone}')" class="blue edit d-flex align-center pointer">
+                    <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="blue edit d-flex align-center pointer">
                         <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
                         Edit</div>
                     <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="d-flex blue align-center pointer">
@@ -237,6 +207,46 @@ function renderViewedContact(userName, email, phone){
         <span class="txt">Phone</span>
         <span>${phone}</span>
     `
+}
+
+async function updateContact(c){
+    let userName = document.getElementById('edit-name');
+    let email = document.getElementById('edit-email');
+    let phone = document.getElementById('edit-phone');
+    let contact = contacts[c]
+
+    contact.userName = userName.value;
+    contact.email = email.value;
+    contact.phone = phone.value;
+
+    closeEditContact();
+    await saveContacts();
+    renderViewedContact(contact.userName, contact.email, contact.phone, contact.colour);
+    console.log(contacts)
+    renderContactList();
+
+}
+
+async function deleteContact(c){
+    contacts.splice(c, 1)
+    await saveContacts();
+    renderContactList();
+    closeContact();
+    closeEditContact();
+    document.getElementById('viewedContactDesktop').innerHTML = ""
+
+}
+
+
+function sortContactsList(list){
+    list.sort((a, b) => a.userName.localeCompare(b.userName));
+}
+
+
+function clearContactInputs(userName, email, phone){
+    userName.value = '';
+    email.value = '';
+    phone.value = '';
 }
 
 function getInitials(name) {
