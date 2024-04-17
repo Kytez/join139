@@ -16,7 +16,7 @@
     <script src="../script.js"></script>
     <script src="greeting.js"></script>
   </head>
-  <body onload="init()">
+  <body onload="initSummary()">
 
     <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
 
@@ -105,7 +105,7 @@
       </div>
 
       <div id="greetingText">
-        Good morning,<br /><span class="greetingUserName">Sofia Müller</span>
+        Good morning<br /><span id="greetingsUserName" class="greetingUserName"></span>
       </div>
     </div>
 

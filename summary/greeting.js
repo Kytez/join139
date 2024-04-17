@@ -21,3 +21,7 @@ window.addEventListener("resize", () => {
         document.getElementById("greetingText").classList.add("d-none");
     }
 });
+
+function setGreetingUserName() {
+  document.getElementById('greetingsUserName').innerHTML = activeUser;
+}

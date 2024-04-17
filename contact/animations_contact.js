@@ -1,7 +1,3 @@
-async function initContacts() {
-    await newIncludeHTML();
-    renderContactList();
-}
 
 window.onclick = function(event) {
     if(event.target.classList.contains('open-opt')) showOptions();
@@ -10,6 +6,7 @@ window.onclick = function(event) {
 
 
 let contactViewOpen;
+
 
 async function newIncludeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -25,13 +22,13 @@ async function newIncludeHTML() {
     }
 }
 
-function viewContact(userName, email, phone){
+function viewContact(userName, email, phone, colour){
     contactViewOpen = true;
     if(window.innerWidth < 992){
         document.getElementById('contact-list').classList.add('d-non')
         document.getElementById('viewedContact').classList.remove('d-non')
     }
-    renderViewedContact(userName, email, phone);
+    renderViewedContact(userName, email, phone, colour);
 }
 
 function closeContact(){
@@ -73,9 +70,9 @@ function closeAddContact(){
     }
 }
 
-function createNewContact(userName, email, phone){
+function createNewContact(userName, email, phone, colour){
     if(window.innerWidth < 992){
-        viewContact(userName, email, phone);
+        viewContact(userName, email, phone, colour);
         closeAddContact();
         successPopUp();
     }
@@ -117,19 +114,20 @@ function successPopUp(){
 
 function showEditContact(){
     if(window.innerWidth < 992 ){
-        document.getElementById('edit-contact').style = 'transform: translateY(0)'
+        document.getElementById('edit-contact').style.transform = 'translateY(0)'
     }
     else{
-        document.getElementById('edit-contact').style = 'transform: translateX(0)'
+        document.getElementById('edit-contact').style.transform = 'translateX(0)'
     }
 }
 function closeEditContact(){
     if(window.innerWidth < 992 ){
-        document.getElementById('edit-contact').style = 'transform: translateY(275%)'
+        document.getElementById('edit-contact').style.transform = 'translateY(275%)'
     }
     else{
-        document.getElementById('edit-contact').style = 'transform: translateX(200%)'
-    }
-}
+        document.getElementById('edit-contact').style.transform = 'translateX(200%)'
+    }}
+
+
 
     
