@@ -24,11 +24,12 @@
     width: calc(100% - 32px);
 }
 
-.summary-todo-done {
+.summary-todo {
     transition: 0.05s;
     width: 265px;
     height: 168px;
     background-color: white;
+    color: black;
     box-shadow: 0px 0px 4px 0px #0000001A;
     border-radius: 30px;
     display: flex;
@@ -36,8 +37,27 @@
     justify-content: center;
 
     img {
-        height: 69px;
-        width: 69px;
+        height: 40px;
+        width: 40px;
+        margin-right: 18px;
+    }
+}
+
+.summary-todo-done {
+    transition: 0.05s;
+    width: 265px;
+    height: 168px;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 40px;
+        width: 40px;
         margin-right: 18px;
     }
 }
@@ -45,25 +65,16 @@
 .summary-todo-spacer {
     display: flex;
     justify-content: flex-end;
-    margin-left: 20px;
+    height: 280px;
+    width: 390px;
 }
 
-.summary-todo {
-    transition: 0.05s;
-    width: 265px;
-    height: 168px;
-    background-color: white;
-    box-shadow: 0px 0px 4px 0px #0000001A;
-    border-radius: 30px;
+.summary-todo-spacer-start {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-        height: 69px;
-        width: 69px;
-        margin-right: 18px;
-    }
+    justify-content: flex-start;
+    height: 280px;
+    width: 390px;
+    
 }
 
 .summary-part-area {
@@ -83,7 +94,6 @@
     display: flex;
     justify-content: space-between;
     height: 196px;
-    gap: 26px;
 }
 
 .count-and-text {
@@ -153,6 +163,7 @@
     transition: 0.05s;
     scale: 1.05;
     margin-bottom: -2px;
+    z-index: 2;
 }
 
 .summary-todo-done:hover {
@@ -162,9 +173,12 @@
     transition: 0.05s;
     background-color: #2A3647;
     color: white;
+    z-index: 2;
 
     .summary-img-hover {
         display: block;
+        height: 60px;
+        width: 60px;
     }
 
     .summary-img {
@@ -182,6 +196,8 @@
 
     .summary-img-hover {
         display: block;
+        height: 60px;
+        width: 60px;
     }
 
     .summary-img {

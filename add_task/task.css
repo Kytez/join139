@@ -62,6 +62,15 @@ span{
     cursor: pointer;
     appearance: none;
 }
+#category {
+    padding-left: 16px;
+    background: url(/join139/assets/img/icons/arrow_drop_down.png);
+    background-size: 7px;
+    background-repeat: no-repeat;
+    background-position: 95%;
+    cursor: pointer;
+    appearance: none;
+}
 
 .prio-button{
     display: flex;
