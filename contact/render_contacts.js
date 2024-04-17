@@ -22,6 +22,8 @@ const colorArray= [
 
 async function initContacts() {
     await newIncludeHTML();
+    await loadActiveUser();
+    renderUserInitials();
     await loadContacts();
     renderContactList();
 }
@@ -275,7 +277,7 @@ function getInitials(name) {
 
     // Durchlaufe jedes Wort und füge die ersten Buchstaben zu den Initialen hinzu
     for (let i = 0; i < words.length; i++) {
-        initials += words[i][0].toUpperCase() + " ";
+        initials += words[i][0].toUpperCase();
     }
 
     return initials;
