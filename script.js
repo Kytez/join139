@@ -18,7 +18,6 @@ async function initSummary() {
     setGreetingUserName();
     await includeHTML();
     renderUserInitials();
-    loadContacts();
 }
 
 
