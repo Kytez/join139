@@ -4,14 +4,18 @@ function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let assignedTo = document.getElementById('contact-select');
+    let date = document.getElementById('date');
     let category = document.getElementById('category');
+    let subTask = document.getElementById('subTask');
 
     let task = {
         'title': title.value,
         'description': description.value,
         'assignedTo': assignedTo.value,
-        'category': category.value,
+        'date': date.value,
         'prio': prio,
+        'category': category.value,
+        'subTask': subTask.value,
         createdAt: new Date().getDate()
     };
 
@@ -31,7 +35,41 @@ function loadAllTasks() {
 
 function selectPrio(i) {
     prio = i;
-    console.log(prio);
+    setPrioButtonsColor(prio);
+}
+
+/**
+ * Set color of priority buttons based on given priority
+ * 
+ * @param {Priority} i priority
+ * @returns {void} undefined
+ */
+function setPrioButtonsColor(i) {
+    document.getElementById("medium").classList.remove("highlighted-button-medium");
+    document.getElementById("low").classList.remove("highlighted-button-low");
+    document.getElementById("urgent").classList.remove("highlighted-button-urgent");
+    if (i === "medium") {
+        document.getElementById("medium").classList.add("highlighted-button-medium");
+    } else if (i === "low") {
+        document.getElementById("low").classList.add("highlighted-button-low");
+    } else if (i === "urgent") {
+        document.getElementById("urgent").classList.add("highlighted-button-urgent");
+    }
+}
+
+function handleClickPrio(i) {
+    if (i) {
+        selectPrio(i);
+    }
+}
+
+function clearPrioButtons(i) {
+   
+}
+
+function addSubtask() {
+    let subTask = document.getElementById('subTaskInput');
+    document.getElementById('subTask').innerHTML += `${subTask.value} <br>`;
 }
 
 function taskHtml() {

@@ -77,19 +77,30 @@ span{
     border: 1px solid #DDDDDD; 
     box-shadow: 0 8px 16px 0 rgba(0,0,4,0), 0 6px 20px 0 rgba(0,0,0,0.05);
 }
-.prio-button-red{
-    background-color: #FF3D00 !important;
+
+.highlighted-button-medium {
+    background-color: #ffa800;
     color: white !important;
-}
-.prio-button-orange{
-    background-color: #FFA800 !important;
-    color: white !important;
-}
-.prio-button-green{
-    background-color: #7AE229 !important;
-    color: white !important;
+    img {
+        filter: brightness(0) invert(1) !important;    
+    }
 }
 
+.highlighted-button-low {
+    background-color: #7ae229;
+    color: white !important;
+    img {
+        filter: brightness(0) invert(1) !important;    
+    }
+}
+
+.highlighted-button-urgent {
+    background-color: #ff3d00;
+    color: white !important;
+    img {
+        filter: brightness(0) invert(1) !important;    
+    }
+}
 
 .arrow{
     display: flex;

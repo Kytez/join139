@@ -55,27 +55,27 @@
                     <div>
                         <span>Due date</span><span class="red">*</span>
                     </div>
-                    <input type="date">
+                    <input id="date" type="date">
                 </div>
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
                     <section class="prio-button-section">
-                        <div onclick="selectPrio('urgent')" class="prio-button">
-                            <span id="urgent">Urgent</span> 
+                        <div id="urgent" onclick="handleClickPrio('urgent')" class="prio-button">
+                            <span id="prio_urgent">Urgent</span> 
                             <div class="arrow">
-                                <img src="/join139/assets/img/icons/arrow-up.png">
+                                <img src="/join139/assets/img/svg/up.svg">
                             </div>
                         </div>
-                        <div onclick="selectPrio('medium')" class="prio-button">
-                            <span id="medium">Medium</span>  
+                        <div id="medium" onclick="handleClickPrio('medium')" class="prio-button">
+                            <span id="prio_medium">Medium</span>  
                             <div class="arrow">
-                                <img src="/join139/assets/img/icons/line.png">
+                                <img src="/join139/assets/img/svg/line.svg">
                             </div>
                         </div>
-                        <div onclick="selectPrio('low')" class="prio-button">
-                            <span id="low">Low</span>
+                        <div id="low" onclick="handleClickPrio('low')" class="prio-button">
+                            <span id="prio_low">Low</span>
                             <div class="arrow">
-                                <img src="/join139/assets/img/icons/arrow-down.png">
+                                <img src="/join139/assets/img/svg/down.svg">
                             </div>
                         </div>
                     </section>
@@ -94,9 +94,10 @@
                             <span>Subtasks</span>
                         </div>
                         <div class="flex subtask">
-                            <input type="text" placeholder="Add new subtask" required minlength="4" >
-                            <img src="/join139/assets/img/icons/add.png" alt="">
+                            <input id="subTaskInput" type="text" placeholder="Add new subtask" required minlength="4" >
+                            <img onclick="addSubtask()" src="/join139/assets/img/icons/add.png" alt="">
                         </div>
+                        <div><span id="subTask"></span></div>
                     </div>
                 </div>
                 

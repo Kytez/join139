@@ -18,11 +18,52 @@
 .summary-body {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     font-size: 14px;
     margin-top: 32px;
     max-width: 560px;
     width: calc(100% - 32px);
+}
+
+.summary-todo-done {
+    transition: 0.05s;
+    width: 265px;
+    height: 168px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 69px;
+        width: 69px;
+        margin-right: 18px;
+    }
+}
+
+.summary-todo-spacer {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 20px;
+}
+
+.summary-todo {
+    transition: 0.05s;
+    width: 265px;
+    height: 168px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        height: 69px;
+        width: 69px;
+        margin-right: 18px;
+    }
 }
 
 .summary-part-area {
@@ -40,7 +81,9 @@
 
 .tasks-first-row {
     display: flex;
-    gap: 16px;
+    justify-content: space-between;
+    height: 196px;
+    gap: 26px;
 }
 
 .count-and-text {
@@ -107,8 +150,78 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
     background-color: #2A3647;
     color: aliceblue;
+    transition: 0.05s;
     scale: 1.05;
+    margin-bottom: -2px;
 }
+
+.summary-todo-done:hover {
+    margin-bottom: -2px;
+    width: 282px;
+    height: 184px;
+    transition: 0.05s;
+    background-color: #2A3647;
+    color: white;
+
+    .summary-img-hover {
+        display: block;
+    }
+
+    .summary-img {
+        display: none;
+    }
+}
+
+.summary-todo:hover {
+    margin-bottom: -2px;
+    width: 282px;
+    height: 184px;
+    transition: 0.05s;
+    background-color: #2A3647;
+    color: white;
+
+    .summary-img-hover {
+        display: block;
+    }
+
+    .summary-img {
+        display: none;
+    }
+}
+
+.summary-urgent-flex:hover {
+    margin-bottom: -16px;
+    height: 184px;
+    transition: 0.1s;
+    background-color: #2A3647;
+    color: white;
+
+    h3 {
+        color: white;
+    }
+
+    span {
+        color: white;
+    }
+}
+
+.summary-urgent {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 65px;
+
+    img {
+        height: 60px;
+        width: 60px;
+        margin-right: 18px;
+    }
+}
+
+.summary-img-hover {
+    display: none;
+}
+
 
 /* //////////////////////////////////// RESPONSIVE //////////////////////////////////////////////// */
 
