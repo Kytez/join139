@@ -1,6 +1,30 @@
 
 let contacts = [];
 const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
+const colorArray= [
+    "#FF5EB3",
+    "#FF7A00",
+    "#6E52FF",
+    "#9327FF",
+    "#00BEE8",
+    "#1FD7C1",
+    "#FF745E",
+    "#FFA35E",
+    "#FC71FF",
+    "#FFC701",
+    "#0038FF",
+    "#C3FF2B",
+    "#FFE62B",
+    "#FF4646",
+    "#FFBB2B",
+]
+
+
+async function initContacts() {
+    await newIncludeHTML();
+    await loadContacts();
+    renderContactList();
+}
 
 async function saveContacts(){
     setItem('contacts', JSON.stringify(contacts));
@@ -96,54 +120,6 @@ function returnContactHTML(contact){
 }
 
 
-function editContact(user, mail, number, colour){
-    generateEditContainer(user, colour);
-    let userName = document.getElementById('edit-name');
-    let email = document.getElementById('edit-email');
-    let phone = document.getElementById('edit-phone');
-    userName.value = user;
-    email.value = mail;
-    phone.value = number;  
-    showEditContact();
-}
-
-
-function generateEditContainer(user, colour){
-    let editContainer = document.getElementById('edit-input-container')
-    editContainer.innerHTML = /*html*/`
-        <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
-        <div id="circle-edit" class="person-circle-add" style="background: ${colour};">
-            <h1 id="edit-initials">${getInitials(user)}</h1>
-        </div>
-        <div class="p-relative d-flex align-center justify-center column width100">
-            <div class="w100 d-flex column input-container">
-                <input id="edit-name" class="input" placeholder="Name" type="text">
-                <input id="edit-email" class="input" placeholder="Email" type="text">
-                <input id="edit-phone" class="input" placeholder="Phone" type="text">
-            </div>
-            <div class="d-flex edit-buttons">
-                <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == user)})" id="delete-btn" class="btn-create pointer delete">
-                    <div id="delete" class="blue">
-                        <span class="btn-txt">Delete</span>
-                    </div>
-                </div>
-                <div onclick="updateContact(${contacts.findIndex(contact => contact.userName == user)})" id="save-btn" class="btn-create btn-dark-large pointer">
-                    <span class="btn-txt">Save</span>
-                    <img src="../../assets/img/contacts/check.png" alt="">
-                </div>
-            </div>
-        </div>
-        
-    `
-}
-
-
-
-
-
-
-
-
 function renderViewedContact(userName, email, phone, colour){
     let contact = document.getElementById('viewedContact')
     let contactDesktop = document.getElementById('viewedContactDesktop')
@@ -209,6 +185,49 @@ function renderViewedContact(userName, email, phone, colour){
     `
 }
 
+
+function editContact(user, mail, number, colour){
+    generateEditContainer(user, colour);
+    let userName = document.getElementById('edit-name');
+    let email = document.getElementById('edit-email');
+    let phone = document.getElementById('edit-phone');
+    userName.value = user;
+    email.value = mail;
+    phone.value = number;  
+    showEditContact();
+}
+
+
+function generateEditContainer(user, colour){
+    let editContainer = document.getElementById('edit-input-container')
+    editContainer.innerHTML = /*html*/`
+        <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+        <div id="circle-edit" class="person-circle-add" style="background: ${colour};">
+            <h1 id="edit-initials">${getInitials(user)}</h1>
+        </div>
+        <div class="p-relative d-flex align-center justify-center column width100">
+            <div class="w100 d-flex column input-container">
+                <input id="edit-name" class="input" placeholder="Name" type="text">
+                <input id="edit-email" class="input" placeholder="Email" type="text">
+                <input id="edit-phone" class="input" placeholder="Phone" type="text">
+            </div>
+            <div class="d-flex edit-buttons">
+                <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == user)})" id="delete-btn" class="btn-create pointer delete">
+                    <div id="delete" class="blue">
+                        <span class="btn-txt">Delete</span>
+                    </div>
+                </div>
+                <div onclick="updateContact(${contacts.findIndex(contact => contact.userName == user)})" id="save-btn" class="btn-create btn-dark-large pointer">
+                    <span class="btn-txt">Save</span>
+                    <img src="../../assets/img/contacts/check.png" alt="">
+                </div>
+            </div>
+        </div>
+        
+    `
+}
+
+
 async function updateContact(c){
     let userName = document.getElementById('edit-name');
     let email = document.getElementById('edit-email');
@@ -261,4 +280,14 @@ function getInitials(name) {
 
     return initials;
 }
-const name = "Max Mustermann";
+
+function assignCircleColor(){
+    let colour;
+    let random = Math.random()
+    let colorIndex;
+    
+    if(random <= 0.95) colorIndex = Math.floor(random / 0.06);
+    else colorIndex = 0;
+    colour = colorArray[colorIndex];
+    return colour;
+};

@@ -1,8 +1,3 @@
-async function initContacts() {
-    await newIncludeHTML();
-    await loadContacts();
-    renderContactList();
-}
 
 window.onclick = function(event) {
     if(event.target.classList.contains('open-opt')) showOptions();
@@ -12,24 +7,6 @@ window.onclick = function(event) {
 
 let contactViewOpen;
 
-const colorArray= [
-    "#FF5EB3",
-    "#FF7A00",
-    {color: "#6E52FF"},
-    {color: "#9327FF"},
-    {color: "#00BEE8"},
-    {color: "#1FD7C1"},
-    {color: "#FF745E"},
-    {color: "#FFA35E"},
-    {color: "#FC71FF"},
-    {color: "#FFC701"},
-    {color: "#0038FF"},
-    {color: "#C3FF2B"},
-    {color: "#FFE62B"},
-    {color: "#FF4646"},
-    {color: "#FFBB2B"},
-
-]
 
 async function newIncludeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -149,25 +126,8 @@ function closeEditContact(){
     }
     else{
         document.getElementById('edit-contact').style.transform = 'translateX(200%)'
-    }
-}
+    }}
 
-function assignCircleColor(){
-    let editCircle = document.getElementById('circle-edit');
-    let listCircle = document.getElementById('listCircle');
-    let viewedCircleMobile = document.getElementById('viewedCircleMobile');
-    let viewedCircleDesktop = document.getElementById('viewedCircleDesktop');
-    let colour;
-    let random = Math.random()
 
-    if(random < 0.5){
-        colour = colorArray[0]
-    }
-    else{
-        colour = colorArray[1]
-    }
-
-    return colour;
-};
 
     
