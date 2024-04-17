@@ -48,10 +48,11 @@ async function addNewContact(){
     let email = document.getElementById('input-email')
     let phone = document.getElementById('input-phone')
     let colour = assignCircleColor();
-
-    pushContactsArray(userName, email, phone, colour);
+    let capitalizedName = userName.value.charAt(0).toUpperCase() + userName.value.slice(1);
+    pushContactsArray(capitalizedName, email, phone, colour);
     await saveContacts();
     renderContactList();
+    console.log(contacts);
     closeAddContact();
     createNewContact(userName.value, email.value, phone.value, colour);
     clearContactInputs(userName, email, phone);
@@ -59,7 +60,7 @@ async function addNewContact(){
 
 function pushContactsArray(userName, email, phone, colour){
     contacts.push({
-        userName: userName.value,
+        userName: userName,
         email: email.value,
         phone: phone.value,
         colour: colour
@@ -75,8 +76,6 @@ function renderContactList(){
         sortContactsList(list);
         if(list.length > 0){
             listDiv.innerHTML += returnContactListSectionHTML(letter, list);
-            console.log(contacts);
-
         }
     }
 }
