@@ -91,6 +91,10 @@ body{
     right: 55px;
 }
 
+input{
+    text-transform: capitalize;
+}
+
 .input-container{
     margin-top: 70px;
 }
