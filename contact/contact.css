@@ -47,6 +47,18 @@ body{
     width: 100%;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
+.width100{
+    width: 100%;
+}
+
+.p-relative{
+    position: relative;
+}
+
 .margin-block0{
     margin-block-start: 0;
     margin-block-end: 0;
@@ -73,12 +85,6 @@ body{
     color: white;
 }
 
-
-
-/* .margin{
-    margin-left: 15px;
-
-} */
 
 .contact-circle{
     width: 35px;

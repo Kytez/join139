@@ -6,13 +6,11 @@ body{
 .container-add{
     border-radius: 30px;
     border: solid 1px;
-    /* height: calc(100vh - 170px); */
     position: fixed;
     top: 85px;
     background-color: white;
     left: 15px;
     right: 15px;
-    /* width: 95%; */
     z-index: 999;
     transform:translateX(275%);
     transition: transform 400ms ease-in-out;
@@ -22,12 +20,9 @@ body{
     background-color: #2a3647 ;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    /* height: 50vh; */
 }
 
 .bottom-bg-contact{
-    /* padding: 70px 20px 70px 20px; */
-    /* height: 50vh; */
     flex-direction: column;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -35,41 +30,12 @@ body{
     justify-content: center
 }
 
-.p-relative{
-    position: relative;
-}
+
 
 .contact-header{
     padding: 100px 24px 66px 24px
 }
 
-.d-flex{
-    display: flex;
-}
-
-.align-center{
-    align-items: center;
-}
-
-.justify-center{
-    justify-content: center;
-}
-
-.column{
-    flex-direction: column;
-}
-
-.w100{
-    width: 100%;
-}
-
-.width100{
-    width: 100%;
-}
-
-.pointer{
-    cursor: pointer;
-}
 
 
 .head-title-contact{
@@ -138,14 +104,11 @@ body{
     padding: 5px 15px 5px 15px;
     border: 1px solid #d1d1d1;
     border-radius: 10px;
-
-}
-
-input[type=text]{
     font-size: 20px;
+
 }
 
-input[type]:focus{
+input:focus{
     outline-color: #29abe2;
     outline-width: thin;
 }
@@ -198,6 +161,11 @@ input[type]:focus{
     align-items: center;
     cursor: pointer;
     transition: 225ms;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
 }
 
 .delete:hover{
@@ -253,8 +221,10 @@ input[type]:focus{
     .person-circle-add{
         position: static;
         margin-top: 0;
-        width: 120px;
+        width: 140px;
         height: 120px;
+        margin-right: 25px;
+        margin-left: 25px;
     }
 
     .input-container{
@@ -276,7 +246,7 @@ input[type]:focus{
     .cancel{
         background-color: white;
         border-color: #2a3647;
-        border: solid 1px;
+        border: solid 2px;
         color: #2a3647;
         width: 110px;
         margin-right: 15px;
@@ -292,13 +262,11 @@ input[type]:focus{
 
     .cancel:hover{
         border-color: #29abe2;
+        .btn-txt{
+            color: #29abe2;
+        }
     }
     
-
-    .blue-border{
-        border-color: #29abe2;
-        /* color: #29abe2; */
-    }
 
 }
 
