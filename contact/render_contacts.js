@@ -283,11 +283,13 @@ function getInitials(name) {
 
 function assignCircleColor(){
     let colour;
-    let random = Math.random()
+    let random = Math.round(Math.random()*100)
     let colorIndex;
-    
-    if(random <= 0.95) colorIndex = Math.floor(random / 0.06);
+
+    if(random <= 95) colorIndex = Math.floor(random / 6);
     else colorIndex = 0;
     colour = colorArray[colorIndex];
+    console.log(random)
+    console.log(colorIndex)
     return colour;
 };
