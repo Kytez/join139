@@ -307,27 +307,31 @@ function editContact(user, mail, number, colour){
 function generateEditContainer(user, colour){
     let editContainer = document.getElementById('edit-input-container')
     editContainer.innerHTML = /*html*/`
-        <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
         <div id="circle-edit" class="person-circle-add" style="background: ${colour};">
             <h1 id="edit-initials">${getInitials(user)}</h1>
         </div>
-        <div class="p-relative d-flex align-center justify-center column" style="width: 90%;">
-            <form onsubmit="updateContact(${contacts.findIndex(contact => contact.userName == user)});return false" class="w100 d-flex column input-container">
-                <input id="edit-name" class="input" placeholder="Name" type="text" required>
-                <input id="edit-email" class="input" placeholder="Email" type="email" required>
-                <input id="edit-phone" class="input" placeholder="Phone" type="tel" required>
-                <div class="d-flex justify-center edit-buttons">
-                    <button onclick="deleteContact(${contacts.findIndex(contact => contact.userName == user)})" id="delete-btn" class="btn-create pointer delete">
-                        <div id="delete" class="blue">
-                            <span class="btn-txt">Delete</span>
-                        </div>
-                    </button>
-                    <button type="submit" id="save-btn" class="btn-create btn-dark-large pointer">
-                        <span class="btn-txt">Save</span>
-                        <img src="../../assets/img/contacts/check.png" alt="">
-                    </button>
-                </div>
-            </form>
+        <div class="bottom-right">
+            <div class="p-relative close-container">
+                <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+            </div>
+            <div class="p-relative d-flex align-center justify-center column">
+                <form onsubmit="updateContact(${contacts.findIndex(contact => contact.userName == user)});return false" class="w100 d-flex column input-container">
+                    <input id="edit-name" class="input" placeholder="Name" type="text" required>
+                    <input id="edit-email" class="input" placeholder="Email" type="email" required>
+                    <input id="edit-phone" class="input" placeholder="Phone" type="tel" required>
+                    <div class="d-flex justify-center edit-buttons">
+                        <button onclick="deleteContact(${contacts.findIndex(contact => contact.userName == user)})" id="delete-btn" class="btn-create pointer delete">
+                            <div id="delete" class="blue">
+                                <span class="btn-txt">Delete</span>
+                            </div>
+                        </button>
+                        <button type="submit" id="save-btn" class="btn-create btn-dark-large pointer">
+                            <span class="btn-txt">Save</span>
+                            <img src="../../assets/img/contacts/check.png" alt="">
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     `
 }

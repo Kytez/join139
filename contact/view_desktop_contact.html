@@ -112,26 +112,29 @@
             </div>
         </div>
         <div class="bottom-bg-contact d-flex align-center p-relative">
-            <img onclick="closeAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
-            <span onclick="closeAddContact()" class="pointer" style="font-size: 40px; position: absolute; top:0; color: white;">X</span>
             <div class="person-circle-add"><img class="person-img" src="../../assets/img/contacts/person-white.png" alt="">
             </div>
-            <div class="p-relative d-flex align-center justify-center column" style="width: 90%;">
-                <form onsubmit="addNewContact();return false" class="w100 d-flex column input-container">
-                    <input id="input-name" class="input" placeholder="Name" type="text" required>
-                    <input id="input-email" class="input" placeholder="Email" type="email" required>
-                    <input id="input-phone" class="input" placeholder="Phone" type="tel/" name="tel" required>
-                    <div class="buttons">
-                        <button onclick="closeAddContact()" id="cancel-btn" class="btn-create pointer cancel">
-                            <span>Cancel</span>
-                            <img class="blue" src="../../assets/img/contacts/close-dark.png" alt="">
-                        </button>
-                        <button type="submit" class="btn-create btn-dark-large pointer">
-                            <span class="btn-txt">Create contact</span>
-                            <img src="../../assets/img/contacts/check.png" alt="">
-                        </button>
-                    </div>
-                </form> 
+            <div class="bottom-right">
+                <div class="p-relative close-container">
+                    <img onclick="closeAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+                </div>
+                <div class="p-relative d-flex align-center justify-center column">
+                    <form onsubmit="addNewContact();return false" class="w100 d-flex column input-container">
+                        <input id="input-name" class="input" placeholder="Name" type="text" required>
+                        <input id="input-email" class="input" placeholder="Email" type="email" required>
+                        <input id="input-phone" class="input" placeholder="Phone" type="tel/" name="tel" required>
+                        <div class="buttons">
+                            <button onclick="closeAddContact()" id="cancel-btn" class="btn-create pointer cancel">
+                                <span>Cancel</span>
+                                <img class="blue" src="../../assets/img/contacts/close-dark.png" alt="">
+                            </button>
+                            <button type="submit" class="btn-create btn-dark-large pointer">
+                                <span class="btn-txt">Create contact</span>
+                                <img src="../../assets/img/contacts/check.png" alt="">
+                            </button>
+                        </div>
+                    </form> 
+                </div>
             </div>
         </div>
     </div>
