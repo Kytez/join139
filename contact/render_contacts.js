@@ -21,12 +21,13 @@ const colorArray= [
 
 
 async function initContacts() {
-    await newIncludeHTML();
+    await includeHTML();
     await loadActiveUser();
     renderUserInitials();
     await loadContacts();
     renderContactList();
 }
+
 
 async function saveContacts(){
     setItem('contacts', JSON.stringify(contacts));
@@ -49,12 +50,13 @@ async function addNewContact(){
     let phone = document.getElementById('input-phone')
     let colour = assignCircleColor();
     let capitalizedName = userName.value.charAt(0).toUpperCase() + userName.value.slice(1);
+    // let capitalizedName = capitalizeName(userName.value);
     pushContactsArray(capitalizedName, email, phone, colour);
     await saveContacts();
     renderContactList();
-    console.log(contacts);
+    
     closeAddContact();
-    createNewContact(userName.value, email.value, phone.value, colour);
+    createNewContact(capitalizedName, email.value, phone.value, colour);
     clearContactInputs(userName, email, phone);
 }
 
@@ -273,12 +275,10 @@ function getInitials(name) {
     // Teile den Namen in Wörter auf
     const words = name.split(" ");
     let initials = "";
-
     // Durchlaufe jedes Wort und füge die ersten Buchstaben zu den Initialen hinzu
     for (let i = 0; i < words.length; i++) {
         initials += words[i][0].toUpperCase();
     }
-
     return initials;
 }
 
@@ -294,3 +294,16 @@ function assignCircleColor(){
     console.log(colorIndex)
     return colour;
 };
+
+function capitalizeName(userName){
+    // Teile den Namen in Wörter auf
+    const names = userName.split(" ");
+    let capitalName = "";
+
+    // Durchlaufe jedes Wort und füge die ersten Buchstaben zu den Initialen hinzu
+    for (let i = 0; i < names.length; i++) {
+        capitalName += names[i][0].toUpperCase() + names[i].splice(1);
+    }
+
+    return capitalName;
+}
