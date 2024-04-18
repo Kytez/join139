@@ -14,7 +14,7 @@
 
     <script src="../script.js"></script>
   </head>
-  <body onload="init()" class="margin-body-mobile">
+  <body onload="initLegalNoticeAndPrivacyPolicy()" class="margin-body-mobile">
 
     <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
 
@@ -23,7 +23,7 @@
     
     <div class="headline-and-back-button">
       <h1>Help</h1>
-      <a href="#"
+      <a href="javascript:history.back()"
         ><img src="../assets/img/icons/arrow-left-line.png" alt="Back Button"
       /></a>
     </div>
@@ -97,16 +97,16 @@
       updates from you and your team to ensure the board reflects the current
       state of your project. Have more questions about
       <span class="color-blue">Join</span>? Feel free to contact us at
-      <a class="color-blue" href="mailto:marcel.luwinski@gmail.com"
+      <a class="color-blue text-deco-underline" href="mailto:marcel.luwinski@gmail.com"
         >marcel.luwinski@gmail.com</a
       >. We're here to help you!
     </p>
 
     <h2>Enjoy using Join!</h2>
 
-    <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navSummary.html"></div>
+    <div id="navMobile" w3-include-html="../assets/templates//nav.html"></div>
 
-    <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navSummaryDesktop.html"></div>
+    <div id="navDesktop" w3-include-html="../assets/templates//navDesktop.html"></div>
 
   </body>
 </html>

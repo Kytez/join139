@@ -14,7 +14,7 @@
 
     <script src="../script.js"></script>
   </head>
-  <body onload="init()" class="margin-body-mobile">
+  <body onload="initLegalNoticeAndPrivacyPolicy()" class="margin-body-mobile">
 
     <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
 
@@ -22,7 +22,7 @@
 
     <div class="headline-and-back-button">
       <h1>Datenschutzerklärung</h1>
-      <a href="#"
+      <a href="javascript:history.back()"
         ><img src="../assets/img/icons/arrow-left-line.png" alt="Back Button"
       /></a>
     </div>
@@ -357,9 +357,9 @@
 
     <p>Quelle: https://www.e-recht24.de</p>
 
-    <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navSummary.html"></div>
+    <div id="navMobile" w3-include-html="../assets/templates//nav.html"></div>
 
-    <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navSummaryDesktop.html"></div>
+    <div id="navDesktop" w3-include-html="../assets/templates/navDesktop.html"></div>
     
   </body>
 </html>

@@ -13,6 +13,10 @@ a {
   text-decoration: none;
 }
 
+.text-deco-underline {
+  text-decoration: underline;
+}
+
 .margin-body-mobile {
   margin: 80px 16px;
   padding: 16px 0;
