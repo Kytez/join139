@@ -93,7 +93,7 @@ window.addEventListener("resize", () => {
  * @param {String} colour This is the random color assigned to the contact.
  */
 
-function createNewContact(userName, email, phone, colour){
+function showNewContactInformation(userName, email, phone, colour){
     if(window.innerWidth < 992){
         viewContact(userName, email, phone, colour);
         closeAddContact();
