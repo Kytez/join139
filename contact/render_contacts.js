@@ -251,27 +251,29 @@ return /*html*/`
 
 function returnContactViewHTMLDesktop(userName, email, phone, colour){
 return /*html*/`
-    <div class="d-flex align-center">
-        <div id="viewedCircleDesktop" class="person-circle d-flex justify-center align-center" style="background: ${colour};">
-            <h1 class="viewed-letters">${getInitials(userName)}</h1>
-        </div>
-        <div class="d-flex column">
-            <h1>${userName}</h1>
-            <div class="d-flex options align-center">
-                <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="blue edit d-flex align-center pointer">
-                    <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
-                    Edit</div>
-                <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="d-flex blue align-center pointer">
-                    <img class="bin" style="margin-right: 10px;" src="../assets/img/contacts/delete.png" alt="">
-                    Delete</div>
+    <div id="contact-container-desktop" class="contact-container-desktop d-flex column bottom">
+        <div class="d-flex align-center">
+            <div id="viewedCircleDesktop" class="person-circle d-flex justify-center align-center" style="background: ${colour};">
+                <h1 class="viewed-letters">${getInitials(userName)}</h1>
+            </div>
+            <div class="d-flex column">
+                <h1>${userName}</h1>
+                <div class="d-flex options align-center">
+                    <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="blue edit d-flex align-center pointer">
+                        <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
+                        Edit</div>
+                    <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="d-flex blue align-center pointer">
+                        <img class="bin" style="margin-right: 10px;" src="../assets/img/contacts/delete.png" alt="">
+                        Delete</div>
+                </div>
             </div>
         </div>
+        <h3 class="info">Contact Informationen</h3>
+        <span class="txt">Email</span>
+        <a class="person-mail">${email}</a>
+        <span class="txt">Phone</span>
+        <span>${phone}</span>
     </div>
-    <h3 class="info">Contact Informationen</h3>
-    <span class="txt">Email</span>
-    <a class="person-mail">${email}</a>
-    <span class="txt">Phone</span>
-    <span>${phone}</span>
     `
 }
 

@@ -45,11 +45,23 @@ function closeOptions(){
 
 function viewContact(userName, email, phone, colour){
     contactViewOpen = true;
+    renderViewedContact(userName, email, phone, colour);
     if(window.innerWidth < 992){
         document.getElementById('contact-list').classList.add('d-non')
         document.getElementById('viewedContact').classList.remove('d-non')
     }
-    renderViewedContact(userName, email, phone, colour);
+    else showContactDesktop();
+}
+
+
+/**
+ * This function shows the contact container in the desktop version with a slide effect, due to transform: translateX().
+ */
+
+
+function showContactDesktop(){
+    let contactContainer = document.getElementById('contact-container-desktop')
+    contactContainer.style = 'transform: translateX(0)'
 }
 
 
@@ -111,12 +123,16 @@ function showNewContactInformation(userName, email, phone, colour){
  */
 
 function showAddContact(){
+    let overlay = document.getElementById('overlay')
+    overlay.classList.remove('d-non')
+    overlay.style.opacity = "60%";
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(0)'
     }
     else{
         document.getElementById('add-contact').style = 'transform: translateX(0)'
     }
+
 };
 
 /**
@@ -125,6 +141,9 @@ function showAddContact(){
  */
 
 function closeAddContact(){
+    let overlay = document.getElementById('overlay')
+    overlay.classList.add('d-non')
+    overlay.style.opacity = "0";
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(275%)'
     }
