@@ -15,6 +15,26 @@ window.onclick = function(event) {
   }
 
 /**
+ * This function listens to a click event, once a contact in the contact list has been clicked and adds that contact specifically a class to change its background-color
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const list = document.getElementById('list');
+
+    list.addEventListener('click', function(event) {
+        const clickedContact = event.target.closest('.contact');
+        if (clickedContact) {
+            const contacts = document.querySelectorAll('.contact');
+            contacts.forEach(contact => {
+                contact.classList.remove('selected');
+            });
+            clickedContact.classList.add('selected');
+        }
+    });
+});
+
+
+/**
  * This function opens the view for the options pop-up for editing and deleting contacts.
  * It opens the view by changing the CSS property transform: translateX().
  */  
@@ -91,6 +111,25 @@ window.addEventListener("resize", () => {
             document.getElementById("viewedContact").classList.remove("d-non");
             document.getElementById("contact-list").classList.add("d-non");
         }
+
+    if(window.innerWidth < 992){
+        const contacts = document.querySelectorAll('.contact');
+        window.onclick = function(event) {
+            if(!event.target.classList.contains('contact')){
+                contacts.forEach(contact => {
+                    contact.classList.remove('selected')
+                });
+            };
+          }
+        // contacts.forEach(contact => {
+        //     contact.addEventListener('click', function() {
+        //       contacts.forEach(c => {
+        //         c.classList.remove('selected');
+        //       })})});
+
+        
+
+    }
 });
 
 

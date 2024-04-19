@@ -63,13 +63,26 @@ async function addNewContact(){
     let email = document.getElementById('input-email')
     let phone = document.getElementById('input-phone')
     let colour = assignCircleColor();
-    let capitalizedName = userName.value.charAt(0).toUpperCase() + userName.value.slice(1);
-    // let capitalizedName = capitalizeName(userName.value);
+    // let capitalizedName = userName.value.charAt(0).toUpperCase() + userName.value.slice(1);
+    let capitalizedName = capitalizeName(userName.value);
     pushContactsArray(capitalizedName, email.value, phone.value, colour);
     await saveContacts();
     renderContactList();
     showNewContactInformation(capitalizedName, email.value, phone.value, colour);
     clearContactInputs(userName, email, phone);
+}
+
+function capitalizeName(userName){
+    // Teile den Namen in Wörter auf
+    const names = userName.split(" ");
+    let capitalName = "";
+
+    // Durchlaufe jedes Wort und füge die ersten Buchstaben zu den Initialen hinzu
+    for (let i = 0; i < names.length; i++) {
+        capitalName += names[i][0].toUpperCase() + names[i].slice(1) + " ";
+    }
+
+    return capitalName.trim();
 }
 
 /**
@@ -440,15 +453,3 @@ function assignCircleColor(){
 };
 
 
-function capitalizeName(userName){
-    // Teile den Namen in Wörter auf
-    const names = userName.split(" ");
-    let capitalName = "";
-
-    // Durchlaufe jedes Wort und füge die ersten Buchstaben zu den Initialen hinzu
-    for (let i = 0; i < names.length; i++) {
-        capitalName += names[i][0].toUpperCase() + names[i].splice(1);
-    }
-
-    return capitalName;
-}

@@ -161,10 +161,14 @@ body{
     transition: transform 800ms ease-in-out;
 }
 
-
-.red{
-    background-color: red;
+.selected{
+    background-color: #2A3647;
+    pointer-events: none;
+    h3{
+        color: white;
+    }
 }
+
 
 
 @media(min-width: 992px) {
@@ -198,8 +202,9 @@ body{
     
     .contact{
         margin-left: 0px;
-        padding-left: 0;
+        padding-left: 15px;
         padding-right: 0;
+        border-radius: 10px
     }
 
     /* .margin{
