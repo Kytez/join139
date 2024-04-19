@@ -12,8 +12,9 @@
 
     <script src="../script.js"></script>
     <script src="/join139/add_task/tasks.js"></script>
+    <script src="../contact/render_contacts.js"></script>
 </head>
-<body onload="init()">
+<body onload="initAddTask()">
 
     <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
 
@@ -42,7 +43,7 @@
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <select id="contact-select" name="contacts" id="contact-select">
+                    <select aria-placeholder="Select contacts" id="contact-select" name="contacts" id="contact-select">
                         <option value="">Select contacts to assign</option>
                     </select>
                 </div>

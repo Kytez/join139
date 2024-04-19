@@ -1,5 +1,40 @@
 let allTasks = [];
 let prio = '';
+
+async function initAddTask() {
+    await includeHTML();
+    await loadActiveUser();
+    renderUserInitials();
+    await loadContacts();
+    renderAssignedContactList();
+}
+
+function renderAssignedContactList(){
+    let assignedTo = document.getElementById('contact-select');
+    let userName = contacts[0].userName;
+    for (let i = 0; i < userName.length; i++) {
+        let userName = contacts[i].userName;
+
+        if (userName) {
+            var words = userName.split(' '); // Teile den userName in Wörter auf
+            var initials = words.map(word => word.charAt(0).toUpperCase()); // Extrahiere den ersten Buchstaben jedes Worts
+            var initialsString = initials.join(''); // Füge die Initialen zu einem String zusammen
+            console.log(initialsString);
+        }
+        console.log(contacts);
+        if(userName.length > 0){
+            console.log(userName);
+            assignedTo.innerHTML += contactListAddTaskHTML(userName, initialsString);
+        }
+    }
+}
+
+function contactListAddTaskHTML(userName, initialsString){
+    return `
+    <option value="${userName}"> <div class="initials">${initialsString}</div> ${userName}</option>
+    `;
+}
+
 function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
