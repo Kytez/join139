@@ -124,8 +124,8 @@ function showNewContactInformation(userName, email, phone, colour){
 
 function showAddContact(){
     let overlay = document.getElementById('overlay')
-    overlay.classList.remove('d-non')
-    overlay.style.opacity = "60%";
+    overlay.style.position = "fixed";
+    overlay.style.backgroundColor ="#0000005c";
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(0)'
     }
@@ -142,8 +142,10 @@ function showAddContact(){
 
 function closeAddContact(){
     let overlay = document.getElementById('overlay')
-    overlay.classList.add('d-non')
-    overlay.style.opacity = "0";
+    overlay.style.backgroundColor ="#00000000";
+    setTimeout(() => {
+        overlay.style.position = "static";
+    }, 500);
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(275%)'
     }
@@ -196,6 +198,9 @@ function showSuccessPopUpDesktop(){
  */
 
 function showEditContact(){
+    let overlay = document.getElementById('overlay')
+    overlay.style.position = "fixed";
+    overlay.style.backgroundColor ="#0000005c";
     if(window.innerWidth < 992 ){
         document.getElementById('edit-contact').style.transform = 'translateY(0)'
     }
@@ -210,6 +215,11 @@ function showEditContact(){
  */
 
 function closeEditContact(){
+    let overlay = document.getElementById('overlay')
+    overlay.style.backgroundColor ="#00000000";
+    setTimeout(() => {
+        overlay.style.position = "static";
+    }, 500);
     if(window.innerWidth < 992 ){
         document.getElementById('edit-contact').style.transform = 'translateY(275%)'
     }

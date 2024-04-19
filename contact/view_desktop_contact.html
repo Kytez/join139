@@ -25,7 +25,6 @@
 
     <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
 
-    <div id="overlay" class="overlay d-non"></div>
     <div class="container d-flex">
         <div id="contact-list" class="list-container">
            
@@ -99,56 +98,59 @@
         </div>
 
     </div>
-    
-    <div id="add-contact" class="container-add">
-        <div class="top-bg-contact p-relative">
-            <div class="d-flex column justify-center contact-header">
-                <img class="logo" src="../../assets/img/logo_white.png" alt="">
-                <h1 class="head-title-contact">Add contact</h1>
-                <h3 class="sub-title-contact">Tasks are better with a team!</h3>
-                <div class="underline-add"></div>
-                <img onclick="closeAddContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
-                <span onclick="closeAddContact()" class="pointer" style="font-size: 40px; position: absolute; top:0; color: white;">X</span>
-            </div>
-        </div>
-        <div class="bottom-bg-contact d-flex align-center p-relative">
-            <div class="person-circle-add"><img class="person-img" src="../../assets/img/contacts/person-white.png" alt="">
-            </div>
-            <div class="bottom-right">
-                <div class="p-relative close-container">
-                    <img onclick="closeAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+    <div id="overlay" class="overlay">
+        <div id="add-contact" class="container-add">
+            <div class="top-bg-contact p-relative">
+                <div class="d-flex column justify-center contact-header">
+                    <img class="logo" src="../../assets/img/logo_white.png" alt="">
+                    <h1 class="head-title-contact">Add contact</h1>
+                    <h3 class="sub-title-contact">Tasks are better with a team!</h3>
+                    <div class="underline-add"></div>
+                    <img onclick="closeAddContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
+                    <span onclick="closeAddContact()" class="pointer" style="font-size: 40px; position: absolute; top:0; color: white;">X</span>
                 </div>
-                <div class="p-relative d-flex align-center justify-center column">
-                    <form onsubmit="addNewContact();return false" class="w100 d-flex column input-container">
-                        <input id="input-name" class="input" placeholder="Name" type="text" required>
-                        <input id="input-email" class="input" placeholder="Email" type="email" required>
-                        <input id="input-phone" class="input" placeholder="Phone" type="tel/" name="tel" required>
-                        <div class="buttons">
-                            <button onclick="closeAddContact()" id="cancel-btn" class="btn-create pointer cancel">
-                                <span>Cancel</span>
-                                <img class="blue" src="../../assets/img/contacts/close-dark.png" alt="">
-                            </button>
-                            <button type="submit" class="btn-create btn-dark-large pointer">
-                                <span class="btn-txt">Create contact</span>
-                                <img src="../../assets/img/contacts/check.png" alt="">
-                            </button>
-                        </div>
-                    </form> 
+            </div>
+            <div class="bottom-bg-contact d-flex align-center p-relative">
+                <div class="person-circle-add"><img class="person-img" src="../../assets/img/contacts/person-white.png" alt="">
+                </div>
+                <div class="bottom-right">
+                    <div class="p-relative close-container">
+                        <img onclick="closeAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+                    </div>
+                    <div class="p-relative d-flex align-center justify-center column">
+                        <form onsubmit="addNewContact();return false" class="w100 d-flex column input-container">
+                            <input id="input-name" class="input" placeholder="Name" type="text" required>
+                            <input id="input-email" class="input" placeholder="Email" type="email" required>
+                            <input id="input-phone" class="input" placeholder="Phone" type="tel/" name="tel" required>
+                            <div class="buttons">
+                                <button onclick="closeAddContact()" id="cancel-btn" class="btn-create pointer cancel">
+                                    <span>Cancel</span>
+                                    <img class="blue" src="../../assets/img/contacts/close-dark.png" alt="">
+                                </button>
+                                <button type="submit" class="btn-create btn-dark-large pointer">
+                                    <span class="btn-txt">Create contact</span>
+                                    <img src="../../assets/img/contacts/check.png" alt="">
+                                </button>
+                            </div>
+                        </form> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="edit-contact" class="container-add">
-        <div class="top-bg-contact p-relative">
-            <div class="d-flex column justify-center contact-header">
-                <img class="logo" src="../../assets/img/logo_white.png" alt="">
-                <h1 class="head-title-contact">Edit contact</h1>
-                <div class="underline-add"></div>
-                <img onclick="closeEditContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
+    
+    <div id="overlay" class="overlay">
+        <div id="edit-contact" class="container-add">
+            <div class="top-bg-contact p-relative">
+                <div class="d-flex column justify-center contact-header">
+                    <img class="logo" src="../../assets/img/logo_white.png" alt="">
+                    <h1 class="head-title-contact">Edit contact</h1>
+                    <div class="underline-add"></div>
+                    <img onclick="closeEditContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
+                </div>
             </div>
-        </div>
-        <div id="edit-input-container" class="bottom-bg-contact d-flex align-center p-relative">
+            <div id="edit-input-container" class="bottom-bg-contact d-flex align-center p-relative">
+            </div>
         </div>
     </div>
 
