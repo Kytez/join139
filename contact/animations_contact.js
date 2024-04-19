@@ -26,12 +26,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (clickedContact) {
             const contacts = document.querySelectorAll('.contact');
             contacts.forEach(contact => {
-                contact.classList.remove('selected');
+                contact.addEventListener('click', function() {
+                    contacts.forEach(c => {
+                        c.classList.remove('selected');
+                    });
+                });
+                clickedContact.classList.add('selected');
             });
-            clickedContact.classList.add('selected');
-        }
+        };
     });
 });
+        
+
 
 
 /**
@@ -81,7 +87,9 @@ function viewContact(userName, email, phone, colour){
 
 function showContactDesktop(){
     let contactContainer = document.getElementById('contact-container-desktop')
-    contactContainer.style = 'transform: translateX(0)'
+    setTimeout(() => {
+        contactContainer.style = 'transform: translateX(0)'
+    }, 100);
 }
 
 
@@ -121,14 +129,6 @@ window.addEventListener("resize", () => {
                 });
             };
           }
-        // contacts.forEach(contact => {
-        //     contact.addEventListener('click', function() {
-        //       contacts.forEach(c => {
-        //         c.classList.remove('selected');
-        //       })})});
-
-        
-
     }
 });
 
