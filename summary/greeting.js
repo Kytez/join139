@@ -10,18 +10,25 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("resize", () => {
-    if (window.innerWidth > 992) {
-        document.getElementById("greetingText").classList.remove("d-none");
-        document.getElementById("greetingText").classList.remove("fade-out");
-    }
+  if (window.innerWidth > 992) {
+    document.getElementById("greetingText").classList.remove("d-none");
+    document.getElementById("greetingText").classList.remove("fade-out");
+  }
 });
 
 window.addEventListener("resize", () => {
-    if (window.innerWidth < 992) {
-        document.getElementById("greetingText").classList.add("d-none");
-    }
+  if (window.innerWidth < 992) {
+    document.getElementById("greetingText").classList.add("d-none");
+  }
 });
 
 function setGreetingUserName() {
-  document.getElementById('greetingsUserName').innerHTML = activeUser;
+  if (activeUser === "Guest") {
+    document.getElementById("greetingsUserName").innerHTML = "";
+  } else {
+    document.getElementById("commaText").innerHTML = ",";
+    document.getElementById(
+      "greetingsUserName"
+    ).innerHTML = `<br>${activeUser}`;
+  }
 }

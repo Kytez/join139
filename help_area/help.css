@@ -8,10 +8,6 @@ p {
   margin-bottom: 24px;
 }
 
-a {
-  text-decoration: underline;
-}
-
 #navDesktop {
   display: none;
 }

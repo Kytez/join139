@@ -36,10 +36,8 @@ h1 {
   cursor: pointer;
 }
 
-.header img {
-  padding-top: 37px;
-  padding-left: 38px;
-  width: 64px;
+.header {
+  height: 120px;
 }
 
 .log-in-body {
@@ -68,7 +66,6 @@ h1 {
   height: 24px;
   padding: 12px 21px;
   font-size: 20px;
-  color: #d1d1d1;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
 }
@@ -159,13 +156,16 @@ h1 {
   z-index: 1;
   background-color: #2a3647;
   position: absolute;
-  transition: opacity 1s;
+  transition: opacity 1s ease-in-out;
 }
 
-.animationLogo {
-  height: 129px;
+#logInHeaderLogo {
   position: absolute;
   animation: loading 1s ease-in-out;
+  z-index: 9;
+  top: 100.5px;
+  left: 77px;
+  width: 64px;
 }
 
 .loader-hidden {
@@ -177,12 +177,16 @@ h1 {
     top: calc(50% - 40px);
     left: calc(50% - 32px);
     height: 129px;
+    width: 105px;
+    filter: brightness(0) invert(1);
   }
 
   to {
-    top: 37px;
-    left: 38px;
+    top: 100.5px;
+    left: 77px;
     height: 79px;
+    width: 64px;
+    filter: brightness(1) invert(0);
   }
 }
 
@@ -213,5 +217,9 @@ h1 {
   
     #signUpSectionDesktop {
       display: flex;
+      position: absolute;
+      right: 76px;
+      top: 100px;
+      height: 79px;
     }
   }

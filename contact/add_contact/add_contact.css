@@ -178,10 +178,6 @@ input[type]:focus{
     margin-right: 10px;
 }
 
-.blue-border{
-    border-color: #29abe2;
-    /* color: #29abe2; */
-}
 
 @media(min-width: 992px){
     .container-add{

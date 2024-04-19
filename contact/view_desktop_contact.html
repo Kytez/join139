@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="./add_contact.css">
-    <link rel="stylesheet" href="./list_contact.css">
-    <link rel="stylesheet" href="./view_mobile_contact.css">
-    <link rel="stylesheet" href="./view_desktop_contact.css">
+    <link rel="stylesheet" href="./contact.css">
+    <link rel="stylesheet" href="./view_contact.css">
 
     <link rel="stylesheet" href="../assets/templates/nav.css">
     <link rel="stylesheet" href="../assets/templates/navDesktop.css">
@@ -31,14 +30,14 @@
         <div id="contact-list" class="list-container">
            
             <div class="add-contact d-non align-center">
-                <button class="btn-dark-large" onclick="showAddNewContact()">Add new contact<img src="../assets/img/contacts/person_add.png" alt=""></button>
+                <button class="btn-dark-large" onclick="showAddContact()">Add new contact<img src="../assets/img/contacts/person_add.png" alt=""></button>
             </div>
 
 
             <div class="overflow-auto">
                 <div id="list">
                 </div>
-            <div onclick="showAddNewContact()" class="person-add pointer">
+            <div onclick="showAddContact()" class="person-add pointer">
                 <img class="add-img" src="../assets/img/contacts/person_add.png" alt="">
             </div>
         </div>
@@ -113,27 +112,28 @@
             </div>
         </div>
         <div class="bottom-bg-contact d-flex align-center p-relative">
-            <img onclick="closeAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
-            <span onclick="closeAddContact()" class="pointer" style="font-size: 40px; position: absolute; top:0; color: white;">X</span>
             <div class="person-circle-add"><img class="person-img" src="../../assets/img/contacts/person-white.png" alt="">
             </div>
-            <div class="p-relative d-flex align-center justify-center column width100">
-                <div class="w100 d-flex column input-container">
-                    <input id="input-name" class="input" placeholder="Name" type="text">
-                    <input id="input-email" class="input" placeholder="Email" type="text">
-                    <input id="input-phone" class="input" placeholder="Phone" type="text">
+            <div class="bottom-right">
+                <div class="p-relative close-container">
+                    <img onclick="closeAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
                 </div>
-                <div class="buttons">
-                    <div onclick="closeAddContact()" id="cancel-btn" class="btn-create pointer cancel">
-                        <div id="cancel" class="blue">
-                            <span class="btn-txt">Cancel</span>
-                            <img class="blue" src="../../assets/img/contacts/close-dark.png" alt="">
+                <div class="p-relative d-flex align-center justify-center column">
+                    <form onsubmit="addNewContact();return false" class="w100 d-flex column input-container">
+                        <input id="input-name" class="input" placeholder="Name" type="text" required>
+                        <input id="input-email" class="input" placeholder="Email" type="email" required>
+                        <input id="input-phone" class="input" placeholder="Phone" type="tel/" name="tel" required>
+                        <div class="buttons">
+                            <button onclick="closeAddContact()" id="cancel-btn" class="btn-create pointer cancel">
+                                <span>Cancel</span>
+                                <img class="blue" src="../../assets/img/contacts/close-dark.png" alt="">
+                            </button>
+                            <button type="submit" class="btn-create btn-dark-large pointer">
+                                <span class="btn-txt">Create contact</span>
+                                <img src="../../assets/img/contacts/check.png" alt="">
+                            </button>
                         </div>
-                    </div>
-                    <div onclick="addNewContact()" class="btn-create btn-dark-large pointer">
-                        <span class="btn-txt">Create contact</span>
-                        <img src="../../assets/img/contacts/check.png" alt="">
-                    </div>
+                    </form> 
                 </div>
             </div>
         </div>
@@ -149,29 +149,6 @@
             </div>
         </div>
         <div id="edit-input-container" class="bottom-bg-contact d-flex align-center p-relative">
-            <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
-            <div id="circle-edit" class="person-circle-add">
-                <h1 id="edit-initials">AM</h1>
-            </div>
-            <div class="p-relative d-flex align-center justify-center column width100">
-                <div class="w100 d-flex column input-container">
-                    <input id="edit-name" class="input" placeholder="Name" type="text">
-                    <input id="edit-email" class="input" placeholder="Email" type="text">
-                    <input id="edit-phone" class="input" placeholder="Phone" type="text">
-                </div>
-                <div class="d-flex edit-buttons">
-                    <div id="delete-btn" class="btn-create pointer delete">
-                        <div id="delete" class="blue">
-                            <span class="btn-txt">Delete</span>
-                        </div>
-                    </div>
-
-                    <div id="save-btn" class="btn-create btn-dark-large pointer">
-                        <span class="btn-txt">Save</span>
-                        <img src="../../assets/img/contacts/check.png" alt="">
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

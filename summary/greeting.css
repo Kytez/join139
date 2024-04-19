@@ -1,6 +1,6 @@
 #greetingText {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -30,12 +30,11 @@
 
 @media(min-width: 992px) {
     #greetingText {
-        align-items: flex-start;
         position: static;
         z-index: 100;
         width: auto;
         background-color: transparent;
-        top: 80px;
-        height: calc(100vh - 160px);
+        margin-top: 96px;
+        height: calc(100vh - 96px);
     }
 }
