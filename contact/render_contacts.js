@@ -272,10 +272,10 @@ return /*html*/`
             <div class="d-flex column">
                 <h1>${userName}</h1>
                 <div class="d-flex options align-center">
-                    <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="blue edit d-flex align-center pointer">
+                    <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="edit-delete edit d-flex align-center pointer">
                         <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
                         Edit</div>
-                    <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="d-flex blue align-center pointer">
+                    <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="d-flex blue align-center pointer edit-delete">
                         <img class="bin" style="margin-right: 10px;" src="../assets/img/contacts/delete.png" alt="">
                         Delete</div>
                 </div>
