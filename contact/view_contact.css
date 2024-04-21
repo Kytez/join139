@@ -120,9 +120,7 @@ h3{
     margin-right: 20px;
 }
 
-.blue:hover{
-    filter: invert(71%) sepia(50%) saturate(5248%) hue-rotate(165deg) brightness(99%) contrast(79%);
-}
+
 
 .info{
     margin-bottom: 40px;
