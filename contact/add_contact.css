@@ -91,7 +91,7 @@ body{
     right: 30px;
 }
 
-input{
+#input-name{
     text-transform: capitalize;
 }
 
