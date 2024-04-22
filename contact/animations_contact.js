@@ -15,29 +15,39 @@ window.onclick = function(event) {
   }
 
 /**
- * This function listens to a click event, once a contact in the contact list has been clicked and adds that contact specifically a class to change its background-color
+ * This function listens to a click event once a contact in the contact list has been clicked, and changes its background-color.
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     const list = document.getElementById('list');
-
     list.addEventListener('click', function(event) {
         const clickedContact = event.target.closest('.contact');
+        const contacts = document.querySelectorAll('.contact');
         if (clickedContact) {
-            const contacts = document.querySelectorAll('.contact');
-            contacts.forEach(contact => {
-                contact.addEventListener('click', function() {
-                    contacts.forEach(c => {
-                        c.classList.remove('selected');
-                    });
-                });
-                clickedContact.classList.add('selected');
-            });
+            changeContactBgDark(clickedContact, contacts);
         };
     });
 });
-        
 
+
+/**
+ * This function first removes the class "selected" for all contacts and then adds it back to the clicked-contact specifically.
+ * 
+ * @param {object} clickedContact This is the contact that was clicked within the contact-list
+ * @param {object} contacts These are all contacts with the contact-class
+ */
+
+function changeContactBgDark(clickedContact, contacts){
+    contacts.forEach(contact => {
+        contact.addEventListener('click', function() {
+            contacts.forEach(c => {
+                c.classList.remove('selected');
+            });
+        });
+        clickedContact.classList.add('selected');
+    });
+}
+        
 
 
 /**
@@ -162,9 +172,7 @@ function showNewContactInformation(userName, email, phone, colour){
  */
 
 function showAddContact(){
-    let overlay = document.getElementById('overlay')
-    overlay.style.position = "fixed";
-    overlay.style.backgroundColor ="#0000005c";
+    changeBgDark();
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(0)'
     }
@@ -174,23 +182,43 @@ function showAddContact(){
 
 };
 
+
+/**
+ * This function changes the background / overlay dark.
+ */
+
+function changeBgDark(){
+    let overlay = document.getElementById('overlay')
+    overlay.style.position = "fixed";
+    overlay.style.backgroundColor ="#0000005c";
+}
+
+
 /**
  * This function closes the container for adding a new contact, in mobile or desktop.
  * It closes the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 
 function closeAddContact(){
-    let overlay = document.getElementById('overlay')
-    overlay.style.backgroundColor ="#00000000";
-    setTimeout(() => {
-        overlay.style.position = "static";
-    }, 500);
+    changeBgBright();
     if(window.innerWidth < 992 ){
         document.getElementById('add-contact').style = 'transform: translateY(275%)'
     }
     else{
         document.getElementById('add-contact').style = 'transform: translateX(200%)'
     }
+}
+
+/**
+ * This function returns the background into its regular color / makes the overlay transparent.
+ */
+
+function changeBgBright(){
+    let overlay = document.getElementById('overlay')
+    overlay.style.backgroundColor ="#00000000";
+    setTimeout(() => {
+        overlay.style.position = "static";
+    }, 500);
 }
 
 /**
@@ -237,9 +265,7 @@ function showSuccessPopUpDesktop(){
  */
 
 function showEditContact(){
-    let overlay = document.getElementById('overlay')
-    overlay.style.position = "fixed";
-    overlay.style.backgroundColor ="#0000005c";
+    changeBgDark();
     if(window.innerWidth < 992 ){
         document.getElementById('edit-contact').style.transform = 'translateY(0)'
     }
@@ -254,11 +280,7 @@ function showEditContact(){
  */
 
 function closeEditContact(){
-    let overlay = document.getElementById('overlay')
-    overlay.style.backgroundColor ="#00000000";
-    setTimeout(() => {
-        overlay.style.position = "static";
-    }, 500);
+    changeBgBright();
     if(window.innerWidth < 992 ){
         document.getElementById('edit-contact').style.transform = 'translateY(275%)'
     }
