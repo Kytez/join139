@@ -280,4 +280,8 @@ input[type]:focus{
     #cancel{
         display: none;
     }
+
+    input{
+        width: 100%;
+    }
 }

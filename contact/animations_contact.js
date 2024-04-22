@@ -86,16 +86,16 @@ function viewContact(userName, email, phone, colour){
         document.getElementById('contact-list').classList.add('d-non')
         document.getElementById('viewedContact').classList.remove('d-non')
     }
-    else showContactDesktop();
+    else moveContactDesktop();
 }
 
 
 /**
- * This function shows the contact container in the desktop version with a slide effect, due to transform: translateX().
+ * This function moves the contact container in the desktop version with a slide effect, due to transform: translateX().
  */
 
 
-function showContactDesktop(){
+function moveContactDesktop(){
     let contactContainer = document.getElementById('contact-container-desktop')
     setTimeout(() => {
         contactContainer.style = 'transform: translateX(0)'
@@ -116,31 +116,62 @@ function closeContact(){
 
 /** 
  * This function enables responsiveness of the contact view container in the event of resizing of the display.
- * It relies on the contactViewOpen variable and display width as triggers.
+ * It relies on the contactViewOpen variable and display-width as triggers.
  */
 
 window.addEventListener("resize", () => {
-    if(contactViewOpen && window.innerWidth > 992){
-        document.getElementById('viewedContact').classList.add('d-non')
-        document.getElementById('contact-list').classList.remove('d-non')
-    }
+    if(contactViewOpen && window.innerWidth > 992) showContactDesktopView();
 
-    if(contactViewOpen && window.innerWidth < 992){
-            document.getElementById("viewedContact").classList.remove("d-non");
-            document.getElementById("contact-list").classList.add("d-non");
-        }
+    if(contactViewOpen && window.innerWidth < 992) showContactMobileView();
 
-    if(window.innerWidth < 992){
-        const contacts = document.querySelectorAll('.contact');
+    if(!contactViewOpen && window.innerWidth < 992) removeViewedContactDesktop();
+
+    if(window.innerWidth < 992) removeContactBgOnResize();
+});
+
+/**
+ * This function hides the contact view in the mobile version to allow responsive view in the desktop version.
+ */
+
+function showContactDesktopView(){
+    document.getElementById('viewedContact').classList.add('d-non')
+    document.getElementById('contact-list').classList.remove('d-non')
+}
+
+
+/**
+ * This function shows the viewed Contact in the mobile version. 
+ */
+
+function showContactMobileView(){
+    document.getElementById("viewedContact").classList.remove("d-non");
+    document.getElementById("contact-list").classList.add("d-non");
+}
+
+
+/**
+ * This function removes the content of the view-container in the desktop version, if it is no longer being viewed after deselection in the mobile-view.
+ */
+
+function removeViewedContactDesktop(){
+    document.getElementById('viewedContactDesktop').innerHTML = '';
+}
+
+
+/**
+ * This function removes the background-color of the viewed Contact in the list only when user moves from Desktop display to Mobile display view. 
+ */
+
+function removeContactBgOnResize(){
+    const contacts = document.querySelectorAll('.contact');
         window.onclick = function(event) {
-            if(!event.target.classList.contains('contact')){
+            if(event.target.classList.contains('return-arrow')){
                 contacts.forEach(contact => {
                     contact.classList.remove('selected')
-                });
-            };
-          }
+            });
+        };
     }
-});
+}
 
 
 /**
