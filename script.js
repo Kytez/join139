@@ -74,31 +74,6 @@ async function loadUsers() {
   }
 }
 
-function guestLogIn() {
-  setItem("activeUser", activeUser);
-  setTimeout(moveToSummary, 1500);
-}
-
-function logIn() {
-  let emailLogin = document.getElementById("emailInputLogin");
-  let passwordLogin = document.getElementById("passwordInputLogin");
-
-  let userFound = users.find(function (user) {
-    return user.email === emailLogin.value;
-  });
-
-  if (userFound) {
-    if (userFound.password === passwordLogin.value) {
-      saveActiveUser(userFound);
-      setTimeout(moveToSummary, 1500);
-    } else {
-      alert("Email and Password do not match");
-    }
-  } else {
-    alert("Email/User does not exist");
-  }
-}
-
 function saveActiveUser(userFound) {
   setItem("activeUser", userFound);
 }

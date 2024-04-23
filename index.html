@@ -10,6 +10,7 @@
 
     <script src="animation.js"></script>
     <script src="script.js"></script>
+    <script src="login.js"></script>
 </head>
 <body onload="initLogIn()">
     <div id="loadAnimation">
@@ -36,12 +37,18 @@
             placeholder="Email"
             required
           />
+          <div class="password-input-and-eye-icon">
           <input
             id="passwordInputLogin"
             type="password"
             placeholder="Password"
             required
+            onkeyup="checkIconChange()"
+            onchange="checkIconChange()"
+            style="background-image: url(assets/img/icons/lock.png)"
           />
+          <img onclick="changePasswordVisibility()" id="iconVisibilityPassword" class="d-none" src="assets/img/icons/visibility_off.png">
+        </div>
         </div>
         <div class="checkbox-remember">
           <input type="checkbox" />

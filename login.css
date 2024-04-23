@@ -22,17 +22,26 @@ h1 {
   background-position: center right 21px;
 }
 
-#emailInputLogin:hover {
-  cursor: pointer;
+.password-input-and-eye-icon {
+  position: relative;
+  max-width: 466px;
+  width: 90%;
 }
 
 #passwordInputLogin {
-  background-image: url(./assets/img/icons/lock.png);
+  
   background-repeat: no-repeat;
   background-position: center right 21px;
+  width: calc(100% - 42px) !important;
 }
 
-#passwordInputLogin:hover {
+#iconVisibilityPassword {
+  position: absolute;
+  top: calc(50% - 10px);
+  right: 21px;
+}
+
+#iconVisibilityPassword:hover {
   cursor: pointer;
 }
 
@@ -68,6 +77,11 @@ h1 {
   font-size: 20px;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
+}
+
+.inputs-login input:focus {
+  outline: 2px solid #29ABE2;
+  border: 1px solid transparent;
 }
 
 .checkbox-remember {
@@ -118,34 +132,6 @@ h1 {
   position: absolute;
   top: 8px;
   left: 20%;
-}
-
-.showFeedback {
-  animation: showSignUpFeedback 300ms ease-in-out;
-}
-
-.hideFeedback {
-  animation: hideSignUpFeedback 300ms ease-in-out;
-}
-
-@keyframes showSignUpFeedback {
-  from {
-    top: -50px;
-  }
-
-  to {
-    top: 8px;
-  }
-}
-
-@keyframes HideSignUpFeedback {
-  from {
-    top: 8px;
-  }
-
-  to {
-    top: -50px;
-  }
 }
 
 /* ////////////////////////////////////////////// ANIMATION SECTION ///////////////////////////////////////////////// */
