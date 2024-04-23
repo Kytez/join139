@@ -1,4 +1,5 @@
 let allTasks = [];
+let selectedContacts = [];
 let prio = '';
 
 async function initAddTask() {
@@ -37,6 +38,15 @@ async function saveTasks(){
 
 }
 
+async function loadAllTasks(){
+    try {
+        allTasks = JSON.parse(await getItem('allTasks'));
+    } catch(e) {
+        console.error('Loading error:', e);
+    }
+}
+
+
 function contactListAddTaskHTML(i, userName, initialsString){
     return `
     <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
@@ -52,6 +62,7 @@ function contactListAddTaskHTML(i, userName, initialsString){
 
 function selectTaskContact(i){
     changeCheckedAndColor(i);
+    document.getElementById(`SingleContact_${i}`);
 }
 
 function changeCheckedAndColor(i){
@@ -100,12 +111,6 @@ function addTask() {
     localStorage.setItem('allTasks', allTasksAsString);
 }
 
-function loadAllTasks() {
-    let allTasksAsString = localStorage.getItem('allTasks');
-    if (allTasksAsString) {
-        allTasks = JSON.parse(allTasksAsString);
-    }
-}
 
 function selectPrio(i) {
     prio = i;
