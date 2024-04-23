@@ -107,7 +107,7 @@
     cursor: pointer;
 }
 
-.task-title{
+.task-category{
     height: 27px;
     width: 113px;
     background-color: #0038FF;
@@ -125,7 +125,7 @@
     margin-top: 28px;
 }
 
-.task-description{
+.task-title{
     font-weight: 700;
     margin-bottom: 4px;
 }
@@ -136,6 +136,15 @@
     border-radius: 24px;
     margin-top: 16px;
     margin-bottom: 16px;
+}
+
+.drag-area{
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px dashed black;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: flex-start;
 }
 
 .add-task-button {
