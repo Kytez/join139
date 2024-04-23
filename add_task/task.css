@@ -183,6 +183,44 @@ textarea::placeholder {
     border-radius: 42px;
 }
 
+.styled-input {
+    width: 398px;
+    height: 48px;
+    padding: 1px 20px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    font-size: 20px;
+    z-index: 10;
+    background-color: white;
+}
+
+.contact-list-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 24px;
+    padding: 16px;
+    margin-bottom: 2px;
+    border-radius: 10px;
+    .initials {
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+        .profile-fullname {
+            margin-left: 16px;
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.contact-list-entry:hover {
+    background-color: #EEEEEE;
+}
+
+
+
 input{
     width: -webkit-fill-available;
     height: 40px;

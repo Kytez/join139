@@ -11,12 +11,8 @@
     <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
 
     <script src="../script.js"></script>
-<<<<<<< HEAD
     <script src="/join139/add_task/tasks.js"></script>
     <script src="../contact/render_contacts.js"></script>
-=======
-    <script src="../add_task/tasks.js"></script>
->>>>>>> d7ffdc06a57871f29deddc71a8d985f9b79729a2
 </head>
 <body onload="initAddTask()">
 
@@ -47,9 +43,11 @@
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <select aria-placeholder="Select contacts" id="contact-select" name="contacts" id="contact-select">
-                        <option value="">Select contacts to assign</option>
-                    </select>
+                    <input onclick="renderAssignedContactList()" class="styled-input" placeholder="Select contacts to assign" id="contact-select" name="contacts">
+                    <section id="selected-contacts"></section>
+                    
+            
+                </input>
                 </div>
             </section>
             

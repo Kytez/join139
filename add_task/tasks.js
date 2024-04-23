@@ -8,31 +8,52 @@ async function initAddTask() {
     await loadContacts();
     renderAssignedContactList();
 }
-
 function renderAssignedContactList(){
-    let assignedTo = document.getElementById('contact-select');
-    let userName = contacts[0].userName;
-    for (let i = 0; i < userName.length; i++) {
+    let assignedTo = document.getElementById('selected-contacts');
+    
+    for (let i = 0; i < contacts.length; i++) {
         let userName = contacts[i].userName;
+        let initialsString = ''; // Definiere initialsString hier, um sicherzustellen, dass sie immer definiert ist
 
         if (userName) {
-            var words = userName.split(' '); // Teile den userName in Wörter auf
-            var initials = words.map(word => word.charAt(0).toUpperCase()); // Extrahiere den ersten Buchstaben jedes Worts
-            var initialsString = initials.join(''); // Füge die Initialen zu einem String zusammen
+            let words = userName.split(' ');
+            let initials = words.map(word => word.charAt(0).toUpperCase());
+            initialsString = initials.join('');
             console.log(initialsString);
         }
         console.log(contacts);
         if(userName.length > 0){
             console.log(userName);
-            assignedTo.innerHTML += contactListAddTaskHTML(userName, initialsString);
+            assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
         }
+        saveTasks();
     }
+    
 }
 
-function contactListAddTaskHTML(userName, initialsString){
+async function saveTasks(){
+    setItem('allTasks', JSON.stringify(allTasks));
+
+}
+function contactListAddTaskHTML(i, userName, initialsString){
     return `
-    <option value="${userName}"> <div class="initials">${initialsString}</div> ${userName}</option>
+    <div id="SingleContact" onclick="selectTaskContact(${i})" class="contact-list-entry">
+        <div class="contact-list-entry">
+            <div class="initials">${initialsString}</div>
+            <div class="profile-fullname">${userName} </div> 
+        </div>
+        <img class="" src="../assets/img/svg/Check button empty.svg">
+        <img class="d-none" src="../assets/img/svg/Check button checked.svg">
+    </div>
     `;
+}
+
+function selectTaskContact(){
+    changeCheckedAndColor();
+}
+
+function changeCheckedAndColor(){
+    document.getElementById('SingleContact').style.backgroundColor = "#2A3647";
 }
 
 function addTask() {
