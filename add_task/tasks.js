@@ -8,6 +8,7 @@ async function initAddTask() {
     await loadContacts();
     renderAssignedContactList();
 }
+
 function renderAssignedContactList(){
     let assignedTo = document.getElementById('selected-contacts');
     
@@ -35,25 +36,42 @@ async function saveTasks(){
     setItem('allTasks', JSON.stringify(allTasks));
 
 }
+
 function contactListAddTaskHTML(i, userName, initialsString){
     return `
-    <div id="SingleContact" onclick="selectTaskContact(${i})" class="contact-list-entry">
+    <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
         <div class="contact-list-entry">
             <div class="initials">${initialsString}</div>
             <div class="profile-fullname">${userName} </div> 
         </div>
-        <img class="" src="../assets/img/svg/Check button empty.svg">
-        <img class="d-none" src="../assets/img/svg/Check button checked.svg">
+        <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
+        <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
     </div>
     `;
 }
 
-function selectTaskContact(){
-    changeCheckedAndColor();
+function selectTaskContact(i){
+    changeCheckedAndColor(i);
 }
 
-function changeCheckedAndColor(){
-    document.getElementById('SingleContact').style.backgroundColor = "#2A3647";
+function changeCheckedAndColor(i){
+    let selectedContact = document.getElementById(`SingleContact_${i}`);
+    let emptySelect = document.getElementById(`empty_${i}`);
+    let checkedSelect = document.getElementById(`checked_${i}`);
+    
+    if (emptySelect.classList.contains("d-none")) {
+        // Wenn bereits ausgewählt, dann ändere auf nicht ausgewählt
+        selectedContact.style.backgroundColor = "";
+        selectedContact.style.color = "black";
+        emptySelect.classList.remove("d-none");
+        checkedSelect.classList.add("d-none");
+    } else {
+        // Wenn nicht ausgewählt, dann ändere auf ausgewählt
+        selectedContact.style.backgroundColor = "#2A3647";
+        selectedContact.style.color = "white";
+        emptySelect.classList.add("d-none");
+        checkedSelect.classList.remove("d-none");
+    }
 }
 
 function addTask() {
