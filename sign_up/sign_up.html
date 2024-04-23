@@ -38,21 +38,31 @@
             placeholder="Email"
             required
           />
+          <div class="input-signup-password-and-eye-icon">
           <input
             id="passwordInputSignUp"
             type="password"
             placeholder="Password"
             required
+            onkeyup="checkIconChangePassword()"
+            onchange="checkIconChangePassword()"
+            style="background-image: url(../assets/img/icons/lock.png)"
           />
+          <img onclick="changePasswordVisibility()" id="iconVisibilityPasswordSignUp" class="d-none" src="../assets/img/icons/visibility_off.png">
+        </div>
           <div class="input-and-tooltip">
+            <div class="input-signup-confirm-password-and-eye-icon">
           <input
             id="confirmPasswordInputSignUp"
             type="password"
             placeholder="Confirm Password"
             required
-            onkeyup="checkPasswordMatch()"
-            onchange="checkPasswordMatch()"
+            onkeyup="checkPasswordMatch(); checkIconChangeConfirmPassword()"
+            onchange="checkPasswordMatch(); checkIconChangeConfirmPassword()"
+            style="background-image: url(../assets/img/icons/lock.png)"
           />
+          <img onclick="changeConfirmPasswordVisibility()" id="iconVisibilityPasswordConfirmSignUp" class="d-none" src="../assets/img/icons/visibility_off.png">
+        </div>
         <p id="tooltipPasswordNotMatching" class="d-none">Ups! Password don't match. Try again.</p>
         </div>
         </div>

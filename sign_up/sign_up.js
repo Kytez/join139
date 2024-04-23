@@ -42,6 +42,58 @@ function checkPasswordMatch() {
   }
 }
 
+function checkIconChangePassword() {
+  let passwordSignup = document.getElementById("passwordInputSignUp");
+  let visibiltyIconPassword = document.getElementById('iconVisibilityPasswordSignUp');
+
+  if(passwordSignup.value !== '') {
+    passwordSignup.style.backgroundImage="";
+    visibiltyIconPassword.classList.remove('d-none');
+} else {
+    passwordSignup.style.backgroundImage="url(../assets/img/icons/lock.png)";
+    visibiltyIconPassword.classList.add('d-none');
+}
+}
+
+function checkIconChangeConfirmPassword() {
+  let confirmPasswordSignup = document.getElementById("confirmPasswordInputSignUp");
+  let visibiltyIconConfirmPassword = document.getElementById('iconVisibilityPasswordConfirmSignUp');
+
+  if(confirmPasswordSignup.value !== '') {
+      confirmPasswordSignup.style.backgroundImage="";
+      visibiltyIconConfirmPassword.classList.remove('d-none');
+  } else {
+      confirmPasswordSignup.style.backgroundImage="url(../assets/img/icons/lock.png)";
+      visibiltyIconConfirmPassword.classList.add('d-none');
+  }
+}
+
+function changePasswordVisibility() {
+  let visibiltyIcon = document.getElementById('iconVisibilityPasswordSignUp');
+  let inputField = document.getElementById("passwordInputSignUp");
+
+  if(inputField.type === 'password') {
+    visibiltyIcon.src = '../assets/img/icons/visibility.png';
+    inputField.type = 'text';
+  } else {
+      visibiltyIcon.src = '../assets/img/icons/visibility_off.png';
+      inputField.type = 'password';
+  }
+}
+
+function changeConfirmPasswordVisibility() {
+  let visibiltyIcon = document.getElementById('iconVisibilityPasswordConfirmSignUp');
+  let inputField = document.getElementById("confirmPasswordInputSignUp");
+
+  if(inputField.type === 'password') {
+    visibiltyIcon.src = '../assets/img/icons/visibility.png';
+    inputField.type = 'text';
+  } else {
+      visibiltyIcon.src = '../assets/img/icons/visibility_off.png';
+      inputField.type = 'password';
+  }
+}
+
 function resetForm(name, email, password, btnSignUp) {
   let confirmPassword = document.getElementById("confirmPasswordInputSignUp");
   let privacyCheckboxInputSignUp = document.getElementById("privacyCheckboxInputSignUp");
