@@ -111,12 +111,20 @@
     height: 27px;
     width: 113px;
     background-color: #0038FF;
-    color: #DDDDDD;
+    color: white;
     border-radius: 8px;
     margin-bottom: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 4px;
+}
+
+.description{
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .subtasks{
@@ -143,8 +151,6 @@
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px dashed black;
     margin-bottom: 50px;
-    display: flex;
-    align-items: flex-start;
 }
 
 .add-task-button {
@@ -624,5 +630,26 @@ button{
     
     .board-container{
         display: block;
+    }
+
+    #todo{
+        display: flex;
+        overflow-x: scroll;
+    }
+    #inprogress{
+        display: flex;
+        overflow-x: scroll;
+    }
+    #feedback{
+        display: flex;
+        overflow-x: scroll;
+    }
+    #done{
+        display: flex;
+        overflow-x: scroll;
+    }
+
+    .draggable{
+        margin-right: 20px;
     }
   }

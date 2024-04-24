@@ -33,7 +33,7 @@ function hideTask() {
     }
 }
 
-function addTask() {
+function showAddTask() {
     document.getElementById('addTaskSection').style.display = 'flex';
     document.getElementById('addTaskPopUp').style.display = 'flex';
     
@@ -50,7 +50,7 @@ function addTask() {
     }
 }
 
-function hideTaskMenu() {
+function hideAddTask() {
     document.getElementById('addTaskSection').style.display = 'none';
     document.getElementById('addTaskPopUp').style.display = 'none';
     

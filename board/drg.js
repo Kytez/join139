@@ -4,7 +4,17 @@ let tasks_test= [{
     'category': 'User Story', 
     'work-mode': 'todo',
     'id': 0,
-}];
+},
+{
+    'title': 'Kochwelt Page & Recipe Recommender',
+    'description': 'Build start page with recipe recoomendation...',
+    'category': 'User Story', 
+    'work-mode': 'inprogress',
+    'id': 1,
+},
+];
+
+// let allTasks = [];
 
 // let task_template = {
 //     'title': title.value,
@@ -35,10 +45,11 @@ function updateTasksHTML() {
     updateInProgressHTML();
     updateFeedbackHTML();
     updateDoneHTML();
+    assignCategoryColour();
 }
 
 function updateToDoHTML(){
-    let todo_list = tasks_test.filter(t => t['work-mode'] == 'todo');
+    let todo_list = allTasks.filter(t => t['workMode'] == 'todo');
     if(todo_list.length == 0){
         noTasksInArea('todo');
     }
@@ -51,7 +62,7 @@ function updateToDoHTML(){
 
 
 function updateInProgressHTML(){
-    let inprogress_list = tasks_test.filter(t => t['work-mode'] == 'inprogress');
+    let inprogress_list = allTasks.filter(t => t['workMode'] == 'inprogress');
     if(inprogress_list.length == 0){
         noTasksInArea('inprogress');
     }
@@ -63,7 +74,7 @@ function updateInProgressHTML(){
 
 
 function updateFeedbackHTML(){
-    let feedback_list = tasks_test.filter(t => t['work-mode'] == 'feedback');
+    let feedback_list = allTasks.filter(t => t['workMode'] == 'feedback');
     if(feedback_list.length == 0){
         noTasksInArea('feedback');
     }
@@ -73,7 +84,7 @@ function updateFeedbackHTML(){
 }
 
 function updateDoneHTML(){
-    let done_list = tasks_test.filter(t => t['work-mode'] == 'done');
+    let done_list = allTasks.filter(t => t['workMode'] == 'done');
     if(done_list.length == 0){
         noTasksInArea('done');
     }
@@ -97,20 +108,33 @@ function returnTaskHTML(element){
             <div class="task-padding">
                 <div class="task-category">${element['category']}</div>
                 <span class="task-title">${element['title']}</span> <br>
-                <span>${element['description']}</span> <br>
+                <div >
+                    <span class="description">${element['description']}</span> <br>
+                </div>
                 <div class="subtasks">
                     <span>1/2 Subtasks</span>   
                 </div>
             </div>
             <div class="user-container flex">
-                <div class="flex">
-                    <div class="user-circle"><span>AM</span></div>
-                    <div class="margin-left user-circle"><span>AM</span></div>
+                <div id="assigned-users" class="flex">
+                    ${generateAssignedUsers(element)}
                 </div>
-                <img class="priority" src="../assets/img/icons/line.png" alt="">
+                <img id="img-${element['id']}" class="priority" src="${assignPriorityImgTask(element['prio'])}" alt="">
             </div> 
         </div>
     `
+}
+
+function generateAssignedUsers(element){
+    let assignedUsers = document.getElementById('assigned-users')
+    let usersHTML = '';
+    for (let i = 0; i < element['assignedTo'].length; i++) {
+        const user = element['assignedTo'][i];
+        usersHTML += /*html*/`
+            <div class="user-circle"><span>${user}</span></div>
+        `
+    }
+    return usersHTML
 }
 
 function noTasksInArea(id){
@@ -118,6 +142,37 @@ function noTasksInArea(id){
         <div class="center no-taskts-to-do">No tasks To do</div>
     `
 }
+
+function assignPriorityImgTask(prio){
+    let source;
+    let low = '../assets/img/icons/down.png'
+    let medium = '../assets/img/icons/line.png'
+    let urgent = '../assets/img/icons/arrow-up.png'
+
+    if(prio == 'low'){
+        source = low;
+    }
+    if(prio == 'medium'){
+        source = medium;
+    }
+    if(prio == 'urgent'){
+        source = urgent;
+    }
+    return source;
+}
+
+
+function assignCategoryColour(){
+    const task_category = document.querySelectorAll('.task-category');
+    task_category.forEach(task => {
+        if(task.innerHTML === 'Technical Task'){
+            task.style.backgroundColor = '#1FD7C1';
+        }
+        
+        });
+    };
+
+// Drag Funktionen
 
 function startDragging(id) {
     currentDraggedElement = id;
@@ -129,7 +184,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(workMode) {
-    tasks_test[currentDraggedElement]['work-mode'] = workMode;
+    allTasks[currentDraggedElement]['workMode'] = workMode;
     updateTasksHTML();
 }
 
@@ -143,6 +198,6 @@ function removeHighlight(id) {
 }
 
 
-
-
-// Beim Add-Task abhängig vom Plus-Zeichen Moment, muss ein extra Key zugewiesen werden für todo oder inprogress oder ..., default beim Add-Task ist ToDo aber. Zusätzlich eine ID
+// function clearTasks(){
+//     allTasks = [];
+// }
