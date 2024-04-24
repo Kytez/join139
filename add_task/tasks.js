@@ -7,6 +7,7 @@ async function initAddTask() {
     await loadActiveUser();
     renderUserInitials();
     await loadContacts();
+    await loadAllTasks();
     renderAssignedContactList();
 }
 
@@ -17,7 +18,7 @@ function renderAssignedContactList(){
         let userName = contacts[i].userName;
         let initialsString = ''; // Definiere initialsString hier, um sicherzustellen, dass sie immer definiert ist
         let color = contacts[i].color;
-        let user = document.getElementById(`SingleContact_${i}`);
+        
         if (userName) {
             let words = userName.split(' ');
             let initials = words.map(word => word.charAt(0).toUpperCase());
@@ -28,11 +29,38 @@ function renderAssignedContactList(){
         if(userName.length > 0){
             console.log(userName);
             assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
-            user.style.backgroundColor = "";
+            let user = document.getElementById(`initials_${i}`);
             user.style.backgroundColor = color;
         }
     }
     
+}
+
+function addTask(workMode = 'todo') {
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+    let assignedTo = document.getElementById('contact-select');
+    let date = document.getElementById('date');
+    let category = document.getElementById('category');
+    let subTask = document.getElementById('subTask');
+
+    let task = {
+        'title': title.value,
+        'description': description.value,
+        'assignedTo': assignedTo.value,
+        'date': date.value,
+        'prio': prio,
+        'category': category.value,
+        'subTask': subTask.value,
+        createdAt: new Date().getDate(),
+        'workMode': workMode,
+        'id': '',
+    };
+
+    allTasks.push(task);
+    console.log(allTasks);
+
+    saveTasks();
 }
 
 async function saveTasks(){
@@ -41,17 +69,27 @@ async function saveTasks(){
 
 async function loadAllTasks(){
     try {
-        allTasks = JSON.parse(await getItem('allTasks'));
+        allTasks = JSON.parse(await getItem('allTasks')) || [];
+        console.log(allTasks);
     } catch(e) {
         console.error('Loading error:', e);
     }
 }
 
+function setItem(key, value) {
+    localStorage.setItem(key, value);
+}
+
+function getItem(key) {
+    return localStorage.getItem(key);
+}
+
+
 function contactListAddTaskHTML(i, userName, initialsString){
     return `
     <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
         <div class="contact-list-entry">
-            <div class="initials">${initialsString}</div>
+            <div id="initials_${i}" class="initials">${initialsString}</div>
             <div class="profile-fullname">${userName} </div> 
         </div>
         <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
@@ -85,32 +123,7 @@ function changeCheckedAndColor(i){
     }
 }
 
-function addTask(workMode = 'todo') {
-    let title = document.getElementById('title');
-    let description = document.getElementById('description');
-    let assignedTo = document.getElementById('contact-select');
-    let date = document.getElementById('date');
-    let category = document.getElementById('category');
-    let subTask = document.getElementById('subTask');
 
-    let task = {
-        'title': title.value,
-        'description': description.value,
-        'assignedTo': assignedTo.value,
-        'date': date.value,
-        'prio': prio,
-        'category': category.value,
-        'subTask': subTask.value,
-        createdAt: new Date().getDate(),
-        'workMode': workMode,
-        'id': '',
-    };
-
-    allTasks.push(task);
-    console.log(allTasks);
-
-    saveTasks();
-}
 
 
 function selectPrio(i) {
