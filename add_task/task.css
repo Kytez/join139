@@ -194,6 +194,10 @@ textarea::placeholder {
     background-color: white;
 }
 
+.contact-list {
+    position: fixed;
+}
+
 .contact-list-entry {
     display: flex;
     align-items: center;

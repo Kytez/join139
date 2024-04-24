@@ -21,16 +21,13 @@ function renderAssignedContactList(){
         let userName = contacts[i].userName;
         let initialsString = ''; 
         let color = contacts[i].colour;
-        console.log(color);
         if (userName) {
             let words = userName.split(' ');
             let initials = words.map(word => word.charAt(0).toUpperCase());
             initialsString = initials.join('');
-            console.log(initialsString);
         }
         console.log(contacts);
         if(userName.length > 0){
-            console.log(userName);
             assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
             let user = document.getElementById(`initials_${i}`);
             user.style.backgroundColor = color;
@@ -61,13 +58,16 @@ function addTask(workMode = 'todo') {
         };
         allTasks.push(task);
     });
-    console.log(allTasks);
     saveTasks();
 }
 
 function showContactList(){
     let contactList = document.getElementById('selected-contacts');
-    contactList.classList.add('d-none');
+    if (contactList.classList.contains('d-none')) {
+        contactList.classList.remove('d-none');
+    } else {
+        contactList.classList.add('d-none');
+    }
 }
 
 async function saveTasks(){
@@ -107,16 +107,13 @@ function changeCheckedAndColor(i, contact){
     let element = document.getElementById(`initials_${i}`);
     
     if (emptySelect.classList.contains("d-none")) {
-        // Wenn bereits ausgewählt, dann ändere auf nicht ausgewählt
         selectedContact.style.backgroundColor = "";
         selectedContact.style.color = "black";
         emptySelect.classList.remove("d-none");
         checkedSelect.classList.add("d-none");
         selectedContacts.splice(selectedContacts.indexOf(i), 1);
         colors.splice(colors.indexOf(i), 1);
-        console.log(colors);
     } else {
-        // Wenn nicht ausgewählt, dann ändere auf ausgewählt
         selectedContact.style.backgroundColor = "#2A3647";
         selectedContact.style.color = "white";
         emptySelect.classList.add("d-none");
@@ -124,7 +121,6 @@ function changeCheckedAndColor(i, contact){
         let computedStyle = window.getComputedStyle(element).backgroundColor;
         selectedContacts.push(contact);
         colors.push(computedStyle);
-        console.log(colors);
     }
 }
 
