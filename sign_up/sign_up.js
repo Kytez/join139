@@ -33,12 +33,12 @@ function checkPasswordMatch() {
   let confirmPassword = document.getElementById("confirmPasswordInputSignUp");
   let tooltip = document.getElementById("tooltipPasswordNotMatching");
 
-  if (password.value !== confirmPassword.value) {
-    confirmPassword.classList.add("border-red", "border-red:focus");
-    tooltip.classList.remove("d-none");
-  } else {
+  if (password.value === confirmPassword.value || confirmPassword.value === '') {
     confirmPassword.classList.remove("border-red", "border-red:focus");
     tooltip.classList.add("d-none");
+  } else {
+    confirmPassword.classList.add("border-red", "border-red:focus");
+    tooltip.classList.remove("d-none");
   }
 }
 
