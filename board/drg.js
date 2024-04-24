@@ -34,7 +34,7 @@ function updateTasksHTML() {
     updateToDoHTML();
     updateInProgressHTML();
     updateFeedbackHTML();
-    // updateDoneHTML();
+    updateDoneHTML();
 }
 
 function updateToDoHTML(){
@@ -69,6 +69,16 @@ function updateFeedbackHTML(){
     }
     else{
         generateTask('feedback', feedback_list);
+    }
+}
+
+function updateFeedbackHTML(){
+    let done_list = tasks_test.filter(t => t['work-mode'] == 'done');
+    if(done_list.length == 0){
+        noTasksInArea('done');
+    }
+    else{
+        generateTask('done', done_list);
     }
 }
 

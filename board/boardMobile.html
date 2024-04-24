@@ -66,11 +66,17 @@
                 <div id="feedback" ondrop="moveTo('feedback')" ondragleave="removeHighlight('feedback')" ondragover="allowDrop(event); highlight('feedback')">
                     <div class="center no-taskts-to-do">No tasks To do</div>
                 </div>
-                
-                
             </div>
-            <div class="abstand-24 space-between">
-                <h2>Done</h2>
+            <div class="width-100">
+                <div class="abstand-24 space-between">
+                    <h2>Done</h2>
+                    <div>
+                        <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
+                    </div>
+                </div>
+                <div id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
+                    <div class="center no-taskts-to-do">No tasks To do</div>
+                </div>
             </div>
         </div>
     </section>
