@@ -40,16 +40,11 @@ function updateTasksHTML() {
 function updateToDoHTML(){
     let todo_list = tasks_test.filter(t => t['work-mode'] == 'todo');
     if(todo_list.length == 0){
-        document.getElementById('todo').innerHTML = `
-            <div class="center no-taskts-to-do">No tasks To do</div>
-        `
+        noTasksInArea('todo');
     }
     else{
-        document.getElementById('todo').innerHTML = '';
-        for (let index = 0; index < todo_list.length; index++) {
-            const element = todo_list[index];
-            document.getElementById('todo').innerHTML += generateTaskHTML(element);
-        }
+        generateTask('todo', todo_list);
+
     }
 }
 
@@ -58,16 +53,11 @@ function updateToDoHTML(){
 function updateInProgressHTML(){
     let inprogress_list = tasks_test.filter(t => t['work-mode'] == 'inprogress');
     if(inprogress_list.length == 0){
-        document.getElementById('inprogress').innerHTML = `
-            <div class="center no-taskts-to-do">No tasks To do</div>
-        `
+        noTasksInArea('inprogress');
     }
     else{
-        document.getElementById('inprogress').innerHTML = '';
-        for (let index = 0; index < inprogress_list.length; index++) {
-            const element = inprogress_list[index];
-            document.getElementById('inprogress').innerHTML += generateTaskHTML(element);
-        }
+        generateTask('inprogress', inprogress_list);
+
     }
 }
 
@@ -75,24 +65,23 @@ function updateInProgressHTML(){
 function updateFeedbackHTML(){
     let feedback_list = tasks_test.filter(t => t['work-mode'] == 'feedback');
     if(feedback_list.length == 0){
-        document.getElementById('feedback').innerHTML = `
-            <div class="center no-taskts-to-do">No tasks To do</div>
-        `
+        noTasksInArea('feedback');
     }
     else{
-        document.getElementById('feedback').innerHTML = '';
-        for (let index = 0; index < feedback_list.length; index++) {
-            const element = feedback_list[index];
-            document.getElementById('feedback').innerHTML += generateTaskHTML(element);
-        }
+        generateTask('feedback', feedback_list);
     }
 }
 
-function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+
+function generateTask(id, list){
+    document.getElementById(id).innerHTML = '';
+    for (let index = 0; index < list.length; index++) {
+        const element = list[index];
+        document.getElementById(id).innerHTML += returnTaskHTML(element);
+    }
 }
 
-function generateTaskHTML(element){
+function returnTaskHTML(element){
     return /*html*/ `
         <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask()" class="todo-task draggable tasks">
             <div class="task-padding">
@@ -114,6 +103,11 @@ function generateTaskHTML(element){
     `
 }
 
+function noTasksInArea(id){
+    document.getElementById(id).innerHTML = `
+        <div class="center no-taskts-to-do">No tasks To do</div>
+    `
+}
 
 function startDragging(id) {
     currentDraggedElement = id;
