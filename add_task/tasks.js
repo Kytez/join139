@@ -1,6 +1,9 @@
 let allTasks = [];
 let selectedContacts = [];
 let prio = '';
+let id = [];
+let colors = [];
+
 
 async function initAddTask() {
     await includeHTML();
@@ -16,9 +19,9 @@ function renderAssignedContactList(){
     
     for (let i = 0; i < contacts.length; i++) {
         let userName = contacts[i].userName;
-        let initialsString = ''; // Definiere initialsString hier, um sicherzustellen, dass sie immer definiert ist
-        let color = contacts[i].color;
-        
+        let initialsString = ''; 
+        let color = contacts[i].colour;
+        console.log(color);
         if (userName) {
             let words = userName.split(' ');
             let initials = words.map(word => word.charAt(0).toUpperCase());
@@ -37,30 +40,34 @@ function renderAssignedContactList(){
 }
 
 function addTask(workMode = 'todo') {
-    let title = document.getElementById('title');
-    let description = document.getElementById('description');
-    let assignedTo = document.getElementById('contact-select');
-    let date = document.getElementById('date');
-    let category = document.getElementById('category');
-    let subTask = document.getElementById('subTask');
-
-    let task = {
-        'title': title.value,
-        'description': description.value,
-        'assignedTo': assignedTo.value,
-        'date': date.value,
-        'prio': prio,
-        'category': category.value,
-        'subTask': subTask.value,
-        createdAt: new Date().getDate(),
-        'workMode': workMode,
-        'id': '',
-    };
-
-    allTasks.push(task);
+    id.forEach(singleID => {
+        let title = document.getElementById('title');
+        let description = document.getElementById('description');
+        let date = document.getElementById('date');
+        let category = document.getElementById('category');
+        let subTask = document.getElementById('subTask');
+        let task = {
+            'title': title.value,
+            'description': description.value,
+            'assignedTo': selectedContacts,
+            'colors': colors,
+            'date': date.value,
+            'prio': prio,
+            'category': category.value,
+            'subTask': subTask.value,
+            createdAt: new Date().getDate(),
+            'workMode': workMode,
+            'id': singleID,
+        };
+        allTasks.push(task);
+    });
     console.log(allTasks);
-
     saveTasks();
+}
+
+function showContactList(){
+    let contactList = document.getElementById('selected-contacts');
+    contactList.classList.add('d-none');
 }
 
 async function saveTasks(){
@@ -70,20 +77,10 @@ async function saveTasks(){
 async function loadAllTasks(){
     try {
         allTasks = JSON.parse(await getItem('allTasks')) || [];
-        console.log(allTasks);
     } catch(e) {
         console.error('Loading error:', e);
     }
 }
-
-function setItem(key, value) {
-    localStorage.setItem(key, value);
-}
-
-function getItem(key) {
-    return localStorage.getItem(key);
-}
-
 
 function contactListAddTaskHTML(i, userName, initialsString){
     return `
@@ -98,15 +95,16 @@ function contactListAddTaskHTML(i, userName, initialsString){
     `;
 }
 
-function selectTaskContact(i){
-    changeCheckedAndColor(i);
-    document.getElementById(`SingleContact_${i}`);
+function selectTaskContact(i){ 
+    let contact = document.getElementById(`initials_${i}`).textContent; // Extrahiere den Inhalt des div-Elements
+    changeCheckedAndColor(i, contact);
 }
 
-function changeCheckedAndColor(i){
+function changeCheckedAndColor(i, contact){
     let selectedContact = document.getElementById(`SingleContact_${i}`);
     let emptySelect = document.getElementById(`empty_${i}`);
     let checkedSelect = document.getElementById(`checked_${i}`);
+    let element = document.getElementById(`initials_${i}`);
     
     if (emptySelect.classList.contains("d-none")) {
         // Wenn bereits ausgewählt, dann ändere auf nicht ausgewählt
@@ -114,12 +112,19 @@ function changeCheckedAndColor(i){
         selectedContact.style.color = "black";
         emptySelect.classList.remove("d-none");
         checkedSelect.classList.add("d-none");
+        selectedContacts.splice(selectedContacts.indexOf(i), 1);
+        colors.splice(colors.indexOf(i), 1);
+        console.log(colors);
     } else {
         // Wenn nicht ausgewählt, dann ändere auf ausgewählt
         selectedContact.style.backgroundColor = "#2A3647";
         selectedContact.style.color = "white";
         emptySelect.classList.add("d-none");
         checkedSelect.classList.remove("d-none");
+        let computedStyle = window.getComputedStyle(element).backgroundColor;
+        selectedContacts.push(contact);
+        colors.push(computedStyle);
+        console.log(colors);
     }
 }
 
