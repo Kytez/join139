@@ -72,7 +72,7 @@ function updateFeedbackHTML(){
     }
 }
 
-function updateFeedbackHTML(){
+function updateDoneHTML(){
     let done_list = tasks_test.filter(t => t['work-mode'] == 'done');
     if(done_list.length == 0){
         noTasksInArea('done');
