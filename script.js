@@ -9,22 +9,6 @@ function initLogIn() {
   loadUsers();
 }
 
-async function initLegalNoticeAndPrivacyPolicy() {
-  await includeHTML();
-  await loadActiveUserPrivacyPolicyAndLegalNotice();
-
-  if (activeUser.length < 1) {
-    document
-      .getElementById("menuButtonContainerDesktop")
-      .classList.add("d-none");
-    document.getElementById("userIconDesktop").classList.add("d-none");
-    document.getElementById("menuButtonContainer").classList.add("d-none");
-    document.getElementById("userIcon").classList.add("d-none");
-  } else {
-    renderUserInitials();
-  }
-}
-
 async function initSummary() {
   await loadActiveUser();
   setGreetingUserName();
@@ -85,16 +69,6 @@ async function loadActiveUser() {
     activeUser = activeUserArray["name"];
   } else {
     activeUser = "Guest";
-  }
-}
-
-async function loadActiveUserPrivacyPolicyAndLegalNotice() {
-  let activeUserArray = JSON.parse(await getItem("activeUser"));
-
-  if (activeUserArray && activeUserArray["name"]) {
-    activeUser = activeUserArray["name"];
-  } else {
-    activeUser = "";
   }
 }
 

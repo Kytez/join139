@@ -27,6 +27,18 @@
   width: 80px;
 }
 
+.menu-button-legal-privacy {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+}
+
+.legal-privacy-active {
+  color: white;
+  background-color: #091931;
+}
+
 .menu-button-container {
   display: flex;
   flex-direction: column;
@@ -64,6 +76,7 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 a {
@@ -76,10 +89,7 @@ a {
   background-color: #2A3D59;
 }
 
-.privacy-policy:hover {
-    color: #29ABE2;
-}
-
-.legal-notice:hover {
-    color: #29ABE2;
+.menu-button-legal-privacy:hover {
+  background-color: #2A3D59;
+  color: #29ABE2;
 }
