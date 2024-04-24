@@ -44,7 +44,7 @@
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
                     </div>
                 </div>
-                <div id="todo" class="drag-area" ondrop="moveTo('todo')" ondragover="allowDrop(event);">
+                <div id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
                     <div class="center no-taskts-to-do">No tasks To do</div>
                 </div>
             </div>
@@ -53,43 +53,8 @@
                     <h2>In progress</h2>
                 <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
             </div>
-            <div id="inprogress" class="drag-area" ondrop="moveTo('inprogress')" ondragover="allowDrop(event);" style="display: flex;">
-
-                <div draggable="true" onclick="showTask()" class="todo-task draggable tasks">
-                    <div class="task-padding">
-                        <div class="task-category">User Story</div>
-                        <span class="task-title">Kochwelt Page & Recipe Recommender</span> <br>
-                        <span>Build start page with recipe recoomendation...</span> <br>
-                        <div class="subtasks">
-                            <span>1/2 Subtasks</span>   
-                        </div>
-                    </div>
-                    <div class="user-container flex">
-                        <div class="flex">
-                            <div class="user-circle"><span>AM</span></div>
-                            <div class="margin-left user-circle"><span>AM</span></div>
-                        </div>
-                        <img class="priority" src="../assets/img/icons/line.png" alt="">
-                    </div> 
-                </div>
-                <div draggable="true" onclick="showTask()" class="todo-task draggable tasks">
-                    <div class="task-padding">
-                        <div class="task-category">User Story</div>
-                        <span class="task-title">Kochwelt Page & Recipe Recommender</span> <br>
-                        <span>Build start page with recipe recoomendation...</span> <br>
-                        <div class="subtasks">
-                            <span>1/2 Subtasks</span>   
-                        </div>
-                    </div>
-                    <div class="user-container flex">
-                        <div class="flex">
-                            <div class="user-circle"><span>AM</span></div>
-                            <div class="margin-left user-circle"><span>AM</span></div>
-                        </div>
-                        <img class="priority" src="../assets/img/icons/line.png" alt="">
-                    </div> 
-                </div>
-                
+            <div id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
+                <div class="center no-taskts-to-do">No tasks To do</div> 
             </div>
             <div class="width-100">
                 <div class="abstand-24 space-between">
@@ -98,7 +63,7 @@
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
                     </div>
                 </div>
-                <div id="feedback">
+                <div id="feedback" ondrop="moveTo('feedback')" ondragleave="removeHighlight('feedback')" ondragover="allowDrop(event); highlight('feedback')">
                     <div class="center no-taskts-to-do">No tasks To do</div>
                 </div>
                 

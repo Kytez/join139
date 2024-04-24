@@ -33,37 +33,58 @@ async function initBoard() {
 function updateTasksHTML() {
     updateToDoHTML();
     updateInProgressHTML();
-    // updateFeedbackHTML();
+    updateFeedbackHTML();
     // updateDoneHTML();
 }
 
 function updateToDoHTML(){
-    let todo = tasks_test.filter(t => t['work-mode'] == 'todo');
-    document.getElementById('todo').innerHTML = '';
-    for (let index = 0; index < todo.length; index++) {
-        const element = todo[index];
-        document.getElementById('todo').innerHTML += generateTaskHTML(element);
+    let todo_list = tasks_test.filter(t => t['work-mode'] == 'todo');
+    if(todo_list.length == 0){
+        document.getElementById('todo').innerHTML = `
+            <div class="center no-taskts-to-do">No tasks To do</div>
+        `
+    }
+    else{
+        document.getElementById('todo').innerHTML = '';
+        for (let index = 0; index < todo_list.length; index++) {
+            const element = todo_list[index];
+            document.getElementById('todo').innerHTML += generateTaskHTML(element);
+        }
     }
 }
 
 
 
 function updateInProgressHTML(){
-    let inprogress = tasks_test.filter(t => t['work-mode'] == 'inprogress');
-    document.getElementById('inprogress').innerHTML = '';
-    for (let index = 0; index < inprogress.length; index++) {
-        const element = inprogress[index];
-        document.getElementById('inprogress').innerHTML += generateTaskHTML(element);
+    let inprogress_list = tasks_test.filter(t => t['work-mode'] == 'inprogress');
+    if(inprogress_list.length == 0){
+        document.getElementById('inprogress').innerHTML = `
+            <div class="center no-taskts-to-do">No tasks To do</div>
+        `
+    }
+    else{
+        document.getElementById('inprogress').innerHTML = '';
+        for (let index = 0; index < inprogress_list.length; index++) {
+            const element = inprogress_list[index];
+            document.getElementById('inprogress').innerHTML += generateTaskHTML(element);
+        }
     }
 }
 
 
 function updateFeedbackHTML(){
-    let feedback = tasks_test.filter(t => t['work-mode'] == 'feedback');
-    document.getElementById('feedback').innerHTML = '';
-    for (let index = 0; index < feedback.length; index++) {
-        const element = feedback[index];
-        document.getElementById('feedback').innerHTML += generateTaskHTML(element);
+    let feedback_list = tasks_test.filter(t => t['work-mode'] == 'feedback');
+    if(feedback_list.length == 0){
+        document.getElementById('feedback').innerHTML = `
+            <div class="center no-taskts-to-do">No tasks To do</div>
+        `
+    }
+    else{
+        document.getElementById('feedback').innerHTML = '';
+        for (let index = 0; index < feedback_list.length; index++) {
+            const element = feedback_list[index];
+            document.getElementById('feedback').innerHTML += generateTaskHTML(element);
+        }
     }
 }
 
@@ -94,8 +115,6 @@ function generateTaskHTML(element){
 }
 
 
-
-
 function startDragging(id) {
     currentDraggedElement = id;
 }
@@ -110,7 +129,14 @@ function moveTo(workMode) {
     updateTasksHTML();
 }
 
+function highlight(id) {
+    document.getElementById(id).classList.add('drag-area');
+}
 
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('drag-area');
+    
+}
 
 
 
