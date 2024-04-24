@@ -16,7 +16,8 @@ function renderAssignedContactList(){
     for (let i = 0; i < contacts.length; i++) {
         let userName = contacts[i].userName;
         let initialsString = ''; // Definiere initialsString hier, um sicherzustellen, dass sie immer definiert ist
-
+        let color = contacts[i].color;
+        let user = document.getElementById(`SingleContact_${i}`);
         if (userName) {
             let words = userName.split(' ');
             let initials = words.map(word => word.charAt(0).toUpperCase());
@@ -27,15 +28,15 @@ function renderAssignedContactList(){
         if(userName.length > 0){
             console.log(userName);
             assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
+            user.style.backgroundColor = "";
+            user.style.backgroundColor = color;
         }
-        saveTasks();
     }
     
 }
 
 async function saveTasks(){
     setItem('allTasks', JSON.stringify(allTasks));
-
 }
 
 async function loadAllTasks(){
@@ -45,7 +46,6 @@ async function loadAllTasks(){
         console.error('Loading error:', e);
     }
 }
-
 
 function contactListAddTaskHTML(i, userName, initialsString){
     return `
@@ -109,8 +109,7 @@ function addTask(workMode = 'todo') {
     allTasks.push(task);
     console.log(allTasks);
 
-    let allTasksAsString = JSON.stringify(allTasks);;
-    localStorage.setItem('allTasks', allTasksAsString);
+    saveTasks();
 }
 
 
