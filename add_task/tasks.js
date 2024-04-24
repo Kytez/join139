@@ -85,7 +85,7 @@ function changeCheckedAndColor(i){
     }
 }
 
-function addTask() {
+function addTask(workMode = 'todo') {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let assignedTo = document.getElementById('contact-select');
@@ -101,7 +101,9 @@ function addTask() {
         'prio': prio,
         'category': category.value,
         'subTask': subTask.value,
-        createdAt: new Date().getDate()
+        createdAt: new Date().getDate(),
+        'workMode': workMode,
+        'id': '',
     };
 
     allTasks.push(task);
