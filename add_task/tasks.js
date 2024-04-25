@@ -1,4 +1,5 @@
 let allTasks = [];
+let emptyArray = [];
 let selectedContacts = [];
 let prio = '';
 let id = [];
@@ -37,27 +38,28 @@ function renderAssignedContactList(){
 }
 
 function addTask(workMode = 'todo') {
-    id.forEach(singleID => {
-        let title = document.getElementById('title');
-        let description = document.getElementById('description');
-        let date = document.getElementById('date');
-        let category = document.getElementById('category');
-        let subTask = document.getElementById('subTask');
-        let task = {
-            'title': title.value,
-            'description': description.value,
-            'assignedTo': selectedContacts,
-            'colors': colors,
-            'date': date.value,
-            'prio': prio,
-            'category': category.value,
-            'subTask': subTask.value,
-            createdAt: new Date().getDate(),
-            'workMode': workMode,
-            'id': singleID,
-        };
-        allTasks.push(task);
-    });
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+    let date = document.getElementById('date');
+    let category = document.getElementById('category');
+    let subTask = document.getElementById('subTask');
+    let task = {
+        'id': allTasks.length + 1,
+        'title': title.value,
+        'description': description.value,
+        'assignedTo': selectedContacts,
+        'colors': colors,
+        'date': date.value,
+        'prio': prio,
+        'category': category.value,
+        'subTask': subTask.value,
+        createdAt: new Date().getDate(),
+        'workMode': workMode,
+    };
+    console.log(colors);
+    console.log(allTasks);
+    allTasks.push(task);
+    console.log(allTasks);
     saveTasks();
 }
 

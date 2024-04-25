@@ -190,12 +190,20 @@ textarea::placeholder {
     border: 1px solid #d1d1d1;
     border-radius: 10px;
     font-size: 20px;
-    z-index: 10;
+    z-index: 200;
     background-color: white;
 }
 
 .contact-list {
-    position: fixed;
+    position: absolute;
+    background-color: white;
+    margin-top: -10px;
+    padding-top: 16px;
+    max-height: 288px;
+    width: 440px;
+    overflow-y: auto;
+    border-radius: 0px 0px 10px 10px;
+    z-index: -1;
 }
 
 .contact-list-entry {
