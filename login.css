@@ -127,10 +127,11 @@ h1 {
 }
 
 #msgBox {
-  width: 60%;
+  width: 260px;
   position: absolute;
   top: 8px;
-  left: 20%;
+  left: calc(50% - 130px);
+  transition: all 1s ease-in-out;
 }
 
 /* ////////////////////////////////////////////// ANIMATION SECTION ///////////////////////////////////////////////// */
@@ -175,6 +176,10 @@ h1 {
   }
 }
 
+.hide-animation {
+  transform: translateY(-100px);
+}
+
 /* ////////////////////////////////////////////// RESPONSIVE ///////////////////////////////////////////////// */
 
 @media (min-width: 445px) {
@@ -206,5 +211,10 @@ h1 {
       right: 76px;
       top: 100px;
       height: 79px;
+    }
+
+    #msgBox {
+      width: 400px;
+      left: calc(50% - 200px);
     }
   }
