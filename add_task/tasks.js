@@ -4,6 +4,7 @@ let selectedContacts = [];
 let prio = '';
 let id = [];
 let colors = [];
+let contactList = [];
 
 
 async function initAddTask() {
@@ -20,6 +21,7 @@ function renderAssignedContactList(){
     
     for (let i = 0; i < contacts.length; i++) {
         let userName = contacts[i].userName;
+        contactList.push(userName);
         let initialsString = ''; 
         let color = contacts[i].colour;
         if (userName) {
@@ -36,6 +38,23 @@ function renderAssignedContactList(){
     }
     
 }
+
+function setFilter(input) {
+    let searchterm = input.value.toLowerCase();
+    if (contactList && contactList.length > 0) {
+        let content = document.getElementById("selected_contacts");
+        content.innerHTML = "";
+        for (let i = 0; i < contactList.length; i++) {
+            const contact = contactList[i];
+            if (!searchterm || contactdata.fullname.toLowerCase().includes(searchterm)) content.innerHTML += contactListAddTaskHTML(contact, contactdata);
+            else {
+                document.getElementById(`SingleContact_${i}`).classList.add('d-none');
+            }
+        }
+    }
+}
+
+
 
 function addTask(workMode = 'todo') {
     let title = document.getElementById('title');
