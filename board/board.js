@@ -66,3 +66,16 @@ function hideAddTask() {
         })(i);
     }
 }
+
+function addTaskInProgress() {
+    window.location.href = 'https://www.iqbal-adel.developerakademie.net/join9/add_task/add_task.html';
+
+    window.addEventListener('DOMContentLoaded', function() {
+            let buttonAdd = document.getElementById('buttonAdd');
+            if (buttonAdd) {
+                buttonAdd.onclick = function() {
+                    addTask('inprogress');
+                };
+            }
+    });
+}

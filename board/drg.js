@@ -41,6 +41,7 @@ async function initBoard() {
 
 
 function updateTasksHTML() {
+    assignIDTasks();
     updateToDoHTML();
     updateInProgressHTML();
     updateFeedbackHTML();
@@ -198,6 +199,16 @@ function removeHighlight(id) {
 }
 
 
-// function clearTasks(){
-//     allTasks = [];
-// }
+
+function assignIDTasks(){
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i];
+        task['id'] = i;
+    }
+    saveTasks();
+}
+
+function deleteTask(id){
+    allTasks.splice(id, 1)
+    updateTasksHTML();
+}
