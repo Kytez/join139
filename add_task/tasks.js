@@ -42,7 +42,7 @@ function renderAssignedContactList(){
 function setFilter(input) {
     let searchterm = input.value.toLowerCase();
     if (contactList && contactList.length > 0) {
-        let content = document.getElementById("selected_contacts");
+        let content = document.getElementById("selected-contacts");
         content.innerHTML = "";
         for (let i = 0; i < contactList.length; i++) {
             const contact = contactList[i];
