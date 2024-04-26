@@ -33,7 +33,7 @@ function hideTask() {
 
 function showAddTask(section = 'todo') {
     document.getElementById('addTaskSection').style.display = 'flex';
-    document.getElementById('addTaskPopUp').style.display = 'flex';
+    document.getElementById('addTaskFullScreen').style.display = 'flex';
     
     let popUpElements = document.getElementsByClassName('add-task-card');
     for (let i = 0; i < popUpElements.length; i++) {
@@ -53,7 +53,7 @@ function showAddTask(section = 'todo') {
 
 function hideAddTask() {
     document.getElementById('addTaskSection').style.display = 'none';
-    document.getElementById('addTaskPopUp').style.display = 'none';
+    document.getElementById('addTaskFullScreen').style.display = 'none';
     
     let popUpElements = document.getElementsByClassName('add-task-card');
     for (let i = 0; i < popUpElements.length; i++) {
