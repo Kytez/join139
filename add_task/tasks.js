@@ -24,13 +24,12 @@ function renderAssignedContactList(){
         contactList.push(userName);
         let initialsString = ''; 
         let color = contacts[i].colour;
-        if (userName) {
+        if (contactList[i]) {
             let words = userName.split(' ');
             let initials = words.map(word => word.charAt(0).toUpperCase());
             initialsString = initials.join('');
         }
-        console.log(contacts);
-        if(userName.length > 0){
+        if(contactList.length > 0){
             assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
             let user = document.getElementById(`initials_${i}`);
             user.style.backgroundColor = color;
@@ -39,21 +38,44 @@ function renderAssignedContactList(){
     
 }
 
+// function setFilter(input) {
+//     let searchterm = input.value.trim().toLowerCase();
+//     if (contactList && contactList.length > 0) {
+//         for (let i = 0; i < contactList.length; i++) {
+//             const contact = contactList[i];
+//             const contactElement = document.getElementById(`SingleContact_${i}`);
+//             console.log(`SingleContact_${i}`);
+//             if (contact && contact.fullname && (!searchterm || contact.fullname.toLowerCase().includes(searchterm))) {
+//                 // Wenn der Kontakt und sein Name definiert sind und kein Suchbegriff vorhanden ist oder der Name dem Suchbegriff entspricht, zeige ihn an
+//                 if (contactElement) {
+//                     contactElement.classList.remove('d-none');
+//                 }
+//             } else {
+//                 // Andernfalls, falls der Kontakt nicht übereinstimmt oder nicht definiert ist, blende ihn aus
+//                 if (contactElement) {
+//                     contactElement.classList.add('d-none');
+//                 }
+//             }
+//         }
+//     }
+// }
+
 function setFilter(input) {
-    let searchterm = input.value.toLowerCase();
+    let searchterm = input.value.trim().toLowerCase();
     if (contactList && contactList.length > 0) {
-        let content = document.getElementById("selected-contacts");
-        content.innerHTML = "";
+        let dropdown = document.getElementById("contact-select");
+        dropdown.innerHTML = "";
         for (let i = 0; i < contactList.length; i++) {
             const contact = contactList[i];
-            if (!searchterm || contactdata.fullname.toLowerCase().includes(searchterm)) content.innerHTML += contactListAddTaskHTML(contact, contactdata);
-            else {
-                document.getElementById(`SingleContact_${i}`).classList.add('d-none');
+            if (contactList[i]) {
+                let words = contact.split(' ');
+                let initials = words.map(word => word.charAt(0).toUpperCase());
+                initialsString = initials.join('');
             }
+            if (!searchterm || contactdata.fullname.toLowerCase().includes(searchterm)) dropdown.innerHTML += contactListAddTaskHTML(i, contact, initialsString);
         }
     }
 }
-
 
 
 function addTask(workMode = 'todo') {
@@ -121,11 +143,33 @@ function selectTaskContact(i){
     changeCheckedAndColor(i, contact);
 }
 
+function renderInitals(i, colors){
+    let initials = document.getElementById(`initials_${i}`).textContent; // Extrahiere den Inhalt des div-Elements
+    let selectedInitials = document.getElementById(`selectedInitial_${i}`);
+    let content = document.getElementById(`contactInitals`);
+    content.innerHTML += renderInitialsHTML(i, initials);
+    selectedInitials.style.backgroundColor = colors;
+}
+
+function renderInitialsHTML(i, initials, computedStyle){
+    return `
+        <div id="selectedInitial_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
+    `;
+}
+
+function removeInital(i){
+    let selectedInitials = document.getElementById(`selectedInitial_${i}`);
+    selectedInitials.remove();
+}
+
 function changeCheckedAndColor(i, contact){
     let selectedContact = document.getElementById(`SingleContact_${i}`);
     let emptySelect = document.getElementById(`empty_${i}`);
     let checkedSelect = document.getElementById(`checked_${i}`);
     let element = document.getElementById(`initials_${i}`);
+    let initials = document.getElementById(`initials_${i}`).textContent;
+    let renderInitials = document.getElementById(`contactInitals`);
+    let selectedInitals = document.getElementById(`selectedInitial_${i}`);
     
     if (emptySelect.classList.contains("d-none")) {
         selectedContact.style.backgroundColor = "";
@@ -134,6 +178,7 @@ function changeCheckedAndColor(i, contact){
         checkedSelect.classList.add("d-none");
         selectedContacts.splice(selectedContacts.indexOf(i), 1);
         colors.splice(colors.indexOf(i), 1);
+        removeInital(i);
     } else {
         selectedContact.style.backgroundColor = "#2A3647";
         selectedContact.style.color = "white";
@@ -142,6 +187,7 @@ function changeCheckedAndColor(i, contact){
         let computedStyle = window.getComputedStyle(element).backgroundColor;
         selectedContacts.push(contact);
         colors.push(computedStyle);
+        renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
     }
 }
 
