@@ -12,9 +12,6 @@
 
     <script src="../script.js"></script>
     <script src="./tasks.js"></script>
-    <script src="../board/board.js"></script>
-    <script src="../board/render_tasks-board.js"></script>
-    <script src="../board/drag.js"></script>
     <script src="../contact/render_contacts.js"></script>
 </head>
 <body onload="initAddTask()">
@@ -48,7 +45,7 @@
                     </div>
                     <input oninput="setFilter(this)" required type="text" onclick="showContactList()" class="styled-input" placeholder="Select contacts to assign" id="contact-select" name="contacts">
                     <section class="d-none contact-list" id="selected-contacts"></section>
-                    <div id="contactInitals" class="background-color: black;"></div>
+                    <div id="contactInitals"></div>
                     
             
                 </input>
