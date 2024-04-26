@@ -13,7 +13,8 @@
     <script src="../script.js"></script>
     <script src="./tasks.js"></script>
     <script src="../board/board.js"></script>
-    <script src="../board/drg.js"></script>
+    <script src="../board/render_tasks-board.js"></script>
+    <script src="../board/drag.js"></script>
     <script src="../contact/render_contacts.js"></script>
 </head>
 <body onload="initAddTask()">
@@ -114,7 +115,7 @@
             <span><span class="red">*</span>This field is required</span>
             <div class="flex">
                 <button class="btn-white">Clear <img src="/join139/assets/img/icons/x.png" alt=""></button>
-                <button id="buttonAdd" onclick="addTask()" class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
+                <button onclick="addTask()" class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
             </div>
         </div>
     

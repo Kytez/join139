@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="../assets/templates/header.css">
     <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
 
-    <script src="../board/drg.js"></script>
+    <script src="../board/drag.js"></script>
     <script src="../board/board.js"></script>
+    <script src="../board/render_tasks-board.js"></script>
     <script src="../contact/render_contacts.js"></script>
     <script src="../add_task/tasks.js"></script>
     <script src="../script.js"></script>
@@ -42,7 +43,7 @@
             <div class="width-100">
                 <div class="abstand-24 space-between">
                     <h2>To do</h2>
-                    <div>
+                    <div onclick="addTaskToSectionButton('todo')">
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
                     </div>
                 </div>
@@ -53,7 +54,9 @@
             <div class="width-100">
                 <div class="abstand-24 space-between">
                     <h2>In progress</h2>
-                <img onclick="addTaskInProgress()" class="plus-img" src="../assets/img/icons/plus button mobile.png">
+                    <div onclick="addTaskToSectionButton('inprogress')">
+                        <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
+                    </div>
             </div>
             <div id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
                 <div class="center no-taskts-to-do">No tasks To do</div> 
@@ -61,7 +64,7 @@
             <div class="width-100">
                 <div class="abstand-24 space-between">
                     <h2>Await feedback</h2>
-                    <div>
+                    <div onclick="addTaskToSectionButton('feedback')">
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
                     </div>
                 </div>
@@ -72,9 +75,9 @@
             <div class="width-100">
                 <div class="abstand-24 space-between">
                     <h2>Done</h2>
-                    <div>
+                    <!-- <div>
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
-                    </div>
+                    </div> -->
                 </div>
                 <div id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
                     <div class="center no-taskts-to-do">No tasks To do</div>
@@ -143,7 +146,7 @@
 
 
 <section  onclick="hideAddTask()" id="addTaskSection">
-    <div id="addTaskPopUp" class="add-task-card margin-body-mobile-pop-up">
+    <div onclick="doNotClose(event)" id="addTaskPopUp" class="add-task-card margin-body-mobile-pop-up">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -154,13 +157,13 @@
                     <div>
                         <span>Title</span><span class="red">*</span>
                     </div>
-                    <input type="text" placeholder="Enter a title" required minlength="4" >
+                    <input id="titleBoard" type="text" placeholder="Enter a title" required minlength="4" >
                 </div>
                 <div class="size-100 padding-top-big">
                     <div>
                         <span>Description</span>
                     </div>
-                    <textarea placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
+                    <textarea placeholder="Enter a Description" name="" id="descriptionBoard" cols="30" rows="3"></textarea>
                 </div>
                 <div class="size-100 padding-top-big">
                     <div>
@@ -183,7 +186,7 @@
                         <div>
                             <span>Due date</span><span class="red">*</span>
                         </div>
-                        <input type="date">
+                        <input id="dateBoard" type="date">
                     </div>
                     <div class="prio-container padding-top-big">
                         <span>Prio</span>
@@ -220,7 +223,7 @@
                                 <span>Subtasks</span>
                             </div>
                             <div class="flex subtask">
-                                <input type="text" placeholder="Add new subtask" required minlength="4" >
+                                <input id="subTaskBoard" type="text" placeholder="Add new subtask" required minlength="4" >
                                 <img onclick="addSubtask()" src="../assets/img/icons/add.png" alt="">
                             </div>
                         </div>
@@ -231,7 +234,7 @@
     
             <div class="button-container flex">
                 <span><span class="red">*</span>This field is required</span>
-                <div class="flex">
+                <div id="boardAddTaskBtns" class="flex">
                     <button class="btn-white">Clear <img src="../assets/img/icons/x.png" alt=""></button>
                     <button class="btn-dark">Create Task <img src="../assets/img/icons/check_icon.png" alt=""></button>    
                 </div>

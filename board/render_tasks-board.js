@@ -27,8 +27,6 @@ let tasks_test= [{
 //     createdAt: new Date().getDate()
 // };
 
-let currentDraggedElement;
-
 
 async function initBoard() {
     await includeHTML();
@@ -105,7 +103,7 @@ function generateTask(id, list){
 
 function returnTaskHTML(element){
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask()" class="todo-task draggable tasks">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}')" class="todo-task draggable tasks">
             <div class="task-padding">
                 <div class="task-category">${element['category']}</div>
                 <span class="task-title">${element['title']}</span> <br>
@@ -126,9 +124,73 @@ function returnTaskHTML(element){
     `
 }
 
+
+function renderTasksPopUp(title, description, date, id){
+    let taskPopUp = document.getElementById('taskPopUp')
+
+    taskPopUp.innerHTML = /*html*/`
+        <div class="task-padding gap">
+            <div class="space-between subtasks-checkbox">
+                <div class="task-title">User Story</div> 
+                <img onclick="hideTask()" class="close-img" src="../assets/img/icons/close.png">
+            </div>
+            
+            <span class="pop-up-headline">${title}</span> <br>
+            <div class="margin-top-16">
+                <span>${description}</span>
+            </div>
+            <div class="margin-top-16">
+                <span>Due date:</span>
+                <span>${date}</span>
+            </div>
+            <div class="margin-top-16 user-flex">
+                <span>Priority:</span>
+                <div class="user-prio">
+                    <span>medium</span> 
+                    <img src="../assets/img/icons/line.png" alt="">
+                </div>
+            </div>
+            <div class="margin-top-16">
+                <span>Assigned To:</span>
+                <div class="margin-top-16 user-flex user-assigned subtasks-checkbox">
+                    <div class="pop-up-user-circle">AM</div>
+                    <span>Emanuel DeiMudda</span>
+                </div>
+            </div>
+            <div class="margin-top-16">
+                <span>Subtasks:</span>
+                <div class="">
+                    <div class="margin-top-16 subtasks-checkbox user-assigned">
+                        <img src="../assets/img/icons/check box mobile.png" alt="">
+                        <span>Implement Recipe recoomendation</span>
+                    </div>
+                    <div class="margin-top-16 subtasks-checkbox user-assigned">
+                        <img src="../assets/img/icons/check button mobile.png" alt="">
+                        <span>Start Page Layout</span>
+                    </div>
+                </div>
+            </div>
+            <div class="margin-top-16 subtask-edit-delete user-flex">
+                <div onclick="deleteTask(${id})" class="subtasks-checkbox">
+                    <img src="../assets/img/icons/delete.png" alt="">
+                    <span>Delete</span>
+                </div>
+                <div class="subtasks-seperator"></div>
+                <div class="subtasks-checkbox">
+                    <img src="../assets/img/icons/edit.png" alt="">
+                    <span>Edit</span>
+                </div>
+            </div>
+        </div>
+    `
+}
+
 function generateAssignedUsers(element){
     let assignedUsers = document.getElementById('assigned-users')
     let usersHTML = '';
+    if(element['assignedTo'] == null){
+        element['assignedTo'] = 0;
+    }
     for (let i = 0; i < element['assignedTo'].length; i++) {
         const user = element['assignedTo'][i];
         usersHTML += /*html*/`
@@ -173,30 +235,8 @@ function assignCategoryColour(){
         });
     };
 
-// Drag Funktionen
-
-function startDragging(id) {
-    currentDraggedElement = id;
-}
 
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function moveTo(workMode) {
-    allTasks[currentDraggedElement]['workMode'] = workMode;
-    updateTasksHTML();
-}
-
-function highlight(id) {
-    document.getElementById(id).classList.add('drag-area');
-}
-
-function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area');
-    
-}
 
 
 
