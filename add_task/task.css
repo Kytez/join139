@@ -53,6 +53,16 @@ span{
     width: 100%;
 }
 
+#contactInitals {
+    width: 440px;
+    max-height: 160px;
+    overflow-y: auto;
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
 #contact-select {
     padding-left: 16px;
     background: url(/join139/assets/img/icons/arrow_drop_down.png);
@@ -61,7 +71,11 @@ span{
     background-position: 95%;
     cursor: pointer;
     appearance: none;
+    background-color: white;
+    color: #000000;
+    z-index: 201;
 }
+
 #category {
     padding-left: 16px;
     background: url(/join139/assets/img/icons/arrow_drop_down.png);
@@ -70,6 +84,7 @@ span{
     background-position: 95%;
     cursor: pointer;
     appearance: none;
+    background-color: white;
 }
 
 .prio-button{
@@ -78,6 +93,7 @@ span{
     align-items: center;
     height: 41px;
     gap: 8px;
+    background-color: white;
     width: -webkit-fill-available;
     padding-right: 10px;
     padding-left: 10px;
@@ -250,6 +266,7 @@ input[type="date"] {
     background-size: 18px;
     background-repeat: no-repeat;
     background-position: 96%;
+    background-color: white
 }
 
 /* Hier auf das Kalender Icon zugreifen */
