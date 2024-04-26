@@ -78,10 +78,22 @@
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const msg = urlParams.get('msg');
+      const msgBox = document.getElementById('msgBox');
 
       if(msg) {
         msgBox.innerHTML = msg;
+        msgBox.classList.remove('d-none');
+        setTimeout(function() {
+          msgBox.classList.add('hide-animation');
+        }, 3000);
+        setTimeout(function() {
+          msgBox.classList.add('d-none');
+        }, 5000);
       }
+
+      // function hideMsgBox() {
+      //   msgBox.classList.add('hide-animation');
+      // }
     </script>
 
   </body>

@@ -190,7 +190,7 @@ textarea::placeholder {
     border: 1px solid #d1d1d1;
     border-radius: 10px;
     font-size: 20px;
-    z-index: 200;
+    z-index: 201;
     background-color: white;
 }
 
@@ -203,7 +203,7 @@ textarea::placeholder {
     width: 440px;
     overflow-y: auto;
     border-radius: 0px 0px 10px 10px;
-    z-index: -1;
+    z-index: 100;
 }
 
 .contact-list-entry {
