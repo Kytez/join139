@@ -13,6 +13,7 @@ function guestLogIn() {
   
     if (userFound) {
       if (userFound.password === passwordLogin.value) {
+        checkRememberMe(userFound);
         saveActiveUser(userFound);
         setTimeout(moveToSummary, 1500);
       } else {
@@ -21,6 +22,33 @@ function guestLogIn() {
     } else {
       alert("Email/User does not exist");
     }
+  }
+
+  function checkRememberMe(userFound) {
+    let checkbox = document.getElementById('rememberCheckbox');
+
+    if(checkbox.checked) {
+      saveToLocalStorage(userFound);
+    }
+  }
+
+  function saveToLocalStorage(userFound) {
+    let userAsString = JSON.stringify(userFound);
+
+    localStorage.setItem('userActive', userAsString);
+  }
+
+  function loadFromLocalStorage() {
+    let userAsArray = JSON.parse(localStorage.getItem('userActive'));
+
+    if(userAsArray) {
+      fillLoginDataIfUserRemembered(userAsArray);
+    }
+  }
+
+  function fillLoginDataIfUserRemembered(user) {
+    document.getElementById('emailInputLogin').value = user.email;
+    document.getElementById('passwordInputLogin').value = user.password;
   }
 
   function checkIconChange() {

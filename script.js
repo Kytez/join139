@@ -7,6 +7,7 @@ let activeUser = [];
 
 function initLogIn() {
   loadUsers();
+  loadFromLocalStorage();
 }
 
 async function initSummary() {
@@ -100,4 +101,14 @@ function createInitialsFromUsername() {
 
 function moveToSummary() {
   window.location.assign("summary/summary.html");
+}
+
+function openPopUpMenuHeader() {
+  let popUpMenu = document.getElementById('popUpMenuHeader');
+  
+  if(popUpMenu.classList.contains('d-none')) {
+    popUpMenu.classList.remove('d-none');
+  } else {
+    popUpMenu.classList.add('d-none');
+  }
 }
