@@ -77,7 +77,7 @@ function generateTask(id, list){
 
 function returnTaskHTML(element){
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}')" class="todo-task draggable tasks">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}')" class="todo-task draggable tasks">
             <div class="task-padding">
                 <div class="task-category">${element['category']}</div>
                 <span class="task-title">${element['title']}</span> <br>
@@ -89,7 +89,7 @@ function returnTaskHTML(element){
                 </div>
             </div>
             <div class="user-container flex">
-                <div id="assigned-users-${element['id']}" class="flex">
+                <div id="assigned-users-${element['id']}" class="flex m-left">
                     ${generateAssignedUsers(element)}
                 </div>
                 <img id="img-${element['id']}" class="priority" src="${assignPriorityImgTask(element['prio'])}" alt="">
@@ -99,13 +99,13 @@ function returnTaskHTML(element){
 }
 
 
-function renderTasksPopUp(title, description, date, id){
+function renderTasksPopUp(title, description, date, id, category, prio){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
         <div class="task-padding gap">
             <div class="space-between subtasks-checkbox">
-                <div class="task-title">User Story</div> 
+                <div class="task-category">${category}</div> 
                 <img onclick="hideTask()" class="close-img" src="../assets/img/icons/close.png">
             </div>
             
@@ -120,8 +120,8 @@ function renderTasksPopUp(title, description, date, id){
             <div class="margin-top-16 user-flex">
                 <span>Priority:</span>
                 <div class="user-prio">
-                    <span>medium</span> 
-                    <img src="../assets/img/icons/line.png" alt="">
+                    <span>${prio}</span> 
+                    <img src="${assignPriorityImgTask(prio)}" alt="">
                 </div>
             </div>
             <div class="margin-top-16">

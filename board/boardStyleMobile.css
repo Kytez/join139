@@ -35,16 +35,22 @@
 }
 
 .user-circle{
-    height: 24px;
-    width: 24px;
-    font-size: 12px;
-    color: #DDDDDD;
+    height: 36px;
+    width: 36px;
+    font-size: 16px;
+    color: white;
     background-color: #d15b5b;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 1px #DDDDDD;
+    border: solid 1px white;
+    margin-left: -8px;
+}
+
+.m-left{
+    margin-left: 10px;
+
 }
 
 .priority{

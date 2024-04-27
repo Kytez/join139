@@ -1,4 +1,4 @@
-function showTask(title, description, date, id) {
+function showTask(title, description, date, id, category, prio) {
     document.getElementById('tasks').style.display = 'flex';
    let taskPopUp = document.getElementById('taskPopUp')
    taskPopUp.style.display = 'flex';
@@ -12,7 +12,8 @@ function showTask(title, description, date, id) {
             }, 100);
         })(i);
     }
-    renderTasksPopUp(title, description, date, id)
+    renderTasksPopUp(title, description, date, id, category, prio)
+    assignCategoryColour();
 }
 
 
