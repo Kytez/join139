@@ -1,32 +1,3 @@
-let tasks_test= [{
-    'title': 'Kochwelt Page & Recipe Recommender',
-    'description': 'Build start page with recipe recoomendation...',
-    'category': 'User Story', 
-    'work-mode': 'todo',
-    'id': 0,
-},
-{
-    'title': 'Kochwelt Page & Recipe Recommender',
-    'description': 'Build start page with recipe recoomendation...',
-    'category': 'User Story', 
-    'work-mode': 'inprogress',
-    'id': 1,
-},
-];
-
-// let allTasks = [];
-
-// let task_template = {
-//     'title': title.value,
-//     'description': description.value,
-//     'assignedTo': assignedTo.value,
-//     'date': date.value,
-//     'prio': prio,
-//     'category': category.value,
-//     'subTask': subTask.value,
-//     createdAt: new Date().getDate()
-// };
-
 
 async function initBoard() {
     await includeHTML();
@@ -46,6 +17,8 @@ function updateTasksHTML() {
     updateFeedbackHTML();
     updateDoneHTML();
     assignCategoryColour();
+    assignUserColour();
+
 }
 
 function updateToDoHTML(){
@@ -116,7 +89,7 @@ function returnTaskHTML(element){
                 </div>
             </div>
             <div class="user-container flex">
-                <div id="assigned-users" class="flex">
+                <div id="assigned-users-${element['id']}" class="flex">
                     ${generateAssignedUsers(element)}
                 </div>
                 <img id="img-${element['id']}" class="priority" src="${assignPriorityImgTask(element['prio'])}" alt="">
@@ -196,8 +169,10 @@ function generateAssignedUsers(element){
         const user = element['assignedTo'][i];
         usersHTML += /*html*/`
             <div class="user-circle"><span>${user}</span></div>
-        `
+        `;
+    
     }
+    
     return usersHTML
 }
 
@@ -247,6 +222,18 @@ function assignIDTasks(){
         task['id'] = i;
     }
     saveTasks();
+}
+
+function assignUserColour(){
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i];
+        let divElement = document.getElementById(`assigned-users-${i}`);
+        for (let j = 0; j < task['assignedTo'].length; j++) {
+            const user = divElement.children[j];
+            const colour = task['colors'][j];
+            user.style.backgroundColor = colour;
+        }
+    }
 }
 
 function deleteTask(id){

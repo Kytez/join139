@@ -98,17 +98,18 @@ function addTaskBoard(workMode = 'todo') {
     let title = document.getElementById('titleBoard');
     let description = document.getElementById('descriptionBoard');
     let date = document.getElementById('dateBoard');
-    let category = document.getElementById('category');
+    let category = document.getElementById('categoryBoard');
     let subTask = document.getElementById('subTaskBoard');
+    let contactIDs = [];
     let task = {
         'id': allTasks.length + 1,
         'title': title.value,
         'description': description.value,
-        // 'assignedTo': selectedContacts,
-        // 'colors': colors,
+        'assignedTo': selectedContacts,
+        'colors': colors,
         'date': date.value,
-        // 'prio': prio,
-        // 'category': category.value,
+        'prio': prio,
+        'category': category.value,
         'subTask': subTask.value,
         createdAt: new Date().getDate(),
         'workMode': workMode,

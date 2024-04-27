@@ -293,7 +293,7 @@ span{
 
 #addTaskSection{
     position: fixed;
-    width: 100%;
+    /* width: 100%; */
     top: 0px;
     left: 0px;
     
@@ -513,7 +513,7 @@ button{
     margin-left: 16px;
 }
 
-.button-container {
+.button-container-board {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -567,6 +567,10 @@ button{
     height: 14px;
     margin-left: -30px;
     cursor: pointer;
+}
+
+.board-container{
+    display: flex;
 }
   
   /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
