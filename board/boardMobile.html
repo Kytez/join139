@@ -34,9 +34,9 @@
         <div class="board-container width-100">
             <div class="board space-between">
                 <h1>Board</h1> 
-                <a href="../add_task/add_task.html">
+                <div onclick="showAddTask()">
                     <img class="plus-img-dark" src="../assets/img/icons/plus add task mobile.png">
-                </a>
+                </div>
             </div>
             <div class="flex width-100">
                 <input class="find-task space-between" type="search" placeholder="Find Task" id="site-search" name="q" />  
@@ -244,6 +244,89 @@
             <div id="boardAddTaskBtns" class="flex">
                 <button class="btn-white">Clear <img src="/join139/assets/img/icons/x.png" alt=""></button>
                 <button onclick="addTask()" class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<section id="editTaskFullScreen" class="add-task-background">
+    <section onclick="doNotClose(event)" id="editTaskSection" class="add-task-card edit-task-card">
+        <section class="edit-task">
+    
+            <section class="add-task-section">
+                <div class="size-100 padding-top-big"> 
+                    <div style="display: flex;
+                    justify-content: space-around;">
+                        <span>Title</span><span class="red">*</span>
+                        <span onclick="hideEditTask()" style="font-weight: bold; font-size: 48px; cursor: pointer;">X</span>
+                    </div>
+                    <input required id="titleBoard" type="text" placeholder="Enter a title" required minlength="4" >
+                </div>
+                <div class="size-100 padding-top-big">
+                    <div>
+                        <span>Description</span>
+                    </div>
+                    <textarea id="descriptionBoard" placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
+                </div>
+                
+            </section>    
+            <section class="add-task-section">
+                <div class="size-100 padding-top-big"> 
+                    <div>
+                        <span>Due date</span><span class="red">*</span>
+                    </div>
+                    <input id="dateBoard" type="date">
+                </div>
+                <div class="prio-container padding-top-big">
+                    <span>Prio</span>
+                    <section class="prio-button-section">
+                        <div id="urgent" onclick="handleClickPrio('urgent')" class="prio-button">
+                            <span id="prio_urgent">Urgent</span> 
+                            <div class="arrow">
+                                <img src="../assets/img/svg/up.svg">
+                            </div>
+                        </div>
+                        <div id="medium" onclick="handleClickPrio('medium')" class="prio-button">
+                            <span id="prio_medium">Medium</span>  
+                            <div class="arrow">
+                                <img src="../assets/img/svg/line.svg">
+                            </div>
+                        </div>
+                        <div id="low" onclick="handleClickPrio('low')" class="prio-button">
+                            <span id="prio_low">Low</span>
+                            <div class="arrow">
+                                <img src="../assets/img/svg/down.svg">
+                            </div>
+                        </div>
+                    </section>
+                    <div class="size-100 padding-top-big">
+                        <div>
+                            <span>Assigned to</span>
+                        </div>
+                        <input oninput="setFilter(this)" required type="text" onclick="showContactList()" class="styled-input" placeholder="Select contacts to assign" id="contact-select" name="contacts">
+                        <section class="d-none contact-list" id="selected-contacts"></section>
+                        <div id="contactInitals"></div>
+                    </input>
+                    </div>
+                    <div class="size-100 subtask-container padding-top-big"> 
+                        <div>
+                            <span>Subtasks</span>
+                        </div>
+                        <div class="flex subtask">
+                            <input id="subTaskBoard" type="text" placeholder="Add new subtask" required minlength="4" >
+                            <img onclick="addSubtask()" src="/join139/assets/img/icons/add.png" alt="">
+                        </div>
+                        <div><span id="subTask"></span></div>
+                    </div>
+                </div>
+                
+            </section>
+        </section>  
+    
+        <div class="button-container-board flex">
+            <div id="boardAddTaskBtns" class="flex">
+                <button class="btn-dark">Ok <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
             </div>
         </div>
     </section>

@@ -26,6 +26,16 @@
     align-items: center;
 }
 
+.column{
+    flex-direction: column;
+}
+
+.align-center{
+    align-items: center;
+}
+
+
+
 .user-container{
     display: flex;
     justify-content: space-between;
@@ -131,6 +141,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #A8A8A8;
+    ;
 }
 
 .subtasks{
@@ -308,7 +320,7 @@ span{
 }
 
 .add-task-background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -318,6 +330,12 @@ span{
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 101;
     display: none;
+}
+
+.edit-task{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .add-task{
@@ -351,6 +369,10 @@ span{
     display: none;
     flex-direction: column;
     z-index: 201;
+}
+
+.edit-task-card{
+    overflow-y: scroll;
 }
 
 .prio-button-section{

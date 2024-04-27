@@ -77,7 +77,7 @@ function generateTask(id, list){
 
 function returnTaskHTML(element){
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}')" class="todo-task draggable tasks">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}', '${element['assignedTo']}')" class="todo-task draggable tasks">
             <div class="task-padding">
                 <div class="task-category">${element['category']}</div>
                 <span class="task-title">${element['title']}</span> <br>
@@ -99,7 +99,7 @@ function returnTaskHTML(element){
 }
 
 
-function renderTasksPopUp(title, description, date, id, category, prio){
+function renderTasksPopUp(title, description, date, id, category, prio, users){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
@@ -126,9 +126,8 @@ function renderTasksPopUp(title, description, date, id, category, prio){
             </div>
             <div class="margin-top-16">
                 <span>Assigned To:</span>
-                <div class="margin-top-16 user-flex user-assigned subtasks-checkbox">
-                    <div class="pop-up-user-circle">AM</div>
-                    <span>Emanuel DeiMudda</span>
+                <div class="margin-top-16 user-flex column user-assigned subtasks-checkbox">
+                    ${generateAssignedUsersPopUp(users)}
                 </div>
             </div>
             <div class="margin-top-16">
@@ -150,7 +149,7 @@ function renderTasksPopUp(title, description, date, id, category, prio){
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div class="subtasks-checkbox">
+                <div onclick="showEditTask()" class="subtasks-checkbox">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>
@@ -160,7 +159,6 @@ function renderTasksPopUp(title, description, date, id, category, prio){
 }
 
 function generateAssignedUsers(element){
-    let assignedUsers = document.getElementById('assigned-users')
     let usersHTML = '';
     if(element['assignedTo'] == null){
         element['assignedTo'] = 0;
@@ -175,6 +173,24 @@ function generateAssignedUsers(element){
     
     return usersHTML
 }
+
+function generateAssignedUsersPopUp(element){
+    let usersHTML = '';
+    for (let i = 0; i < element.length; i++) {
+        const user = element[i];
+        usersHTML += /*html*/`
+            <div class="flex align-center">
+                <div class="pop-up-user-circle">${getInitials(user)}</div>
+                <span>${user}</span>
+            </div>
+        `;
+    
+    }
+    
+    return usersHTML
+}
+
+
 
 function noTasksInArea(id){
     document.getElementById(id).innerHTML = `
