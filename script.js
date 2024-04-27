@@ -112,3 +112,13 @@ function openPopUpMenuHeader() {
     popUpMenu.classList.add('d-none');
   }
 }
+
+function logOut() {
+  localStorage.removeItem('userActive');
+  saveActiveUser([]);
+  setTimeout(moveToLogIn, 1500);
+}
+
+function moveToLogIn() {
+  window.location.assign("../index.html");
+}
