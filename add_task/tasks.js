@@ -5,6 +5,7 @@ let prio = '';
 let id = [];
 let colors = [];
 let contactList = [];
+let subTasks = [];
 
 
 async function initAddTask() {
@@ -77,13 +78,23 @@ function setFilter(input) {
     }
 }
 
+function hideAndShowEdit() {
+    let edit = document.getElementById('edit');
+    let subtaskt = document.getElementById('subTask');
+    if (edit.classList.contains('d-none')) {
+        edit.classList.remove('d-none');
+        subtaskt.classList.add('d-none');
+    }else {
+        edit.classList.add('d-none');
+        subtaskt.classList.remove('d-none');
+    }
+}
 
 function addTask(workMode = 'todo') {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
     let category = document.getElementById('category');
-    let subTask = document.getElementById('subTask');
     let task = {
         'id': allTasks.length + 1,
         'title': title.value,
@@ -93,7 +104,7 @@ function addTask(workMode = 'todo') {
         'date': date.value,
         'prio': prio,
         'category': category.value,
-        'subTask': subTask.value,
+        'subTask': subTasks,
         createdAt: new Date().getDate(),
         'workMode': workMode,
     };
@@ -229,8 +240,28 @@ function clearPrioButtons(i) {
 }
 
 function addSubtask() {
-    let subTask = document.getElementById('subTaskInput');
-    document.getElementById('subTask').innerHTML += `${subTask.value} <br>`;
+    let subTask = document.getElementById('subTaskInput').value;
+    subTasks.push(subTask);
+    console.log(subTask);
+    document.getElementById('subTaskContainer').innerHTML += addSubtaskHTML(subTask);
+}
+
+function addSubtaskHTML(subTask) {
+    return `
+    <div class="singleSubTasks">
+        <div>${subTask}</div>
+            <div class="flex edit-trash">
+                <div>
+                    <img class="edit" onclick="editSubtask()" src="/join139/assets/img/svg/pencil.svg" alt="">
+                </div>
+                <div class="seperator">
+                </div>
+            <div>
+                <img class="edit" src="/join139/assets/img/svg/trash.svg" alt="">
+            </div>
+        </div>
+    </div>
+    `
 }
 
 function taskHtml() {

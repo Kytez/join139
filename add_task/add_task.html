@@ -34,19 +34,19 @@
                     <div>
                         <span>Title</span><span class="red">*</span>
                     </div>
-                    <input required id="title" type="text" placeholder="Enter a title" required minlength="4" >
+                    <input class="focus-blue" required id="title" type="text" placeholder="Enter a title" required minlength="4" >
                 </div>
                 <div class="size-100 padding-top-big">
                     <div>
                         <span>Description</span>
                     </div>
-                    <textarea id="description" placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
+                    <textarea class="focus-blue" id="description" placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
                 </div>
                 <div class="size-100 padding-top-big">
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <input oninput="setFilter(this)" required type="text" onclick="showContactList()" class="styled-input" placeholder="Select contacts to assign" id="contact-select" name="contacts">
+                    <input oninput="setFilter(this)" type="text" onclick="showContactList()" class="styled-input focus-blue" placeholder="Select contacts to assign" id="contact-select" name="contacts">
                     <section class="d-none contact-list" id="selected-contacts"></section>
                     <div id="contactInitals"></div>
                     
@@ -62,7 +62,7 @@
                     <div>
                         <span>Due date</span><span class="red">*</span>
                     </div>
-                    <input id="date" type="date">
+                    <input class="focus-blue" id="date" type="date">
                 </div>
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
@@ -90,7 +90,7 @@
                         <div>
                             <span>Category <span class="red">*</span></span>
                         </div>
-                        <select name="contacts" id="category">
+                        <select class="focus-blue" name="contacts" id="category">
                             <option value="">Select task category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
@@ -100,11 +100,37 @@
                         <div>
                             <span>Subtasks</span>
                         </div>
-                        <div class="flex subtask">
+                        <div class="flex focus-blue">
                             <input id="subTaskInput" type="text" placeholder="Add new subtask" required minlength="4" >
-                            <img onclick="addSubtask()" src="/join139/assets/img/icons/add.png" alt="">
+                            <div  class="subtask">
+                                <img id="subTask" onclick="hideAndShowEdit()" src="/join139/assets/img/icons/add.png" alt="">
+                            </div>
+                            <div id="edit" class="double-button flex d-none">
+                                <div>
+                                    <img class="edit" onclick="addSubtask()" src="/join139/assets/img/svg/pencil.svg" alt="">
+                                </div>
+                                <div class="seperator"></div>
+                                <div>
+                                    <img class="edit" src="/join139/assets/img/svg/trash.svg" alt="">
+                                </div>
+                            </div>
                         </div>
-                        <div><span id="subTask"></span></div>
+                        <div>
+                            <div class="" id="subTaskContainer"></div>
+                            <div class="singleSubTasks">
+                                <div>kackepeter</div>
+                                <div class="flex edit-trash">
+                                    <div>
+                                        <img class="edit" onclick="editSubtask()" src="/join139/assets/img/svg/pencil.svg" alt="">
+                                    </div>
+                                    <div class="seperator"></div>
+                                    <div>
+                                        <img class="edit" src="/join139/assets/img/svg/trash.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
                 

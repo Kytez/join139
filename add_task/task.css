@@ -199,6 +199,55 @@ textarea::placeholder {
     border-radius: 42px;
 }
 
+.double-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -45px;
+    cursor: pointer;
+    gap: 8px;
+}
+
+#subTaskContainer {
+    width: 440px;
+    max-height: 160px;
+    overflow-y: auto;
+
+    .singleSubTasks {
+        display: flex;
+        justify-content: space-between;
+    }
+    .edit-trash {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+    }
+    
+}
+
+.singleSubTasks:hover {
+    background-color: #EEEEEE;
+        cursor: pointer;
+
+}
+
+.seperator{
+    height: 20px;
+    width: 1px;
+    background-color: #c5c1c1;
+}
+
+.edit img {
+    height: 30px;
+    width: 30px;
+}
+
+.focus-blue:focus {
+    outline: none;
+    border: 1px solid #5dbee7 !important;
+}
+
 .styled-input {
     width: -webkit-fill-available;
     height: 48px;
@@ -355,8 +404,10 @@ button{
 
 }
 
-.subtask img{
-    height: 14px;
+.subtask{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: -30px;
     cursor: pointer;
 }
