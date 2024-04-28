@@ -246,6 +246,14 @@ function addSubtask() {
     document.getElementById('subTaskContainer').innerHTML += addSubtaskHTML(subTask);
 }
 
+function clearInputAddTask() {
+    document.getElementById('subTaskInput').value = '';
+}
+
+function deleteSubtask() {
+    
+}
+
 function addSubtaskHTML(subTask) {
     return `
     <div class="singleSubTasks">
@@ -257,7 +265,7 @@ function addSubtaskHTML(subTask) {
                 <div class="seperator">
                 </div>
             <div>
-                <img class="edit" src="/join139/assets/img/svg/trash.svg" alt="">
+                <img class="edit" onclick="deleteSubtask()" src="/join139/assets/img/svg/trash.svg" alt="">
             </div>
         </div>
     </div>
