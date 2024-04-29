@@ -6,12 +6,12 @@ let id = [];
 let colors = [];
 let contactList = [];
 let subTasks = [];
+let names = [];
 
 
 async function initAddTask() {
     await includeHTML();
     await loadActiveUser();
-    renderUserInitials();
     await loadContacts();
     await loadAllTasks();
     renderAssignedContactList();
@@ -150,8 +150,10 @@ function contactListAddTaskHTML(i, userName, initialsString){
 }
 
 function selectTaskContact(i){ 
-    let contact = document.getElementById(`initials_${i}`).textContent; // Extrahiere den Inhalt des div-Elements
-    changeCheckedAndColor(i, contact);
+    let contact = document.getElementById(`initials_${i}`).textContent;
+    let fullNameElement = document.getElementById(`SingleContact_${i}`).querySelector('.profile-fullname');
+    let name = fullNameElement.textContent.trim();
+    changeCheckedAndColor(i, contact, name);
 }
 
 function renderInitals(i, colors){
@@ -173,14 +175,13 @@ function removeInital(i){
     selectedInitials.remove();
 }
 
-function changeCheckedAndColor(i, contact){
+function changeCheckedAndColor(i, contact, name){
     let selectedContact = document.getElementById(`SingleContact_${i}`);
     let emptySelect = document.getElementById(`empty_${i}`);
     let checkedSelect = document.getElementById(`checked_${i}`);
     let element = document.getElementById(`initials_${i}`);
     let initials = document.getElementById(`initials_${i}`).textContent;
     let renderInitials = document.getElementById(`contactInitals`);
-    let selectedInitals = document.getElementById(`selectedInitial_${i}`);
     
     if (emptySelect.classList.contains("d-none")) {
         selectedContact.style.backgroundColor = "";
@@ -189,6 +190,8 @@ function changeCheckedAndColor(i, contact){
         checkedSelect.classList.add("d-none");
         selectedContacts.splice(selectedContacts.indexOf(i), 1);
         colors.splice(colors.indexOf(i), 1);
+        names.splice(colors.indexOf(i), 1);
+        console.log(names);
         removeInital(i);
     } else {
         selectedContact.style.backgroundColor = "#2A3647";
@@ -198,6 +201,8 @@ function changeCheckedAndColor(i, contact){
         let computedStyle = window.getComputedStyle(element).backgroundColor;
         selectedContacts.push(contact);
         colors.push(computedStyle);
+        names.push(name);
+        console.log(names);
         renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
     }
 }
@@ -244,6 +249,7 @@ function addSubtask() {
     subTasks.push(subTask);
     console.log(subTask);
     document.getElementById('subTaskContainer').innerHTML += addSubtaskHTML(subTask);
+    document.getElementById('subTaskInput').value = "";
 }
 
 function clearInputAddTask() {
