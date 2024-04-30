@@ -326,7 +326,7 @@ span{
 
 .horizontal-scroll{
     width: 100%;
-    overflow-x: auto; /* Horizontale Scrollleiste anzeigen, wenn der Inhalt breiter ist als der Container */
+    overflow-x: hidden; /* Horizontale Scrollleiste anzeigen, wenn der Inhalt breiter ist als der Container */
     white-space: nowrap;
 }
 
@@ -616,6 +616,11 @@ button{
 
 .board-container{
     display: flex;
+}
+
+.todo-task{
+    transition: 225ms;
+    margin: 10px;
 }
 
 .todo-task:hover{
