@@ -5,6 +5,18 @@ body {
   justify-content: space-between;
 }
 
+.header {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.header img {
+  padding-top: 4%;
+  padding-left: 10%;
+  width: 40px;
+}
+
 .center-content {
   display: flex;
   flex-direction: column;
@@ -70,12 +82,6 @@ h1 {
 
 #iconVisibilityPasswordConfirmSignUp:hover {
   cursor: pointer;
-}
-
-.header img {
-  padding-top: 37px;
-  padding-left: 38px;
-  width: 64px;
 }
 
 .sign-up-body {
@@ -172,15 +178,13 @@ h1 {
 }
 
 @media (min-width: 992px) {
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 80px 77px 0 77px;
-  }
-
   .header img {
-    padding-top: 0;
-    padding-left: 0;
+    width: 64px;
+  }
+}
+
+@media (max-height: 700px) {
+  .sign-up-body {
+    padding: 8px 0;
   }
 }
