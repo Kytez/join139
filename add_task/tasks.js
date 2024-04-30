@@ -244,11 +244,23 @@ function clearPrioButtons(i) {
    
 }
 
+function renderSubtasks() {
+    let subTaskContainer = document.getElementById('subTaskContainer');
+    subTaskContainer.innerHTML = ""; // Clear previous content
+    
+    // Iterate through subTasks array and render each subtask
+    for (let i = 0; i < subTasks.length; i++) {
+        let subTaskHTML = addSubtaskHTML(subTasks[i], i);
+        subTaskContainer.innerHTML += subTaskHTML;
+    }
+}
+
+// Funktion zum Hinzufügen einer Unteraufgabe
 function addSubtask() {
-    let subTask = document.getElementById('subTaskInput').value;
-    subTasks.push(subTask);
-    console.log(subTask);
-    document.getElementById('subTaskContainer').innerHTML += addSubtaskHTML(subTask);
+    let subTaskInput = document.getElementById('subTaskInput').value;
+    subTasks.push(subTaskInput);
+    console.log(subTaskInput);
+    renderSubtasks(); // Rendere die Unteraufgaben neu
     document.getElementById('subTaskInput').value = "";
 }
 
@@ -256,22 +268,59 @@ function clearInputAddTask() {
     document.getElementById('subTaskInput').value = '';
 }
 
-function deleteSubtask() {
-    
+function editSubtask(id) {
+    // Hier kannst du die Logik für die Bearbeitung des Subtasks implementieren
+    console.log("Subtask bearbeiten:", id);
+    // Zum Beispiel: Du könntest den Text im Subtask-Div durch ein Eingabefeld ersetzen, um die Bearbeitung zu ermöglichen
+    let subTaskDiv = document.getElementById(`subTask_${id}`);
+    let subTaskText = subTaskDiv.querySelector("div");
+    let subTaskTextInput = document.createElement("input");
+    let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
+    let editSubtasks = document.getElementById(`editSubtasks_${id}`);
+    saveEditSubtasks.classList.remove("d-none");
+    editSubtasks.classList.add("d-none");
+    subTaskTextInput.type = "text";
+    subTaskTextInput.value = subTaskText.textContent;
+    subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
 }
 
-function addSubtaskHTML(subTask) {
+function deleteSubtask(id) {
+    let elementToRemove = document.getElementById(`subTask_${id}`);
+    if (elementToRemove) {
+        elementToRemove.remove();
+        subTasks.splice(id, 1);
+    }
+}
+
+function saveEditSubtask(id) {
+    let elementToRemove = document.getElementById(`subTask_${id}`);
+    let subTaskTextInput = elementToRemove.querySelector("input").value;
+    let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
+    let editSubtasks = document.getElementById(`editSubtasks_${id}`);
+    console.log(subTaskTextInput);
+    if (elementToRemove) {
+        elementToRemove.remove();
+        subTasks.splice(id, 1);
+        subTasks.push(subTaskTextInput);
+        renderSubtasks();
+        saveEditSubtasks.classList.remove("d-none");
+        editSubtasks.classList.add("d-none");
+    }
+}
+
+function addSubtaskHTML(subTask, i) {
     return `
-    <div class="singleSubTasks">
+    <div id="subTask_${i}" class="singleSubTasks">
         <div>${subTask}</div>
             <div class="flex edit-trash">
                 <div>
-                    <img class="edit" onclick="editSubtask()" src="/join139/assets/img/svg/pencil.svg" alt="">
+                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="/join139/assets/img/svg/Subtasks icons12.svg" alt="">
+                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="/join139/assets/img/svg/pencil.svg" alt="">
                 </div>
                 <div class="seperator">
                 </div>
             <div>
-                <img class="edit" onclick="deleteSubtask()" src="/join139/assets/img/svg/trash.svg" alt="">
+                <img class="edit" onclick="deleteSubtask(${i})" src="/join139/assets/img/svg/trash.svg" alt="">
             </div>
         </div>
     </div>

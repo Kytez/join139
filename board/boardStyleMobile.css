@@ -320,6 +320,16 @@ span{
     transition: transform 400ms ease-in-out;
 }
 
+.max-width{
+    max-width: 500px;
+}
+
+.horizontal-scroll{
+    width: 100%;
+    overflow-x: auto; /* Horizontale Scrollleiste anzeigen, wenn der Inhalt breiter ist als der Container */
+    white-space: nowrap;
+}
+
 .add-task-background {
     position: fixed;
     top: 0;
@@ -607,6 +617,10 @@ button{
 .board-container{
     display: flex;
 }
+
+.todo-task:hover{
+    transform: rotate(3deg);
+}
   
   /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
   
@@ -674,9 +688,6 @@ button{
         scrollbar-width: none;
     }
     
-    ::-webkit-scrollbar {
-        display: none;
-    }
 
 
     

@@ -30,7 +30,8 @@
 
     <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
 
-    <section class="max-width">
+    <section class="">
+        
         <div class="board-container width-100">
             <div class="board space-between">
                 <h1>Board</h1> 
@@ -52,7 +53,7 @@
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
                     </div>
                 </div>
-                <div id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
+                <div class=" horizontal-scroll" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
                     <div class="center no-taskts-to-do">No tasks To do</div>
                 </div>
             </div>
@@ -62,9 +63,10 @@
                     <div onclick="addTaskToSectionButton('inprogress')">
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
                     </div>
-            </div>
-            <div id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
+                </div>   
+                <div id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
                 <div class="center no-taskts-to-do">No tasks To do</div> 
+            </div>
             </div>
             <div class="width-100">
                 <div class="abstand-24 space-between">
