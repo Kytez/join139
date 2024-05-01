@@ -30,7 +30,7 @@
 
     <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
 
-    <section class="">
+    <section>
         
         <div class="board-container width-100">
             <div class="board space-between">
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="flex width-100">
-                <input class="find-task space-between" type="search" placeholder="Find Task" id="site-search" name="q" />  
+                <input onkeyup="filterTask()" onchange="filterTask()" class="find-task space-between" type="search" placeholder="Find Task" id="site-search" name="q" />  
                 <div class="search-bar-seperator"></div>  
                 <button onclick="showAddTask()" class="add-task-button">Add Task <img src="../assets/img/icons/add-white.png" alt=""></button>    
             </div>
