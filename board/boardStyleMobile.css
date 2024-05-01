@@ -330,6 +330,16 @@ span{
     white-space: nowrap;
 }
 
+::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #A8A8A8;
+    border-radius: 10px;
+}
+
 .add-task-background {
     position: fixed;
     top: 0;

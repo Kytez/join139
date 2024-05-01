@@ -85,7 +85,7 @@
     flex: 1;
     height: 110px;
     gap: 16px;
-    border-radius: 20px;
+    border-radius: 30px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
     color: black;
 }
@@ -96,8 +96,96 @@
     height: 196px;
 }
 
-.tasks-second-roiehw{
+.tasks-second-row{
     height: 200px;
+}
+
+.tasks-second-rowr{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.board{
+    transition: 0.1s;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 30px;
+    width: 176px;
+    height: 168px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.progress{
+    transition: 0.1s;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.feedback{
+    transition: 0.1s;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 30px;
+    width: 168px;
+    height: 168px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.board:hover{
+    height: 184px;
+    width: 184px;
+    transition: 0.1s;
+    background-color: #2A3647;
+    color: white;
+    margin-right: -16px;
+    margin-top: -16px;
+
+    span {
+        color: white;
+    }
+}
+
+.progress:hover{
+    height: 184px;
+    transition: 0.1s;
+    margin-top: -16px;
+    background-color: #2A3647;
+    color: white;
+    span {
+        color: white;
+    }
+}
+
+.summary-third{
+    width: 100%;
+}
+
+.feedback:hover{
+    height: 184px;
+    width: 184px;
+    transition: 0.1s;
+    background-color: #2A3647;
+    color: white;
+    margin-left: -8px;
+    margin-top: -16px;
+
+    span {
+        color: white;
+    }
 }
 
 .count-and-text {
@@ -164,9 +252,8 @@
 }
 
 .tasks-third-row {
-    display: flex;
+    display: flex; 
     gap: 16px;
-    flex: 1;
 }
 
 #navDesktop {
