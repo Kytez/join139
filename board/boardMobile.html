@@ -82,9 +82,6 @@
             <div class="width-100">
                 <div class="abstand-24 space-between">
                     <h2>Done</h2>
-                    <!-- <div>
-                        <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
-                    </div> -->
                 </div>
                 <div id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
                 </div>
@@ -152,7 +149,7 @@
 
 
 <section  onclick="hideAddTask()" id="addTaskFullScreen" class="add-task-background">
-    <section onclick="doNotClose(event)" id="addTaskSection" class="add-task-card">
+    <form onclick="doNotClose(event)" id="addTaskSection" class="add-task-card">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -247,7 +244,7 @@
                 <button onclick="addTask()" class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
             </div>
         </div>
-    </section>
+    </form>
 </section>
 
 

@@ -415,6 +415,7 @@ button{
 
     .add-task-card{
         padding-right: 60px !important;
+        padding-left: 60px !important;
     }
   }
 
