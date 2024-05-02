@@ -61,6 +61,10 @@ function renderAssignedContactList(){
 //     }
 // }
 
+function clearTask(){
+    location.reload();
+}
+
 function setFilter(input) {
     let searchterm = input.value.trim().toLowerCase();
     if (contactList && contactList.length > 0) {
