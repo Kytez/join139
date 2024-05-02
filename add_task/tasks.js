@@ -14,71 +14,42 @@ async function initAddTask() {
     await loadActiveUser();
     await loadContacts();
     await loadAllTasks();
-    renderAssignedContactList();
-}
-
-function renderAssignedContactList(){
-    let assignedTo = document.getElementById('selected-contacts');
-    
-    for (let i = 0; i < contacts.length; i++) {
-        let userName = contacts[i].userName;
-        contactList.push(userName);
-        let initialsString = ''; 
-        let color = contacts[i].colour;
-        if (contactList[i]) {
-            let words = userName.split(' ');
-            let initials = words.map(word => word.charAt(0).toUpperCase());
-            initialsString = initials.join('');
-        }
-        if(contactList.length > 0){
-            assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
-            let user = document.getElementById(`initials_${i}`);
-            user.style.backgroundColor = color;
-        }
-    }
-    
-}
-
-// function setFilter(input) {
-//     let searchterm = input.value.trim().toLowerCase();
-//     if (contactList && contactList.length > 0) {
-//         for (let i = 0; i < contactList.length; i++) {
-//             const contact = contactList[i];
-//             const contactElement = document.getElementById(`SingleContact_${i}`);
-//             console.log(`SingleContact_${i}`);
-//             if (contact && contact.fullname && (!searchterm || contact.fullname.toLowerCase().includes(searchterm))) {
-//                 // Wenn der Kontakt und sein Name definiert sind und kein Suchbegriff vorhanden ist oder der Name dem Suchbegriff entspricht, zeige ihn an
-//                 if (contactElement) {
-//                     contactElement.classList.remove('d-none');
-//                 }
-//             } else {
-//                 // Andernfalls, falls der Kontakt nicht übereinstimmt oder nicht definiert ist, blende ihn aus
-//                 if (contactElement) {
-//                     contactElement.classList.add('d-none');
-//                 }
-//             }
-//         }
-//     }
-// }
-
-function clearTask(){
-    location.reload();
+    setFilter({ value: `` });
 }
 
 function setFilter(input) {
-    let searchterm = input.value.trim().toLowerCase();
-    if (contactList && contactList.length > 0) {
-        let dropdown = document.getElementById("contact-select");
-        dropdown.innerHTML = "";
-        for (let i = 0; i < contactList.length; i++) {
-            const contact = contactList[i];
-            if (contactList[i]) {
-                let words = contact.split(' ');
-                let initials = words.map(word => word.charAt(0).toUpperCase());
-                initialsString = initials.join('');
-            }
-            if (!searchterm || contactdata.fullname.toLowerCase().includes(searchterm)) dropdown.innerHTML += contactListAddTaskHTML(i, contact, initialsString);
-        }
+    let filter = input.value.trim().toLowerCase(); // Filter aus dem Inputfeld
+    let filteredContacts;
+
+    if (filter !== '') {
+        // Wenn ein Filter vorhanden ist, filtere die Kontakte basierend auf dem Filter
+        filteredContacts = contacts.filter(function(contact) {
+            return contact.userName.toLowerCase().includes(filter);
+        });
+    } else {
+        // Wenn kein Filter vorhanden ist, zeige alle Kontakte an
+        filteredContacts = contacts;
+    }
+
+    renderAssignedContactList(filteredContacts);
+}
+
+function renderAssignedContactList(filteredContacts) {
+    let assignedTo = document.getElementById('selected-contacts');
+    assignedTo.innerHTML = ""; // Clear previous content
+    
+    for (let i = 0; i < filteredContacts.length; i++) {
+        let userName = filteredContacts[i].userName;
+        let initialsString = ''; 
+        let color = filteredContacts[i].colour;
+        
+        let words = userName.split(' ');
+        let initials = words.map(word => word.charAt(0).toUpperCase());
+        initialsString = initials.join('');
+        
+        assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
+        let user = document.getElementById(`initials_${i}`);
+        user.style.backgroundColor = color;
     }
 }
 
@@ -151,6 +122,11 @@ function contactListAddTaskHTML(i, userName, initialsString){
         <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
     </div>
     `;
+}
+
+
+function clearTask(){
+    location.reload();
 }
 
 function selectTaskContact(i){ 

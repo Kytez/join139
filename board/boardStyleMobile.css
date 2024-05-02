@@ -17,6 +17,7 @@
 }
 
 .abstand-24{
+    min-width: 200px;
     margin-top: 24px;
 }
 
@@ -435,8 +436,8 @@ span{
   .draggable {
     padding: 1rem;
     background-color: white;
-    border: 1px solid black;
-    cursor: move;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 4, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
   }
   
   .draggable.dragging {
@@ -631,7 +632,7 @@ button{
 
 .todo-task{
     transition: 225ms;
-    margin: 10px;
+    margin: 15px;
 }
 
 .todo-task:hover{
