@@ -45,7 +45,7 @@ h1 {
 }
 
 .header {
-  height: 120px;
+  height: 10vh;
 }
 
 .log-in-body {
@@ -149,9 +149,9 @@ h1 {
   position: absolute;
   animation: loading 1s ease-in-out;
   z-index: 9;
-  top: 100.5px;
-  left: 77px;
-  width: 64px;
+  top: 4%;
+  left: 10%;
+  width: 40px;
 }
 
 .loader-hidden {
@@ -168,10 +168,10 @@ h1 {
   }
 
   to {
-    top: 100.5px;
-    left: 77px;
-    height: 79px;
-    width: 64px;
+    top: 4%;
+    left: 10%;
+    height: 49.375px;
+    width: 40px;
     filter: brightness(1) invert(0);
   }
 }
@@ -188,17 +188,10 @@ h1 {
     }
   }
   
-  @media (min-width: 992px) {
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 80px 77px 0 77px;
-    }
-  
-    .header img {
-      padding-top: 0;
-      padding-left: 0;
+  @media (min-width: 992px) {  
+    #logInHeaderLogo {
+      width: 64px;
+      height: 79px;
     }
   
     #signUpSectionMobile {
@@ -208,13 +201,37 @@ h1 {
     #signUpSectionDesktop {
       display: flex;
       position: absolute;
-      right: 76px;
-      top: 100px;
+      right: 10%;
+      top: 4%;
       height: 79px;
     }
 
     #msgBox {
       width: 400px;
       left: calc(50% - 200px);
+    }
+
+    @keyframes loading {
+      from {
+        top: calc(50% - 40px);
+        left: calc(50% - 32px);
+        height: 129px;
+        width: 105px;
+        filter: brightness(0) invert(1);
+      }
+    
+      to {
+        top: 4%;
+        left: 10%;
+        height: 79px;
+        width: 64px;
+        filter: brightness(1) invert(0);
+      }
+    }
+  }
+
+  @media (max-height: 700px) {
+    .log-in-body {
+      padding: 8px 0;
     }
   }

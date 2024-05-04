@@ -6,75 +6,50 @@ let id = [];
 let colors = [];
 let contactList = [];
 let subTasks = [];
+let names = [];
 
 
 async function initAddTask() {
     await includeHTML();
     await loadActiveUser();
-    renderUserInitials();
     await loadContacts();
     await loadAllTasks();
-    renderAssignedContactList();
+    setFilter({ value: `` });
 }
-
-function renderAssignedContactList(){
-    let assignedTo = document.getElementById('selected-contacts');
-    
-    for (let i = 0; i < contacts.length; i++) {
-        let userName = contacts[i].userName;
-        contactList.push(userName);
-        let initialsString = ''; 
-        let color = contacts[i].colour;
-        if (contactList[i]) {
-            let words = userName.split(' ');
-            let initials = words.map(word => word.charAt(0).toUpperCase());
-            initialsString = initials.join('');
-        }
-        if(contactList.length > 0){
-            assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
-            let user = document.getElementById(`initials_${i}`);
-            user.style.backgroundColor = color;
-        }
-    }
-    
-}
-
-// function setFilter(input) {
-//     let searchterm = input.value.trim().toLowerCase();
-//     if (contactList && contactList.length > 0) {
-//         for (let i = 0; i < contactList.length; i++) {
-//             const contact = contactList[i];
-//             const contactElement = document.getElementById(`SingleContact_${i}`);
-//             console.log(`SingleContact_${i}`);
-//             if (contact && contact.fullname && (!searchterm || contact.fullname.toLowerCase().includes(searchterm))) {
-//                 // Wenn der Kontakt und sein Name definiert sind und kein Suchbegriff vorhanden ist oder der Name dem Suchbegriff entspricht, zeige ihn an
-//                 if (contactElement) {
-//                     contactElement.classList.remove('d-none');
-//                 }
-//             } else {
-//                 // Andernfalls, falls der Kontakt nicht übereinstimmt oder nicht definiert ist, blende ihn aus
-//                 if (contactElement) {
-//                     contactElement.classList.add('d-none');
-//                 }
-//             }
-//         }
-//     }
-// }
 
 function setFilter(input) {
-    let searchterm = input.value.trim().toLowerCase();
-    if (contactList && contactList.length > 0) {
-        let dropdown = document.getElementById("contact-select");
-        dropdown.innerHTML = "";
-        for (let i = 0; i < contactList.length; i++) {
-            const contact = contactList[i];
-            if (contactList[i]) {
-                let words = contact.split(' ');
-                let initials = words.map(word => word.charAt(0).toUpperCase());
-                initialsString = initials.join('');
-            }
-            if (!searchterm || contactdata.fullname.toLowerCase().includes(searchterm)) dropdown.innerHTML += contactListAddTaskHTML(i, contact, initialsString);
-        }
+    let filter = input.value.trim().toLowerCase(); // Filter aus dem Inputfeld
+    let filteredContacts;
+
+    if (filter !== '') {
+        // Wenn ein Filter vorhanden ist, filtere die Kontakte basierend auf dem Filter
+        filteredContacts = contacts.filter(function(contact) {
+            return contact.userName.toLowerCase().includes(filter);
+        });
+    } else {
+        // Wenn kein Filter vorhanden ist, zeige alle Kontakte an
+        filteredContacts = contacts;
+    }
+
+    renderAssignedContactList(filteredContacts);
+}
+
+function renderAssignedContactList(filteredContacts) {
+    let assignedTo = document.getElementById('selected-contacts');
+    assignedTo.innerHTML = ""; // Clear previous content
+    
+    for (let i = 0; i < filteredContacts.length; i++) {
+        let userName = filteredContacts[i].userName;
+        let initialsString = ''; 
+        let color = filteredContacts[i].colour;
+        
+        let words = userName.split(' ');
+        let initials = words.map(word => word.charAt(0).toUpperCase());
+        initialsString = initials.join('');
+        
+        assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
+        let user = document.getElementById(`initials_${i}`);
+        user.style.backgroundColor = color;
     }
 }
 
@@ -149,9 +124,16 @@ function contactListAddTaskHTML(i, userName, initialsString){
     `;
 }
 
+
+function clearTask(){
+    location.reload();
+}
+
 function selectTaskContact(i){ 
-    let contact = document.getElementById(`initials_${i}`).textContent; // Extrahiere den Inhalt des div-Elements
-    changeCheckedAndColor(i, contact);
+    let contact = document.getElementById(`initials_${i}`).textContent;
+    let fullNameElement = document.getElementById(`SingleContact_${i}`).querySelector('.profile-fullname');
+    let name = fullNameElement.textContent.trim();
+    changeCheckedAndColor(i, contact, name);
 }
 
 function renderInitals(i, colors){
@@ -173,14 +155,13 @@ function removeInital(i){
     selectedInitials.remove();
 }
 
-function changeCheckedAndColor(i, contact){
+function changeCheckedAndColor(i, contact, name){
     let selectedContact = document.getElementById(`SingleContact_${i}`);
     let emptySelect = document.getElementById(`empty_${i}`);
     let checkedSelect = document.getElementById(`checked_${i}`);
     let element = document.getElementById(`initials_${i}`);
     let initials = document.getElementById(`initials_${i}`).textContent;
     let renderInitials = document.getElementById(`contactInitals`);
-    let selectedInitals = document.getElementById(`selectedInitial_${i}`);
     
     if (emptySelect.classList.contains("d-none")) {
         selectedContact.style.backgroundColor = "";
@@ -189,6 +170,8 @@ function changeCheckedAndColor(i, contact){
         checkedSelect.classList.add("d-none");
         selectedContacts.splice(selectedContacts.indexOf(i), 1);
         colors.splice(colors.indexOf(i), 1);
+        names.splice(colors.indexOf(i), 1);
+        console.log(names);
         removeInital(i);
     } else {
         selectedContact.style.backgroundColor = "#2A3647";
@@ -198,6 +181,8 @@ function changeCheckedAndColor(i, contact){
         let computedStyle = window.getComputedStyle(element).backgroundColor;
         selectedContacts.push(contact);
         colors.push(computedStyle);
+        names.push(name);
+        console.log(names);
         renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
     }
 }
@@ -239,33 +224,83 @@ function clearPrioButtons(i) {
    
 }
 
+function renderSubtasks() {
+    let subTaskContainer = document.getElementById('subTaskContainer');
+    subTaskContainer.innerHTML = ""; // Clear previous content
+    
+    // Iterate through subTasks array and render each subtask
+    for (let i = 0; i < subTasks.length; i++) {
+        let subTaskHTML = addSubtaskHTML(subTasks[i], i);
+        subTaskContainer.innerHTML += subTaskHTML;
+    }
+}
+
+// Funktion zum Hinzufügen einer Unteraufgabe
 function addSubtask() {
-    let subTask = document.getElementById('subTaskInput').value;
-    subTasks.push(subTask);
-    console.log(subTask);
-    document.getElementById('subTaskContainer').innerHTML += addSubtaskHTML(subTask);
+    let subTaskInput = document.getElementById('subTaskInput').value;
+    subTasks.push(subTaskInput);
+    console.log(subTaskInput);
+    renderSubtasks(); // Rendere die Unteraufgaben neu
+    document.getElementById('subTaskInput').value = "";
 }
 
 function clearInputAddTask() {
     document.getElementById('subTaskInput').value = '';
 }
 
-function deleteSubtask() {
-    
+function editSubtask(id) {
+    // Hier kannst du die Logik für die Bearbeitung des Subtasks implementieren
+    console.log("Subtask bearbeiten:", id);
+    // Zum Beispiel: Du könntest den Text im Subtask-Div durch ein Eingabefeld ersetzen, um die Bearbeitung zu ermöglichen
+    let subTaskDiv = document.getElementById(`subTask_${id}`);
+    let subTaskText = subTaskDiv.querySelector("div");
+    let subTaskTextInput = document.createElement("input");
+    let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
+    let editSubtasks = document.getElementById(`editSubtasks_${id}`);
+    saveEditSubtasks.classList.remove("d-none");
+    editSubtasks.classList.add("d-none");
+    subTaskTextInput.type = "text";
+    subTaskTextInput.value = subTaskText.textContent;
+    subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
 }
 
-function addSubtaskHTML(subTask) {
+function deleteSubtask(id) {
+    let elementToRemove = document.getElementById(`subTask_${id}`);
+    if (elementToRemove) {
+        elementToRemove.remove();
+        subTasks.splice(id, 1);
+    }
+}
+
+function saveEditSubtask(id) {
+    let elementToRemove = document.getElementById(`subTask_${id}`);
+    let subTaskTextInput = elementToRemove.querySelector("input").value;
+    let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
+    let editSubtasks = document.getElementById(`editSubtasks_${id}`);
+    console.log(subTaskTextInput);
+    if (elementToRemove) {
+        elementToRemove.remove();
+        subTasks.splice(id, 1);
+        subTasks.push(subTaskTextInput);
+        renderSubtasks();
+        saveEditSubtasks.classList.remove("d-none");
+        editSubtasks.classList.add("d-none");
+    }
+}
+
+function addSubtaskHTML(subTask, i) {
     return `
-    <div class="singleSubTasks">
+    <div id="subTask_${i}" class="singleSubTasks">
         <div>${subTask}</div>
             <div class="flex edit-trash">
                 <div>
-                    <img class="edit" onclick="editSubtask()" src="/join139/assets/img/svg/pencil.svg" alt="">
+                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="/join139/assets/img/svg/Subtasks icons12.svg" alt="">
+                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="/join139/assets/img/svg/pencil.svg" alt="">
                 </div>
                 <div class="seperator">
                 </div>
             <div>
-                <img class="edit" onclick="deleteSubtask()" src="/join139/assets/img/svg/trash.svg" alt="">
+                <img class="edit" onclick="deleteSubtask(${i})" src="/join139/assets/img/svg/trash.svg" alt="">
             </div>
         </div>
     </div>

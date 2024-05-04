@@ -126,23 +126,50 @@ function addTaskBoard(workMode = 'todo') {
     let category = document.getElementById('categoryBoard');
     let subTask = document.getElementById('subTaskBoard');
     let contactIDs = [];
-    let task = {
-        'id': allTasks.length + 1,
-        'title': title.value,
-        'description': description.value,
-        'assignedTo': selectedContacts,
-        'colors': colors,
-        'date': date.value,
-        'prio': prio,
-        'category': category.value,
-        'subTask': subTask.value,
-        createdAt: new Date().getDate(),
-        'workMode': workMode,
-    };
-    console.log(colors);
-    console.log(allTasks);
-    allTasks.push(task);
-    console.log(allTasks);
-    updateTasksHTML();
-    hideAddTask();    
+    if (titleField.value.trim() === '' && categoryField.value.trim() === '' && dateField.value.trim() === '') {
+        console.log("Alle Felder sind leer. Es wird nichts ausgeführt.");
+    }else {
+        let task = {
+            'id': allTasks.length + 1,
+            'title': title.value,
+            'description': description.value,
+            'assignedTo': selectedContacts,
+            'colors': colors,
+            'date': date.value,
+            'prio': prio,
+            'category': category.value,
+            'subTask': subTask.value,
+            createdAt: new Date().getDate(),
+            'workMode': workMode,
+        };
+        console.log(colors);
+        console.log(allTasks);
+        allTasks.push(task);
+        console.log(allTasks);
+        updateTasksHTML();
+        hideAddTask();  
+    }
 }
+
+// async function filterTask() {
+//     let searchInput = document.getElementById("site-search").value.trim().toLowerCase();
+
+//     if(document.getElementById("site-search").value.length < 1) {
+//         await loadAllTasks();
+//         updateTasksHTML();
+//     } else {
+//     let foundTasks = [];
+
+//     allTasks.forEach(task => {
+//         if (
+//             task.title.toLowerCase().includes(searchInput) ||
+//             (task.description && task.description.toLowerCase().includes(searchInput))
+//         ) {
+//             foundTasks.push(task);
+//         }
+//     });
+
+//     updateTasksHTMLafterSearch(foundTasks);
+// }
+// }
+

@@ -194,7 +194,7 @@ function generateAssignedUsersPopUp(element){
 
 function noTasksInArea(id){
     document.getElementById(id).innerHTML = `
-        <div class="center no-taskts-to-do">No tasks To do</div>
+        <div class="center no-taskts-to-do">No tasks to do</div>
     `
 }
 
@@ -237,7 +237,7 @@ function assignIDTasks(){
         const task = allTasks[i];
         task['id'] = i;
     }
-    saveTasks();
+    // saveTasks();
 }
 
 function assignUserColour(){

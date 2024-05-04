@@ -30,7 +30,8 @@
 
     <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
 
-    <section class="max-width">
+    <section>
+        
         <div class="board-container width-100">
             <div class="board space-between">
                 <h1>Board</h1> 
@@ -39,7 +40,7 @@
                 </div>
             </div>
             <div class="flex width-100">
-                <input class="find-task space-between" type="search" placeholder="Find Task" id="site-search" name="q" />  
+                <input onkeyup="filterTask()" onchange="filterTask()" class="find-task space-between" type="search" placeholder="Find Task" id="site-search" name="q" />  
                 <div class="search-bar-seperator"></div>  
                 <button onclick="showAddTask()" class="add-task-button">Add Task <img src="../assets/img/icons/add-white.png" alt=""></button>    
             </div>
@@ -52,7 +53,7 @@
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
                     </div>
                 </div>
-                <div id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
+                <div class=" horizontal-scroll" id="todo" ondrop="moveTo('todo')" ondragleave="removeHighlight('todo')" ondragover="allowDrop(event); highlight('todo')">
                     <div class="center no-taskts-to-do">No tasks To do</div>
                 </div>
             </div>
@@ -62,9 +63,10 @@
                     <div onclick="addTaskToSectionButton('inprogress')">
                         <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
                     </div>
-            </div>
-            <div id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
+                </div>   
+                <div id="inprogress" ondrop="moveTo('inprogress')" ondragleave="removeHighlight('inprogress')" ondragover="allowDrop(event); highlight('inprogress')">
                 <div class="center no-taskts-to-do">No tasks To do</div> 
+            </div>
             </div>
             <div class="width-100">
                 <div class="abstand-24 space-between">
@@ -80,12 +82,8 @@
             <div class="width-100">
                 <div class="abstand-24 space-between">
                     <h2>Done</h2>
-                    <!-- <div>
-                        <img class="plus-img" src="../assets/img/icons/plus button mobile.png">
-                    </div> -->
                 </div>
                 <div id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')">
-                    <div class="center no-taskts-to-do">No tasks To do</div>
                 </div>
             </div>
         </div>
@@ -151,7 +149,7 @@
 
 
 <section  onclick="hideAddTask()" id="addTaskFullScreen" class="add-task-background">
-    <section onclick="doNotClose(event)" id="addTaskSection" class="add-task-card">
+    <form onclick="doNotClose(event)" id="addTaskSection" class="add-task-card">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -242,11 +240,11 @@
         <div class="button-container-board flex">
             <span><span class="red">*</span>This field is required</span>
             <div id="boardAddTaskBtns" class="flex">
-                <button class="btn-white">Clear <img src="/join139/assets/img/icons/x.png" alt=""></button>
+                <a onclick="clearTask()" class="btn-white">Clear <img src="/join139/assets/img/icons/x.png" alt=""></a>
                 <button onclick="addTask()" class="btn-dark">Create Task <img src="/join139/assets/img/icons/check_icon.png" alt=""></button>    
             </div>
         </div>
-    </section>
+    </form>
 </section>
 
 

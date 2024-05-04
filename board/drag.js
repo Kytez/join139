@@ -1,7 +1,5 @@
 let currentDraggedElement;
 
-// Drag Funktionen
-
 function startDragging(id) {
     currentDraggedElement = id;
 }
@@ -16,11 +14,14 @@ function moveTo(workMode) {
     updateTasksHTML();
 }
 
-function highlight(id) {
-    document.getElementById(id).classList.add('drag-area');
-}
+window.onload = function() {
+    var container = document.getElementById('container');
+    var content = document.getElementById('content');
 
-function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area');
-    
-}
+    // Überprüfe, ob der Inhalt breiter ist als der Container
+    if (content.scrollWidth > container.clientWidth) {
+        container.style.overflowX = 'auto'; // Zeige die horizontale Scrollleiste an
+    } else {
+        container.style.overflowX = 'hidden'; // Verstecke die horizontale Scrollleiste
+    }
+};
