@@ -230,7 +230,7 @@
 
 .pop-up{
     position: fixed;
-    top: 10px;
+    top: 100px;
     /* left: calc(50% - 198px); */
     width: 396px;
     background-color: #FFFFFF;
@@ -379,7 +379,7 @@ span{
     border-radius: 24px;
     height: 560px;
     position: fixed;
-    top: 10px;
+    top: 100px;
 }
 
 .prio-button-section{
@@ -724,4 +724,16 @@ button{
         padding: 0;
 
     }
+  }
+
+  @media(max-height: 666px){
+    .pop-up{
+        top: 0;
+    }
+
+    .edit-task-card{
+        top: 0;
+
+    }
+
   }
