@@ -82,6 +82,7 @@ function addTask(workMode = 'todo') {
         'subTask': subTasks,
         createdAt: new Date().getDate(),
         'workMode': workMode,
+        'names': names,
     };
     console.log(colors);
     console.log(allTasks);
@@ -171,7 +172,6 @@ function changeCheckedAndColor(i, contact, name){
         selectedContacts.splice(selectedContacts.indexOf(i), 1);
         colors.splice(colors.indexOf(i), 1);
         names.splice(colors.indexOf(i), 1);
-        console.log(names);
         removeInital(i);
     } else {
         selectedContact.style.backgroundColor = "#2A3647";
@@ -182,7 +182,6 @@ function changeCheckedAndColor(i, contact, name){
         selectedContacts.push(contact);
         colors.push(computedStyle);
         names.push(name);
-        console.log(names);
         renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
     }
 }
