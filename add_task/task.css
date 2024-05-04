@@ -325,7 +325,7 @@ input[type="date"] {
     background-size: 18px;
     background-repeat: no-repeat;
     background-position: 96%;
-    background-color: white
+    background-color: white;
 }
 
 /* Hier auf das Kalender Icon zugreifen */
@@ -454,6 +454,16 @@ button{
         font-weight: 400 !important;
     }
 
+    #contact-select {
+        font-size: 20px;
+        font-weight: 400 !important;
+        width: 402px !important;
+    }
+
+    #category{
+            width: 440px;
+    }
+
     select{
         font-size: 20px;
     }
@@ -461,6 +471,11 @@ button{
     textarea {
         font-size: 20px;
         font-weight: 400 !important;
+        width: 434px;
+    }
+
+    input[type="date"]{
+        width: 422px !important;
     }
   
     .margin-body-mobile {
@@ -479,6 +494,15 @@ button{
 
     .add-task-card{
         padding-right: 60px !important;
+        max-width: 1090px;
+    }
+
+    .prio-button-section{
+        width: 440px;
+    }
+
+    input{
+        width: 434px;
     }
   }
 
