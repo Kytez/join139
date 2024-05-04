@@ -9,61 +9,67 @@ async function initBoard() {
     renderAssignedContactList()
 }
 
+let categories = ['todo', 'inprogress', 'feedback', 'done']
 
 function updateTasksHTML() {
     assignIDTasks();
-    updateToDoHTML();
-    updateInProgressHTML();
-    updateFeedbackHTML();
-    updateDoneHTML();
+    categories.forEach(cat => {
+        updateCategoryHTML(cat);
+    });
     assignCategoryColour();
     assignUserColour();
 
 }
 
-function updateToDoHTML(){
-    let todo_list = allTasks.filter(t => t['workMode'] == 'todo');
-    if(todo_list.length == 0){
-        noTasksInArea('todo');
-    }
-    else{
-        generateTask('todo', todo_list);
+// function updateToDoHTML(){
+//     let todo_list = allTasks.filter(t => t['workMode'] == 'todo');
+//     if(todo_list.length == 0){
+//         noTasksInArea('todo');
+//     }
+//     else{
+//         generateTask('todo', todo_list);
 
-    }
-}
-
-
-
-function updateInProgressHTML(){
-    let inprogress_list = allTasks.filter(t => t['workMode'] == 'inprogress');
-    if(inprogress_list.length == 0){
-        noTasksInArea('inprogress');
-    }
-    else{
-        generateTask('inprogress', inprogress_list);
-
-    }
-}
+//     }
+// }
 
 
-function updateFeedbackHTML(){
-    let feedback_list = allTasks.filter(t => t['workMode'] == 'feedback');
-    if(feedback_list.length == 0){
-        noTasksInArea('feedback');
-    }
-    else{
-        generateTask('feedback', feedback_list);
-    }
-}
 
-function updateDoneHTML(){
-    let done_list = allTasks.filter(t => t['workMode'] == 'done');
-    if(done_list.length == 0){
-        noTasksInArea('done');
-    }
-    else{
-        generateTask('done', done_list);
-    }
+// function updateInProgressHTML(){
+//     let inprogress_list = allTasks.filter(t => t['workMode'] == 'inprogress');
+//     if(inprogress_list.length == 0){
+//         noTasksInArea('inprogress');
+//     }
+//     else{
+//         generateTask('inprogress', inprogress_list);
+
+//     }
+// }
+
+
+// function updateFeedbackHTML(){
+//     let feedback_list = allTasks.filter(t => t['workMode'] == 'feedback');
+//     if(feedback_list.length == 0){
+//         noTasksInArea('feedback');
+//     }
+//     else{
+//         generateTask('feedback', feedback_list);
+//     }
+// }
+
+// function updateDoneHTML(){
+//     let done_list = allTasks.filter(t => t['workMode'] == 'done');
+//     if(done_list.length == 0){
+//         noTasksInArea('done');
+//     }
+//     else{
+//         generateTask('done', done_list);
+//     }
+// }
+
+function updateCategoryHTML(cat){
+    let list =  allTasks.filter(t => t['workMode'] == cat);
+    if(list.length == 0) noTasksInArea(cat);
+    else generateTask(cat, list);
 }
 
 
