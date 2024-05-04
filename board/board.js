@@ -151,25 +151,27 @@ function addTaskBoard(workMode = 'todo') {
     }
 }
 
-// async function filterTask() {
-//     let searchInput = document.getElementById("site-search").value.trim().toLowerCase();
+async function filterTask() {
+    let searchInput = document.getElementById("site-search").value.trim().toLowerCase();
 
-//     if(document.getElementById("site-search").value.length < 1) {
-//         await loadAllTasks();
-//         updateTasksHTML();
-//     } else {
-//     let foundTasks = [];
+    if(document.getElementById("site-search").value.length < 1) {
+        await loadAllTasks();
+        updateTasksHTML();
+    } else {
+    let foundTasks = [];
 
-//     allTasks.forEach(task => {
-//         if (
-//             task.title.toLowerCase().includes(searchInput) ||
-//             (task.description && task.description.toLowerCase().includes(searchInput))
-//         ) {
-//             foundTasks.push(task);
-//         }
-//     });
+    allTasks.forEach(task => {
+        if (
+            task.title.toLowerCase().includes(searchInput) ||
+            (task.description && task.description.toLowerCase().includes(searchInput))
+        ) {
+            foundTasks.push(task);
+        }
+    });
 
-//     updateTasksHTMLafterSearch(foundTasks);
-// }
-// }
+    allTasks = foundTasks;
+
+    updateTasksHTML();
+}
+}
 
