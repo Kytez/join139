@@ -293,13 +293,13 @@ function addSubtaskHTML(subTask, i) {
         <div>${subTask}</div>
             <div class="flex edit-trash">
                 <div>
-                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="/join139/assets/img/svg/Subtasks icons12.svg" alt="">
-                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="/join139/assets/img/svg/pencil.svg" alt="">
+                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="../assets/img/svg/pencil.svg" alt="">
                 </div>
                 <div class="seperator">
                 </div>
             <div>
-                <img class="edit" onclick="deleteSubtask(${i})" src="/join139/assets/img/svg/trash.svg" alt="">
+                <img class="edit" onclick="deleteSubtask(${i})" src="../assets/img/svg/trash.svg" alt="">
             </div>
         </div>
     </div>
