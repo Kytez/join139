@@ -21,50 +21,6 @@ function updateTasksHTML() {
 
 }
 
-// function updateToDoHTML(){
-//     let todo_list = allTasks.filter(t => t['workMode'] == 'todo');
-//     if(todo_list.length == 0){
-//         noTasksInArea('todo');
-//     }
-//     else{
-//         generateTask('todo', todo_list);
-
-//     }
-// }
-
-
-
-// function updateInProgressHTML(){
-//     let inprogress_list = allTasks.filter(t => t['workMode'] == 'inprogress');
-//     if(inprogress_list.length == 0){
-//         noTasksInArea('inprogress');
-//     }
-//     else{
-//         generateTask('inprogress', inprogress_list);
-
-//     }
-// }
-
-
-// function updateFeedbackHTML(){
-//     let feedback_list = allTasks.filter(t => t['workMode'] == 'feedback');
-//     if(feedback_list.length == 0){
-//         noTasksInArea('feedback');
-//     }
-//     else{
-//         generateTask('feedback', feedback_list);
-//     }
-// }
-
-// function updateDoneHTML(){
-//     let done_list = allTasks.filter(t => t['workMode'] == 'done');
-//     if(done_list.length == 0){
-//         noTasksInArea('done');
-//     }
-//     else{
-//         generateTask('done', done_list);
-//     }
-// }
 
 function updateCategoryHTML(cat){
     let list =  allTasks.filter(t => t['workMode'] == cat);
@@ -198,10 +154,28 @@ function generateAssignedUsersPopUp(element){
 
 
 
-function noTasksInArea(id){
-    document.getElementById(id).innerHTML = `
-        <div class="center no-taskts-to-do">No tasks to do</div>
-    `
+function noTasksInArea(category){
+    let catContainer = document.getElementById(category) 
+    if(category == 'todo'){
+        catContainer.innerHTML = `
+            <div class="center no-taskts-to-do">No tasks To do</div>
+        `
+    }
+    else if(category == 'inprogress'){
+        catContainer.innerHTML = `
+            <div class="center no-taskts-to-do">No tasks in Progress</div>
+        `
+    }
+    else if(category == 'feedback'){
+        catContainer.innerHTML = `
+            <div class="center no-taskts-to-do">No tasks await Feedback</div>
+        `
+    }
+    else if(category == 'done'){
+        catContainer.innerHTML = `
+            <div class="center no-taskts-to-do">No tasks Done</div>
+        `
+    }
 }
 
 function assignPriorityImgTask(prio){
