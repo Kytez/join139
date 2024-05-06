@@ -222,6 +222,7 @@ textarea::placeholder {
     width: 440px;
     max-height: 160px;
     overflow-y: auto;
+    position: fixed;
 
     .singleSubTasks {
         display: flex;

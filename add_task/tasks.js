@@ -155,27 +155,6 @@ async function loadAllTasks(){
 }
 
 /**
- * Generates the HTML code for a contact list entry for a task.
- *
- * @param {number} i - The index of the contact in the list.
- * @param {string} userName - The name of the user.
- * @param {string} initialsString - The initials of the user.
- * @return {string} The HTML code for the contact list entry.
- */
-function contactListAddTaskHTML(i, userName, initialsString){
-    return `
-    <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
-        <div class="contact-list-entry">
-            <div id="initials_${i}" class="initials">${initialsString}</div>
-            <div class="profile-fullname">${userName} </div> 
-        </div>
-        <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
-        <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
-    </div>
-    `;
-}
-
-/**
  * Clears the current task by reloading the page.
  *
  * @return {void} This function does not return anything.
@@ -210,20 +189,6 @@ function renderInitals(i, colors){
     let content = document.getElementById(`contactInitals`);
     content.innerHTML += renderInitialsHTML(i, initials);
     selectedInitials.style.backgroundColor = colors;
-}
-
-/**
- * Generates the HTML code for a div element containing initials with a background color.
- *
- * @param {number} i - The index of the contact.
- * @param {string} initials - The initials of the contact.
- * @param {string} computedStyle - The background color of the initials div.
- * @return {string} The HTML code for the initials div.
- */
-function renderInitialsHTML(i, initials, computedStyle){
-    return `
-        <div id="selectedInitial_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
-    `;
 }
 
 /**
@@ -388,10 +353,8 @@ function editSubtask(id) {
  */
 function deleteSubtask(id) {
     let elementToRemove = document.getElementById(`subTask_${id}`);
-    if (elementToRemove) {
         elementToRemove.remove();
         subTasks.splice(id, 1);
-    }
 }
 
 /**
@@ -468,4 +431,39 @@ function taskHtml() {
                 </div>
             </div>
             `;
+}
+
+/**
+ * Generates the HTML code for a div element containing initials with a background color.
+ *
+ * @param {number} i - The index of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @param {string} computedStyle - The background color of the initials div.
+ * @return {string} The HTML code for the initials div.
+ */
+function renderInitialsHTML(i, initials, computedStyle){
+    return `
+        <div id="selectedInitial_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
+    `;
+}
+
+/**
+ * Generates the HTML code for a contact list entry for a task.
+ *
+ * @param {number} i - The index of the contact in the list.
+ * @param {string} userName - The name of the user.
+ * @param {string} initialsString - The initials of the user.
+ * @return {string} The HTML code for the contact list entry.
+ */
+function contactListAddTaskHTML(i, userName, initialsString){
+    return `
+    <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
+        <div class="contact-list-entry">
+            <div id="initials_${i}" class="initials">${initialsString}</div>
+            <div class="profile-fullname">${userName} </div> 
+        </div>
+        <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
+        <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
+    </div>
+    `;
 }
