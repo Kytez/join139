@@ -81,8 +81,13 @@
     background-size: 18px;
     background-repeat: no-repeat;
     background-position: 95%;
+    padding: 20px;
 }
 
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+input[type="search"]::-webkit-search-decoration { display: none; }
+input[type="search"]::-webkit-search-cancel-button { display: none; }
+input[type="search"]::-webkit-search-results-button { display: none; }
 
 .search-bar-seperator{
     width: 1px;
@@ -102,7 +107,6 @@
 .no-taskts-to-do{
     background-color: #E7E7E7E7;
     color: #A8A8A8;
-    width: 100%;
     height: 48px;
     border-radius: 10px;
     border-style: dotted;
