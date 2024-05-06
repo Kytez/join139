@@ -12,6 +12,7 @@ let names = [];
 async function initAddTask() {
     await includeHTML();
     await loadActiveUser();
+    renderUserInitials();
     await loadContacts();
     await loadAllTasks();
     setFilter({ value: `` });
