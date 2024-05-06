@@ -8,32 +8,47 @@ let contactList = [];
 let subTasks = [];
 let names = [];
 
-
+/**
+ * Initializes the add task functionality.
+ *
+ * @return {Promise<void>} A promise that resolves when the initialization is complete.
+ */
 async function initAddTask() {
     await includeHTML();
     await loadActiveUser();
+    renderUserInitials();
     await loadContacts();
     await loadAllTasks();
     setFilter({ value: `` });
 }
 
+/**
+ * Filters contacts based on the provided input value and renders the filtered contact list.
+ *
+ * @param {Object} input - The input object containing the filter value.
+ * @return {void} This function does not return any value.
+ */
 function setFilter(input) {
-    let filter = input.value.trim().toLowerCase(); // Filter aus dem Inputfeld
+    let filter = input.value.trim().toLowerCase();
     let filteredContacts;
 
     if (filter !== '') {
-        // Wenn ein Filter vorhanden ist, filtere die Kontakte basierend auf dem Filter
         filteredContacts = contacts.filter(function(contact) {
             return contact.userName.toLowerCase().includes(filter);
         });
     } else {
-        // Wenn kein Filter vorhanden ist, zeige alle Kontakte an
         filteredContacts = contacts;
     }
 
     renderAssignedContactList(filteredContacts);
 }
 
+/**
+ * Renders the list of assigned contacts based on the provided filtered contacts.
+ *
+ * @param {Array} filteredContacts - The array of filtered contacts.
+ * @return {void} This function does not return a value.
+ */
 function renderAssignedContactList(filteredContacts) {
     let assignedTo = document.getElementById('selected-contacts');
     assignedTo.innerHTML = ""; // Clear previous content
@@ -53,6 +68,12 @@ function renderAssignedContactList(filteredContacts) {
     }
 }
 
+/**
+ * Toggles the visibility of the 'edit' and 'subtaskt' elements.
+ *
+ * @param {none}
+ * @return {none}
+ */
 function hideAndShowEdit() {
     let edit = document.getElementById('edit');
     let subtaskt = document.getElementById('subTask');
@@ -65,6 +86,12 @@ function hideAndShowEdit() {
     }
 }
 
+/**
+ * Adds a new task to the list of tasks.
+ *
+ * @param {string} [workMode='todo'] - The work mode of the task. Defaults to 'todo'.
+ * @return {void} This function does not return anything.
+ */
 function addTask(workMode = 'todo') {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
@@ -91,6 +118,11 @@ function addTask(workMode = 'todo') {
     saveTasks();
 }
 
+/**
+ * Toggles the visibility of the contact list.
+ *
+ * @return {void} This function does not return a value.
+ */
 function showContactList(){
     let contactList = document.getElementById('selected-contacts');
     if (contactList.classList.contains('d-none')) {
@@ -100,10 +132,20 @@ function showContactList(){
     }
 }
 
+/**
+ * Saves the tasks by storing them in the local storage.
+ *
+ * @return {Promise<void>} A promise that resolves when the tasks are successfully saved.
+ */
 async function saveTasks(){
     setItem('allTasks', JSON.stringify(allTasks));
 }
 
+/**
+ * Loads all tasks from the local storage.
+ *
+ * @return {Promise<void>} A promise that resolves when the tasks are successfully loaded.
+ */
 async function loadAllTasks(){
     try {
         allTasks = JSON.parse(await getItem('allTasks')) || [];
@@ -112,24 +154,21 @@ async function loadAllTasks(){
     }
 }
 
-function contactListAddTaskHTML(i, userName, initialsString){
-    return `
-    <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
-        <div class="contact-list-entry">
-            <div id="initials_${i}" class="initials">${initialsString}</div>
-            <div class="profile-fullname">${userName} </div> 
-        </div>
-        <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
-        <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
-    </div>
-    `;
-}
-
-
+/**
+ * Clears the current task by reloading the page.
+ *
+ * @return {void} This function does not return anything.
+ */
 function clearTask(){
     location.reload();
 }
 
+/**
+ * Selects a task contact and triggers the changeCheckedAndColor function.
+ *
+ * @param {number} i - The index of the contact in the list.
+ * @return {void} This function does not return anything.
+ */
 function selectTaskContact(i){ 
     let contact = document.getElementById(`initials_${i}`).textContent;
     let fullNameElement = document.getElementById(`SingleContact_${i}`).querySelector('.profile-fullname');
@@ -137,6 +176,13 @@ function selectTaskContact(i){
     changeCheckedAndColor(i, contact, name);
 }
 
+/**
+ * Renders the initials of a contact and updates the background color of the selected initial.
+ *
+ * @param {number} i - The index of the contact.
+ * @param {string} colors - The background color of the selected initial.
+ * @return {void} This function does not return anything.
+ */
 function renderInitals(i, colors){
     let initials = document.getElementById(`initials_${i}`).textContent; // Extrahiere den Inhalt des div-Elements
     let selectedInitials = document.getElementById(`selectedInitial_${i}`);
@@ -145,17 +191,25 @@ function renderInitals(i, colors){
     selectedInitials.style.backgroundColor = colors;
 }
 
-function renderInitialsHTML(i, initials, computedStyle){
-    return `
-        <div id="selectedInitial_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
-    `;
-}
-
+/**
+ * Removes the initials div element with the given index from the DOM.
+ *
+ * @param {number} i - The index of the initials div element to remove.
+ * @return {void} This function does not return anything.
+ */
 function removeInital(i){
     let selectedInitials = document.getElementById(`selectedInitial_${i}`);
     selectedInitials.remove();
 }
 
+/**
+ * Changes the checked status and color of a contact list entry based on user interaction.
+ *
+ * @param {number} i - The index of the contact list entry.
+ * @param {string} contact - The contact information.
+ * @param {string} name - The name of the contact.
+ * @return {void} This function does not return anything.
+ */
 function changeCheckedAndColor(i, contact, name){
     let selectedContact = document.getElementById(`SingleContact_${i}`);
     let emptySelect = document.getElementById(`empty_${i}`);
@@ -186,9 +240,12 @@ function changeCheckedAndColor(i, contact, name){
     }
 }
 
-
-
-
+/**
+ * Sets the priority and updates the color of the priority buttons.
+ *
+ * @param {string} i - The priority to be set.
+ * @return {void} This function does not return a value.
+ */
 function selectPrio(i) {
     prio = i;
     setPrioButtonsColor(prio);
@@ -213,16 +270,25 @@ function setPrioButtonsColor(i) {
     }
 }
 
+/**
+ * Handle click event on priority buttons.
+ * Set the priority to the given value and update the color of the buttons.
+ * 
+ * @param {string} i - The priority to be set.
+ * @returns {void} This function does not return a value.
+ */
 function handleClickPrio(i) {
     if (i) {
-        selectPrio(i);
+        selectPrio(i); // Set the given priority
     }
 }
 
-function clearPrioButtons(i) {
-   
-}
-
+/**
+ * Renders the subtasks on the webpage.
+ *
+ * @param {none} 
+ * @return {void} This function does not return a value.
+ */
 function renderSubtasks() {
     let subTaskContainer = document.getElementById('subTaskContainer');
     subTaskContainer.innerHTML = ""; // Clear previous content
@@ -234,7 +300,12 @@ function renderSubtasks() {
     }
 }
 
-// Funktion zum Hinzufügen einer Unteraufgabe
+/**
+ * Adds a subtask to the subTasks array and triggers the rendering of subtasks on the webpage.
+ *
+ * @param {none}
+ * @return {void}
+ */
 function addSubtask() {
     let subTaskInput = document.getElementById('subTaskInput').value;
     subTasks.push(subTaskInput);
@@ -243,10 +314,21 @@ function addSubtask() {
     document.getElementById('subTaskInput').value = "";
 }
 
+/**
+ * Clears the value of the input element with the ID 'subTaskInput'.
+ *
+ * @return {void} This function does not return anything.
+ */
 function clearInputAddTask() {
     document.getElementById('subTaskInput').value = '';
 }
 
+/**
+ * Edits a subtask by replacing its text content with an input field for editing.
+ *
+ * @param {number} id - The ID of the subtask to be edited.
+ * @return {void} This function does not return anything.
+ */
 function editSubtask(id) {
     // Hier kannst du die Logik für die Bearbeitung des Subtasks implementieren
     console.log("Subtask bearbeiten:", id);
@@ -263,14 +345,24 @@ function editSubtask(id) {
     subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
 }
 
+/**
+ * A function to delete a specific subtask.
+ *
+ * @param {number} id - The ID of the subtask to be deleted.
+ * @return {void} This function does not return anything.
+ */
 function deleteSubtask(id) {
     let elementToRemove = document.getElementById(`subTask_${id}`);
-    if (elementToRemove) {
         elementToRemove.remove();
         subTasks.splice(id, 1);
-    }
 }
 
+/**
+ * Saves the edited subtask by replacing its text content with the value of the input field.
+ *
+ * @param {number} id - The ID of the subtask to be edited.
+ * @return {void} This function does not return anything.
+ */
 function saveEditSubtask(id) {
     let elementToRemove = document.getElementById(`subTask_${id}`);
     let subTaskTextInput = elementToRemove.querySelector("input").value;
@@ -287,25 +379,37 @@ function saveEditSubtask(id) {
     }
 }
 
+/**
+ * Generates the HTML markup for a subtask element.
+ *
+ * @param {string} subTask - The text content of the subtask.
+ * @param {number} i - The index of the subtask.
+ * @return {string} The HTML markup for the subtask element.
+ */
 function addSubtaskHTML(subTask, i) {
     return `
     <div id="subTask_${i}" class="singleSubTasks">
         <div>${subTask}</div>
             <div class="flex edit-trash">
                 <div>
-                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="/join139/assets/img/svg/Subtasks icons12.svg" alt="">
-                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="/join139/assets/img/svg/pencil.svg" alt="">
+                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="../assets/img/svg/pencil.svg" alt="">
                 </div>
                 <div class="seperator">
                 </div>
             <div>
-                <img class="edit" onclick="deleteSubtask(${i})" src="/join139/assets/img/svg/trash.svg" alt="">
+                <img class="edit" onclick="deleteSubtask(${i})" src="../assets/img/svg/trash.svg" alt="">
             </div>
         </div>
     </div>
     `
 }
 
+/**
+ * Returns the HTML markup for a task element.
+ *
+ * @return {string} The HTML markup for the task element.
+ */
 function taskHtml() {
     return html`
     <div onclick="showTask()" class="tasks">
@@ -327,4 +431,39 @@ function taskHtml() {
                 </div>
             </div>
             `;
+}
+
+/**
+ * Generates the HTML code for a div element containing initials with a background color.
+ *
+ * @param {number} i - The index of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @param {string} computedStyle - The background color of the initials div.
+ * @return {string} The HTML code for the initials div.
+ */
+function renderInitialsHTML(i, initials, computedStyle){
+    return `
+        <div id="selectedInitial_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
+    `;
+}
+
+/**
+ * Generates the HTML code for a contact list entry for a task.
+ *
+ * @param {number} i - The index of the contact in the list.
+ * @param {string} userName - The name of the user.
+ * @param {string} initialsString - The initials of the user.
+ * @return {string} The HTML code for the contact list entry.
+ */
+function contactListAddTaskHTML(i, userName, initialsString){
+    return `
+    <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
+        <div class="contact-list-entry">
+            <div id="initials_${i}" class="initials">${initialsString}</div>
+            <div class="profile-fullname">${userName} </div> 
+        </div>
+        <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
+        <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
+    </div>
+    `;
 }
