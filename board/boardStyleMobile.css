@@ -250,7 +250,7 @@ input[type="search"]::-webkit-search-results-button { display: none; }
     height: 42px;
     width: 42px;
     font-size: 12px;
-    color: #DDDDDD;
+    color: white;
     background-color: #d15b5b;
     border-radius: 50%;
     display: flex;

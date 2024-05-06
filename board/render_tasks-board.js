@@ -39,7 +39,7 @@ function generateTask(id, list){
 
 function returnTaskHTML(element){
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}', '${element['assignedTo']}')" class="todo-task draggable tasks">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}', '${element['assignedTo']}', '${element['names']}')" class="todo-task draggable tasks">
             <div class="task-padding">
                 <div class="task-category">${element['category']}</div>
                 <span class="task-title">${element['title']}</span> <br>
@@ -61,7 +61,7 @@ function returnTaskHTML(element){
 }
 
 
-function renderTasksPopUp(title, description, date, id, category, prio, users){
+function renderTasksPopUp(title, description, date, id, category, prio, users, names){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
@@ -88,8 +88,8 @@ function renderTasksPopUp(title, description, date, id, category, prio, users){
             </div>
             <div class="margin-top-16">
                 <span>Assigned To:</span>
-                <div class="margin-top-16 user-flex column user-assigned subtasks-checkbox">
-                    ${generateAssignedUsersPopUp(users)}
+                <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned subtasks-checkbox">
+                    ${generateAssignedUsersPopUp(names)}
                 </div>
             </div>
             <div class="margin-top-16">
@@ -122,6 +122,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, users){
 
 function generateAssignedUsers(element){
     let usersHTML = '';
+    console.log(typeof(element))
     if(element['assignedTo'] == null){
         element['assignedTo'] = 0;
     }
@@ -136,10 +137,11 @@ function generateAssignedUsers(element){
     return usersHTML
 }
 
-function generateAssignedUsersPopUp(element){
+function generateAssignedUsersPopUp(names){
     let usersHTML = '';
-    for (let i = 0; i < element.length; i++) {
-        const user = element[i];
+    let namesArray = names.split(",");
+    for (let i = 0; i < namesArray.length; i++) {
+        const user = namesArray[i];
         usersHTML += /*html*/`
             <div class="flex align-center">
                 <div class="pop-up-user-circle">${getInitials(user)}</div>
@@ -217,7 +219,6 @@ function assignIDTasks(){
         const task = allTasks[i];
         task['id'] = i;
     }
-    // saveTasks();
 }
 
 function assignUserColour(){
@@ -226,6 +227,19 @@ function assignUserColour(){
         let divElement = document.getElementById(`assigned-users-${i}`);
         for (let j = 0; j < task['assignedTo'].length; j++) {
             const user = divElement.children[j];
+            const colour = task['colors'][j];
+            user.style.backgroundColor = colour;
+        }
+    }
+}
+
+function assigntaskUserColour(names, id){
+    let namesArray = names.split(","); 
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i];
+        let divElement = document.getElementById(`assigned-taskUsers-${id}`);
+        for (let j = 0; j < namesArray.length; j++) {
+            const user = divElement.children[j].firstElementChild;
             const colour = task['colors'][j];
             user.style.backgroundColor = colour;
         }
