@@ -12,6 +12,7 @@ function allowDrop(ev) {
 function moveTo(workMode) {
     allTasks[currentDraggedElement]['workMode'] = workMode;
     updateTasksHTML();
+    saveTasks();
 }
 
 window.onload = function() {
