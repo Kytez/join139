@@ -222,11 +222,15 @@ textarea::placeholder {
     gap: 8px;
 }
 
+.subtaskContainer{
+    margin-bottom: 50px;
+}
+
 #subTaskContainer {
     width: 440px;
     max-height: 160px;
-    overflow-y: auto;
-    position: fixed;
+    /* overflow-y: auto;
+    position: fixed; */
 
     .singleSubTasks {
         display: flex;
