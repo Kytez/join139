@@ -237,7 +237,7 @@ input[type="search"]::-webkit-search-results-button { display: none; }
 
 .pop-up{
     position: fixed;
-    top: 100px;
+    top: 50px;
     /* left: calc(50% - 198px); */
     width: 396px;
     background-color: #FFFFFF;
@@ -335,8 +335,7 @@ span{
 
 #addTaskSection{
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: -90px;
     max-width: 1260px;
     margin: 100px;
     transform:translateX(275%);
@@ -422,7 +421,15 @@ span{
     border-radius: 24px;
     height: 560px;
     position: fixed;
-    top: 100px;
+    top: 60px;
+    padding: 16px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    transform: translateX(275%);
+    transition: transform 400ms ease-in-out;
+    display: none;
+    flex-direction: column;
+    z-index: 201;
 }
 
 .prio-button-section{
@@ -691,7 +698,10 @@ button{
 .todo-task:hover{
     transform: rotate(3deg);
 }
+
   
+
+
   /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
   
   @media(min-width: 992px) {

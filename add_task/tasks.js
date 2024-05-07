@@ -250,9 +250,17 @@ function changeCheckedAndColor(i, contact, name){
  * @param {string} i - The priority to be set.
  * @return {void} This function does not return a value.
  */
-function selectPrio(i) {
+function selectPrio(i, origin) {
     prio = i;
-    setPrioButtonsColor(prio);
+    if (origin == "edit") {
+        setPrioButtonsColorEdit(prio);
+    }
+    else if(origin == "board"){
+        setPrioButtonsColorBoard(prio);
+    }
+    else{
+        setPrioButtonsColor(prio);
+    }
 }
 
 /**
@@ -281,9 +289,9 @@ function setPrioButtonsColor(i) {
  * @param {string} i - The priority to be set.
  * @returns {void} This function does not return a value.
  */
-function handleClickPrio(i) {
+function handleClickPrio(i, origin = "") {
     if (i) {
-        selectPrio(i); // Set the given priority
+        selectPrio(i, origin); // Set the given priority
     }
 }
 
