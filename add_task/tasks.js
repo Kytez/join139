@@ -53,6 +53,7 @@ function renderAssignedContactList(filteredContacts) {
     let assignedTo = document.getElementById('selected-contacts');
     assignedTo.innerHTML = ""; // Clear previous content
     
+    if(filteredContacts) {
     for (let i = 0; i < filteredContacts.length; i++) {
         let userName = filteredContacts[i].userName;
         let initialsString = ''; 
@@ -66,6 +67,7 @@ function renderAssignedContactList(filteredContacts) {
         let user = document.getElementById(`initials_${i}`);
         user.style.backgroundColor = color;
     }
+}
 }
 
 /**
