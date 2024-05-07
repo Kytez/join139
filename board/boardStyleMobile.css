@@ -257,6 +257,7 @@ input[type="search"]::-webkit-search-results-button { display: none; }
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 20px;
 }
 
 .pop-up-headline{
@@ -271,7 +272,7 @@ input[type="search"]::-webkit-search-results-button { display: none; }
 
 .subtasks-checkbox{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 16px;
 }
 
@@ -420,6 +421,10 @@ span{
 
 .prio-container {
     width: 100%;
+}
+
+.prio-txt{
+    text-transform: capitalize;
 }
 
 #contact-select {

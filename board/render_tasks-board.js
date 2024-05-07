@@ -82,7 +82,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, users, n
             <div class="margin-top-16 user-flex">
                 <span>Priority:</span>
                 <div class="user-prio">
-                    <span>${prio}</span> 
+                    <span class="prio-txt">${prio}</span> 
                     <img src="${assignPriorityImgTask(prio)}" alt="">
                 </div>
             </div>
@@ -182,7 +182,7 @@ function noTasksInArea(category){
 
 function assignPriorityImgTask(prio){
     let source;
-    let low = '../assets/img/icons/down.png'
+    let low = '../assets/img/icons/arrow-down.png'
     let medium = '../assets/img/icons/line.png'
     let urgent = '../assets/img/icons/arrow-up.png'
 
@@ -236,12 +236,14 @@ function assignUserColour(){
 function assigntaskUserColour(names, id){
     let namesArray = names.split(","); 
     for (let i = 0; i < allTasks.length; i++) {
-        const task = allTasks[i];
-        let divElement = document.getElementById(`assigned-taskUsers-${id}`);
-        for (let j = 0; j < namesArray.length; j++) {
-            const user = divElement.children[j].firstElementChild;
-            const colour = task['colors'][j];
-            user.style.backgroundColor = colour;
+        if(i == id){
+            const task = allTasks[i];
+            let divElement = document.getElementById(`assigned-taskUsers-${id}`);
+            for (let j = 0; j < namesArray.length; j++) {
+                const user = divElement.children[j].firstElementChild;
+                const colour = task['colors'][j];
+                user.style.backgroundColor = colour;
+            }
         }
     }
 }
