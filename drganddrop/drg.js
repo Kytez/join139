@@ -1,14 +1,9 @@
 const draggables = document.querySelectorAll('.draggable')
 const containers = document.querySelectorAll('.dropbox')
 
-function asdasd(){
-  console.log('asdasd');
-}
-
 draggables.forEach((draggable) => {
   draggable.addEventListener("dragstart", () => {
     draggable.classList.add("dragging");
-    console.log('dragstart');
   });
   draggable.addEventListener("dragend", () => {
     draggable.classList.remove("dragging");

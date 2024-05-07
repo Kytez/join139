@@ -447,8 +447,6 @@ function assignCircleColor(){
     if(random <= 95) colorIndex = Math.floor(random / 6);
     else colorIndex = 0;
     colour = colorArray[colorIndex];
-    console.log(random)
-    console.log(colorIndex)
     return colour;
 };
 

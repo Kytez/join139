@@ -48,7 +48,3 @@ function countDraggableElements() {
     // Die Anzahl der draggable Elemente zurückgeben
     return count;
 }
-
-// Beispielaufruf der Funktion
-const draggableCount = countDraggableElements();
-console.log("Anzahl der draggable Elemente in der DIV mit der ID 'todo':", draggableCount);

@@ -128,7 +128,6 @@ function addTaskBoard(workMode = 'todo') {
     let subTask = document.getElementById('subTaskBoard');
     let contactIDs = [];
     if (titleField.value.trim() === '' && categoryField.value.trim() === '' && dateField.value.trim() === '') {
-        console.log("Alle Felder sind leer. Es wird nichts ausgeführt.");
     }else {
         let task = {
             'id': allTasks.length + 1,
@@ -143,10 +142,7 @@ function addTaskBoard(workMode = 'todo') {
             createdAt: new Date().getDate(),
             'workMode': workMode,
         };
-        console.log(colors);
-        console.log(allTasks);
         allTasks.push(task);
-        console.log(allTasks);
         updateTasksHTML();
         hideAddTask();  
     }
