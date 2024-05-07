@@ -226,11 +226,31 @@
                         <div>
                             <span>Subtasks</span>
                         </div>
-                        <div class="flex subtask">
+                        <!-- <div class="flex subtask">
                             <input id="subTaskBoard" type="text" placeholder="Add new subtask" required minlength="4" >
                             <img onclick="addSubtask()" src="../assets/img/icons/add.png" alt="">
                         </div>
-                        <div><span id="subTask"></span></div>
+                        <div><span id="subTask"></span></div> -->
+                        <div class="flex focus-blue">
+                            <input id="subTaskInputBoard" type="text" placeholder="Add new subtask" minlength="4" >
+                            <div  class="subtask">
+                                <img id="subTaskBoard" onclick="hideAndShowEdit()" src="../assets/img/icons/add.png" alt="">
+                            </div>
+                            <div id="editBoard" class="double-button flex d-none">
+                                <div>
+                                    <img class="edit" onclick="clearInputAddTask()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
+                                </div>
+                                <div class="seperator"></div>
+                                <div>
+                                    <img class="edit" onclick="addSubtask()" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subTaskContainer">
+                            <div id="subTaskContainerBoard">
+
+                            </div>  
+                        </div>
                     </div>
                 </div>
                 
@@ -316,11 +336,31 @@
                         <div>
                             <span>Subtasks</span>
                         </div>
-                        <div class="flex subtask">
+                        <!-- <div class="flex subtask">
                             <input id="subTaskEdit" type="text" placeholder="Add new subtask" required minlength="4" >
                             <img onclick="addSubtask()" src="../assets/img/icons/add.png" alt="">
                         </div>
-                        <div><span id="subTaskEdit"></span></div>
+                        <div><span id="subTaskEdit"></span></div> -->
+                        <div class="flex focus-blue">
+                            <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" minlength="4" >
+                            <div  class="subtask">
+                                <img id="subTaskEdit" onclick="hideAndShowEdit()" src="../assets/img/icons/add.png" alt="">
+                            </div>
+                            <div id="editEditContainer" class="double-button flex d-none">
+                                <div>
+                                    <img class="edit" onclick="clearInputAddTask()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
+                                </div>
+                                <div class="seperator"></div>
+                                <div>
+                                    <img class="edit" onclick="addSubtask()" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subTaskContainer">
+                            <div id="subTaskContainerEdit">
+
+                            </div>  
+                        </div>
                     </div>
                 </div>
                 
