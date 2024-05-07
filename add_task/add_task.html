@@ -29,7 +29,7 @@
         </section>
         <section class="add-task">
 
-            <section class="add-task-section">
+            <section class="add-task-section padding-top-big">
                 <div class="size-100 padding-top-big"> 
                     <div>
                         <span>Title</span><span class="red">*</span>
@@ -58,33 +58,40 @@
             <div class="line"></div>
 
             <section class="add-task-section">
-                <div class="size-100 padding-top-big"> 
-                    <div>
-                        <span>Due date</span><span class="red">*</span>
-                    </div>
-                    <input class="focus-blue" id="date" type="date">
-                </div>
+                
                 <div class="prio-container padding-top-big">
-                    <span>Prio</span>
-                    <section class="prio-button-section">
-                        <div id="urgent" onclick="handleClickPrio('urgent')" class="prio-button">
-                            <span id="prio_urgent">Urgent</span> 
-                            <div class="arrow">
-                                <img src="../assets/img/svg/up.svg">
+                    <div class="size-100 padding-top-big"> 
+                        <div>
+                            <span>Due date</span><span class="red">*</span>
+                        </div>
+                        <input class="focus-blue" id="date" type="date">
+                    </div>
+                    
+                    <section class="prio-button-section padding-top-big">
+                        <div>
+                            <span class="padding-top-big">Prio</span>
+                        </div>
+                        <div class="prio-button-container">
+                            <div id="urgent" onclick="handleClickPrio('urgent')" class="prio-button">
+                                <span id="prio_urgent">Urgent</span> 
+                                <div class="arrow">
+                                    <img src="../assets/img/svg/up.svg">
+                                </div>
+                            </div>
+                            <div id="medium" onclick="handleClickPrio('medium')" class="prio-button">
+                                <span id="prio_medium">Medium</span>  
+                                <div class="arrow">
+                                    <img src="../assets/img/svg/line.svg">
+                                </div>
+                            </div>
+                            <div id="low" onclick="handleClickPrio('low')" class="prio-button">
+                                <span id="prio_low">Low</span>
+                                <div class="arrow">
+                                    <img src="../assets/img/svg/down.svg">
+                                </div>
                             </div>
                         </div>
-                        <div id="medium" onclick="handleClickPrio('medium')" class="prio-button">
-                            <span id="prio_medium">Medium</span>  
-                            <div class="arrow">
-                                <img src="../assets/img/svg/line.svg">
-                            </div>
-                        </div>
-                        <div id="low" onclick="handleClickPrio('low')" class="prio-button">
-                            <span id="prio_low">Low</span>
-                            <div class="arrow">
-                                <img src="../assets/img/svg/down.svg">
-                            </div>
-                        </div>
+                        
                     </section>
                     <div class="size-100 padding-top-big">
                         <div>

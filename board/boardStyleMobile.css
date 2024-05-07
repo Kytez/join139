@@ -111,6 +111,7 @@ input[type="search"]::-webkit-search-results-button { display: none; }
     border-radius: 10px;
     border-style: dotted;
     margin-top: 16px;
+    min-width: 260px;
 }
 
 .plus-img{
@@ -162,8 +163,8 @@ input[type="search"]::-webkit-search-results-button { display: none; }
 }
 
 .tasks{
-    width: 252px;
-    min-width: 252px;
+    width: 222px;
+    min-width: 222px;
     background-color: #FFFFFF;
     border-radius: 24px;
     margin-top: 16px;
@@ -694,6 +695,11 @@ button{
 
     .tasks{
         min-width: 252px;
+    }
+
+    .add-task-section {
+        display: flex;
+        justify-content: center;
     }
 
   }
