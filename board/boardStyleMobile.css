@@ -695,7 +695,7 @@ button{
     margin: 15px;
 }
 
-.todo-task:hover{
+.todo-task:active{
     transform: rotate(3deg);
 }
 
