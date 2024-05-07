@@ -54,7 +54,6 @@ span{
 }
 
 #contactInitals {
-    width: 440px;
     max-height: 160px;
     overflow-y: auto;
     display: flex;
@@ -505,6 +504,9 @@ button{
 
     input{
         width: 434px;
+    }
+    .size-100 {
+        width: auto;
     }
 }
 
