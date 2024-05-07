@@ -313,7 +313,6 @@ function renderSubtasks() {
 function addSubtask() {
     let subTaskInput = document.getElementById('subTaskInput').value;
     subTasks.push(subTaskInput);
-    console.log(subTaskInput);
     renderSubtasks(); // Rendere die Unteraufgaben neu
     document.getElementById('subTaskInput').value = "";
 }
@@ -335,7 +334,6 @@ function clearInputAddTask() {
  */
 function editSubtask(id) {
     // Hier kannst du die Logik für die Bearbeitung des Subtasks implementieren
-    console.log("Subtask bearbeiten:", id);
     // Zum Beispiel: Du könntest den Text im Subtask-Div durch ein Eingabefeld ersetzen, um die Bearbeitung zu ermöglichen
     let subTaskDiv = document.getElementById(`subTask_${id}`);
     let subTaskText = subTaskDiv.querySelector("div");
@@ -372,7 +370,6 @@ function saveEditSubtask(id) {
     let subTaskTextInput = elementToRemove.querySelector("input").value;
     let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
     let editSubtasks = document.getElementById(`editSubtasks_${id}`);
-    console.log(subTaskTextInput);
     if (elementToRemove) {
         elementToRemove.remove();
         subTasks.splice(id, 1);
