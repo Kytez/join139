@@ -291,6 +291,16 @@ input[type="search"]::-webkit-search-results-button { display: none; }
     margin-bottom: 16px;
 }
 
+.edit-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    /* height: 88px;
+    width: 100%; */
+    background-color: white;
+    display: flex;
+}
+
 #navDesktop {
     display: none;
 }
@@ -437,6 +447,10 @@ span{
     appearance: none;
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 .dropbox {
     background-color: #333;
     padding: 1rem;
@@ -578,6 +592,30 @@ button{
     gap: 4px;
     cursor: pointer;
     margin-left: 16px;
+}
+
+.btn-dark-edit{
+    color: white;
+    background-color: #2A3647;
+    border-radius: 8px;
+    border: none;
+    font-size: 21px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+
+    img{
+        width: 25.5px;
+        height: 25.5px;
+    }
+}
+
+.edit-btn{
+    position: relative;
 }
 
 .button-container-board {

@@ -249,15 +249,20 @@
 
 
 <section id="editTaskFullScreen" class="add-task-background">
-    <section onclick="doNotClose(event)" id="editTaskSection" class="add-task-card edit-task-card">
-        <section class="edit-task">
     
+    <section onclick="doNotClose(event)" style="position: relative;" id="editTaskSection" class="add-task-card edit-task-card">
+        <div class="edit-close">
+            <img onclick="hideEditTask()" class="close-img pointer" src="../assets/img/icons/close.png">
+        </div>
+        <section class="edit-task">
             <section class="add-task-section">
                 <div class="size-100 padding-top-big"> 
                     <div style="display: flex;
-                    justify-content: space-around;">
-                        <span>Title</span><span class="red">*</span>
-                        <span onclick="hideEditTask()" style="font-weight: bold; font-size: 48px; cursor: pointer;">X</span>
+                    ">
+                        <span style="
+                        margin-top: 35px;
+                    ">Title</span>
+
                     </div>
                     <input required id="titleBoard" type="text" placeholder="Enter a title" required minlength="4" >
                 </div>
@@ -323,8 +328,10 @@
         </section>  
     
         <div class="button-container-board flex">
-            <div id="boardAddTaskBtns" class="flex">
-                <button class="btn-dark">Ok <img src="../assets/img/icons/check_icon.png" alt=""></button>    
+            <div id="boardEditTaskBtns" class="flex">
+                <button class="btn-dark-edit">Ok 
+                    <img src="../assets/img/icons/check_icon.png" alt="">
+                </button>    
             </div>
         </div>
     </section>

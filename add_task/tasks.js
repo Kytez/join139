@@ -50,21 +50,23 @@ function setFilter(input) {
  * @return {void} This function does not return a value.
  */
 function renderAssignedContactList(filteredContacts) {
-    let assignedTo = document.getElementById('selected-contacts');
-    assignedTo.innerHTML = ""; // Clear previous content
-    
-    for (let i = 0; i < filteredContacts.length; i++) {
-        let userName = filteredContacts[i].userName;
-        let initialsString = ''; 
-        let color = filteredContacts[i].colour;
+    if(filteredContacts){
+        let assignedTo = document.getElementById('selected-contacts');
+        assignedTo.innerHTML = ""; // Clear previous content
         
-        let words = userName.split(' ');
-        let initials = words.map(word => word.charAt(0).toUpperCase());
-        initialsString = initials.join('');
-        
-        assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
-        let user = document.getElementById(`initials_${i}`);
-        user.style.backgroundColor = color;
+        for (let i = 0; i < filteredContacts.length; i++) {
+            let userName = filteredContacts[i].userName;
+            let initialsString = ''; 
+            let color = filteredContacts[i].colour;
+            
+            let words = userName.split(' ');
+            let initials = words.map(word => word.charAt(0).toUpperCase());
+            initialsString = initials.join('');
+            
+            assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
+            let user = document.getElementById(`initials_${i}`);
+            user.style.backgroundColor = color;
+        }
     }
 }
 
