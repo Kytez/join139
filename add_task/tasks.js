@@ -111,11 +111,13 @@ function addTask(workMode = 'todo') {
         'workMode': workMode,
         'names': names,
     };
-    console.log(colors);
-    console.log(allTasks);
     allTasks.push(task);
-    console.log(allTasks);
     saveTasks();
+    setTimeout(reloadPage, 300);
+}
+
+function reloadPage() {
+    window.location.reload();
 }
 
 /**
