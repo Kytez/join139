@@ -222,9 +222,6 @@ textarea::placeholder {
     gap: 8px;
 }
 
-.subtaskContainer{
-    margin-bottom: 50px;
-}
 
 #subTaskContainer {
     width: 440px;
@@ -543,6 +540,11 @@ button{
         align-items: center;
         margin-bottom: 124px;
     }
+
+    .subTaskContainer{
+        margin-bottom: 50px;
+    }
+
     .line{
         display: none;
     }
