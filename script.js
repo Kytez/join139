@@ -10,13 +10,6 @@ function initLogIn() {
   loadFromLocalStorage();
 }
 
-async function initSummary() {
-  await loadActiveUser();
-  setGreetingUserName();
-  await includeHTML();
-  renderUserInitials();
-}
-
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
   return fetch(STORAGE_URL, {
