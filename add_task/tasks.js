@@ -51,9 +51,10 @@ function setFilter(input) {
  */
 function renderAssignedContactList(filteredContacts) {
     let assignedTo = document.getElementById('selected-contacts');
-    assignedTo.innerHTML = ""; // Clear previous content
     
     if(filteredContacts) {
+    assignedTo.innerHTML = ""; // Clear previous content
+
     for (let i = 0; i < filteredContacts.length; i++) {
         let userName = filteredContacts[i].userName;
         let initialsString = ''; 
