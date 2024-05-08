@@ -20,7 +20,7 @@
     <script src="../contact/render_contacts.js"></script>
     <script src="../add_task/tasks.js"></script>
     <script src="../script.js"></script>
-
+    <script src="../board/addTask.js"></script>
 </head>
 <body onload="initBoard()" class="margin-body-mobile">
 
@@ -226,23 +226,18 @@
                         <div>
                             <span>Subtasks</span>
                         </div>
-                        <!-- <div class="flex subtask">
-                            <input id="subTaskBoard" type="text" placeholder="Add new subtask" required minlength="4" >
-                            <img onclick="addSubtask()" src="../assets/img/icons/add.png" alt="">
-                        </div>
-                        <div><span id="subTask"></span></div> -->
                         <div class="flex focus-blue">
                             <input id="subTaskInputBoard" type="text" placeholder="Add new subtask" minlength="4" >
                             <div  class="subtask">
-                                <img id="subTaskBoard" onclick="hideAndShowEdit()" src="../assets/img/icons/add.png" alt="">
+                                <img id="subTaskBoard" onclick="hideAndShowEditBoard()" src="../assets/img/icons/add.png" alt="">
                             </div>
                             <div id="editBoard" class="double-button flex d-none">
                                 <div>
-                                    <img class="edit" onclick="clearInputAddTask()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
+                                    <img class="edit" onclick="clearInputAddTaskBoard()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
                                 </div>
                                 <div class="seperator"></div>
                                 <div>
-                                    <img class="edit" onclick="addSubtask()" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                                    <img class="edit" onclick="addSubtaskBoard()" src="../assets/img/svg/Subtasks icons12.svg" alt="">
                                 </div>
                             </div>
                         </div>
