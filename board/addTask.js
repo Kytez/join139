@@ -38,6 +38,7 @@ function showContactListBoard(){
     } else {
         contactList.classList.add('d-none');
     }
+    setFilterBoard({value: ''});
 }
 
 function setFilterBoard(input) {
@@ -95,6 +96,7 @@ function showContactListEdit(){
     } else {
         contactList.classList.add('d-none');
     }
+    setFilterEdit({value: ''});
 }
 
 function setFilterEdit(input) {
@@ -142,4 +144,37 @@ function contactListAddTaskEditHTML (i, userName, initialsString) {
         <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
     </div>
     `;
+}
+
+function hideAndShowEditBoard() {
+    setFilterBoard({ value: `` });
+    let edit = document.getElementById('editBoard');
+    let subtaskt = document.getElementById('subTaskBoard');
+    if (edit.classList.contains('d-none')) {
+        edit.classList.remove('d-none');
+        subtaskt.classList.add('d-none');
+    }else {
+        edit.classList.add('d-none');
+        subtaskt.classList.remove('d-none');
+    }
+}
+
+function clearInputAddTaskEdit() {
+    document.getElementById('subTaskInputEdit').value = '';
+}
+
+function addSubtaskEdit() {
+    let subTaskInput = document.getElementById('subTaskInputEdit').value;
+    subTasks.push(subTaskInput);
+    renderSubtasksEdit();
+    document.getElementById('subTaskInputEdit').value = "";
+}
+
+function renderSubtasksEdit() {
+    let subTaskContainer = document.getElementById('subTaskContainerEdit');
+    subTaskContainer.innerHTML = "";
+    for (let i = 0; i < subTasks.length; i++) {
+        let subTaskHTML = addSubtaskHTML(subTasks[i], i);
+        subTaskContainer.innerHTML += subTaskHTML;
+    }
 }
