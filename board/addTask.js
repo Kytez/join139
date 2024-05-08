@@ -31,3 +31,65 @@ function renderSubtasks() {
         subTaskContainer.innerHTML += subTaskHTML;
     }
 }
+
+function showContactListBoard(){
+    let contactList = document.getElementById('selected-contactsBoard');
+    if (contactList.classList.contains('d-none')) {
+        contactList.classList.remove('d-none');
+    } else {
+        contactList.classList.add('d-none');
+    }
+}
+
+function setFilterBoard(input) {
+    let filter = input.value.trim().toLowerCase();
+    let filteredContacts;
+
+    if (filter !== '') {
+        filteredContacts = contacts.filter(function(contact) {
+            return contact.userName.toLowerCase().includes(filter);
+        });
+    } else {
+        filteredContacts = contacts;
+    }
+
+    renderAssignedContactListBoard(filteredContacts);
+}
+
+function renderAssignedContactListBoard(filteredContacts) {
+    let assignedTo = document.getElementById('selected-contactsBoard');
+    assignedTo.innerHTML = ""; // Clear previous content
+    
+    for (let i = 0; i < filteredContacts.length; i++) {
+        let userName = filteredContacts[i].userName;
+        let initialsString = ''; 
+        let color = filteredContacts[i].colour;
+        
+        let words = userName.split(' ');
+        let initials = words.map(word => word.charAt(0).toUpperCase());
+        initialsString = initials.join('');
+        
+        assignedTo.innerHTML += contactListAddTaskBoardHTML(i, userName, initialsString);
+        let user = document.getElementById(`initials_${i}`);
+        user.style.backgroundColor = color;
+    }
+}
+
+function contactListAddTaskBoardHTML (subTask, i) {
+    return `
+    <div id="subTask_${i}" class="singleSubTasks">
+        <div>${subTask}</div>
+            <div class="flex edit-trash">
+                <div>
+                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="../assets/img/svg/pencil.svg" alt="">
+                </div>
+                <div class="seperator">
+                </div>
+            <div>
+                <img class="edit" onclick="deleteSubtask(this.parentElement.parentElement, ${i})" src="../assets/img/svg/trash.svg" alt="">
+            </div>
+        </div>
+    </div>
+    `
+}
