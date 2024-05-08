@@ -365,6 +365,21 @@ button{
   #headerDesktop {
     display: none;
   }
+
+
+  /* ///////////////////////////////////////// Board /////////////////////////////////////////////////////// */
+
+  .add-task-card-board{
+    padding: 16px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    transform:translateX(275%);
+    transition: transform 400ms ease-in-out;
+    display: none;
+    flex-direction: column;
+    z-index: 201;
+}
+
   
   /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
   
@@ -417,6 +432,11 @@ button{
         padding-right: 60px !important;
         padding-left: 60px !important;
     }
+
+    .add-task-card-board{
+        padding-right: 60px !important;
+        padding-left: 60px !important;
+    }
   }
 
   @media(max-width: 992px) {
@@ -441,5 +461,10 @@ button{
     }
     .btn-white{
         display: none;
+    }
+
+    .add-task-card-board{
+        overflow-y: scroll;
+        height: 650px;
     }
   }

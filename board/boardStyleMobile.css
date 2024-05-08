@@ -237,7 +237,7 @@ input[type="search"]::-webkit-search-results-button { display: none; }
 
 .pop-up{
     position: fixed;
-    top: 100px;
+    top: 50px;
     /* left: calc(50% - 198px); */
     width: 396px;
     background-color: #FFFFFF;
@@ -291,6 +291,16 @@ input[type="search"]::-webkit-search-results-button { display: none; }
     margin-bottom: 16px;
 }
 
+.edit-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    /* height: 88px;
+    width: 100%; */
+    background-color: white;
+    display: flex;
+}
+
 #navDesktop {
     display: none;
 }
@@ -310,6 +320,11 @@ span{
     font-weight: 400;
 }
 
+.add-task-overlay{
+    overflow-y: scroll;
+    height: 650px;
+}
+
 .headline-section{
     width: 100%;
     height: 112px;
@@ -320,8 +335,7 @@ span{
 
 #addTaskSection{
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: -90px;
     max-width: 1260px;
     margin: 100px;
     transform:translateX(275%);
@@ -407,7 +421,15 @@ span{
     border-radius: 24px;
     height: 560px;
     position: fixed;
-    top: 100px;
+    top: 60px;
+    padding: 16px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    transform: translateX(275%);
+    transition: transform 400ms ease-in-out;
+    display: none;
+    flex-direction: column;
+    z-index: 201;
 }
 
 .prio-button-section{
@@ -435,6 +457,10 @@ span{
     background-position: 95%;
     cursor: pointer;
     appearance: none;
+}
+
+.pointer{
+    cursor: pointer;
 }
 
 .dropbox {
@@ -580,6 +606,30 @@ button{
     margin-left: 16px;
 }
 
+.btn-dark-edit{
+    color: white;
+    background-color: #2A3647;
+    border-radius: 8px;
+    border: none;
+    font-size: 21px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+
+    img{
+        width: 25.5px;
+        height: 25.5px;
+    }
+}
+
+.edit-btn{
+    position: relative;
+}
+
 .button-container-board {
     display: flex;
     justify-content: space-between;
@@ -645,10 +695,13 @@ button{
     margin: 15px;
 }
 
-.todo-task:hover{
+.todo-task:active{
     transform: rotate(3deg);
 }
+
   
+
+
   /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
   
   @media(min-width: 992px) {
@@ -746,6 +799,11 @@ button{
 
     .draggable{
         margin-right: 20px;
+    }
+
+    .add-task-card{
+        overflow-y: scroll;
+        height: 650px;
     }
 
 

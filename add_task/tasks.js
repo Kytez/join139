@@ -50,6 +50,24 @@ function setFilter(input) {
  * @return {void} This function does not return a value.
  */
 function renderAssignedContactList(filteredContacts) {
+    if(filteredContacts){
+        let assignedTo = document.getElementById('selected-contacts');
+        assignedTo.innerHTML = ""; // Clear previous content
+        
+        for (let i = 0; i < filteredContacts.length; i++) {
+            let userName = filteredContacts[i].userName;
+            let initialsString = ''; 
+            let color = filteredContacts[i].colour;
+            
+            let words = userName.split(' ');
+            let initials = words.map(word => word.charAt(0).toUpperCase());
+            initialsString = initials.join('');
+            
+            assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
+            let user = document.getElementById(`initials_${i}`);
+            user.style.backgroundColor = color;
+        }
+    }
     let assignedTo = document.getElementById('selected-contacts');
     
     if(filteredContacts) {
@@ -251,9 +269,17 @@ function changeCheckedAndColor(i, contact, name){
  * @param {string} i - The priority to be set.
  * @return {void} This function does not return a value.
  */
-function selectPrio(i) {
+function selectPrio(i, origin) {
     prio = i;
-    setPrioButtonsColor(prio);
+    if (origin == "edit") {
+        setPrioButtonsColorEdit(prio);
+    }
+    else if(origin == "board"){
+        setPrioButtonsColorBoard(prio);
+    }
+    else{
+        setPrioButtonsColor(prio);
+    }
 }
 
 /**
@@ -282,9 +308,9 @@ function setPrioButtonsColor(i) {
  * @param {string} i - The priority to be set.
  * @returns {void} This function does not return a value.
  */
-function handleClickPrio(i) {
+function handleClickPrio(i, origin = "") {
     if (i) {
-        selectPrio(i); // Set the given priority
+        selectPrio(i, origin); // Set the given priority
     }
 }
 

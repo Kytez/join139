@@ -111,7 +111,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, users, n
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div onclick="showEditTask()" class="subtasks-checkbox">
+                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${users}')" class="subtasks-checkbox">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>

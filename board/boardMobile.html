@@ -149,7 +149,7 @@
 
 
 <section  onclick="hideAddTask()" id="addTaskFullScreen" class="add-task-background">
-    <form onclick="doNotClose(event)" id="addTaskSection" class="add-task-card">
+    <form onclick="doNotClose(event)" id="addTaskSection" class="add-task-card-board">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -172,9 +172,9 @@
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <input oninput="setFilter(this)" required type="text" onclick="showContactList()" class="styled-input" placeholder="Select contacts to assign" id="contact-select" name="contacts">
-                    <section class="d-none contact-list" id="selected-contacts"></section>
-                    <div id="contactInitals"></div>
+                    <input oninput="setFilter(this)" required type="text" onclick="showContactList()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts">
+                    <section class="d-none contact-list" id="selected-contactsBoard"></section>
+                    <div id="contactInitalsBoard"></div>
                     
             
                 </input>
@@ -193,20 +193,20 @@
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
                     <section class="prio-button-section">
-                        <div id="urgent" onclick="handleClickPrio('urgent')" class="prio-button">
-                            <span id="prio_urgent">Urgent</span> 
+                        <div id="urgentBoard" onclick="handleClickPrio('urgent', 'board')" class="prio-button">
+                            <span id="prio_urgentBoard">Urgent</span> 
                             <div class="arrow">
                                 <img src="../assets/img/svg/up.svg">
                             </div>
                         </div>
-                        <div id="medium" onclick="handleClickPrio('medium')" class="prio-button">
-                            <span id="prio_medium">Medium</span>  
+                        <div id="mediumBoard" onclick="handleClickPrio('medium', 'board')" class="prio-button">
+                            <span id="prio_mediumBoard">Medium</span>  
                             <div class="arrow">
                                 <img src="../assets/img/svg/line.svg">
                             </div>
                         </div>
-                        <div id="low" onclick="handleClickPrio('low')" class="prio-button">
-                            <span id="prio_low">Low</span>
+                        <div id="lowBoard" onclick="handleClickPrio('low', 'board')" class="prio-button">
+                            <span id="prio_lowBoard">Low</span>
                             <div class="arrow">
                                 <img src="../assets/img/svg/down.svg">
                             </div>
@@ -226,11 +226,31 @@
                         <div>
                             <span>Subtasks</span>
                         </div>
-                        <div class="flex subtask">
+                        <!-- <div class="flex subtask">
                             <input id="subTaskBoard" type="text" placeholder="Add new subtask" required minlength="4" >
                             <img onclick="addSubtask()" src="../assets/img/icons/add.png" alt="">
                         </div>
-                        <div><span id="subTask"></span></div>
+                        <div><span id="subTask"></span></div> -->
+                        <div class="flex focus-blue">
+                            <input id="subTaskInputBoard" type="text" placeholder="Add new subtask" minlength="4" >
+                            <div  class="subtask">
+                                <img id="subTaskBoard" onclick="hideAndShowEdit()" src="../assets/img/icons/add.png" alt="">
+                            </div>
+                            <div id="editBoard" class="double-button flex d-none">
+                                <div>
+                                    <img class="edit" onclick="clearInputAddTask()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
+                                </div>
+                                <div class="seperator"></div>
+                                <div>
+                                    <img class="edit" onclick="addSubtask()" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subTaskContainer">
+                            <div id="subTaskContainerBoard">
+
+                            </div>  
+                        </div>
                     </div>
                 </div>
                 
@@ -249,23 +269,28 @@
 
 
 <section id="editTaskFullScreen" class="add-task-background">
-    <section onclick="doNotClose(event)" id="editTaskSection" class="add-task-card edit-task-card">
-        <section class="edit-task">
     
+    <section onclick="doNotClose(event)" style="position: relative;" id="editTaskSection" class=" edit-task-card">
+        <div class="edit-close">
+            <img onclick="hideEditTask()" class="close-img pointer" src="../assets/img/icons/close.png">
+        </div>
+        <section class="edit-task">
             <section class="add-task-section">
                 <div class="size-100 padding-top-big"> 
                     <div style="display: flex;
-                    justify-content: space-around;">
-                        <span>Title</span><span class="red">*</span>
-                        <span onclick="hideEditTask()" style="font-weight: bold; font-size: 48px; cursor: pointer;">X</span>
+                    ">
+                        <span style="
+                        margin-top: 35px;
+                    ">Title</span>
+
                     </div>
-                    <input required id="titleBoard" type="text" placeholder="Enter a title" required minlength="4" >
+                    <input required id="titleEdit" type="text" placeholder="Enter a title" required minlength="4" >
                 </div>
                 <div class="size-100 padding-top-big">
                     <div>
                         <span>Description</span>
                     </div>
-                    <textarea id="descriptionBoard" placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
+                    <textarea id="descriptionEdit" placeholder="Enter a Description" name="" cols="30" rows="3"></textarea>
                 </div>
                 
             </section>    
@@ -274,25 +299,25 @@
                     <div>
                         <span>Due date</span><span class="red">*</span>
                     </div>
-                    <input id="dateBoard" type="date">
+                    <input id="dateEdit" type="date">
                 </div>
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
                     <section class="prio-button-section">
-                        <div id="urgent" onclick="handleClickPrio('urgent')" class="prio-button">
-                            <span id="prio_urgent">Urgent</span> 
+                        <div id="urgentEdit" onclick="handleClickPrio('urgent', 'edit')" class="prio-button">
+                            <span id="prio_urgentEdit">Urgent</span> 
                             <div class="arrow">
                                 <img src="../assets/img/svg/up.svg">
                             </div>
                         </div>
-                        <div id="medium" onclick="handleClickPrio('medium')" class="prio-button">
-                            <span id="prio_medium">Medium</span>  
+                        <div id="mediumEdit" onclick="handleClickPrio('medium', 'edit')" class="prio-button">
+                            <span id="prio_mediumEdit">Medium</span>  
                             <div class="arrow">
                                 <img src="../assets/img/svg/line.svg">
                             </div>
                         </div>
-                        <div id="low" onclick="handleClickPrio('low')" class="prio-button">
-                            <span id="prio_low">Low</span>
+                        <div id="lowEdit" onclick="handleClickPrio('low', 'edit')" class="prio-button">
+                            <span id="prio_lowEdit">Low</span>
                             <div class="arrow">
                                 <img src="../assets/img/svg/down.svg">
                             </div>
@@ -302,20 +327,40 @@
                         <div>
                             <span>Assigned to</span>
                         </div>
-                        <input oninput="setFilter(this)" required type="text" onclick="showContactList()" class="styled-input" placeholder="Select contacts to assign" id="contact-select" name="contacts">
-                        <section class="d-none contact-list" id="selected-contacts"></section>
-                        <div id="contactInitals"></div>
+                        <input oninput="setFilter(this)" required type="text" onclick="showContactList()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectEdit" name="contacts">
+                        <section class="d-none contact-list" id="selected-contactsEdit"></section>
+                        <div id="contactInitalsEdit"></div>
                     </input>
                     </div>
                     <div class="size-100 subtask-container padding-top-big"> 
                         <div>
                             <span>Subtasks</span>
                         </div>
-                        <div class="flex subtask">
-                            <input id="subTaskBoard" type="text" placeholder="Add new subtask" required minlength="4" >
+                        <!-- <div class="flex subtask">
+                            <input id="subTaskEdit" type="text" placeholder="Add new subtask" required minlength="4" >
                             <img onclick="addSubtask()" src="../assets/img/icons/add.png" alt="">
                         </div>
-                        <div><span id="subTask"></span></div>
+                        <div><span id="subTaskEdit"></span></div> -->
+                        <div class="flex focus-blue">
+                            <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" minlength="4" >
+                            <div  class="subtask">
+                                <img id="subTaskEdit" onclick="hideAndShowEdit()" src="../assets/img/icons/add.png" alt="">
+                            </div>
+                            <div id="editEditContainer" class="double-button flex d-none">
+                                <div>
+                                    <img class="edit" onclick="clearInputAddTask()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
+                                </div>
+                                <div class="seperator"></div>
+                                <div>
+                                    <img class="edit" onclick="addSubtask()" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="subTaskContainer">
+                            <div id="subTaskContainerEdit">
+
+                            </div>  
+                        </div>
                     </div>
                 </div>
                 
@@ -323,8 +368,10 @@
         </section>  
     
         <div class="button-container-board flex">
-            <div id="boardAddTaskBtns" class="flex">
-                <button class="btn-dark">Ok <img src="../assets/img/icons/check_icon.png" alt=""></button>    
+            <div id="boardEditTaskBtns" class="flex">
+                <button class="btn-dark-edit">Ok 
+                    <img src="../assets/img/icons/check_icon.png" alt="">
+                </button>    
             </div>
         </div>
     </section>
