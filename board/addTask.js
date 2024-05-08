@@ -86,3 +86,60 @@ function contactListAddTaskBoardHTML (i, userName, initialsString) {
     </div>
     `;
 }
+
+
+function showContactListEdit(){
+    let contactList = document.getElementById('selected-contactsEdit');
+    if (contactList.classList.contains('d-none')) {
+        contactList.classList.remove('d-none');
+    } else {
+        contactList.classList.add('d-none');
+    }
+}
+
+function setFilterEdit(input) {
+    let filter = input.value.trim().toLowerCase();
+    let filteredContacts;
+    console.log(filteredContacts);
+    if (filter !== '') {
+        filteredContacts = contacts.filter(function(contact) {
+            return contact.userName.toLowerCase().includes(filter);
+        });
+    } else {
+        filteredContacts = contacts;
+    }
+
+    renderAssignedContactListEdit(filteredContacts);
+}
+
+function renderAssignedContactListEdit(filteredContacts) {
+    let assignedTo = document.getElementById('selected-contactsEdit');
+    assignedTo.innerHTML = "";
+    console.log(filteredContacts);
+    for (let i = 0; i < filteredContacts.length; i++) {
+        let userName = filteredContacts[i].userName;
+        let initialsString = ''; 
+        let color = filteredContacts[i].colour;
+        
+        let words = userName.split(' ');
+        let initials = words.map(word => word.charAt(0).toUpperCase());
+        initialsString = initials.join('');
+        
+        assignedTo.innerHTML += contactListAddTaskBoardHTML(i, userName, initialsString);
+        let user = document.getElementById(`initials_${i}`);
+        user.style.backgroundColor = color;
+    }
+}
+
+function contactListAddTaskEditHTML (i, userName, initialsString) {
+    return `
+    <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
+        <div class="contact-list-entry">
+            <div id="initials_${i}" class="initials">${initialsString}</div>
+            <div class="profile-fullname">${userName} </div> 
+        </div>
+        <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
+        <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
+    </div>
+    `;
+}
