@@ -1,4 +1,5 @@
 function hideAndShowEditBoard() {
+    setFilterBoard({ value: `` });
     let edit = document.getElementById('editBoard');
     let subtaskt = document.getElementById('subTaskBoard');
     if (edit.classList.contains('d-none')) {
@@ -17,15 +18,13 @@ function clearInputAddTaskBoard() {
 function addSubtaskBoard() {
     let subTaskInput = document.getElementById('subTaskInputBoard').value;
     subTasks.push(subTaskInput);
-    renderSubtasks(); // Rendere die Unteraufgaben neu
+    renderSubtasks();
     document.getElementById('subTaskInputBoard').value = "";
 }
 
 function renderSubtasks() {
     let subTaskContainer = document.getElementById('subTaskContainerBoard');
-    subTaskContainer.innerHTML = ""; // Clear previous content
-    
-    // Iterate through subTasks array and render each subtask
+    subTaskContainer.innerHTML = "";
     for (let i = 0; i < subTasks.length; i++) {
         let subTaskHTML = addSubtaskHTML(subTasks[i], i);
         subTaskContainer.innerHTML += subTaskHTML;
@@ -44,7 +43,7 @@ function showContactListBoard(){
 function setFilterBoard(input) {
     let filter = input.value.trim().toLowerCase();
     let filteredContacts;
-
+    console.log(filteredContacts);
     if (filter !== '') {
         filteredContacts = contacts.filter(function(contact) {
             return contact.userName.toLowerCase().includes(filter);
@@ -58,8 +57,8 @@ function setFilterBoard(input) {
 
 function renderAssignedContactListBoard(filteredContacts) {
     let assignedTo = document.getElementById('selected-contactsBoard');
-    assignedTo.innerHTML = ""; // Clear previous content
-    
+    assignedTo.innerHTML = "";
+    console.log(filteredContacts);
     for (let i = 0; i < filteredContacts.length; i++) {
         let userName = filteredContacts[i].userName;
         let initialsString = ''; 
@@ -75,21 +74,15 @@ function renderAssignedContactListBoard(filteredContacts) {
     }
 }
 
-function contactListAddTaskBoardHTML (subTask, i) {
+function contactListAddTaskBoardHTML (i, userName, initialsString) {
     return `
-    <div id="subTask_${i}" class="singleSubTasks">
-        <div>${subTask}</div>
-            <div class="flex edit-trash">
-                <div>
-                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
-                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="../assets/img/svg/pencil.svg" alt="">
-                </div>
-                <div class="seperator">
-                </div>
-            <div>
-                <img class="edit" onclick="deleteSubtask(this.parentElement.parentElement, ${i})" src="../assets/img/svg/trash.svg" alt="">
-            </div>
+    <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
+        <div class="contact-list-entry">
+            <div id="initials_${i}" class="initials">${initialsString}</div>
+            <div class="profile-fullname">${userName} </div> 
         </div>
+        <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
+        <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
     </div>
-    `
+    `;
 }
