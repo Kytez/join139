@@ -1,32 +1,3 @@
-let tasks_test= [{
-    'title': 'Kochwelt Page & Recipe Recommender',
-    'description': 'Build start page with recipe recoomendation...',
-    'category': 'User Story', 
-    'work-mode': 'todo',
-    'id': 0,
-},
-{
-    'title': 'Kochwelt Page & Recipe Recommender',
-    'description': 'Build start page with recipe recoomendation...',
-    'category': 'User Story', 
-    'work-mode': 'inprogress',
-    'id': 1,
-},
-];
-
-// let allTasks = [];
-
-// let task_template = {
-//     'title': title.value,
-//     'description': description.value,
-//     'assignedTo': assignedTo.value,
-//     'date': date.value,
-//     'prio': prio,
-//     'category': category.value,
-//     'subTask': subTask.value,
-//     createdAt: new Date().getDate()
-// };
-
 
 async function initBoard() {
     await includeHTML();
@@ -38,59 +9,23 @@ async function initBoard() {
     renderAssignedContactList()
 }
 
+let categories = ['todo', 'inprogress', 'feedback', 'done']
 
 function updateTasksHTML() {
     assignIDTasks();
-    updateToDoHTML();
-    updateInProgressHTML();
-    updateFeedbackHTML();
-    updateDoneHTML();
+    categories.forEach(cat => {
+        updateCategoryHTML(cat);
+    });
     assignCategoryColour();
-}
+    assignUserColour();
 
-function updateToDoHTML(){
-    let todo_list = allTasks.filter(t => t['workMode'] == 'todo');
-    if(todo_list.length == 0){
-        noTasksInArea('todo');
-    }
-    else{
-        generateTask('todo', todo_list);
-
-    }
 }
 
 
-
-function updateInProgressHTML(){
-    let inprogress_list = allTasks.filter(t => t['workMode'] == 'inprogress');
-    if(inprogress_list.length == 0){
-        noTasksInArea('inprogress');
-    }
-    else{
-        generateTask('inprogress', inprogress_list);
-
-    }
-}
-
-
-function updateFeedbackHTML(){
-    let feedback_list = allTasks.filter(t => t['workMode'] == 'feedback');
-    if(feedback_list.length == 0){
-        noTasksInArea('feedback');
-    }
-    else{
-        generateTask('feedback', feedback_list);
-    }
-}
-
-function updateDoneHTML(){
-    let done_list = allTasks.filter(t => t['workMode'] == 'done');
-    if(done_list.length == 0){
-        noTasksInArea('done');
-    }
-    else{
-        generateTask('done', done_list);
-    }
+function updateCategoryHTML(cat){
+    let list =  allTasks.filter(t => t['workMode'] == cat);
+    if(list.length == 0) noTasksInArea(cat);
+    else generateTask(cat, list);
 }
 
 
@@ -104,7 +39,7 @@ function generateTask(id, list){
 
 function returnTaskHTML(element){
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}')" class="todo-task draggable tasks">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}', '${element['assignedTo']}', '${element['names']}')" class="todo-task draggable tasks">
             <div class="task-padding">
                 <div class="task-category">${element['category']}</div>
                 <span class="task-title">${element['title']}</span> <br>
@@ -116,7 +51,7 @@ function returnTaskHTML(element){
                 </div>
             </div>
             <div class="user-container flex">
-                <div id="assigned-users" class="flex">
+                <div id="assigned-users-${element['id']}" class="flex m-left">
                     ${generateAssignedUsers(element)}
                 </div>
                 <img id="img-${element['id']}" class="priority" src="${assignPriorityImgTask(element['prio'])}" alt="">
@@ -136,13 +71,13 @@ function returnSubTasksHTML(subTasks){
     return subTaskHTML
 }
 
-function renderTasksPopUp(title, description, date, id){
+function renderTasksPopUp(title, description, date, id, category, prio, users, names){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
         <div class="task-padding gap">
             <div class="space-between subtasks-checkbox">
-                <div class="task-title">User Story</div> 
+                <div class="task-category">${category}</div> 
                 <img onclick="hideTask()" class="close-img" src="../assets/img/icons/close.png">
             </div>
             
@@ -157,15 +92,14 @@ function renderTasksPopUp(title, description, date, id){
             <div class="margin-top-16 user-flex">
                 <span>Priority:</span>
                 <div class="user-prio">
-                    <span>medium</span> 
-                    <img src="../assets/img/icons/line.png" alt="">
+                    <span class="prio-txt">${prio}</span> 
+                    <img src="${assignPriorityImgTask(prio)}" alt="">
                 </div>
             </div>
             <div class="margin-top-16">
                 <span>Assigned To:</span>
-                <div class="margin-top-16 user-flex user-assigned subtasks-checkbox">
-                    <div class="pop-up-user-circle">AM</div>
-                    <span>Emanuel DeiMudda</span>
+                <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned subtasks-checkbox">
+                    ${generateAssignedUsersPopUp(names)}
                 </div>
             </div>
             <div class="margin-top-16">
@@ -187,7 +121,7 @@ function renderTasksPopUp(title, description, date, id){
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div class="subtasks-checkbox">
+                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${users}')" class="subtasks-checkbox">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>
@@ -197,8 +131,8 @@ function renderTasksPopUp(title, description, date, id){
 }
 
 function generateAssignedUsers(element){
-    let assignedUsers = document.getElementById('assigned-users')
     let usersHTML = '';
+    console.log(typeof(element))
     if(element['assignedTo'] == null){
         element['assignedTo'] = 0;
     }
@@ -206,20 +140,59 @@ function generateAssignedUsers(element){
         const user = element['assignedTo'][i];
         usersHTML += /*html*/`
             <div class="user-circle"><span>${user}</span></div>
-        `
+        `;
+    
     }
+    
     return usersHTML
 }
 
-function noTasksInArea(id){
-    document.getElementById(id).innerHTML = `
-        <div class="center no-taskts-to-do">No tasks To do</div>
-    `
+function generateAssignedUsersPopUp(names){
+    let usersHTML = '';
+    let namesArray = names.split(",");
+    for (let i = 0; i < namesArray.length; i++) {
+        const user = namesArray[i];
+        usersHTML += /*html*/`
+            <div class="flex align-center">
+                <div class="pop-up-user-circle">${getInitials(user)}</div>
+                <span>${user}</span>
+            </div>
+        `;
+    
+    }
+    
+    return usersHTML
+}
+
+
+
+function noTasksInArea(category){
+    let catContainer = document.getElementById(category) 
+    if(category == 'todo'){
+        catContainer.innerHTML = `
+            <div class="center no-taskts-to-do">No tasks To do</div>
+        `
+    }
+    else if(category == 'inprogress'){
+        catContainer.innerHTML = `
+            <div class="center no-taskts-to-do">No tasks in Progress</div>
+        `
+    }
+    else if(category == 'feedback'){
+        catContainer.innerHTML = `
+            <div class="center no-taskts-to-do">No tasks await Feedback</div>
+        `
+    }
+    else if(category == 'done'){
+        catContainer.innerHTML = `
+            <div class="center no-taskts-to-do">No tasks Done</div>
+        `
+    }
 }
 
 function assignPriorityImgTask(prio){
     let source;
-    let low = '../assets/img/icons/down.png'
+    let low = '../assets/img/icons/arrow-down.png'
     let medium = '../assets/img/icons/line.png'
     let urgent = '../assets/img/icons/arrow-up.png'
 
@@ -256,12 +229,36 @@ function assignIDTasks(){
         const task = allTasks[i];
         task['id'] = i;
     }
-    saveTasks();
+}
+
+function assignUserColour(){
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i];
+        let divElement = document.getElementById(`assigned-users-${i}`);
+        for (let j = 0; j < task['assignedTo'].length; j++) {
+            const user = divElement.children[j];
+            const colour = task['colors'][j];
+            user.style.backgroundColor = colour;
+        }
+    }
+}
+
+function assigntaskUserColour(names, id){
+    let namesArray = names.split(","); 
+    for (let i = 0; i < allTasks.length; i++) {
+        if(i == id){
+            const task = allTasks[i];
+            let divElement = document.getElementById(`assigned-taskUsers-${id}`);
+            for (let j = 0; j < namesArray.length; j++) {
+                const user = divElement.children[j].firstElementChild;
+                const colour = task['colors'][j];
+                user.style.backgroundColor = colour;
+            }
+        }
+    }
 }
 
 function deleteTask(id){
     allTasks.splice(id, 1)
     updateTasksHTML();
 }
-
-
