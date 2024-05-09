@@ -47,7 +47,7 @@ function returnTaskHTML(element){
                     <span class="description">${element['description']}</span> <br>
                 </div>
                 <div class="subtasks">
-                    <span>1/2 Subtasks</span>   
+                    <span id="loadingSubTasks-${element['id']}">${returnSubTasksHTML(element['subTask'])}</span>   
                 </div>
             </div>
             <div class="user-container flex">
@@ -60,6 +60,16 @@ function returnTaskHTML(element){
     `
 }
 
+function returnSubTasksHTML(subTasks){
+    let subTaskHTML = '';
+    if(subTasks.length > 0){
+        subTaskHTML =` ${subTasks.length}/${subTasks.length} Subtasks `
+    }
+    else{
+        subTaskHTML = "No Subtasks"
+    }
+    return subTaskHTML
+}
 
 function renderTasksPopUp(title, description, date, id, category, prio, users, names){
     let taskPopUp = document.getElementById('taskPopUp')
