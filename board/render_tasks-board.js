@@ -47,7 +47,7 @@ function returnTaskHTML(element){
                     <span class="description">${element['description']}</span> <br>
                 </div>
                 <div class="subtasks">
-                    <span id="loadingSubTasks-${element['id']}">${returnSubTasksHTML(element['subTask'])}</span>   
+                    <span id="loadingSubTasks-${element['id']}">${returnSubTasksHTML(element['id'])}</span>   
                 </div>
             </div>
             <div class="user-container flex">
@@ -60,10 +60,18 @@ function returnTaskHTML(element){
     `
 }
 
-function returnSubTasksHTML(subTasks){
+function returnSubTasksHTML(id){
     let subTaskHTML = '';
+    let subTasks = allTasks[id]['subTask']
+    let checkedTasks = allTasks[id]['checkbox'] 
+    let sumTrue = 0;
+    checkedTasks.forEach(value => {
+        if (value) {
+            sumTrue++;
+        }
+    });
     if(subTasks.length > 0){
-        subTaskHTML =` ${subTasks.length}/${subTasks.length} Subtasks `
+        subTaskHTML =` ${sumTrue}/${subTasks.length} Subtasks `
     }
     else{
         subTaskHTML = "No Subtasks"
@@ -104,15 +112,8 @@ function renderTasksPopUp(title, description, date, id, category, prio, users, n
             </div>
             <div class="margin-top-16">
                 <span>Subtasks:</span>
-                <div class="">
-                    <div class="margin-top-16 subtasks-checkbox user-assigned">
-                        <img src="../assets/img/icons/check box mobile.png" alt="">
-                        <span>Implement Recipe recoomendation</span>
-                    </div>
-                    <div class="margin-top-16 subtasks-checkbox user-assigned">
-                        <img src="../assets/img/icons/check button mobile.png" alt="">
-                        <span>Start Page Layout</span>
-                    </div>
+                <div id="subTasksPopUp">
+                    ${generateSubTasksInPopUP(id)}
                 </div>
             </div>
             <div class="margin-top-16 subtask-edit-delete user-flex">
@@ -128,6 +129,58 @@ function renderTasksPopUp(title, description, date, id, category, prio, users, n
             </div>
         </div>
     `
+}
+
+function generateSubTasksInPopUP(id){
+    let subTasksPopUpHTML = ''
+    let subTasksArray = allTasks[id]['subTask'] 
+    if(subTasksArray.length > 0){
+        for (let i = 0; i < subTasksArray.length; i++) {
+            const subTask = subTasksArray[i];
+            subTasksPopUpHTML += /*html*/ `
+                <div class="margin-top-16 subtasks-checkbox user-assigned">
+                    <input onclick="saveCheckBoxStatus(${id})" id="box${id}${i}" type="checkbox"/>
+                    <span>${subTask}</span>
+                </div>
+            `
+        }
+    }
+
+    return subTasksPopUpHTML;
+}
+
+function saveCheckBoxStatus(id){
+    let subTasks = allTasks[id]['subTask']
+    for (let i = 0; i < subTasks.length; i++) {
+        const subTask = subTasks[i];
+        const checkbox = document.getElementById(`box${id}${i}`)
+        if(checkbox.checked){
+            allTasks[id]['checkbox'][i] = true;
+        }
+        else{
+            allTasks[id]['checkbox'][i] = false;
+        }
+    }
+    updateTasksHTML();
+    saveTasks();
+}
+
+function loadCheckBoxStatus(id){
+    let checkBoxValue = allTasks[id]['checkbox']
+    console.log(checkBoxValue)
+    console.log(typeof(checkBoxValue))
+    if(checkBoxValue.length > 0){
+        for (let i = 0; i < checkBoxValue.length; i++) {
+            const value = checkBoxValue[i];
+            const checkbox = document.getElementById(`box${id}${i}`)
+            if(value == true){
+                checkbox.checked = true;
+            }
+            else{
+                checkbox.checked = false;
+            }
+        }
+    }
 }
 
 function generateAssignedUsers(element){

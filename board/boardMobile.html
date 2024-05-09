@@ -90,7 +90,7 @@
     </section>
 
     <section id="tasks" onclick="hideTask()" class="pop-up-section">
-        <div id="taskPopUp" class="pop-up">
+        <div onclick="doNotClose(event)" id="taskPopUp" class="pop-up">
             <div class="task-padding gap">
                 <div class="space-between subtasks-checkbox">
                     <div class="task-title">User Story</div> 
@@ -172,7 +172,7 @@
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <input oninput="setFilterBoard(this)" required type="text" onclick="showContactListBoard()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts">
+                    <input oninput="setFilterBoard(this)" type="text" onclick="showContactListBoard()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts">
                     <section class="d-none contact-list" id="selected-contactsBoard"></section>
                     <div id="contactInitalsBoard"></div>
                     

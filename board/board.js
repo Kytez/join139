@@ -15,6 +15,7 @@ function showTask(title, description, date, id, category, prio, users, names) {
     renderTasksPopUp(title, description, date, id, category, prio, users, names)
     assignCategoryColour();
     assigntaskUserColour(names, id);
+    loadCheckBoxStatus(id);
 }
 
 
@@ -164,7 +165,7 @@ function addTaskBoard(workMode = 'todo') {
     let category = document.getElementById('categoryBoard');
     let subTask = document.getElementById('subTaskBoard');
     let contactIDs = [];
-    if (titleField.value.trim() === '' && categoryField.value.trim() === '' && dateField.value.trim() === '') {
+    if (title.value.trim() === '' && category.value.trim() === '' && date.value.trim() === '') {
     }else {
         let task = {
             'id': allTasks.length + 1,
@@ -182,6 +183,7 @@ function addTaskBoard(workMode = 'todo') {
         };
         allTasks.push(task);
         updateTasksHTML();
+        saveTasks();
         hideAddTask();  
     }
 }
