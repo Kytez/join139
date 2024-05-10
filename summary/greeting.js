@@ -22,6 +22,10 @@ window.addEventListener("resize", () => {
   }
 });
 
+/**
+ * Sets the greeting user name based on the active user. If the active user is a guest, it clears the greetingsUserName element. Otherwise, it sets the greetingsUserName element to display the active user with a line break.
+ *
+ */
 function setGreetingUserName() {
   if (activeUser === "Guest") {
     document.getElementById("greetingsUserName").innerHTML = "";

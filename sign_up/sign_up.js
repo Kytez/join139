@@ -1,3 +1,8 @@
+/**
+ * Asynchronously signs up a user with the provided information.
+ *
+ * @return {Promise<void>} A promise that resolves when the user is successfully signed up.
+ */
 async function signUp() {
   let name = document.getElementById("nameInputSignUp");
   let email = document.getElementById("emailInputSignUp");
@@ -28,6 +33,12 @@ async function signUp() {
   }
 }
 
+/**
+ * Checks if the password matches the confirmed password input. 
+ * If they match or the confirmed password is empty, it removes the red border class and hides the tooltip. 
+ * Otherwise, it adds the red border class and shows the tooltip.
+ *
+ */
 function checkPasswordMatch() {
   let password = document.getElementById("passwordInputSignUp");
   let confirmPassword = document.getElementById("confirmPasswordInputSignUp");
@@ -42,6 +53,11 @@ function checkPasswordMatch() {
   }
 }
 
+/**
+ * Checks the change in the password input field and updates the visibility icon accordingly.
+ *
+ * @return {void} This function does not return anything.
+ */
 function checkIconChangePassword() {
   let passwordSignup = document.getElementById("passwordInputSignUp");
   let visibiltyIconPassword = document.getElementById('iconVisibilityPasswordSignUp');
@@ -55,6 +71,11 @@ function checkIconChangePassword() {
 }
 }
 
+/**
+ * Checks the change in the confirm password input field and updates the visibility icon accordingly.
+ *
+ * @return {void} This function does not return anything.
+ */
 function checkIconChangeConfirmPassword() {
   let confirmPasswordSignup = document.getElementById("confirmPasswordInputSignUp");
   let visibiltyIconConfirmPassword = document.getElementById('iconVisibilityPasswordConfirmSignUp');
@@ -68,6 +89,11 @@ function checkIconChangeConfirmPassword() {
   }
 }
 
+/**
+ * Toggles the visibility of the password input field and updates the visibility icon accordingly.
+ *
+ * @return {void} This function does not return anything.
+ */
 function changePasswordVisibility() {
   let visibiltyIcon = document.getElementById('iconVisibilityPasswordSignUp');
   let inputField = document.getElementById("passwordInputSignUp");
@@ -81,6 +107,11 @@ function changePasswordVisibility() {
   }
 }
 
+/**
+ * Toggles the visibility of the confirm password input field and updates the visibility icon accordingly.
+ *
+ * @return {void} This function does not return anything.
+ */
 function changeConfirmPasswordVisibility() {
   let visibiltyIcon = document.getElementById('iconVisibilityPasswordConfirmSignUp');
   let inputField = document.getElementById("confirmPasswordInputSignUp");
@@ -94,6 +125,15 @@ function changeConfirmPasswordVisibility() {
   }
 }
 
+/**
+ * Resets the form by clearing input values, unchecking checkboxes, and enabling the sign-up button.
+ *
+ * @param {Element} name - The input element for the name.
+ * @param {Element} email - The input element for the email.
+ * @param {Element} password - The input element for the password.
+ * @param {Element} btnSignUp - The sign-up button element.
+ * @return {void} This function does not return anything.
+ */
 function resetForm(name, email, password, btnSignUp) {
   let confirmPassword = document.getElementById("confirmPasswordInputSignUp");
   let privacyCheckboxInputSignUp = document.getElementById("privacyCheckboxInputSignUp");
@@ -111,6 +151,11 @@ function resetForm(name, email, password, btnSignUp) {
   tooltip.classList.add("d-none");
 }
 
+/**
+ * Redirects the user to the login page with a success message.
+ *
+ * @return {void} This function does not return anything.
+ */
 function moveToLogIn() {
   window.location.href = "../index.html?msg=You signed up successfully";
 }

@@ -1,8 +1,18 @@
+/**
+ * Logs in a guest user and redirects to the summary page after a delay.
+ *
+ * @return {void} This function does not return anything.
+ */
 function guestLogIn() {
     setItem("activeUser", activeUser);
     setTimeout(moveToSummary, 1500);
   }
   
+/**
+ * Logs in a user based on the provided email and password.
+ *
+ * @return {void} This function does not return anything.
+ */
   function logIn() {
     let emailLogin = document.getElementById("emailInputLogin");
     let passwordLogin = document.getElementById("passwordInputLogin");
@@ -24,6 +34,12 @@ function guestLogIn() {
     }
   }
 
+  /**
+   * Checks if the remember checkbox is checked and saves the user to local storage.
+   *
+   * @param {object} userFound - The user object to be saved to local storage.
+   * @return {void} This function does not return anything.
+   */
   function checkRememberMe(userFound) {
     let checkbox = document.getElementById('rememberCheckbox');
 
@@ -32,12 +48,23 @@ function guestLogIn() {
     }
   }
 
+/**
+ * Saves the given user object to the local storage.
+ *
+ * @param {object} userFound - The user object to be saved.
+ * @return {void} This function does not return anything.
+ */
   function saveToLocalStorage(userFound) {
     let userAsString = JSON.stringify(userFound);
 
     localStorage.setItem('userActive', userAsString);
   }
 
+/**
+ * Loads user data from local storage and fills login fields if user is remembered.
+ *
+ * @return {void} This function does not return anything.
+ */
   function loadFromLocalStorage() {
     let userAsArray = JSON.parse(localStorage.getItem('userActive'));
 
@@ -46,11 +73,22 @@ function guestLogIn() {
     }
   }
 
+/**
+ * Fills the login form with the provided user's email and password if the user is remembered.
+ *
+ * @param {Object} user - The user object containing the email and password.
+ * @return {void} This function does not return anything.
+ */
   function fillLoginDataIfUserRemembered(user) {
     document.getElementById('emailInputLogin').value = user.email;
     document.getElementById('passwordInputLogin').value = user.password;
   }
 
+/**
+ * Checks the change in the password input field and updates the visibility icon accordingly.
+ *
+ * @return {void} This function does not return anything.
+ */
   function checkIconChange() {
     let passwordLogin = document.getElementById("passwordInputLogin");
     let visibiltyIcon = document.getElementById('iconVisibilityPassword');
@@ -64,6 +102,12 @@ function guestLogIn() {
     }
   }
 
+  /**
+   * A function to change the visibility of the password input field.
+   *
+   * @param {void} This function does not take any parameters.
+   * @return {void} This function does not return anything.
+   */
   function changePasswordVisibility() {
     let visibiltyIcon = document.getElementById('iconVisibilityPassword');
     let inputField = document.getElementById("passwordInputLogin");
