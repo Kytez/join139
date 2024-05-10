@@ -320,4 +320,5 @@ function assigntaskUserColour(names, id){
 function deleteTask(id){
     allTasks.splice(id, 1)
     updateTasksHTML();
+    saveTasks();
 }
