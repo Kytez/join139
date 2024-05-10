@@ -21,11 +21,9 @@
     margin-top: 24px;
 }
 
-/* .flex{
-    display: flex;
-    justify-content: center;
+.align-items-center {
     align-items: center;
-} */
+}
 
 .column{
     flex-direction: column;
