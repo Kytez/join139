@@ -14,7 +14,7 @@ function showTask(title, description, date, id, category, prio, names) {
     }
     renderTasksPopUp(title, description, date, id, category, prio, names)
     assignCategoryColour();
-    assigntaskUserColour(names, id);
+    assignUserColourPopUp(names, id);
     loadCheckBoxStatus(id);
 }
 
@@ -128,6 +128,7 @@ function addTaskBoard(workMode = 'todo') {
             createdAt: new Date().getDate(),
             'workMode': workMode,
             'names': names,
+            'checkbox': [],
         };
         allTasks.push(task);
         updateTasksHTML();

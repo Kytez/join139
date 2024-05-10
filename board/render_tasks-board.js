@@ -17,22 +17,22 @@ function updateTasksHTML() {
         updateCategoryHTML(cat);
     });
     assignCategoryColour();
-    assignUserColour();
+    assignUserColourCard();
 
 }
 
 
 function updateCategoryHTML(cat){
-    let list =  allTasks.filter(t => t['workMode'] == cat);
-    if(list.length == 0) noTasksInArea(cat);
-    else generateTask(cat, list);
+    let listPerCategory =  allTasks.filter(t => t['workMode'] == cat);
+    if(listPerCategory.length == 0) noTasksInArea(cat);
+    else generateTask(cat, listPerCategory);
 }
 
 
 function generateTask(id, list){
     document.getElementById(id).innerHTML = '';
-    for (let index = 0; index < list.length; index++) {
-        const element = list[index];
+    for (let i = 0; i < list.length; i++) {
+        const element = list[i];
         document.getElementById(id).innerHTML += returnTaskHTML(element);
     }
 }
@@ -47,7 +47,7 @@ function returnTaskHTML(element){
                     <span class="description">${element['description']}</span> <br>
                 </div>
                 <div class="subtasks">
-                    ${returnSubTasksHTML(element['id'])}  
+                    ${generateProgressBar(element['id'])}  
                 </div>
             </div>
             <div class="user-container flex">
@@ -60,9 +60,21 @@ function returnTaskHTML(element){
     `
 }
 
-function returnSubTasksHTML(id){
+function generateProgressBar(id){
     let subTaskHTML = '';
     let subTasks = allTasks[id]['subTask']
+    let sumChecked = calculateSumCheckedTasks(id);
+    let percentage = Math.round(sumChecked/subTasks.length*100)
+    if(subTasks.length > 0){
+        subTaskHTML = returnProgressBarHTML(percentage, sumChecked, subTasks)
+    }
+    else{
+        subTaskHTML = "No Subtasks"
+    }
+    return subTaskHTML
+}
+
+function calculateSumCheckedTasks(id){
     let checkedTasks = allTasks[id]['checkbox'] 
     let sumTrue = 0;
     checkedTasks.forEach(value => {
@@ -70,19 +82,16 @@ function returnSubTasksHTML(id){
             sumTrue++;
         }
     });
-    let percentage = Math.round(sumTrue/subTasks.length*100)
-    if(subTasks.length > 0){
-        subTaskHTML =` 
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: ${percentage}%;"></div>
-            </div>
-            <span class="subFonts">${sumTrue}/${subTasks.length} Subtasks</span> 
-        `
-    }
-    else{
-        subTaskHTML = "No Subtasks"
-    }
-    return subTaskHTML
+    return sumTrue;
+}
+
+function returnProgressBarHTML(percentage, sumChecked, subTasks){
+    return ` 
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: ${percentage}%;"></div>
+        </div>
+        <span class="subFonts">${sumChecked}/${subTasks.length} Subtasks</span> 
+    `
 }
 
 function renderTasksPopUp(title, description, date, id, category, prio, names){
@@ -92,7 +101,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names){
         <div class="task-popup-padding width-100">
             <div class="space-between gap subtasks-checkbox">
                 <div class="task-category header-popup">${category}</div> 
-                <img onclick="hideTask()" class="close-img" src="../assets/img/icons/close.png">
+                <img onclick="hideTask()" class="close-img pointer" src="../assets/img/icons/close.png">
             </div>
             
             <span class="pop-up-headline">${title}</span> <br>
@@ -119,16 +128,16 @@ function renderTasksPopUp(title, description, date, id, category, prio, names){
             <div class="margin-top-24">
                 <span class="detail">Subtasks</span>
                 <div class="margin-top-12" id="subTasksPopUp">
-                    ${generateSubTasksInPopUP(id)}
+                    ${generateSubTasksInPopUp(id)}
                 </div>
             </div>
             <div class="margin-top-24 subtask-edit-delete user-flex">
-                <div onclick="deleteTask(${id})" class="subtasks-checkbox">
+                <div onclick="deleteTask(${id})" class="subtasks-checkbox pointer">
                     <img src="../assets/img/icons/delete.png" alt="">
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}')" class="subtasks-checkbox">
+                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}')" class="subtasks-checkbox pointer">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>
@@ -137,33 +146,40 @@ function renderTasksPopUp(title, description, date, id, category, prio, names){
     `
 }
 
-function generateSubTasksInPopUP(id){
+function generateSubTasksInPopUp(id){
     let subTasksPopUpHTML = ''
     let subTasksArray = allTasks[id]['subTask'] 
     if(subTasksArray.length > 0){
         for (let i = 0; i < subTasksArray.length; i++) {
-            const subTask = subTasksArray[i];
-            subTasksPopUpHTML += /*html*/ `
-                <div class=" subtasks-checkbox user-assigned">
-                    <input class="checkbox-custom" onclick="saveCheckBoxStatus(${id})" id="box${id}${i}" type="checkbox"/>
-                    <span>${subTask}</span>
-                </div>
-            `
+            subTasksPopUpHTML += returnSubTasksHTML(id, i)
         }
     }
     else{
         subTasksPopUpHTML = /*html*/ `
-                No Subtasks
-            `
+            No Subtasks
+        `
     }
-
     return subTasksPopUpHTML;
+}
+
+function returnSubTasksHTML(id, i){
+    return /*html*/ `
+        <div class=" subtasks-checkbox user-assigned">
+            <input class="checkbox-custom" onclick="saveCheckBoxStatus(${id})" id="box${id}${i}" type="checkbox"/>
+            <span>${subTask}</span>
+        </div>
+    `
 }
 
 function saveCheckBoxStatus(id){
     let subTasks = allTasks[id]['subTask']
+    subTaskIsChecked(id, subTasks)
+    updateTasksHTML();
+    saveTasks();
+}
+
+function subTaskIsChecked(id, subTasks){
     for (let i = 0; i < subTasks.length; i++) {
-        const subTask = subTasks[i];
         const checkbox = document.getElementById(`box${id}${i}`)
         if(checkbox.checked){
             allTasks[id]['checkbox'][i] = true;
@@ -172,31 +188,30 @@ function saveCheckBoxStatus(id){
             allTasks[id]['checkbox'][i] = false;
         }
     }
-    updateTasksHTML();
-    saveTasks();
 }
 
 function loadCheckBoxStatus(id){
     let checkBoxValue = allTasks[id]['checkbox']
-    console.log(checkBoxValue)
-    console.log(typeof(checkBoxValue))
     if(checkBoxValue.length > 0){
-        for (let i = 0; i < checkBoxValue.length; i++) {
-            const value = checkBoxValue[i];
-            const checkbox = document.getElementById(`box${id}${i}`)
-            if(value == true){
-                checkbox.checked = true;
-            }
-            else{
-                checkbox.checked = false;
-            }
+        checkSubTasks(id, checkBoxValue)
+    }
+}
+
+function checkSubTasks(id, checkBoxValue){
+    for (let i = 0; i < checkBoxValue.length; i++) {
+        const value = checkBoxValue[i];
+        const checkbox = document.getElementById(`box${id}${i}`)
+        if(value == true){
+            checkbox.checked = true;
+        }
+        else{
+            checkbox.checked = false;
         }
     }
 }
 
 function generateAssignedUsers(element){
     let usersHTML = '';
-    console.log(typeof(element))
     if(element['assignedTo'] == null){
         element['assignedTo'] = 0;
     }
@@ -205,9 +220,7 @@ function generateAssignedUsers(element){
         usersHTML += /*html*/`
             <div class="user-circle"><span>${user}</span></div>
         `;
-    
     }
-    
     return usersHTML
 }
 
@@ -216,42 +229,40 @@ function generateAssignedUsersPopUp(names){
     let namesArray = names.split(",");
     for (let i = 0; i < namesArray.length; i++) {
         const user = namesArray[i];
-        usersHTML += /*html*/`
-            <div class="flex align-center">
-                <div class="pop-up-user-circle">${getInitials(user)}</div>
-                <span>${user}</span>
-            </div>
-        `;
-    
+        usersHTML += returnAssignedUserHTMLPopUp(user)
     }
-    
     return usersHTML
+}
+
+function returnAssignedUserHTMLPopUp(user){
+    return /*html*/`
+        <div class="flex align-center">
+            <div class="pop-up-user-circle">${getInitials(user)}</div>
+            <span>${user}</span>
+        </div>
+    `
 }
 
 
 
 function noTasksInArea(category){
-    let catContainer = document.getElementById(category) 
-    if(category == 'todo'){
-        catContainer.innerHTML = `
-            <div class="center no-taskts-to-do">No tasks To do</div>
-        `
+    let taskArea = '';
+    switch (category) {
+        case 'todo':
+            message = 'No tasks To do';
+            break;
+        case 'inprogress':
+            message = 'No tasks in Progress';
+            break;
+        case 'feedback':
+            message = 'No tasks await Feedback';
+            break;
+        case 'done':
+            message = 'No tasks Done';
+            break;
     }
-    else if(category == 'inprogress'){
-        catContainer.innerHTML = `
-            <div class="center no-taskts-to-do">No tasks in Progress</div>
-        `
-    }
-    else if(category == 'feedback'){
-        catContainer.innerHTML = `
-            <div class="center no-taskts-to-do">No tasks await Feedback</div>
-        `
-    }
-    else if(category == 'done'){
-        catContainer.innerHTML = `
-            <div class="center no-taskts-to-do">No tasks Done</div>
-        `
-    }
+    let catContainer = document.getElementById(category);
+    catContainer.innerHTML = `<div class="center no-taskts-to-do">${taskArea}</div>`;
 }
 
 function assignPriorityImgTask(prio){
@@ -260,15 +271,9 @@ function assignPriorityImgTask(prio){
     let medium = '../assets/img/icons/line.png'
     let urgent = '../assets/img/icons/arrow-up.png'
 
-    if(prio == 'low'){
-        source = low;
-    }
-    if(prio == 'medium'){
-        source = medium;
-    }
-    if(prio == 'urgent'){
-        source = urgent;
-    }
+    if(prio == 'low') source = low;
+    else if(prio == 'medium') source = medium;
+    else if(prio == 'urgent') source = urgent;
     return source;
 }
 
@@ -276,15 +281,11 @@ function assignPriorityImgTask(prio){
 function assignCategoryColour(){
     const task_category = document.querySelectorAll('.task-category');
     task_category.forEach(task => {
-        if(task.innerHTML === 'Technical Task'){
-            task.style.backgroundColor = '#1FD7C1';
-        }
-        
+            if(task.innerHTML === 'Technical Task'){
+                task.style.backgroundColor = '#1FD7C1';
+            }
         });
     };
-
-
-
 
 
 
@@ -295,7 +296,7 @@ function assignIDTasks(){
     }
 }
 
-function assignUserColour(){
+function assignUserColourCard(){
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
         let divElement = document.getElementById(`assigned-users-${i}`);
@@ -307,18 +308,14 @@ function assignUserColour(){
     }
 }
 
-function assigntaskUserColour(names, id){
+function assignUserColourPopUp(names, id){
     let namesArray = names.split(","); 
-    for (let i = 0; i < allTasks.length; i++) {
-        if(i == id){
-            const task = allTasks[i];
-            let divElement = document.getElementById(`assigned-taskUsers-${id}`);
-            for (let j = 0; j < namesArray.length; j++) {
-                const user = divElement.children[j].firstElementChild;
-                const colour = task['colors'][j];
-                user.style.backgroundColor = colour;
-            }
-        }
+    const task = allTasks[id];
+    let divElement = document.getElementById(`assigned-taskUsers-${id}`);
+    for (let j = 0; j < namesArray.length; j++) {
+        const user = divElement.children[j].firstElementChild;
+        const colour = task['colors'][j];
+        user.style.backgroundColor = colour;
     }
 }
 
