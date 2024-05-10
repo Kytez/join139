@@ -112,7 +112,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names){
             </div>
             <div class="margin-top-16">
                 <span>Assigned To:</span>
-                <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned subtasks-checkbox">
+                <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned">
                     ${generateAssignedUsersPopUp(names)}
                 </div>
             </div>
@@ -145,7 +145,7 @@ function generateSubTasksInPopUP(id){
             const subTask = subTasksArray[i];
             subTasksPopUpHTML += /*html*/ `
                 <div class="margin-top-16 subtasks-checkbox user-assigned">
-                    <input onclick="saveCheckBoxStatus(${id})" id="box${id}${i}" type="checkbox"/>
+                    <input class="checkbox-custom" onclick="saveCheckBoxStatus(${id})" id="box${id}${i}" type="checkbox"/>
                     <span>${subTask}</span>
                 </div>
             `
