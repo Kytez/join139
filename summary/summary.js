@@ -123,5 +123,9 @@ function formattingDatesOfUrgentDueDates() {
 
 function renderUrgentDeadline() {
   let nextDeadline = findNextUrgentDueDate();
-  document.getElementById("summaryUrgentDeadlineDate").innerHTML = nextDeadline;
+  if(urgentCount.length < 1) {
+    document.getElementById("summaryUrgentDeadlineDate").innerHTML = 'No urgent Task';
+  } else {
+    document.getElementById("summaryUrgentDeadlineDate").innerHTML = nextDeadline;
+  }
 }
