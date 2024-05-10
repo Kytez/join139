@@ -29,6 +29,7 @@ async function initContacts() {
     await loadActiveUser();
     renderUserInitials();
     await loadContacts();
+    assignIDContacts()
     renderContactList();
 }
 
@@ -63,9 +64,10 @@ async function addNewContact(){
     let email = document.getElementById('input-email')
     let phone = document.getElementById('input-phone')
     let colour = assignCircleColor();
+    let id = [];
     // let capitalizedName = userName.value.charAt(0).toUpperCase() + userName.value.slice(1);
     let capitalizedName = capitalizeName(userName.value);
-    pushContactsArray(capitalizedName, email.value, phone.value, colour);
+    pushContactsArray(capitalizedName, email.value, phone.value, colour, id);
     await saveContacts();
     renderContactList();
     showNewContactInformation(capitalizedName, email.value, phone.value, colour);
@@ -94,12 +96,13 @@ function capitalizeName(userName){
  * @param {String} colour This is the random color assigned to the contact.
  */
 
-function pushContactsArray(userName, email, phone, colour){
+function pushContactsArray(userName, email, phone, colour, id){
     contacts.push({
         userName: userName,
         email: email,
         phone: phone,
-        colour: colour
+        colour: colour,
+        id: id,
     });
 }
 
@@ -170,7 +173,7 @@ function contactListPerLetterTemplate(list){
 function returnContactHTML(contact){
 
     return /*html*/`
-        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}', '${contact.colour}')" class="d-flex contact">
+        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}', '${contact.colour}', '${contact.id}')" class="d-flex contact">
             <div id="listCircle" class="contact-circle d-flex justify-center align-center" style="background: ${contact.colour};">
                 <span class="contact-letters">${getInitials(contact.userName)}</span>
             </div>
@@ -192,11 +195,11 @@ function returnContactHTML(contact){
  * @param {String} colour This is the random color assigned to the contact.
  */
 
-function renderViewedContact(userName, email, phone, colour){
+function renderViewedContact(userName, email, phone, colour, id){
     let contactMobile = document.getElementById('viewedContact')
     let contactDesktop = document.getElementById('viewedContactDesktop')
-    contactMobile.innerHTML = returnContactViewHTMLMobile(userName, email, phone, colour);
-    contactDesktop.innerHTML = returnContactViewHTMLDesktop(userName, email, phone, colour);
+    contactMobile.innerHTML = returnContactViewHTMLMobile(userName, email, phone, colour, id);
+    contactDesktop.innerHTML = returnContactViewHTMLDesktop(userName, email, phone, colour, id);
 }
 
 
@@ -210,7 +213,7 @@ function renderViewedContact(userName, email, phone, colour){
  * @returns 
  */
 
-function returnContactViewHTMLMobile(userName, email, phone, colour){
+function returnContactViewHTMLMobile(userName, email, phone, colour, id){
 return /*html*/`
     <div>
         <img onclick="closeContact()" class="return-arrow pointer" src="../assets/img/icons/arrow-left-line.png" alt="">
@@ -262,7 +265,7 @@ return /*html*/`
  * @returns 
  */
 
-function returnContactViewHTMLDesktop(userName, email, phone, colour){
+function returnContactViewHTMLDesktop(userName, email, phone, colour, id){
 return /*html*/`
     <div id="contact-container-desktop" class="contact-container-desktop d-flex column bottom">
         <div class="d-flex align-center">
@@ -275,7 +278,7 @@ return /*html*/`
                     <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="edit-delete edit d-flex align-center pointer">
                         <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
                         Edit</div>
-                    <div onclick="deleteContact(${contacts.findIndex(contact => contact.userName == userName)})" class="d-flex blue align-center pointer edit-delete">
+                    <div onclick="deleteContact(${id})" class="d-flex blue align-center pointer edit-delete">
                         <img class="bin" style="margin-right: 10px;" src="../assets/img/contacts/delete.png" alt="">
                         Delete</div>
                 </div>
@@ -449,5 +452,12 @@ function assignCircleColor(){
     colour = colorArray[colorIndex];
     return colour;
 };
+
+function assignIDContacts(){
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        contact['id'] = i;
+    }
+}
 
 

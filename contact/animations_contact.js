@@ -79,9 +79,9 @@ function closeOptions(){
  * @param {String} colour This is the random color assigned to the contact.
  */
 
-function viewContact(userName, email, phone, colour){
+function viewContact(userName, email, phone, colour, id){
     contactViewOpen = true;
-    renderViewedContact(userName, email, phone, colour);
+    renderViewedContact(userName, email, phone, colour, id);
     if(window.innerWidth < 992){
         document.getElementById('contact-list').classList.add('d-non')
         document.getElementById('viewedContact').classList.remove('d-non')

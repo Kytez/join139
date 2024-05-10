@@ -39,7 +39,7 @@ function generateTask(id, list){
 
 function returnTaskHTML(element){
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}', '${element['assignedTo']}', '${element['names']}')" class="todo-task draggable tasks">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}', '${element['names']}')" class="todo-task draggable tasks">
             <div class="task-padding">
                 <div class="task-category">${element['category']}</div>
                 <span class="task-title">${element['title']}</span> <br>
@@ -47,7 +47,7 @@ function returnTaskHTML(element){
                     <span class="description">${element['description']}</span> <br>
                 </div>
                 <div class="subtasks">
-                    <span id="loadingSubTasks-${element['id']}">${returnSubTasksHTML(element['id'])}</span>   
+                    ${returnSubTasksHTML(element['id'])}  
                 </div>
             </div>
             <div class="user-container flex">
@@ -70,8 +70,14 @@ function returnSubTasksHTML(id){
             sumTrue++;
         }
     });
+    let percentage = Math.round(sumTrue/subTasks.length*100)
     if(subTasks.length > 0){
-        subTaskHTML =` ${sumTrue}/${subTasks.length} Subtasks `
+        subTaskHTML =` 
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: ${percentage}%;"></div>
+            </div>
+            <span class="subFonts">${sumTrue}/${subTasks.length} Subtasks</span> 
+        `
     }
     else{
         subTaskHTML = "No Subtasks"
@@ -79,7 +85,7 @@ function returnSubTasksHTML(id){
     return subTaskHTML
 }
 
-function renderTasksPopUp(title, description, date, id, category, prio, users, names){
+function renderTasksPopUp(title, description, date, id, category, prio, names){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
@@ -122,7 +128,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, users, n
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${users}')" class="subtasks-checkbox">
+                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}')" class="subtasks-checkbox">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>

@@ -1,4 +1,4 @@
-function showTask(title, description, date, id, category, prio, users, names) {
+function showTask(title, description, date, id, category, prio, names) {
     document.getElementById('tasks').style.display = 'flex';
    let taskPopUp = document.getElementById('taskPopUp')
    taskPopUp.style.display = 'flex';
@@ -12,7 +12,7 @@ function showTask(title, description, date, id, category, prio, users, names) {
             }, 100);
         })(i);
     }
-    renderTasksPopUp(title, description, date, id, category, prio, users, names)
+    renderTasksPopUp(title, description, date, id, category, prio, names)
     assignCategoryColour();
     assigntaskUserColour(names, id);
     loadCheckBoxStatus(id);
