@@ -89,7 +89,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
-        <div class="task-padding gap">
+        <div class="task-padding gap width-100">
             <div class="space-between subtasks-checkbox">
                 <div class="task-category">${category}</div> 
                 <img onclick="hideTask()" class="close-img" src="../assets/img/icons/close.png">
@@ -320,5 +320,6 @@ function assigntaskUserColour(names, id){
 function deleteTask(id){
     allTasks.splice(id, 1)
     updateTasksHTML();
+    hideTask();
     saveTasks();
 }
