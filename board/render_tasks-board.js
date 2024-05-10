@@ -89,40 +89,40 @@ function renderTasksPopUp(title, description, date, id, category, prio, names){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
-        <div class="task-padding gap width-100">
-            <div class="space-between subtasks-checkbox">
-                <div class="task-category">${category}</div> 
+        <div class="task-popup-padding width-100">
+            <div class="space-between gap subtasks-checkbox">
+                <div class="task-category header-popup">${category}</div> 
                 <img onclick="hideTask()" class="close-img" src="../assets/img/icons/close.png">
             </div>
             
             <span class="pop-up-headline">${title}</span> <br>
-            <div class="margin-top-16">
+            <div class="margin-top-24">
                 <span>${description}</span>
             </div>
-            <div class="margin-top-16">
-                <span>Due date:</span>
+            <div class="margin-top-24">
+                <span class="detail duedate-popup">Due date:</span>
                 <span>${date}</span>
             </div>
-            <div class="margin-top-16 user-flex">
-                <span>Priority:</span>
+            <div class="margin-top-24 user-flex">
+                <span class="detail">Priority:</span>
                 <div class="user-prio">
                     <span class="prio-txt">${prio}</span> 
                     <img src="${assignPriorityImgTask(prio)}" alt="">
                 </div>
             </div>
-            <div class="margin-top-16">
-                <span>Assigned To:</span>
+            <div class="margin-top-24">
+                <span class="detail">Assigned To:</span>
                 <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned">
                     ${generateAssignedUsersPopUp(names)}
                 </div>
             </div>
-            <div class="margin-top-16">
-                <span>Subtasks:</span>
-                <div id="subTasksPopUp">
+            <div class="margin-top-24">
+                <span class="detail">Subtasks</span>
+                <div class="margin-top-12" id="subTasksPopUp">
                     ${generateSubTasksInPopUP(id)}
                 </div>
             </div>
-            <div class="margin-top-16 subtask-edit-delete user-flex">
+            <div class="margin-top-24 subtask-edit-delete user-flex">
                 <div onclick="deleteTask(${id})" class="subtasks-checkbox">
                     <img src="../assets/img/icons/delete.png" alt="">
                     <span>Delete</span>
@@ -144,12 +144,17 @@ function generateSubTasksInPopUP(id){
         for (let i = 0; i < subTasksArray.length; i++) {
             const subTask = subTasksArray[i];
             subTasksPopUpHTML += /*html*/ `
-                <div class="margin-top-16 subtasks-checkbox user-assigned">
+                <div class=" subtasks-checkbox user-assigned">
                     <input class="checkbox-custom" onclick="saveCheckBoxStatus(${id})" id="box${id}${i}" type="checkbox"/>
                     <span>${subTask}</span>
                 </div>
             `
         }
+    }
+    else{
+        subTasksPopUpHTML = /*html*/ `
+                No Subtasks
+            `
     }
 
     return subTasksPopUpHTML;
