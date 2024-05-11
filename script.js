@@ -5,11 +5,23 @@ let users = [];
 
 let activeUser = [];
 
+/**
+ * Initializes the login process by loading users and restoring state from local storage.
+ *
+ * @return {void} This function does not return anything.
+ */
 function initLogIn() {
   loadUsers();
   loadFromLocalStorage();
 }
 
+/**
+ * Sets an item in the storage with the given key and value.
+ *
+ * @param {string} key - The key of the item to be set.
+ * @param {any} value - The value of the item to be set.
+ * @return {Promise<any>} A promise that resolves to the response data from the server.
+ */
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
   return fetch(STORAGE_URL, {
@@ -18,6 +30,12 @@ async function setItem(key, value) {
   }).then((response) => response.json());
 }
 
+/**
+ * Retrieves an item from the storage using the provided key.
+ *
+ * @param {string} key - The key of the item to retrieve.
+ * @return {Promise<any>} A promise that resolves to the value of the item if found, or rejects with an error message if not found.
+ */
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   return fetch(url)
@@ -30,6 +48,11 @@ async function getItem(key) {
     });
 }
 
+/**
+ * Asynchronously includes HTML content from specified files into matching elements in the DOM.
+ *
+ * @return {Promise<void>} A promise that resolves when all HTML content has been included.
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
@@ -44,6 +67,11 @@ async function includeHTML() {
   }
 }
 
+/**
+ * Loads the users from the storage.
+ *
+ * @return {Promise<void>} A promise that resolves when the users are successfully loaded.
+ */
 async function loadUsers() {
   try {
     users = JSON.parse(await getItem("users"));
@@ -52,10 +80,21 @@ async function loadUsers() {
   }
 }
 
+/**
+ * Saves the active user to the storage.
+ *
+ * @param {Object} userFound - The user object to be saved.
+ * @return {void} This function does not return anything.
+ */
 function saveActiveUser(userFound) {
   setItem("activeUser", userFound);
 }
 
+/**
+ * Loads the active user from storage and sets the active user name.
+ *
+ * @return {Promise<void>} A promise that resolves when the active user is successfully loaded.
+ */
 async function loadActiveUser() {
   let activeUserArray = JSON.parse(await getItem("activeUser"));
 
@@ -66,6 +105,9 @@ async function loadActiveUser() {
   }
 }
 
+/**
+ * Renders the user initials based on the active user's name.
+ */
 function renderUserInitials() {
   let userInitials = document.getElementById("userInitials");
   let userInitialsDesktop = document.getElementById("userInitialsDesktop");
@@ -81,6 +123,12 @@ function renderUserInitials() {
   }
 }
 
+/**
+ * Generates initials from a given username by splitting it into words and 
+ * taking the first character of each word.
+ *
+ * @return {string} The initials generated from the username.
+ */
 function createInitialsFromUsername() {
   let splitName = activeUser.split(" ");
   let initials = "";
@@ -92,10 +140,21 @@ function createInitialsFromUsername() {
   return initials;
 }
 
+/**
+ * Redirects the user to the summary page.
+ *
+ * @return {void} This function does not return anything.
+ */
 function moveToSummary() {
   window.location.assign("summary/summary.html");
 }
 
+/**
+ * Toggles the visibility of the popup menu header.
+ *
+ * @param {none} - No parameters.
+ * @return {none} - No return value.
+ */
 function openPopUpMenuHeader() {
   let popUpMenu = document.getElementById('popUpMenuHeader');
   
@@ -106,12 +165,20 @@ function openPopUpMenuHeader() {
   }
 }
 
+/**
+ * Logs out the user by removing the active user from local storage, saving an empty user, and redirecting to the login page after a delay.
+ */
 function logOut() {
   localStorage.removeItem('userActive');
   saveActiveUser([]);
   setTimeout(moveToLogIn, 1500);
 }
 
+/**
+ * Redirects the user to the login page.
+ *
+ * @return {void} This function does not return anything.
+ */
 function moveToLogIn() {
   window.location.assign("../index.html");
 }

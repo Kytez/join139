@@ -7,6 +7,10 @@ span{
     font-weight: 400;
 }
 
+.gap16px {
+    gap: 16px;
+}
+
 .headline-section{
     width: 100%;
     height: 112px;

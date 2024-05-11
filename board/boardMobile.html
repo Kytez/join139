@@ -21,6 +21,7 @@
     <script src="../add_task/tasks.js"></script>
     <script src="../script.js"></script>
     <script src="../board/addTask.js"></script>
+    <script src="../board/editTask.js"></script>
 </head>
 <body onload="initBoard()" class="margin-body-mobile">
 
@@ -39,7 +40,7 @@
                     <img class="plus-img-dark" src="../assets/img/icons/plus add task mobile.png">
                 </div>
             </div>
-            <div class="flex width-100">
+            <div class="flex width-100 align-items-center">
                 <input onkeyup="filterTask()" onchange="filterTask()" class="find-task space-between" type="search" placeholder="Find Task" id="site-search" name="q" />  
                 <div class="search-bar-seperator"></div>  
                 <button onclick="showAddTask()" class="add-task-button">Add Task <img src="../assets/img/icons/add-white.png" alt=""></button>    
@@ -90,7 +91,7 @@
     </section>
 
     <section id="tasks" onclick="hideTask()" class="pop-up-section">
-        <div id="taskPopUp" class="pop-up">
+        <div onclick="doNotClose(event)" id="taskPopUp" class="pop-up">
             <div class="task-padding gap">
                 <div class="space-between subtasks-checkbox">
                     <div class="task-title">User Story</div> 
@@ -172,7 +173,7 @@
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <input oninput="setFilterBoard(this)" required type="text" onclick="showContactListBoard()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts">
+                    <input oninput="setFilterBoard(this)" type="text" onclick="showContactListBoard()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts">
                     <section class="d-none contact-list" id="selected-contactsBoard"></section>
                     <div id="contactInitalsBoard"></div>
                     
@@ -297,7 +298,7 @@
                     <input id="dateEdit" type="date">
                 </div>
                 <div class="prio-container padding-top-big">
-                    <span>Prio</span>
+                    <span class="colorEdit">Priority</span>
                     <section class="prio-button-section">
                         <div id="urgentEdit" onclick="handleClickPrio('urgent', 'edit')" class="prio-button">
                             <span id="prio_urgentEdit">Urgent</span> 
@@ -320,7 +321,7 @@
                     </section>
                     <div class="size-100 padding-top-big">
                         <div>
-                            <span>Assigned to</span>
+                            <span class="colorEdit">Assigned to</span>
                         </div>
                         <input oninput="setFilterEdit(this)" required type="text" onclick="showContactListEdit()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectEdit" name="contacts">
                         <section class="d-none contact-list" id="selected-contactsEdit"></section>
@@ -329,13 +330,8 @@
                     </div>
                     <div class="size-100 subtask-container padding-top-big"> 
                         <div>
-                            <span>Subtasks</span>
+                            <span class="colorEdit">Subtasks</span>
                         </div>
-                        <!-- <div class="flex subtask">
-                            <input id="subTaskEdit" type="text" placeholder="Add new subtask" required minlength="4" >
-                            <img onclick="addSubtask()" src="../assets/img/icons/add.png" alt="">
-                        </div>
-                        <div><span id="subTaskEdit"></span></div> -->
                         <div class="flex focus-blue">
                             <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" minlength="4" >
                             <div  class="subtask">

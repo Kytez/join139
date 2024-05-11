@@ -9,6 +9,38 @@ body {
     background-color: #F5F5F5;
 }
 
+input{
+  font-family: "Inter";
+  font-size: 16px;
+  padding-left: 16px;
+  position: relative;
+}
+
+input::placeholder{
+  position: absolute; 
+  /* top: 0px;  */
+  left: 8px; 
+}
+
+textarea{
+  font-family: "Inter";
+  font-size: 16px;
+  padding-left: 16px;
+  padding-top: 16px;
+  position: relative; 
+}
+
+textarea::placeholder{
+  position: absolute; 
+  top: 0px; 
+  left: 0px; 
+}
+
+select{
+  font-family: "Inter";
+  font-size: 16px;
+}
+
 a {
   text-decoration: none;
 }

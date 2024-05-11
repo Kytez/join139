@@ -29,7 +29,7 @@
 
     <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
 
-    <div class="container d-flex">
+    <div onclick="closeOptions()" class="container d-flex">
         <div id="contact-list" class="list-container">
            
             <div class="add-contact d-non align-center">
@@ -77,7 +77,9 @@
                     <span class="txt">Phone</span>
                     <span>+49 1111 111 11 1</span>
                 </div>
-                <div class="toggle pointer open-opt"><img class="open-opt" src="../assets/img/contacts/more_vert.png" alt=""></div>
+                <div class="toggle pointer open-opt">
+                    <img class="open-opt" src="../assets/img/contacts/more_vert.png" alt="">
+                </div>
                 <div id="toggle-options" class="toggle-options">
                     <div onclick="showEditContact()" class="pointer">
                         <img src="../assets/img/contacts/edit.png" alt="">
