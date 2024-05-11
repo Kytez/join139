@@ -15,6 +15,14 @@ span{
     padding-left: 16px;
 }
 
+#selected-contactsBoard {
+    max-width: 370px;
+}
+#selected-contactsEdit {
+    max-width: 392px;
+    max-height: 120px;
+}
+
 .add-task{
     width: 100%;
     display: flex;

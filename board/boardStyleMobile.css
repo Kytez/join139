@@ -495,7 +495,7 @@ span{
     overflow-y: scroll;
     width: 396px;
     border-radius: 24px;
-    height: 650px;
+    height: 750px;
     position: fixed;
     top: 15px;
     padding: 16px;
@@ -756,8 +756,13 @@ button{
 }
 
 .subtask{
+    display: flex;
     align-items: center;
+    z-index: 99;
+}
 
+#editEditContainer {
+    align-items: center;
 }
 
 .subtask img{

@@ -255,3 +255,16 @@ function renderInitialsHTMLEdit(i, initials, computedStyle){
         <div id="selectedInitial_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
     `;
 }
+
+function hideAndShowEdit() {
+    setFilterBoard({ value: `` });
+    let edit = document.getElementById('editEditContainer');
+    let subtaskt = document.getElementById('subTaskEdit');
+    if (edit.classList.contains('d-none')) {
+        edit.classList.remove('d-none');
+        subtaskt.classList.add('d-none');
+    }else {
+        edit.classList.add('d-none');
+        subtaskt.classList.remove('d-none');
+    }
+}
