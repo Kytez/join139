@@ -21,7 +21,7 @@ const colorArray= [
 
 
 /**
- * This function initiates the rendering of HTML headers and footers, loads information from the active user and loads and renders information for all contacts in the contact list, "onload".
+ * Initiates the rendering of HTML headers and footers, loads information from the active user and loads and renders information for all contacts in the contact list, "onload".
  */
 
 async function initContacts() {
@@ -34,7 +34,7 @@ async function initContacts() {
 }
 
 /**
- * This function saves the newest information in the contacts array, containing the information on all added contacts, as a JSON on the server within the key "contacts".
+ * Saves the newest information in the contacts array, containing the information on all added contacts, as a JSON on the server within the key "contacts".
  */
 
 async function saveContacts(){
@@ -43,7 +43,7 @@ async function saveContacts(){
 }
 
 /**
- * This function loads the newest information in the key "contacts" from the server, containing the information on all added contacts, by parsing the JSON string into the contacts variable. 
+ * Loads the newest information in the key "contacts" from the server, containing the information on all added contacts, by parsing the JSON string into the contacts variable. 
  */
 
 async function loadContacts(){
@@ -55,7 +55,7 @@ async function loadContacts(){
 }
 
 /**
- * This function controls the process of adding new contacts into the contacts array, saving them on the server and rendering the contact list with the new contact, and showing the new contact information.
+ * Executes the process of adding new contacts into the contacts array, saving them on the server and rendering the contact list with the new contact, and showing the new contact information.
  * It initiates the process by delivering the input-values from the new added contact.
  */
 
@@ -65,7 +65,6 @@ async function addNewContact(){
     let phone = document.getElementById('input-phone')
     let colour = assignCircleColor();
     let id = [];
-    // let capitalizedName = userName.value.charAt(0).toUpperCase() + userName.value.slice(1);
     let capitalizedName = capitalizeName(userName.value);
     pushContactsArray(capitalizedName, email.value, phone.value, colour, id);
     await saveContacts();
@@ -75,11 +74,9 @@ async function addNewContact(){
 }
 
 function capitalizeName(userName){
-    // Teile den Namen in Wörter auf
     const names = userName.split(" ");
     let capitalName = "";
 
-    // Durchlaufe jedes Wort und füge die ersten Buchstaben zu den Initialen hinzu
     for (let i = 0; i < names.length; i++) {
         capitalName += names[i][0].toUpperCase() + names[i].slice(1) + " ";
     }
@@ -88,7 +85,7 @@ function capitalizeName(userName){
 }
 
 /**
- * This function pushes the new added contact information into the contacts array.
+ * Pushes the new added contact information into the contacts array.
  * 
  * @param {String} userName This is the name of the contact.
  * @param {String} email  This is the email of the contact. 
@@ -108,7 +105,7 @@ function pushContactsArray(userName, email, phone, colour, id){
 
 
 /**
- * This function initiates the rendering process for the contact list.
+ * Initiates the rendering process for the contact list.
  * It loops through the alphabet and allows only rendering of contact sections that are ncessary for each contacts, determined by a filter. 
  * Thus, rendering empty contact sections is avoided.   
  */
@@ -128,7 +125,7 @@ function renderContactList(){
 
 
 /**
- * This function returns the HTML for each contact section that is rendered.
+ * Returns the HTML for each contact section that is rendered.
  * 
  * @param {String} letter This is the alphabet letter of each contact section.  
  * @param {Array} list This is the list of contacts for each alphabetic contact section.
@@ -148,7 +145,7 @@ function returnContactListSectionHTML(letter, list){
 }
 
 /**
- * This function loops through the filtered contact list of each contact section and returns the HTML for each rendered contact within that list.
+ * Loops through the filtered contact list of each contact section and returns the HTML for each rendered contact within that list.
  * 
  * @param {Array} list This is the list of contacts for each alphabetic contact section.
  * @returns 
@@ -164,7 +161,7 @@ function contactListPerLetterTemplate(list){
 }
 
 /**
- * This function returns the HTML template for each contact that is rendered.
+ * Returns the HTML template for each contact that is rendered.
  * 
  * @param {object} contact This object contains the information for each contact that was added in the contact list.
  * @returns 
@@ -187,7 +184,7 @@ function returnContactHTML(contact){
 
 
 /**
- * This function initiates rendering of the viewed contact and its information. 
+ * Initiates rendering of the viewed contact and its information. 
  * 
  * @param {String} userName This is the name of the contact.
  * @param {String} email  This is the email of the contact. 
@@ -204,7 +201,7 @@ function renderViewedContact(userName, email, phone, colour, id){
 
 
 /**
- * This function returns the HTML for the viewed Contact in the mobile version.
+ * Returns the HTML for the viewed Contact in the mobile version.
  * 
  * @param {String} userName This is the name of the contact.
  * @param {String} email  This is the email of the contact. 
@@ -233,7 +230,7 @@ return /*html*/`
             <span class="txt">Phone</span>
             <span>${phone}</span>
         </div>
-        <div class="toggle pointer open-opt"><img class="open-opt" src="../assets/img/contacts/more_vert.png" alt=""></div>
+        <div onclick="doNotClose(event); showOptions()" class="toggle pointer open-opt"><img class="open-opt" src="../assets/img/contacts/more_vert.png" alt=""></div>
         <div id="toggle-options" class="toggle-options">
             <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="pointer">
                 <img src="../assets/img/contacts/edit.png" alt="">
@@ -256,7 +253,7 @@ return /*html*/`
 
 
 /**
- * This function returns the HTML for the viewed Contact in the desktop version.
+ * Returns the HTML for the viewed Contact in the desktop version.
  * 
  * @param {String} userName This is the name of the contact.
  * @param {String} email  This is the email of the contact. 
@@ -275,7 +272,7 @@ return /*html*/`
             <div class="d-flex column">
                 <h1>${userName}</h1>
                 <div class="d-flex options align-center">
-                    <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="edit-delete edit d-flex align-center pointer">
+                    <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}', '${id}')" class="edit-delete edit d-flex align-center pointer">
                         <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
                         Edit</div>
                     <div onclick="deleteContact(${id})" class="d-flex blue align-center pointer edit-delete">
@@ -295,16 +292,17 @@ return /*html*/`
 
 
 /**
- * This function shows the edit-contact container with the contact information of the contact that is to be edited.
+ * Shows the edit-contact container with the contact information of the contact that is to be edited.
  *  
  * @param {String} userName This is the name of the contact.
  * @param {String} email  This is the email of the contact. 
  * @param {String} phone  This is the phone number of the contact.
  * @param {String} colour This is the random color assigned to the contact.
+ * @param {string} id This is the id of the contact.
  */
 
-function editContact(user, mail, number, colour){
-    generateEditContainer(user, colour);
+function editContact(user, mail, number, colour, id){
+    generateEditContainer(user, colour, id);
     let userName = document.getElementById('edit-name');
     let email = document.getElementById('edit-email');
     let phone = document.getElementById('edit-phone');
@@ -316,13 +314,15 @@ function editContact(user, mail, number, colour){
 
 
 /**
- * This function generates the HTML of the edit container with the contact that is to be edited.
+ * Generates the HTML of the edit container with the contact that is to be edited.
  * 
  * @param {*} user This is the name of the contact to be edited.
  * @param {*} colour That is the color assigned to the contact.
+ * @param {string} id This is the id of the contact.
+ * 
  */
 
-function generateEditContainer(user, colour){
+function generateEditContainer(user, colour, id){
     let editContainer = document.getElementById('edit-input-container')
     editContainer.innerHTML = /*html*/`
         <div id="circle-edit" class="person-circle-add" style="background: ${colour};">
@@ -333,12 +333,12 @@ function generateEditContainer(user, colour){
                 <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
             </div>
             <div class="p-relative d-flex align-center justify-center column">
-                <form onsubmit="updateContact(${contacts.findIndex(contact => contact.userName == user)});return false" class="w100 d-flex column input-container">
+                <form onsubmit="updateContact(${id});return false" class="w100 d-flex column input-container">
                     <input id="edit-name" class="input" placeholder="Name" type="text" required>
                     <input id="edit-email" class="input" placeholder="Email" type="email" required>
                     <input id="edit-phone" class="input" placeholder="Phone" type="tel" required>
                     <div class="d-flex justify-center edit-buttons">
-                        <button onclick="deleteContact(${contacts.findIndex(contact => contact.userName == user)})" id="delete-btn" class="btn-create pointer delete">
+                        <button onclick="deleteContact(${id})" id="delete-btn" class="btn-create pointer delete">
                             <div id="delete" class="blue">
                                 <span class="btn-txt">Delete</span>
                             </div>
@@ -355,16 +355,16 @@ function generateEditContainer(user, colour){
 }
 
 /**
- * This function updates and saves the newest contact information upon completion of contact editing on the server, and renders the updated contact list.
+ * Updates and saves the newest contact information upon completion of contact editing on the server, and renders the updated contact list.
  * 
- * @param {number} c This is the position of the edited contact within the contacts array.
+ * @param {string} id This is the id of the contact.
  */
 
-async function updateContact(c){
+async function updateContact(id){
     let userName = document.getElementById('edit-name');
     let email = document.getElementById('edit-email');
     let phone = document.getElementById('edit-phone');
-    let contact = contacts[c]
+    let contact = contacts[id]
 
     contact.userName = userName.value;
     contact.email = email.value;
@@ -378,13 +378,13 @@ async function updateContact(c){
 
 
 /**
- * This function deletes the contacts from the contacts array, and saves the new contacts on the server and renders the new contact list, and closes the edit-container in the desktop version. 
+ * Deletes the contacts from the contacts array, and saves the new contacts on the server and renders the new contact list, and closes the edit-container in the desktop version. 
  * 
- * @param {number} c This is the position of the contact within the contacts array.
+ * @param {string} id This is the id of the contact to be deleted.
  */
 
-async function deleteContact(c){
-    contacts.splice(c, 1)
+async function deleteContact(id){
+    contacts.splice(id, 1)
     await saveContacts();
     renderContactList();
     closeContact();
@@ -395,7 +395,7 @@ async function deleteContact(c){
 
 
 /**
- * This function sorts the received contact list according to the alphabet, and compares each name in the list with each other.
+ * Sorts the received contact list according to the alphabet, and compares each name in the list with each other.
  * 
  * @param {Array} list This is the list of contacts that shows in each alphabetic contact section. 
  */
@@ -406,7 +406,7 @@ function sortContactsList(list){
 
 
 /**
- * This function clears the input fields of the container (add or edit).
+ * Clears the input fields of the container (add or edit).
  * 
  * @param {object} userName This is the input field of the contact name.
  * @param {object} email  This is the input field of the contact email.
@@ -420,7 +420,7 @@ function clearContactInputs(userName, email, phone){
 }
 
 /**
- * This function return the uppercase initials of the contact viewed or added in the contact list.
+ * Return the uppercase initials of the contact viewed or added in the contact list.
  * 
  * @param {String} name This is the name of the contact.
  * @returns 
@@ -437,7 +437,7 @@ function getInitials(name) {
 
 
 /**
- * This function returns a random colour chosen from the colours array. A random number is divided by 6, and rounded down, creating another number between 0 and 15 that serve as indices for a colour in the colour array.
+ * Returns a random colour chosen from the colours array. A random number is divided by 6, and rounded down, creating another number between 0 and 15 that serve as indices for a colour in the colour array.
  * 
  * @returns 
  */
@@ -452,6 +452,10 @@ function assignCircleColor(){
     colour = colorArray[colorIndex];
     return colour;
 };
+
+/**
+ * Assigns IDs for each contact when loading the page
+ */
 
 function assignIDContacts(){
     for (let i = 0; i < contacts.length; i++) {

@@ -2,20 +2,18 @@ let contactViewOpen;
 
 
 /**
- * This function controls the view of the options pop-up for editing and deleting contacts.
- * It delivers the click event necessary to determine the view and closing of the pop-up via if-Statement.
+ * Stops propagation of a function effect on further div elements.
  * 
  * @param {event} event The event is triggered as a click-event 
  */
 
+function doNotClose(event){
+    event.stopPropagation();
+}
 
-window.onclick = function(event) {
-    if(event.target.classList.contains('open-opt')) showOptions();
-    else closeOptions();
-  }
 
 /**
- * This function listens to a click event once a contact in the contact list has been clicked, and changes its background-color.
+ * Listens to a click event once a contact in the contact list has been clicked, and changes its background-color.
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -31,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 /**
- * This function first removes the class "selected" for all contacts and then adds it back to the clicked-contact specifically.
+ * Removes the class "selected" for all contacts and then adds it back to the clicked-contact specifically.
  * 
  * @param {object} clickedContact This is the contact that was clicked within the contact-list
  * @param {object} contacts These are all contacts with the contact-class
@@ -51,7 +49,7 @@ function changeContactBgDark(clickedContact, contacts){
 
 
 /**
- * This function opens the view for the options pop-up for editing and deleting contacts.
+ * Opens the view for the options pop-up for editing and deleting contacts.
  * It opens the view by changing the CSS property transform: translateX().
  */  
 
@@ -60,7 +58,7 @@ function showOptions(){
 }
 
 /**
- * This function closes the view for the options pop-up for editing and deleting contacts.
+ * Closes the view for the options pop-up for editing and deleting contacts.
  * It closes the view by changing the CSS property transform: translateX().
  */ 
 
@@ -69,7 +67,7 @@ function closeOptions(){
 }
 
 /**
- * This function shows the contact view container in the mobile version up to a width of 992 px.
+ * Shows the contact view container in the mobile version up to a width of 992 px.
  * It then also renders the information within the container depending on the contact viewed via the received parameters, in mobile as well as desktop.  
  * It changes the variable contactViewOpen to enable later closing of the container, in the event of display resizing.
  * 
@@ -77,6 +75,7 @@ function closeOptions(){
  * @param {String} email  This is the email of the contact. 
  * @param {String} phone  This is the phone number of the contact.
  * @param {String} colour This is the random color assigned to the contact.
+ * @param {String} id This is the id of the contact.
  */
 
 function viewContact(userName, email, phone, colour, id){
@@ -91,7 +90,7 @@ function viewContact(userName, email, phone, colour, id){
 
 
 /**
- * This function moves the contact container in the desktop version with a slide effect, due to transform: translateX().
+ * Moves the contact container in the desktop version with a slide effect, due to transform: translateX().
  */
 
 
@@ -104,7 +103,7 @@ function moveContactDesktop(){
 
 
 /**
- * This function closes the contact view container in the mobile version. 
+ * Closes the contact view container in the mobile version. 
  * It also changes the variable contactViewOpen to signal the closure.
  */
 
@@ -115,7 +114,7 @@ function closeContact(){
 }
 
 /** 
- * This function enables responsiveness of the contact view container in the event of resizing of the display.
+ * Enables responsiveness of the contact view container in the event of resizing of the display.
  * It relies on the contactViewOpen variable and display-width as triggers.
  */
 
@@ -130,7 +129,7 @@ window.addEventListener("resize", () => {
 });
 
 /**
- * This function hides the contact view in the mobile version to allow responsive view in the desktop version.
+ * Hides the contact view in the mobile version to allow responsive view in the desktop version.
  */
 
 function showContactDesktopView(){
@@ -140,7 +139,7 @@ function showContactDesktopView(){
 
 
 /**
- * This function shows the viewed Contact in the mobile version. 
+ * Shows the viewed Contact in the mobile version. 
  */
 
 function showContactMobileView(){
@@ -150,7 +149,7 @@ function showContactMobileView(){
 
 
 /**
- * This function removes the content of the view-container in the desktop version, if it is no longer being viewed after deselection in the mobile-view.
+ * Removes the content of the view-container in the desktop version, if it is no longer being viewed after deselection in the mobile-view.
  */
 
 function removeViewedContactDesktop(){
@@ -159,7 +158,7 @@ function removeViewedContactDesktop(){
 
 
 /**
- * This function removes the background-color of the viewed Contact in the list only when user moves from Desktop display to Mobile display view. 
+ * Removes the background-color of the viewed Contact in the list only when user moves from Desktop display to Mobile display view. 
  */
 
 function removeContactBgOnResize(){
@@ -175,7 +174,7 @@ function removeContactBgOnResize(){
 
 
 /**
- * This function controls the visual events after a new contact is added, in mobile or desktop.
+ * Controls the visual events after a new contact is added, in mobile or desktop.
  * It renders the new contact information in the contact view container. 
  * It closes the add-contact container and shows the pop-up for success.
  * 
@@ -198,7 +197,7 @@ function showNewContactInformation(userName, email, phone, colour){
 }
 
 /**
- * This function shows the container for adding a new contact, in mobile or desktop.
+ * Shows the container for adding a new contact, in mobile or desktop.
  * It opens the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 
@@ -215,7 +214,7 @@ function showAddContact(){
 
 
 /**
- * This function changes the background / overlay dark.
+ * Changes the background / overlay dark.
  */
 
 function changeBgDark(){
@@ -226,7 +225,7 @@ function changeBgDark(){
 
 
 /**
- * This function closes the container for adding a new contact, in mobile or desktop.
+ * Closes the container for adding a new contact, in mobile or desktop.
  * It closes the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 
@@ -241,7 +240,7 @@ function closeAddContact(){
 }
 
 /**
- * This function returns the background into its regular color / makes the overlay transparent.
+ * Returns the background into its regular color / makes the overlay transparent.
  */
 
 function changeBgBright(){
@@ -253,7 +252,7 @@ function changeBgBright(){
 }
 
 /**
- * This function controls the visual pop-up for successfully adding a new contact, in mobile or desktop.
+ * Controls the visual pop-up for successfully adding a new contact, in mobile or desktop.
  */
 
 function successPopUp(){
@@ -263,7 +262,7 @@ function successPopUp(){
 
 
 /**
- * This function shows the success pop-up in the mobile version.
+ * Shows the success pop-up in the mobile version.
  * It shows and hides the container by changing the CSS property transform: translateY().
  */
 
@@ -277,7 +276,7 @@ function showSucessPopUpMobile(){
 }
 
 /**
- * This function shows the success pop-up in the desktop version.
+ * Shows the success pop-up in the desktop version.
  * It shows and hides the container by changing the CSS property transform: translateX().
  */
 
@@ -291,7 +290,7 @@ function showSuccessPopUpDesktop(){
 }
 
 /**
- * This function shows the contact edit container, in mobile or desktop.
+ * Shows the contact edit container, in mobile or desktop.
  * It shows the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 
@@ -306,7 +305,7 @@ function showEditContact(){
 }
 
 /**
- * This function closes the contact edit container, in mobile or desktop.
+ * Closes the contact edit container, in mobile or desktop.
  * It closes the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 
