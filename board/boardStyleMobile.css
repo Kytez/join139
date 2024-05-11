@@ -476,9 +476,9 @@ span{
     overflow-y: scroll;
     width: 396px;
     border-radius: 24px;
-    height: 720px;
+    height: 650px;
     position: fixed;
-    top: 60px;
+    top: 15px;
     padding: 16px;
     background-color: #FFFFFF;
     border-radius: 30px;
