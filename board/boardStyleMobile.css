@@ -57,6 +57,24 @@
     margin-left: -8px;
 }
 
+.margin-left-16{
+    margin-left: 16px;
+}
+
+.subTask-hover{
+    margin-left: 0px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: fit-content;
+}
+.subTask-hover:hover{
+    background-color: #E7E7E7;
+    border-radius: 8px;
+    .checkbox-custom{
+        background-color: #D1D1D1;
+    }
+}
+
 .m-left{
     margin-left: 22px;
 
@@ -242,7 +260,6 @@ input[type="search"]::-webkit-search-results-button { display: none; }
 }
 
 .user-assigned{
-    margin-left: 16px;
     gap: 16px;
     display: flex;
     align-items: flex-start;
@@ -272,6 +289,8 @@ input[type="search"]::-webkit-search-results-button { display: none; }
     position: absolute;
     left: 2px;
 }
+
+
 
 .pop-up-section{
     position: fixed;
