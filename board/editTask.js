@@ -63,6 +63,7 @@ function editTask(id) {
     allTasks[id]['prio'] = prio,
     allTasks[id]['colors'] = colors,
     allTasks[id]['names'] = names,
+    allTasks[id]['subTask'] = subTasks,
 
     updateTasksHTML();
     saveTasks();
