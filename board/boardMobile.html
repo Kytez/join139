@@ -298,7 +298,7 @@
                     <input id="dateEdit" type="date">
                 </div>
                 <div class="prio-container padding-top-big">
-                    <span>Prio</span>
+                    <span class="colorEdit">Priority</span>
                     <section class="prio-button-section">
                         <div id="urgentEdit" onclick="handleClickPrio('urgent', 'edit')" class="prio-button">
                             <span id="prio_urgentEdit">Urgent</span> 
@@ -321,7 +321,7 @@
                     </section>
                     <div class="size-100 padding-top-big">
                         <div>
-                            <span>Assigned to</span>
+                            <span class="colorEdit">Assigned to</span>
                         </div>
                         <input oninput="setFilterEdit(this)" required type="text" onclick="showContactListEdit()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectEdit" name="contacts">
                         <section class="d-none contact-list" id="selected-contactsEdit"></section>
@@ -330,7 +330,7 @@
                     </div>
                     <div class="size-100 subtask-container padding-top-big"> 
                         <div>
-                            <span>Subtasks</span>
+                            <span class="colorEdit">Subtasks</span>
                         </div>
                         <div class="flex focus-blue">
                             <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" minlength="4" >

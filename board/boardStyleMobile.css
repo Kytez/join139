@@ -489,6 +489,10 @@ span{
     z-index: 201;
 }
 
+.colorEdit{
+    color: #2A3647;
+}
+
 .prio-button-section{
     display: flex;
     justify-content: space-around;
