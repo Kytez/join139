@@ -47,11 +47,11 @@ function showAddTask(section = 'todo') {
             }, 100);
         })(i);
     }
-
     document.getElementById('boardAddTaskBtns').innerHTML = /*html*/`
         <button class="btn-white">Clear <img src="../assets/img/icons/x.png" alt=""></button>
         <button onclick="addTaskBoard('${section}')" class="btn-dark">Create Task <img src="../assets/img/icons/check_icon.png" alt=""></button>  
     `
+    setFilterBoard({value: ''});
 }
 
 function setPrioButtonsColorBoard(i) {
