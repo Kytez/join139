@@ -58,7 +58,7 @@ function editTask(id) {
 
     allTasks[id]['title'] = titleEdit.value
     allTasks[id]['description'] = descriptionEdit.value
-    allTasks[id]['dateEdit'] = dateEdit.value
+    allTasks[id]['date'] = dateEdit.value
     allTasks[id]['prio'] = prio
 
     updateTasksHTML();
