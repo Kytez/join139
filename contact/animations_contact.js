@@ -75,7 +75,7 @@ function closeOptions(){
  * @param {String} email  This is the email of the contact. 
  * @param {String} phone  This is the phone number of the contact.
  * @param {String} colour This is the random color assigned to the contact.
- * @param {String} id This is the id of the contact.
+ * @param {number} id This is the id of the contact.
  */
 
 function viewContact(userName, email, phone, colour, id){

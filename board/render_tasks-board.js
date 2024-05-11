@@ -1,4 +1,8 @@
 
+/**
+ * Initializes the board html and loads all necessary information from the server and renders the page.
+ */
+
 async function initBoard() {
     await includeHTML();
     await loadActiveUser();
@@ -11,6 +15,10 @@ async function initBoard() {
 
 let categories = ['todo', 'inprogress', 'feedback', 'done']
 
+
+/**
+ * Updates the HTML for every task card according to the latest information on the allTasks array on the server.
+ */
 function updateTasksHTML() {
     assignIDTasks();
     categories.forEach(cat => {
@@ -21,6 +29,10 @@ function updateTasksHTML() {
 
 }
 
+/**
+ * Updates the HTML for tasks in the specified category.
+ * @param {string} cat - The category of a task.
+ */
 
 function updateCategoryHTML(cat){
     let listPerCategory =  allTasks.filter(t => t['workMode'] == cat);
@@ -28,6 +40,11 @@ function updateCategoryHTML(cat){
     else generateTask(cat, listPerCategory);
 }
 
+/**
+ * Generates the HTML for the tasks.
+ * @param {string} id - The ID of the task div element.
+ * @param {object[]} list - The list of tasks from one category.
+ */
 
 function generateTask(id, list){
     document.getElementById(id).innerHTML = '';
@@ -36,6 +53,13 @@ function generateTask(id, list){
         document.getElementById(id).innerHTML += returnTaskHTML(element);
     }
 }
+
+
+/**
+ * Returns HTML for a task.
+ * @param {object} element - The task element.
+ * @returns {string} - HTML string for the task.
+ */
 
 function returnTaskHTML(element){
     return /*html*/ `
@@ -60,6 +84,12 @@ function returnTaskHTML(element){
     `
 }
 
+/**
+ * Generates HTML for a progress bar.
+ * @param {number} id - The ID of the task.
+ * @returns {string} - HTML string for the progress bar.
+ */
+
 function generateProgressBar(id){
     let subTaskHTML = '';
     let subTasks = allTasks[id]['subTask']
@@ -74,6 +104,13 @@ function generateProgressBar(id){
     return subTaskHTML
 }
 
+
+/**
+ * Returns the number of checked and finished subtasks of a task.
+ * @param {number} id - The ID of the task.
+ * @returns {number} - sum of all finished subtasks checked for a task.
+ */
+
 function calculateSumCheckedTasks(id){
     let checkedTasks = allTasks[id]['checkbox'] 
     let sumTrue = 0;
@@ -85,6 +122,15 @@ function calculateSumCheckedTasks(id){
     return sumTrue;
 }
 
+
+/**
+ * Returns HTML for the progress bar for subtasks.
+* @param {number} percentage this is percentage of subtasks checked to the total number of subtasks.
+ * @param {number} sumChecked this is the number of checked subtasks
+ * @param {array} subTasks this is an Array with all subtasks.
+ * @returns {string} - HTML string for the progressbar.
+ */
+
 function returnProgressBarHTML(percentage, sumChecked, subTasks){
     return ` 
         <div class="progress">
@@ -93,6 +139,17 @@ function returnProgressBarHTML(percentage, sumChecked, subTasks){
         <span class="subFonts">${sumChecked}/${subTasks.length} Subtasks</span> 
     `
 }
+
+/**
+ * Generates HTML for pop-up field of a task
+ * @param {string} title title of the task
+ * @param {string} description description of the task
+ * @param {date} date date of the task
+ * @param {number} id id of the task
+ * @param {string} category category of the task
+ * @param {string} prio priority of the task
+ * @param {array} names names from all contacts assigned to that task
+ */
 
 function renderTasksPopUp(title, description, date, id, category, prio, names){
     let taskPopUp = document.getElementById('taskPopUp')
@@ -146,6 +203,12 @@ function renderTasksPopUp(title, description, date, id, category, prio, names){
     `
 }
 
+
+/**
+ * Generates HTML for subtasks in task pop-up.
+ * @param {number} id - The ID of the task.
+ * @returns {string} - HTML string for the subtasks in the task pop-up.
+ */
 function generateSubTasksInPopUp(id){
     let subTasksPopUpHTML = ''
     let subTasksArray = allTasks[id]['subTask'] 
@@ -163,6 +226,14 @@ function generateSubTasksInPopUp(id){
     return subTasksPopUpHTML;
 }
 
+
+/**
+ * Returns HTML for a subtask including the checkbox.
+ * @param {number} id - The ID of the task.
+ * @param {number} i - The index of the subtask within the subtasks array.
+ * @param {string} subTask - The subtask.
+ * @returns {string} - HTML string for the subtask.
+ */
 function returnSubTasksHTML(id, i, subTask){
     return /*html*/ `
         <div class=" subtasks-checkbox user-assigned subTask-hover">
@@ -172,12 +243,23 @@ function returnSubTasksHTML(id, i, subTask){
     `
 }
 
+/**
+ * Saves the status of checkboxes, checked or not, for subtasks.
+ * @param {number} id - The ID of the task.
+ */
+
 function saveCheckBoxStatus(id){
     let subTasks = allTasks[id]['subTask']
     subTaskIsChecked(id, subTasks)
     updateTasksHTML();
     saveTasks();
 }
+
+/**
+ * Checks if subtasks are checked and updates the status in the allTasks array in the key checkbox.
+ * @param {number} id - The ID of the task.
+ * @param {array} subTasks - this is an array with all subtasks for a task
+ */
 
 function subTaskIsChecked(id, subTasks){
     for (let i = 0; i < subTasks.length; i++) {
@@ -191,12 +273,22 @@ function subTaskIsChecked(id, subTasks){
     }
 }
 
+/**
+ * Loads the status of checkboxes for subtasks and checks the boxes in the task pop-up accordingly.
+ * @param {number} id - The ID of the task.
+ */
 function loadCheckBoxStatus(id){
     let checkBoxValue = allTasks[id]['checkbox']
     if(checkBoxValue.length > 0){
         checkSubTasks(id, checkBoxValue)
     }
 }
+
+/**
+ * Checks subtasks based on their status and updates the corresponding checkboxes.
+ * @param {number} id - The ID of the task.
+ * @param {array} checkBoxValue - The array of checkbox values for subtasks with boolean values.
+ */
 
 function checkSubTasks(id, checkBoxValue){
     for (let i = 0; i < checkBoxValue.length; i++) {
@@ -210,6 +302,13 @@ function checkSubTasks(id, checkBoxValue){
         }
     }
 }
+
+
+/**
+ * Generates HTML for assigned users in task cards.
+ * @param {object} element - The task object containing assigned users.
+ * @returns {string} - HTML string for the assigned users in task cards.
+ */
 
 function generateAssignedUsers(element){
     let usersHTML = '';
@@ -225,6 +324,13 @@ function generateAssignedUsers(element){
     return usersHTML
 }
 
+
+/**
+ * Generates HTML for assigned users in task pop-up.
+ * @param {string} names - The names of assigned users.
+ * @returns {string} - HTML string for the assigned users in task pop-up.
+ */
+
 function generateAssignedUsersPopUp(names){
     let usersHTML = '';
     let namesArray = names.split(",");
@@ -235,6 +341,12 @@ function generateAssignedUsersPopUp(names){
     return usersHTML
 }
 
+
+/**
+ * Returns HTML for assigned users in task pop-up.
+ * @param {string} user - The name of the assigned user.
+ * @returns {string} - HTML string for the assigned users in task pop-up.
+ */
 function returnAssignedUserHTMLPopUp(user){
     return /*html*/`
         <div class="flex align-center">
@@ -245,6 +357,10 @@ function returnAssignedUserHTMLPopUp(user){
 }
 
 
+/**
+ * Displays a message when there are no tasks in an area.
+ * @param {string} category - The category of tasks.
+ */
 
 function noTasksInArea(category){
     let taskArea = '';
@@ -266,6 +382,12 @@ function noTasksInArea(category){
     catContainer.innerHTML = `<div class="center no-taskts-to-do">${taskArea}</div>`;
 }
 
+
+/**
+ * Assigns the source path for the task priority image based on priority level.
+ * @param {string} prio - The priority level of the task ('low', 'medium', or 'urgent').
+ * @returns {string} - The source path for the priority image.
+ */
 function assignPriorityImgTask(prio){
     let source;
     let low = '../assets/img/icons/arrow-down.png'
@@ -278,7 +400,9 @@ function assignPriorityImgTask(prio){
     return source;
 }
 
-
+/**
+ * Assigns background color to task categories.
+ */
 function assignCategoryColour(){
     const task_category = document.querySelectorAll('.task-category');
     task_category.forEach(task => {
@@ -289,7 +413,9 @@ function assignCategoryColour(){
     };
 
 
-
+/**
+ * Assigns IDs to tasks according to their position in the allTasks aray.
+ */
 function assignIDTasks(){
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
@@ -297,6 +423,10 @@ function assignIDTasks(){
     }
 }
 
+
+/**
+ * Assigns background color to users in task cards as assigned to when contacts were added.
+ */
 function assignUserColourCard(){
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
@@ -309,6 +439,10 @@ function assignUserColourCard(){
     }
 }
 
+
+/**
+ * Assigns background color to users in task pop-up as assigned to when contacts were added.
+ */
 function assignUserColourPopUp(names, id){
     let namesArray = names.split(","); 
     const task = allTasks[id];
@@ -320,6 +454,11 @@ function assignUserColourPopUp(names, id){
     }
 }
 
+
+/**
+ * Deletes a task.
+ * @param {number} id - The ID of the task to delete.
+ */
 function deleteTask(id){
     allTasks.splice(id, 1)
     updateTasksHTML();

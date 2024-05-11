@@ -298,7 +298,7 @@ return /*html*/`
  * @param {String} email  This is the email of the contact. 
  * @param {String} phone  This is the phone number of the contact.
  * @param {String} colour This is the random color assigned to the contact.
- * @param {string} id This is the id of the contact.
+ * @param {number} id This is the id of the contact.
  */
 
 function editContact(user, mail, number, colour, id){
@@ -316,9 +316,9 @@ function editContact(user, mail, number, colour, id){
 /**
  * Generates the HTML of the edit container with the contact that is to be edited.
  * 
- * @param {*} user This is the name of the contact to be edited.
- * @param {*} colour That is the color assigned to the contact.
- * @param {string} id This is the id of the contact.
+ * @param {string} user This is the name of the contact to be edited.
+ * @param {string} colour That is the color assigned to the contact.
+ * @param {number} id This is the id of the contact.
  * 
  */
 
@@ -357,7 +357,7 @@ function generateEditContainer(user, colour, id){
 /**
  * Updates and saves the newest contact information upon completion of contact editing on the server, and renders the updated contact list.
  * 
- * @param {string} id This is the id of the contact.
+ * @param {number} id This is the id of the contact.
  */
 
 async function updateContact(id){
@@ -380,7 +380,7 @@ async function updateContact(id){
 /**
  * Deletes the contacts from the contacts array, and saves the new contacts on the server and renders the new contact list, and closes the edit-container in the desktop version. 
  * 
- * @param {string} id This is the id of the contact to be deleted.
+ * @param {number} id This is the id of the contact to be deleted.
  */
 
 async function deleteContact(id){

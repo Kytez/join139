@@ -1,7 +1,7 @@
 /**
  * moves the edit-task pop-up field into the screenview via translateX and executes rendering of adjusted editable elements for each task.
  * 
- * @param {string} id This is the id of the task
+ * @param {number} id This is the id of the task
  * @param {string} prio This is the priority value for the task 
  */
 
@@ -24,7 +24,7 @@ function showEditTask(title, description, date, id, prio){
 /**
  * renders elements of the task into the edit-task pop-up segments for further editing
  * 
- * @param {string} id This is the id of the task
+ * @param {number} id This is the id of the task
  * @param {string} prio This is the priority value for the task
  */
 
@@ -49,7 +49,7 @@ function renderEditTaskPopUpElements(title, description, date, id, prio){
 /**
  * saves edited values into the allTasks array, overwriting the old values and updates the array on the server and the HTML of the page.
  * 
- * @param {string} id This is the id of the task
+ * @param {number} id This is the id of the task
  */
 function editTask(id) {
     let titleEdit = document.getElementById('titleEdit')
