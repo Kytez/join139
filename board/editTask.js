@@ -69,6 +69,9 @@ function editTask(id) {
     saveTasks();
     hideEditTask();
     hideTask();
+    subTasks = [];
+    names = [];
+    colors = [];
     // renderTasksPopUp(title, description, date, id, category, prio, names)
 }
 
