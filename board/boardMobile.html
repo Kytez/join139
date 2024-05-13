@@ -150,7 +150,7 @@
 
 
 <section  onclick="hideAddTask()" id="addTaskFullScreen" class="add-task-background">
-    <form onclick="doNotClose(event)" id="addTaskSection" class="add-task-card-board">
+    <form onclick="doNotClose(event)" onsubmit="addTaskBoard('todo'); return false" id="addTaskSection" class="add-task-card-board">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -227,12 +227,12 @@
                         <div>
                             <span>Subtasks</span>
                         </div>
-                        <div class="flex focus-blue">
+                        <div class="flex focus-blue ai-center">
                             <input id="subTaskInputBoard" type="text" placeholder="Add new subtask" minlength="4" >
                             <div  class="subtask">
                                 <img id="subTaskBoard" onclick="hideAndShowEditBoard()" src="../assets/img/icons/add.png" alt="">
                             </div>
-                            <div id="editBoard" class="double-button flex d-none">
+                            <div id="editBoard" class="flex d-none">
                                 <div>
                                     <img class="edit" onclick="clearInputAddTaskBoard()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
                                 </div>
@@ -256,8 +256,8 @@
         <div class="button-container-board flex">
             <span><span class="red">*</span>This field is required</span>
             <div id="boardAddTaskBtns" class="flex">
-                <a onclick="clearTask()" class="btn-white">Clear <img src="../assets/img/icons/x.png" alt=""></a>
-                <button onclick="addTask()" class="btn-dark">Create Task <img src="../assets/img/icons/check_icon.png" alt=""></button>    
+                <a onclick="clearTaskBoard()" class="btn-white clear-task-board-btn"><span>Clear</span> <img src="../assets/img/icons/x.png" alt=""></a>
+                <button type="submit" class="btn-dark">Create Task <img src="../assets/img/icons/check_icon.png" alt=""></button>    
             </div>
         </div>
     </form>

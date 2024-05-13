@@ -34,7 +34,7 @@ function hideTask() {
     }
 }
 
-function showAddTask(section = 'todo') {
+function showAddTask() {
     document.getElementById('addTaskSection').style.display = 'flex';
     document.getElementById('addTaskFullScreen').style.display = 'flex';
     
@@ -47,11 +47,19 @@ function showAddTask(section = 'todo') {
             }, 100);
         })(i);
     }
-    document.getElementById('boardAddTaskBtns').innerHTML = /*html*/`
-        <button class="btn-white">Clear <img src="../assets/img/icons/x.png" alt=""></button>
-        <button onclick="addTaskBoard('${section}')" class="btn-dark">Create Task <img src="../assets/img/icons/check_icon.png" alt=""></button>  
-    `
     setFilterBoard({value: ''});
+}
+
+function clearTaskBoard() {
+    document.getElementById('titleBoard').value = '';
+    document.getElementById('descriptionBoard').value = '';
+    document.getElementById('dateBoard').value = '';
+    document.getElementById('subTaskContainerBoard').innerHTML = '';
+    document.getElementById('subTaskInputBoard').value = '';
+    prio = '';
+    document.getElementById("mediumBoard").classList.remove("highlighted-button-medium");
+    document.getElementById("lowBoard").classList.remove("highlighted-button-low");
+    document.getElementById("urgentBoard").classList.remove("highlighted-button-urgent");
 }
 
 function setPrioButtonsColorBoard(i) {
