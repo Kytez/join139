@@ -23,7 +23,7 @@
 
     <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
 
-    <form onsubmit="addSubtask(); return false" class="add-task-card margin-body-mobile">
+    <form onsubmit="addTask(); return false" class="add-task-card margin-body-mobile">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -137,7 +137,7 @@
             <span><span class="red">*</span>This field is required</span>
             <div class="flex">
                 <a onclick="clearTask()" class="btn-white gap16px">Clear <img src="../assets/img/icons/x.png" alt=""></a>
-                <button onclick="addTask()" class="btn-dark">Create Task <img src="../assets/img/icons/check_icon.png" alt=""></button>    
+                <button type="submit" class="btn-dark">Create Task <img src="../assets/img/icons/check_icon.png" alt=""></button>    
             </div>
         </div>
     

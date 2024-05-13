@@ -1,5 +1,6 @@
 const STORAGE_TOKEN = "BWWMEZDTZCQQOXJAJAFR8E89G4VCXBKCXC2VP92F";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
+// const BASE_URL = 'https://join-10f46-default-rtdb.europe-west1.firebasedatabase.app/';
 
 let users = [];
 
@@ -14,6 +15,24 @@ function initLogIn() {
   loadUsers();
   loadFromLocalStorage();
 }
+
+// async function getItem(path='') {
+//   let response = await fetch(BASE_URL + path + '.json');
+//   let responseToJson = await response.json();
+//   console.log(responseToJson);
+//   return responseToJson;
+// }
+
+// async function setItem(path='', value={}) {
+//   let response = await fetch(BASE_URL + path + '.json', {
+//     method: 'POST',
+//     header: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(value),
+// });
+//   let responseToJson = await response.json();
+//   console.log(responseToJson);
+//   return responseToJson;
+// }
 
 /**
  * Sets an item in the storage with the given key and value.
