@@ -31,7 +31,7 @@ function renderSubtasks() {
     }
 }
 
-function showContactListBoard(){
+function showContactListBoard() {
     let contactList = document.getElementById('selected-contactsBoard');
     if (contactList.classList.contains('d-none')) {
         contactList.classList.remove('d-none');
@@ -51,7 +51,6 @@ function setFilterBoard(input) {
     } else {
         filteredContacts = contacts;
     }
-
     renderAssignedContactListBoard(filteredContacts);
 }
 

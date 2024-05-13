@@ -2,7 +2,7 @@ let allTasks = [];
 let emptyArray = [];
 let selectedContacts = [];
 let prio = '';
-let id = [];
+let singleContactId = [];
 let colors = [];
 let contactList = [];
 let subTasks = [];
@@ -19,7 +19,6 @@ async function initAddTask() {
     renderUserInitials();
     await loadContacts();
     await loadAllTasks();
-    setFilter({ value: `` });
 }
 
 /**
@@ -28,6 +27,21 @@ async function initAddTask() {
  * @param {Object} input - The input object containing the filter value.
  * @return {void} This function does not return any value.
  */
+function setFilterBoard(input) {
+    let filter = input.value.trim().toLowerCase();
+    let filteredContacts;
+
+    if (filter !== '') {
+        filteredContacts = contacts.filter(function(contact) {
+            return contact.userName.toLowerCase().includes(filter);
+        });
+    } else {
+        filteredContacts = contacts;
+    }
+
+    renderAssignedContactList(filteredContacts);
+}
+
 function setFilter(input) {
     let filter = input.value.trim().toLowerCase();
     let filteredContacts;
@@ -50,29 +64,8 @@ function setFilter(input) {
  * @return {void} This function does not return a value.
  */
 function renderAssignedContactList(filteredContacts) {
-    if(filteredContacts){
-        let assignedTo = document.getElementById('selected-contacts');
-        assignedTo.innerHTML = ""; // Clear previous content
-        
-        for (let i = 0; i < filteredContacts.length; i++) {
-            let userName = filteredContacts[i].userName;
-            let initialsString = ''; 
-            let color = filteredContacts[i].colour;
-            
-            let words = userName.split(' ');
-            let initials = words.map(word => word.charAt(0).toUpperCase());
-            initialsString = initials.join('');
-            
-            assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
-            let user = document.getElementById(`initials_${i}`);
-            user.style.backgroundColor = color;
-        }
-    }
     let assignedTo = document.getElementById('selected-contacts');
-    
-    if(filteredContacts) {
-    assignedTo.innerHTML = ""; // Clear previous content
-
+    assignedTo.innerHTML = "";
     for (let i = 0; i < filteredContacts.length; i++) {
         let userName = filteredContacts[i].userName;
         let initialsString = ''; 
@@ -86,7 +79,6 @@ function renderAssignedContactList(filteredContacts) {
         let user = document.getElementById(`initials_${i}`);
         user.style.backgroundColor = color;
     }
-}
 }
 
 /**
@@ -120,6 +112,7 @@ function addTask(workMode = 'todo') {
     let category = document.getElementById('category');
     let task = {
         'id': allTasks.length + 1,
+        'singleContactId': singleContactId,
         'title': title.value,
         'description': description.value,
         'assignedTo': selectedContacts,
@@ -135,12 +128,7 @@ function addTask(workMode = 'todo') {
     };
     allTasks.push(task);
     saveTasks();
-    setTimeout(reloadPage, 300);
-}
-
-function reloadPage() {
-    window.location.reload();
-}
+} 
 
 /**
  * Toggles the visibility of the contact list.
@@ -151,6 +139,7 @@ function showContactList(){
     let contactList = document.getElementById('selected-contacts');
     if (contactList.classList.contains('d-none')) {
         contactList.classList.remove('d-none');
+        setFilter({ value: `` });
     } else {
         contactList.classList.add('d-none');
     }
@@ -250,6 +239,7 @@ function changeCheckedAndColor(i, contact, name){
         selectedContacts.splice(selectedContacts.indexOf(i), 1);
         colors.splice(colors.indexOf(i), 1);
         names.splice(colors.indexOf(i), 1);
+        singleContactId.splice(id.indexOf(i), 1);
         removeInital(i);
     } else {
         selectedContact.style.backgroundColor = "#2A3647";
@@ -260,6 +250,7 @@ function changeCheckedAndColor(i, contact, name){
         selectedContacts.push(contact);
         colors.push(computedStyle);
         names.push(name);
+        singleContactId.push(i);
         renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
     }
 }
@@ -270,17 +261,9 @@ function changeCheckedAndColor(i, contact, name){
  * @param {string} i - The priority to be set.
  * @return {void} This function does not return a value.
  */
-function selectPrio(i, origin) {
+function selectPrio(i) {
     prio = i;
-    if (origin == "edit") {
-        setPrioButtonsColorEdit(prio);
-    }
-    else if(origin == "board"){
-        setPrioButtonsColorBoard(prio);
-    }
-    else{
-        setPrioButtonsColor(prio);
-    }
+    setPrioButtonsColor(prio);
 }
 
 /**
@@ -309,9 +292,9 @@ function setPrioButtonsColor(i) {
  * @param {string} i - The priority to be set.
  * @returns {void} This function does not return a value.
  */
-function handleClickPrio(i, origin = "") {
+function handleClickPrio(i) {
     if (i) {
-        selectPrio(i, origin); // Set the given priority
+        selectPrio(i); // Set the given priority
     }
 }
 
@@ -341,6 +324,7 @@ function renderSubtasks() {
 function addSubtask() {
     let subTaskInput = document.getElementById('subTaskInput').value;
     subTasks.push(subTaskInput);
+    console.log(subTaskInput);
     renderSubtasks(); // Rendere die Unteraufgaben neu
     document.getElementById('subTaskInput').value = "";
 }
@@ -362,6 +346,7 @@ function clearInputAddTask() {
  */
 function editSubtask(id) {
     // Hier kannst du die Logik für die Bearbeitung des Subtasks implementieren
+    console.log("Subtask bearbeiten:", id);
     // Zum Beispiel: Du könntest den Text im Subtask-Div durch ein Eingabefeld ersetzen, um die Bearbeitung zu ermöglichen
     let subTaskDiv = document.getElementById(`subTask_${id}`);
     let subTaskText = subTaskDiv.querySelector("div");
@@ -381,10 +366,23 @@ function editSubtask(id) {
  * @param {number} id - The ID of the subtask to be deleted.
  * @return {void} This function does not return anything.
  */
-function deleteSubtask(id) {
-    let elementToRemove = document.getElementById(`subTask_${id}`);
-        elementToRemove.remove();
-        subTasks.splice(id, 1);
+function deleteSubtask(entry, id) {
+    const index = subTasks.findIndex((element) => element.id === id);
+    subTasks.splice(index, 1);
+    entry.remove();
+}
+
+function updateSubtaskIds() {
+    // Aktualisiere die IDs im DOM
+    let subTaskElements = document.querySelectorAll('.singleSubTasks');
+    subTaskElements.forEach((element, index) => {
+        element.id = `subTask_${index}`;
+    });
+
+    // Aktualisiere die IDs im subTasks-Array
+    subTasks.forEach((task, index) => {
+        task.id = index;
+    });
 }
 
 /**
@@ -398,6 +396,7 @@ function saveEditSubtask(id) {
     let subTaskTextInput = elementToRemove.querySelector("input").value;
     let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
     let editSubtasks = document.getElementById(`editSubtasks_${id}`);
+    console.log(subTaskTextInput);
     if (elementToRemove) {
         elementToRemove.remove();
         subTasks.splice(id, 1);
@@ -427,7 +426,7 @@ function addSubtaskHTML(subTask, i) {
                 <div class="seperator">
                 </div>
             <div>
-                <img class="edit" onclick="deleteSubtask(${i})" src="../assets/img/svg/trash.svg" alt="">
+                <img class="edit" onclick="deleteSubtask(this.parentElement.parentElement, ${i})" src="../assets/img/svg/trash.svg" alt="">
             </div>
         </div>
     </div>

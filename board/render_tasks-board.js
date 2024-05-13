@@ -63,7 +63,7 @@ function generateTask(id, list){
 
 function returnTaskHTML(element){
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}', '${element['names']}')" class="todo-task draggable tasks">
+        <div draggable="true" ondragstart="startDragging(${element['id']})" onclick="showTask('${element['title']}', '${element['description']}', '${element['date']}', '${element['id']}', '${element['category']}', '${element['prio']}', '${element['names']}', '${element['subTask']}', '${element['singleContactId']}')" class="todo-task draggable tasks">
             <div class="task-padding">
                 <div class="task-category">${element['category']}</div>
                 <span class="task-title">${element['title']}</span> <br>
@@ -151,7 +151,7 @@ function returnProgressBarHTML(percentage, sumChecked, subTasks){
  * @param {array} names names from all contacts assigned to that task
  */
 
-function renderTasksPopUp(title, description, date, id, category, prio, names){
+function renderTasksPopUp(title, description, date, id, category, prio, names, subTasks){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
@@ -194,7 +194,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names){
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}')" class="subtasks-checkbox pointer">
+                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${names}', '${subTasks}')" class="subtasks-checkbox pointer">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>

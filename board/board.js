@@ -1,8 +1,8 @@
-function showTask(title, description, date, id, category, prio, names) {
+function showTask(title, description, date, id, category, prio, names, subTasks, singleContactId) {
     document.getElementById('tasks').style.display = 'flex';
    let taskPopUp = document.getElementById('taskPopUp')
    taskPopUp.style.display = 'flex';
-    
+    console.log(singleContactId);
     let popUpElements = document.getElementsByClassName('pop-up');
     for (let i = 0; i < popUpElements.length; i++) {
         popUpElements[i].style.transition = 'transform 400ms';
@@ -12,7 +12,7 @@ function showTask(title, description, date, id, category, prio, names) {
             }, 100);
         })(i);
     }
-    renderTasksPopUp(title, description, date, id, category, prio, names)
+    renderTasksPopUp(title, description, date, id, category, prio, names, subTasks)
     assignCategoryColour();
     assignUserColourPopUp(names, id);
     loadCheckBoxStatus(id);

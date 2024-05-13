@@ -5,7 +5,7 @@
  * @param {string} prio This is the priority value for the task 
  */
 
-function showEditTask(title, description, date, id, prio){
+function showEditTask(title, description, date, id, prio, names, subTasks){
     document.getElementById('editTaskSection').style.display = 'flex';
     document.getElementById('editTaskFullScreen').style.display = 'flex';
     
@@ -19,7 +19,7 @@ function showEditTask(title, description, date, id, prio){
         })(i);
     }
     setFilterEdit({value: ''});
-    renderEditTaskPopUpElements(title, description, date, id, prio, )
+    renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks)
 }
 
 /**
@@ -29,12 +29,14 @@ function showEditTask(title, description, date, id, prio){
  * @param {string} prio This is the priority value for the task
  */
 
-function renderEditTaskPopUpElements(title, description, date, id, prio){
+function renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks){
     let titleEdit = document.getElementById('titleEdit');
     let descriptionEdit = document.getElementById('descriptionEdit');
     let dateEdit = document.getElementById('dateEdit');
-    let okButton = document.getElementById('boardEditTaskBtns');
-
+    let okButton = document.getElementById('boardEditTaskBtns');renderEditTaskPopUpElements
+    console.log(id);
+    console.log(names);
+    console.log(subTasks);
     titleEdit.value = title;
     descriptionEdit.value = description;
     dateEdit.value = date;
@@ -64,6 +66,7 @@ function editTask(id) {
     allTasks[id]['colors'] = colors,
     allTasks[id]['names'] = names,
     allTasks[id]['subTask'] = subTasks,
+    allTasks[id]['singleContactId'] = singleContactId,
 
     updateTasksHTML();
     saveTasks();

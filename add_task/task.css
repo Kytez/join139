@@ -224,6 +224,7 @@ textarea::placeholder {
     margin-left: -45px;
     cursor: pointer;
     gap: 8px;
+    z-index: 1;
 }
 
 
