@@ -130,6 +130,10 @@ input[type="search"]::-webkit-search-results-button { display: none; }
     min-width: 260px;
 }
 
+.height28px {
+    height: 28px;
+}
+
 .plus-img{
     height: 30px;
     cursor: pointer;
