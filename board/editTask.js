@@ -19,7 +19,7 @@ function showEditTask(title, description, date, id, prio){
         })(i);
     }
     setFilterEdit({value: ''});
-    renderEditTaskPopUpElements(title, description, date, id, prio)
+    renderEditTaskPopUpElements(title, description, date, id, prio, )
 }
 
 /**
