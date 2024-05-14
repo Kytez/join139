@@ -67,6 +67,7 @@ async function addNewContact(){
     let id = [,];
     let capitalizedName = capitalizeName(userName.value);
     pushContactsArray(capitalizedName, email.value, phone.value, colour, id);
+    assignIDContacts()
     await saveContacts();
     renderContactList();
     showNewContactInformation(capitalizedName, email.value, phone.value, colour);
@@ -468,6 +469,7 @@ function assignIDContacts(){
         const contact = contacts[i];
         contact['id'] = i;
     }
+    saveContacts();
 }
 
 
