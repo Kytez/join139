@@ -215,7 +215,18 @@ textarea::placeholder {
     background-color: white;
 }
 
+.ai-center {
+    align-items: center;
+}
 
+.clear-task-board-btn {
+    gap: 8px;
+}
+
+/* .clear-task-board-btn img {
+    width: 24px;
+    height: 24px;
+} */
 
 .contact-list {
     position: absolute;
@@ -335,8 +346,12 @@ button{
 }
 
 .btn-white img{
-    height: 11px;
-    width: 11px;
+    height: 14px;
+    width: 14px;
+}
+
+.btn-white span {
+    font-size: 20px;
 }
 
 
