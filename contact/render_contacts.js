@@ -38,7 +38,7 @@ async function initContacts() {
  */
 
 async function saveContacts(){
-    setItem('contacts', JSON.stringify(contacts));
+    setItem('contacts', contacts);
 
 }
 
@@ -48,7 +48,7 @@ async function saveContacts(){
 
 async function loadContacts(){
     try {
-        contacts = JSON.parse(await getItem('contacts'));
+        contacts = await getItem('contacts');
     } catch(e) {
         console.error('Loading error:', e);
     }
@@ -64,7 +64,7 @@ async function addNewContact(){
     let email = document.getElementById('input-email')
     let phone = document.getElementById('input-phone')
     let colour = assignCircleColor();
-    let id = [];
+    let id = [,];
     let capitalizedName = capitalizeName(userName.value);
     pushContactsArray(capitalizedName, email.value, phone.value, colour, id);
     await saveContacts();
@@ -72,6 +72,12 @@ async function addNewContact(){
     showNewContactInformation(capitalizedName, email.value, phone.value, colour);
     clearContactInputs(userName, email, phone);
 }
+
+/**
+ * Capitalizes the first letter of each word in a given string.
+ * @param {string} userName - The name to be capitalized.
+ * @returns {string} - The capitalized name.
+ */
 
 function capitalizeName(userName){
     const names = userName.split(" ");
@@ -232,7 +238,7 @@ return /*html*/`
         </div>
         <div onclick="doNotClose(event); showOptions()" class="toggle pointer open-opt"><img class="open-opt" src="../assets/img/contacts/more_vert.png" alt=""></div>
         <div id="toggle-options" class="toggle-options">
-            <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}')" class="pointer">
+            <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}','${id}')" class="pointer">
                 <img src="../assets/img/contacts/edit.png" alt="">
                 <span style="padding-left: 10px;">Edit</span>
             </div>
@@ -303,9 +309,9 @@ return /*html*/`
 
 function editContact(user, mail, number, colour, id){
     generateEditContainer(user, colour, id);
-    let userName = document.getElementById('edit-name');
-    let email = document.getElementById('edit-email');
-    let phone = document.getElementById('edit-phone');
+    let userName = document.getElementById('edit-nameContact');
+    let email = document.getElementById('edit-emailContact');
+    let phone = document.getElementById('edit-phoneContact');
     userName.value = user;
     email.value = mail;
     phone.value = number;  
@@ -334,9 +340,9 @@ function generateEditContainer(user, colour, id){
             </div>
             <div class="p-relative d-flex align-center justify-center column">
                 <form onsubmit="updateContact(${id});return false" class="w100 d-flex column input-container">
-                    <input id="edit-name" class="input" placeholder="Name" type="text" required>
-                    <input id="edit-email" class="input" placeholder="Email" type="email" required>
-                    <input id="edit-phone" class="input" placeholder="Phone" type="tel" required>
+                    <input id="edit-nameContact" class="input" placeholder="Name" type="text" required>
+                    <input id="edit-emailContact" class="input" placeholder="Email" type="email" required>
+                    <input id="edit-phoneContact" class="input" placeholder="Phone" type="tel" required>
                     <div class="d-flex justify-center edit-buttons">
                         <button onclick="deleteContact(${id})" id="delete-btn" class="btn-create pointer delete">
                             <div id="delete" class="blue">
@@ -361,9 +367,9 @@ function generateEditContainer(user, colour, id){
  */
 
 async function updateContact(id){
-    let userName = document.getElementById('edit-name');
-    let email = document.getElementById('edit-email');
-    let phone = document.getElementById('edit-phone');
+    let userName = document.getElementById('edit-nameContact');
+    let email = document.getElementById('edit-emailContact');
+    let phone = document.getElementById('edit-phoneContact');
     let contact = contacts[id]
 
     contact.userName = userName.value;

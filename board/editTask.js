@@ -88,6 +88,8 @@ function editTask(id) {
     allTasks[id]['names'] = names,
     allTasks[id]['subTask'] = subTasks,
     allTasks[id]['singleContactId'] = singleContactId,
+    allTasks[id]['assignedTo'] = selectedContacts,
+
 
     updateTasksHTML();
     saveTasks();
