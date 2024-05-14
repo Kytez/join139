@@ -128,6 +128,7 @@ function addTask(workMode = 'todo') {
     };
     allTasks.push(task);
     saveTasks();
+    setTimeout(reloadPage, 300);
 } 
 
 /**

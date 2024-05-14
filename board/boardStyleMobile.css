@@ -113,11 +113,6 @@ input[type="search"]::-webkit-search-results-button { display: none; }
     margin-right: 46px;
 }
 
-
-.found {
-    background-color: yellow; /* Ändere die Hintergrundfarbe nach Bedarf */
-}
-
 .center{
     display: flex;
     justify-content: center;

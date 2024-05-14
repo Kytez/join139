@@ -5,7 +5,7 @@
  * @param {string} prio This is the priority value for the task 
  */
 
-function showEditTask(title, description, date, id, prio, names, subTasks){
+function showEditTask(title, description, date, id, prio, names, subTasks, singleContactId){
     document.getElementById('editTaskSection').style.display = 'flex';
     document.getElementById('editTaskFullScreen').style.display = 'flex';
     
@@ -19,7 +19,7 @@ function showEditTask(title, description, date, id, prio, names, subTasks){
         })(i);
     }
     setFilterEdit({value: ''});
-    renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks)
+    renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId)
 }
 
 /**
@@ -29,7 +29,7 @@ function showEditTask(title, description, date, id, prio, names, subTasks){
  * @param {string} prio This is the priority value for the task
  */
 
-function renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks){
+function renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId){
     let titleEdit = document.getElementById('titleEdit');
     let descriptionEdit = document.getElementById('descriptionEdit');
     let dateEdit = document.getElementById('dateEdit');
@@ -37,6 +37,8 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
     console.log(id);
     console.log(names);
     console.log(subTasks);
+    console.log(singleContactId);
+    passIdsToSelectTaskContact(singleContactId);
     titleEdit.value = title;
     descriptionEdit.value = description;
     dateEdit.value = date;
@@ -47,6 +49,24 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
         </button> 
     `
 }
+
+function passIdsToSelectTaskContact(singleContactId) {
+    console.log(singleContactId);
+    // Überprüfe, ob singleContactId eine gültige Variable ist
+    if (!singleContactId || typeof singleContactId !== 'string') {
+        console.error("Ungültige Eingabe.");
+        return;
+    }
+
+    // Durchlaufe jede Zahl in singleContactId und rufe selectTaskContact für jede Zahl auf
+    for (let i = 0; i < singleContactId.length; i++) {
+        let id = parseInt(singleContactId[i]);
+        if (!isNaN(id)) {
+            selectTaskContactEdit(id);
+        }
+    }
+}
+
 
 
 /**

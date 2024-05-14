@@ -151,7 +151,7 @@ function returnProgressBarHTML(percentage, sumChecked, subTasks){
  * @param {array} names names from all contacts assigned to that task
  */
 
-function renderTasksPopUp(title, description, date, id, category, prio, names, subTasks){
+function renderTasksPopUp(title, description, date, id, category, prio, names, subTasks, singleContactId){
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
@@ -194,7 +194,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names, s
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${names}', '${subTasks}')" class="subtasks-checkbox pointer">
+                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${names}', '${subTasks}', '${singleContactId}')" class="subtasks-checkbox pointer">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>

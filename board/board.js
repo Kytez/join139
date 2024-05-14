@@ -12,7 +12,7 @@ function showTask(title, description, date, id, category, prio, names, subTasks,
             }, 100);
         })(i);
     }
-    renderTasksPopUp(title, description, date, id, category, prio, names, subTasks)
+    renderTasksPopUp(title, description, date, id, category, prio, names, subTasks, singleContactId)
     assignCategoryColour();
     assignUserColourPopUp(names, id);
     loadCheckBoxStatus(id);
