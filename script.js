@@ -19,7 +19,6 @@ function initLogIn() {
 async function getItem(path='') {
   let response = await fetch(BASE_URL + path + '.json');
   let responseToJson = await response.json();
-  console.log(responseToJson);
   return responseToJson;
 }
 
@@ -30,7 +29,6 @@ async function setItem(path='', value={}) {
     body: JSON.stringify(value),
 });
   let responseToJson = await response.json();
-  console.log(responseToJson);
   return responseToJson;
 }
 

@@ -26,7 +26,7 @@ async function signUp() {
         password: password.value,
       });
 
-      await setItem("/users", users);
+      await setItem("users", users);
 
       moveToLogIn();
     }
