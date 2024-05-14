@@ -94,8 +94,8 @@ function generateProgressBar(id){
     let subTaskHTML = '';
     let subTasks = allTasks[id]['subTask']
     let sumChecked = calculateSumCheckedTasks(id);
-    let percentage = Math.round(sumChecked/subTasks.length*100)
     if(subTasks.length > 0){
+        let percentage = Math.round(sumChecked/subTasks.length*100)
         subTaskHTML = returnProgressBarHTML(percentage, sumChecked, subTasks)
     }
     else{
@@ -114,11 +114,13 @@ function generateProgressBar(id){
 function calculateSumCheckedTasks(id){
     let checkedTasks = allTasks[id]['checkbox'] 
     let sumTrue = 0;
-    checkedTasks.forEach(value => {
-        if (value) {
-            sumTrue++;
-        }
-    });
+    if(checkedTasks){
+        checkedTasks.forEach(value => {
+            if (value) {
+                sumTrue++;
+            }
+        });
+    }
     return sumTrue;
 }
 
@@ -262,13 +264,15 @@ function saveCheckBoxStatus(id){
  */
 
 function subTaskIsChecked(id, subTasks){
-    for (let i = 0; i < subTasks.length; i++) {
-        const checkbox = document.getElementById(`box${id}${i}`)
-        if(checkbox.checked){
-            allTasks[id]['checkbox'][i] = true;
-        }
-        else{
-            allTasks[id]['checkbox'][i] = false;
+    if(subTasks){
+        for (let i = 0; i < subTasks.length; i++) {
+            const checkbox = document.getElementById(`box${id}${i}`)
+            if(checkbox.checked){
+                allTasks[id]['checkbox'][i] = true;
+            }
+            else{
+                allTasks[id]['checkbox'][i] = false;
+            }
         }
     }
 }
@@ -291,14 +295,16 @@ function loadCheckBoxStatus(id){
  */
 
 function checkSubTasks(id, checkBoxValue){
-    for (let i = 0; i < checkBoxValue.length; i++) {
-        const value = checkBoxValue[i];
-        const checkbox = document.getElementById(`box${id}${i}`)
-        if(value == true){
-            checkbox.checked = true;
-        }
-        else{
-            checkbox.checked = false;
+    if(checkBoxValue){
+        for (let i = 0; i < checkBoxValue.length; i++) {
+            const value = checkBoxValue[i];
+            const checkbox = document.getElementById(`box${id}${i}`)
+            if(value == true){
+                checkbox.checked = true;
+            }
+            else{
+                checkbox.checked = false;
+            }
         }
     }
 }
@@ -332,13 +338,15 @@ function generateAssignedUsers(element){
  */
 
 function generateAssignedUsersPopUp(names){
-    let usersHTML = '';
-    let namesArray = names.split(",");
-    for (let i = 0; i < namesArray.length; i++) {
-        const user = namesArray[i];
-        usersHTML += returnAssignedUserHTMLPopUp(user)
+    if(names){
+        let usersHTML = '';
+        let namesArray = names.split(",");
+        for (let i = 0; i < namesArray.length; i++) {
+            const user = namesArray[i];
+            usersHTML += returnAssignedUserHTMLPopUp(user)
+        }
+        return usersHTML
     }
-    return usersHTML
 }
 
 
@@ -389,15 +397,17 @@ function noTasksInArea(category){
  * @returns {string} - The source path for the priority image.
  */
 function assignPriorityImgTask(prio){
-    let source;
-    let low = '../assets/img/icons/arrow-down.png'
-    let medium = '../assets/img/icons/line.png'
-    let urgent = '../assets/img/icons/arrow-up.png'
-
-    if(prio == 'low') source = low;
-    else if(prio == 'medium') source = medium;
-    else if(prio == 'urgent') source = urgent;
-    return source;
+    if(prio){
+        let source;
+        let low = '../assets/img/icons/arrow-down.png'
+        let medium = '../assets/img/icons/line.png'
+        let urgent = '../assets/img/icons/arrow-up.png'
+    
+        if(prio == 'low') source = low;
+        else if(prio == 'medium') source = medium;
+        else if(prio == 'urgent') source = urgent;
+        return source;
+    }
 }
 
 /**
@@ -417,9 +427,11 @@ function assignCategoryColour(){
  * Assigns IDs to tasks according to their position in the allTasks aray.
  */
 function assignIDTasks(){
-    for (let i = 0; i < allTasks.length; i++) {
-        const task = allTasks[i];
-        task['id'] = i;
+    if(allTasks.length > 0){
+        for (let i = 0; i < allTasks.length; i++) {
+            const task = allTasks[i];
+            task['id'] = i;
+        }
     }
 }
 
@@ -428,13 +440,15 @@ function assignIDTasks(){
  * Assigns background color to users in task cards as assigned to when contacts were added.
  */
 function assignUserColourCard(){
-    for (let i = 0; i < allTasks.length; i++) {
-        const task = allTasks[i];
-        let divElement = document.getElementById(`assigned-users-${i}`);
-        for (let j = 0; j < task['assignedTo'].length; j++) {
-            const user = divElement.children[j];
-            const colour = task['colors'][j];
-            user.style.backgroundColor = colour;
+    if(allTasks.length > 0){
+        for (let i = 0; i < allTasks.length; i++) {
+            const task = allTasks[i];
+            let divElement = document.getElementById(`assigned-users-${i}`);
+            for (let j = 0; j < task['assignedTo'].length; j++) {
+                const user = divElement.children[j];
+                const colour = task['colors'][j];
+                user.style.backgroundColor = colour;
+            }
         }
     }
 }
@@ -442,15 +456,20 @@ function assignUserColourCard(){
 
 /**
  * Assigns background color to users in task pop-up as assigned to when contacts were added.
+ * 
+ *  * @param {string} names - The name of the assigned people.
+ *  * @param {number} id - The ID of the assigned people.
  */
 function assignUserColourPopUp(names, id){
-    let namesArray = names.split(","); 
-    const task = allTasks[id];
-    let divElement = document.getElementById(`assigned-taskUsers-${id}`);
-    for (let j = 0; j < namesArray.length; j++) {
-        const user = divElement.children[j].firstElementChild;
-        const colour = task['colors'][j];
-        user.style.backgroundColor = colour;
+    if(names){
+        let namesArray = names.split(","); 
+        const task = allTasks[id];
+        let divElement = document.getElementById(`assigned-taskUsers-${id}`);
+        for (let j = 0; j < namesArray.length; j++) {
+            const user = divElement.children[j].firstElementChild;
+            const colour = task['colors'][j];
+            user.style.backgroundColor = colour;
+        }
     }
 }
 
@@ -460,8 +479,10 @@ function assignUserColourPopUp(names, id){
  * @param {number} id - The ID of the task to delete.
  */
 function deleteTask(id){
-    allTasks.splice(id, 1)
-    updateTasksHTML();
-    hideTask();
-    saveTasks();
+    if(id){
+        allTasks.splice(id, 1)
+        updateTasksHTML();
+        hideTask();
+        saveTasks();
+    }
 }
