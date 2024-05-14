@@ -12,14 +12,14 @@ async function signUp() {
 
   btnSignUp.disabled = true;
 
-  // if (users.some((user) => user.email === email.value)) {
-  //   alert("This Email already exist");
-  //   resetForm(name, email, password, btnSignUp);
-  // } else {
-  //   if (password.value !== confirmPassword.value) {
-  //     alert("Passwords don't match");
-  //     resetForm(name, email, password, btnSignUp);
-  //   } else {
+  if (users.some((user) => user.email === email.value)) {
+    alert("This Email already exist");
+    resetForm(name, email, password, btnSignUp);
+  } else {
+    if (password.value !== confirmPassword.value) {
+      alert("Passwords don't match");
+      resetForm(name, email, password, btnSignUp);
+    } else {
       users.push({
         name: name.value,
         email: email.value,
@@ -28,10 +28,10 @@ async function signUp() {
 
       await setItem("/users", users);
 
-      // moveToLogIn();
+      moveToLogIn();
     }
-//   }
-// }
+  }
+}
 
 /**
  * Checks if the password matches the confirmed password input. 

@@ -1,6 +1,6 @@
-const STORAGE_TOKEN = "BWWMEZDTZCQQOXJAJAFR8E89G4VCXBKCXC2VP92F";
-const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
-// const BASE_URL = 'https://join-10f46-default-rtdb.europe-west1.firebasedatabase.app/';
+// const STORAGE_TOKEN = "BWWMEZDTZCQQOXJAJAFR8E89G4VCXBKCXC2VP92F";
+// const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
+const BASE_URL = 'https://join-10f46-default-rtdb.europe-west1.firebasedatabase.app/';
 
 let users = [];
 
@@ -16,16 +16,27 @@ function initLogIn() {
   loadFromLocalStorage();
 }
 
-// async function getItem(path='') {
-//   let response = await fetch(BASE_URL + path + '.json');
-//   let responseToJson = await response.json();
-//   console.log(responseToJson);
-//   return responseToJson;
-// }
+async function getItem(path='') {
+  let response = await fetch(BASE_URL + path + '.json');
+  let responseToJson = await response.json();
+  console.log(responseToJson);
+  return responseToJson;
+}
 
-// async function setItem(path='', value={}) {
+async function setItem(path='', value={}) {
+  let response = await fetch(BASE_URL + path + '.json', {
+    method: 'PUT',
+    header: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(value),
+});
+  let responseToJson = await response.json();
+  console.log(responseToJson);
+  return responseToJson;
+}
+
+// async function updateItem(path='', value={}) {
 //   let response = await fetch(BASE_URL + path + '.json', {
-//     method: 'POST',
+//     method: 'PUT',
 //     header: { 'Content-Type': 'application/json' },
 //     body: JSON.stringify(value),
 // });
@@ -41,13 +52,13 @@ function initLogIn() {
  * @param {any} value - The value of the item to be set.
  * @return {Promise<any>} A promise that resolves to the response data from the server.
  */
-async function setItem(key, value) {
-  const payload = { key, value, token: STORAGE_TOKEN };
-  return fetch(STORAGE_URL, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  }).then((response) => response.json());
-}
+// async function setItem(key, value) {
+//   const payload = { key, value, token: STORAGE_TOKEN };
+//   return fetch(STORAGE_URL, {
+//     method: "POST",
+//     body: JSON.stringify(payload),
+//   }).then((response) => response.json());
+// }
 
 /**
  * Retrieves an item from the storage using the provided key.
@@ -55,17 +66,17 @@ async function setItem(key, value) {
  * @param {string} key - The key of the item to retrieve.
  * @return {Promise<any>} A promise that resolves to the value of the item if found, or rejects with an error message if not found.
  */
-async function getItem(key) {
-  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-  return fetch(url)
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.data) {
-        return response.data.value;
-      }
-      throw `Could not find data with key "${key}".`;
-    });
-}
+// async function getItem(key) {
+//   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+//   return fetch(url)
+//     .then((response) => response.json())
+//     .then((response) => {
+//       if (response.data) {
+//         return response.data.value;
+//       }
+//       throw `Could not find data with key "${key}".`;
+//     });
+// }
 
 /**
  * Asynchronously includes HTML content from specified files into matching elements in the DOM.
@@ -93,7 +104,7 @@ async function includeHTML() {
  */
 async function loadUsers() {
   try {
-    users = JSON.parse(await getItem("users"));
+    users = await getItem("users");
   } catch (e) {
     console.error("Loading error:", e);
   }
@@ -115,7 +126,7 @@ function saveActiveUser(userFound) {
  * @return {Promise<void>} A promise that resolves when the active user is successfully loaded.
  */
 async function loadActiveUser() {
-  let activeUserArray = JSON.parse(await getItem("activeUser"));
+  let activeUserArray = await getItem("activeUser");
 
   if (activeUserArray && activeUserArray["name"]) {
     activeUser = activeUserArray["name"];
