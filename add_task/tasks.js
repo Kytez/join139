@@ -153,7 +153,7 @@ function showContactList(){
  * @return {Promise<void>} A promise that resolves when the tasks are successfully saved.
  */
 async function saveTasks(){
-    setItem('allTasks', JSON.stringify(allTasks));
+    setItem('allTasks', (allTasks));
 }
 
 /**
@@ -163,7 +163,7 @@ async function saveTasks(){
  */
 async function loadAllTasks(){
     try {
-        allTasks = JSON.parse(await getItem('allTasks')) || [];
+        allTasks = (await getItem('allTasks')) || [];
     } catch(e) {
         console.error('Loading error:', e);
     }
