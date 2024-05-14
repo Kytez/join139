@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     list.addEventListener('click', function(event) {
         const clickedContact = event.target.closest('.contact');
         const contacts = document.querySelectorAll('.contact');
-        if (clickedContact) {
+        if (clickedContact && window.innerWidth > 992) {
             changeContactBgDark(clickedContact, contacts);
         };
     });
