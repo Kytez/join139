@@ -20,7 +20,6 @@ function showEditTask(title, description, date, id, prio, names, subTasks, singl
     }
     setFilterEdit({value: ''});
     renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId);
-    singleContactId = [];
 }
 
 /**
@@ -94,6 +93,7 @@ function editTask(id) {
     saveTasks();
     hideEditTask();
     hideTask();
+    singleContactId = [];
     subTasks = [];
     names = [];
     colors = [];
