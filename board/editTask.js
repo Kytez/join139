@@ -33,12 +33,9 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
     let titleEdit = document.getElementById('titleEdit');
     let descriptionEdit = document.getElementById('descriptionEdit');
     let dateEdit = document.getElementById('dateEdit');
-    let okButton = document.getElementById('boardEditTaskBtns');renderEditTaskPopUpElements
-    console.log(id);
-    console.log(names);
-    console.log(subTasks);
-    console.log(singleContactId);
+    let okButton = document.getElementById('boardEditTaskBtns');
     passIdsToSelectTaskContact(singleContactId);
+    addSubtaskHTML(subTasks);
     titleEdit.value = title;
     descriptionEdit.value = description;
     dateEdit.value = date;
