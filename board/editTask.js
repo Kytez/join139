@@ -19,7 +19,8 @@ function showEditTask(title, description, date, id, prio, names, subTasks, singl
         })(i);
     }
     setFilterEdit({value: ''});
-    renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId)
+    renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId);
+    singleContactId = [];
 }
 
 /**
@@ -51,6 +52,7 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
 }
 
 function passIdsToSelectTaskContact(singleContactId) {
+    document.getElementById("contactInitalsEdit").innerHTML = "";
     console.log(singleContactId);
     // Überprüfe, ob singleContactId eine gültige Variable ist
     if (!singleContactId || typeof singleContactId !== 'string') {
@@ -249,7 +251,8 @@ function changeCheckedAndColorEdit(i, contact, name){
         checkedSelect.classList.add("d-none");
         selectedContacts.splice(selectedContacts.indexOf(i), 1);
         colors.splice(colors.indexOf(i), 1);
-        names.splice(colors.indexOf(i), 1);
+        names.splice(names.indexOf(i), 1);
+        singleContactId.splice(singleContactId.indexOf(i), 1);
         removeInital(i);
     } else {
         selectedContact.style.backgroundColor = "#2A3647";
@@ -260,6 +263,7 @@ function changeCheckedAndColorEdit(i, contact, name){
         selectedContacts.push(contact);
         colors.push(computedStyle);
         names.push(name);
+        singleContactId.push(i);
         renderInitials.innerHTML += renderInitialsHTMLEdit(i, initials, computedStyle);
     }
 }

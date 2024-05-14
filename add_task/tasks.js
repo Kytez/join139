@@ -3,6 +3,7 @@ let emptyArray = [];
 let selectedContacts = [];
 let prio = '';
 let singleContactId = [];
+let saveSingleContact = [];
 let colors = [];
 let contactList = [];
 let subTasks = [];
