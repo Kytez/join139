@@ -125,7 +125,7 @@ function addTask(workMode = 'todo') {
         createdAt: new Date().getDate(),
         'workMode': workMode,
         'names': names,
-        'checkbox': [,],
+        'checkbox': ['a'],
     };
     allTasks.push(task);
     saveTasks();
