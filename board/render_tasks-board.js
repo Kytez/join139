@@ -149,7 +149,6 @@ function renderTasksPopUp(title, description, date, id, category, prio, names, s
                 <div class="task-category header-popup">${category}</div> 
                 <img onclick="hideTask()" class="close-img pointer" src="../assets/img/icons/close.png">
             </div>
-            
             <span class="pop-up-headline">${title}</span> <br>
             <div class="margin-top-24">
                 <span>${description}</span>
