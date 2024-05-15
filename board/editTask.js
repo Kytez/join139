@@ -47,6 +47,44 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
     `
 }
 
+function passIdsToaddSubtaskHTML(subTasks) {
+    document.getElementById("subTaskInputEdit").innerHTML = "";
+    console.log(subTasks);
+    // Überprüfe, ob singleContactId eine gültige Variable ist
+    if (!subTasks || typeof subTasks !== 'string') {
+        console.error("Ungültige Eingabe.");
+        return;
+    }
+
+    // Durchlaufe jede Zahl in singleContactId und rufe selectTaskContact für jede Zahl auf
+    for (let i = 0; i < subTasks.length; i++) {
+        let id = parseInt(subTasks[i]);
+        if (!isNaN(id)) {
+            console.log(subTasks, i);
+            addSubtaskHTML(id, i);
+        }
+    }
+}
+
+function addSubtaskHTML(subTask, i) {
+    return `
+    <div id="subTask_${i}" class="singleSubTasks">
+        <div>${subTask}</div>
+            <div class="flex edit-trash">
+                <div>
+                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="../assets/img/svg/pencil.svg" alt="">
+                </div>
+                <div class="seperator">
+                </div>
+            <div>
+                <img class="edit" onclick="deleteSubtask(this.parentElement.parentElement, ${i})" src="../assets/img/svg/trash.svg" alt="">
+            </div>
+        </div>
+    </div>
+    `
+}
+
 function passIdsToSelectTaskContact(singleContactId) {
     document.getElementById("contactInitalsEdit").innerHTML = "";
     console.log(singleContactId);
