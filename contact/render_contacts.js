@@ -48,7 +48,13 @@ async function saveContacts(){
 
 async function loadContacts(){
     try {
-        contacts = await getItem('contacts');
+        let contactsResponse = await getItem('contacts');
+        if(contactsResponse != null){
+            contacts = contactsResponse;
+        }
+        else{
+            contacts = [];
+        }
     } catch(e) {
         console.error('Loading error:', e);
     }
