@@ -399,7 +399,6 @@ function assignCategoryColour() {
         });
     };
 
-
 /**
  * Assigns IDs to tasks according to their position in the allTasks aray.
  */
@@ -411,7 +410,6 @@ function assignIDTasks() {
         }
     }
 }
-
 
 /**
  * Assigns background color to users in task cards as assigned to when contacts were added.
@@ -429,7 +427,6 @@ function assignUserColourCard() {
         }
     }
 }
-
 
 /**
  * Assigns background color to users in task pop-up as assigned to when contacts were added.
@@ -449,7 +446,6 @@ function assignUserColourPopUp(names, id) {
         }
     }
 }
-
 
 /**
  * Deletes a task.
