@@ -1,7 +1,7 @@
 let allTasks = [];
 let emptyArray = [];
 let selectedContacts = [];
-let prio = '';
+let prio = "";
 let singleContactId = [];
 let saveSingleContact = [];
 let colors = [];
@@ -15,11 +15,11 @@ let names = [];
  * @return {Promise<void>} A promise that resolves when the initialization is complete.
  */
 async function initAddTask() {
-    await includeHTML();
-    await loadActiveUser();
-    renderUserInitials();
-    await loadContacts();
-    await loadAllTasks();
+  await includeHTML();
+  await loadActiveUser();
+  renderUserInitials();
+  await loadContacts();
+  await loadAllTasks();
 }
 
 /**
@@ -29,33 +29,33 @@ async function initAddTask() {
  * @return {void} This function does not return any value.
  */
 function setFilterBoard(input) {
-    let filter = input.value.trim().toLowerCase();
-    let filteredContacts;
+  let filter = input.value.trim().toLowerCase();
+  let filteredContacts;
 
-    if (filter !== '') {
-        filteredContacts = contacts.filter(function(contact) {
-            return contact.userName.toLowerCase().includes(filter);
-        });
-    } else {
-        filteredContacts = contacts;
-    }
+  if (filter !== "") {
+    filteredContacts = contacts.filter(function (contact) {
+      return contact.userName.toLowerCase().includes(filter);
+    });
+  } else {
+    filteredContacts = contacts;
+  }
 
-    renderAssignedContactList(filteredContacts);
+  renderAssignedContactList(filteredContacts);
 }
 
 function setFilter(input) {
-    let filter = input.value.trim().toLowerCase();
-    let filteredContacts;
+  let filter = input.value.trim().toLowerCase();
+  let filteredContacts;
 
-    if (filter !== '') {
-        filteredContacts = contacts.filter(function(contact) {
-            return contact.userName.toLowerCase().includes(filter);
-        });
-    } else {
-        filteredContacts = contacts;
-    }
+  if (filter !== "") {
+    filteredContacts = contacts.filter(function (contact) {
+      return contact.userName.toLowerCase().includes(filter);
+    });
+  } else {
+    filteredContacts = contacts;
+  }
 
-    renderAssignedContactList(filteredContacts);
+  renderAssignedContactList(filteredContacts);
 }
 
 /**
@@ -65,21 +65,21 @@ function setFilter(input) {
  * @return {void} This function does not return a value.
  */
 function renderAssignedContactList(filteredContacts) {
-    let assignedTo = document.getElementById('selected-contacts');
-    assignedTo.innerHTML = "";
-    for (let i = 0; i < filteredContacts.length; i++) {
-        let userName = filteredContacts[i].userName;
-        let initialsString = ''; 
-        let color = filteredContacts[i].colour;
-        
-        let words = userName.split(' ');
-        let initials = words.map(word => word.charAt(0).toUpperCase());
-        initialsString = initials.join('');
-        
-        assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
-        let user = document.getElementById(`initials_${i}`);
-        user.style.backgroundColor = color;
-    }
+  let assignedTo = document.getElementById("selected-contacts");
+  assignedTo.innerHTML = "";
+  for (let i = 0; i < filteredContacts.length; i++) {
+    let userName = filteredContacts[i].userName;
+    let initialsString = "";
+    let color = filteredContacts[i].colour;
+
+    let words = userName.split(" ");
+    let initials = words.map((word) => word.charAt(0).toUpperCase());
+    initialsString = initials.join("");
+
+    assignedTo.innerHTML += contactListAddTaskHTML(i, userName, initialsString);
+    let user = document.getElementById(`initials_${i}`);
+    user.style.backgroundColor = color;
+  }
 }
 
 /**
@@ -89,15 +89,15 @@ function renderAssignedContactList(filteredContacts) {
  * @return {none}
  */
 function hideAndShowEdit() {
-    let edit = document.getElementById('edit');
-    let subtaskt = document.getElementById('subTask');
-    if (edit.classList.contains('d-none')) {
-        edit.classList.remove('d-none');
-        subtaskt.classList.add('d-none');
-    }else {
-        edit.classList.add('d-none');
-        subtaskt.classList.remove('d-none');
-    }
+  let edit = document.getElementById("edit");
+  let subtaskt = document.getElementById("subTask");
+  if (edit.classList.contains("d-none")) {
+    edit.classList.remove("d-none");
+    subtaskt.classList.add("d-none");
+  } else {
+    edit.classList.add("d-none");
+    subtaskt.classList.remove("d-none");
+  }
 }
 
 /**
@@ -106,45 +106,45 @@ function hideAndShowEdit() {
  * @param {string} [workMode='todo'] - The work mode of the task. Defaults to 'todo'.
  * @return {void} This function does not return anything.
  */
-function addTask(workMode = 'todo') {
-    let title = document.getElementById('title');
-    let description = document.getElementById('description');
-    let date = document.getElementById('date');
-    let category = document.getElementById('category');
-    let task = {
-        'id': allTasks.length + 1,
-        'singleContactId': singleContactId,
-        'title': title.value,
-        'description': description.value,
-        'assignedTo': selectedContacts,
-        'colors': colors,
-        'date': date.value,
-        'prio': prio,
-        'category': category.value,
-        'subTask': subTasks,
-        createdAt: new Date().getDate(),
-        'workMode': workMode,
-        'names': names,
-        'checkbox': ['a'],
-    };
-    allTasks.push(task);
-    saveTasks();
-    setTimeout(reloadPage, 300);
-} 
+function addTask(workMode = "todo") {
+  let title = document.getElementById("title");
+  let description = document.getElementById("description");
+  let date = document.getElementById("date");
+  let category = document.getElementById("category");
+  let task = {
+    id: allTasks.length + 1,
+    singleContactId: singleContactId,
+    title: title.value,
+    description: description.value,
+    assignedTo: selectedContacts,
+    colors: colors,
+    date: date.value,
+    prio: prio,
+    category: category.value,
+    subTask: subTasks,
+    createdAt: new Date().getDate(),
+    workMode: workMode,
+    names: names,
+    checkbox: ["a"],
+  };
+  allTasks.push(task);
+  saveTasks();
+  setTimeout(reloadPage, 300);
+}
 
 /**
  * Toggles the visibility of the contact list.
  *
  * @return {void} This function does not return a value.
  */
-function showContactList(){
-    let contactList = document.getElementById('selected-contacts');
-    if (contactList.classList.contains('d-none')) {
-        contactList.classList.remove('d-none');
-        setFilter({ value: `` });
-    } else {
-        contactList.classList.add('d-none');
-    }
+function showContactList() {
+  let contactList = document.getElementById("selected-contacts");
+  if (contactList.classList.contains("d-none")) {
+    contactList.classList.remove("d-none");
+    setFilter({ value: `` });
+  } else {
+    contactList.classList.add("d-none");
+  }
 }
 
 /**
@@ -152,8 +152,8 @@ function showContactList(){
  *
  * @return {Promise<void>} A promise that resolves when the tasks are successfully saved.
  */
-async function saveTasks(){
-    setItem('allTasks', allTasks);
+async function saveTasks() {
+  setItem("allTasks", allTasks);
 }
 
 /**
@@ -161,12 +161,17 @@ async function saveTasks(){
  *
  * @return {Promise<void>} A promise that resolves when the tasks are successfully loaded.
  */
-async function loadAllTasks(){
-    try {
-        allTasks = await getItem('allTasks') || [];
-    } catch(e) {
-        console.error('Loading error:', e);
+async function loadAllTasks() {
+  try {
+    let allTasksResponse = (await getItem("allTasks")) || [];
+    if(allTasksResponse !== null) {
+      allTasks = allTasksResponse;
+    } else {
+      allTasks = [];
     }
+  } catch (e) {
+    console.error("Loading error:", e);
+  }
 }
 
 /**
@@ -174,8 +179,8 @@ async function loadAllTasks(){
  *
  * @return {void} This function does not return anything.
  */
-function clearTask(){
-    location.reload();
+function clearTask() {
+  location.reload();
 }
 
 /**
@@ -184,11 +189,13 @@ function clearTask(){
  * @param {number} i - The index of the contact in the list.
  * @return {void} This function does not return anything.
  */
-function selectTaskContact(i){ 
-    let contact = document.getElementById(`initials_${i}`).textContent;
-    let fullNameElement = document.getElementById(`SingleContact_${i}`).querySelector('.profile-fullname');
-    let name = fullNameElement.textContent.trim();
-    changeCheckedAndColor(i, contact, name);
+function selectTaskContact(i) {
+  let contact = document.getElementById(`initials_${i}`).textContent;
+  let fullNameElement = document
+    .getElementById(`SingleContact_${i}`)
+    .querySelector(".profile-fullname");
+  let name = fullNameElement.textContent.trim();
+  changeCheckedAndColor(i, contact, name);
 }
 
 /**
@@ -198,12 +205,12 @@ function selectTaskContact(i){
  * @param {string} colors - The background color of the selected initial.
  * @return {void} This function does not return anything.
  */
-function renderInitals(i, colors){
-    let initials = document.getElementById(`initials_${i}`).textContent; // Extrahiere den Inhalt des div-Elements
-    let selectedInitials = document.getElementById(`selectedInitial_${i}`);
-    let content = document.getElementById(`contactInitals`);
-    content.innerHTML += renderInitialsHTML(i, initials);
-    selectedInitials.style.backgroundColor = colors;
+function renderInitals(i, colors) {
+  let initials = document.getElementById(`initials_${i}`).textContent; // Extrahiere den Inhalt des div-Elements
+  let selectedInitials = document.getElementById(`selectedInitial_${i}`);
+  let content = document.getElementById(`contactInitals`);
+  content.innerHTML += renderInitialsHTML(i, initials);
+  selectedInitials.style.backgroundColor = colors;
 }
 
 /**
@@ -212,9 +219,9 @@ function renderInitals(i, colors){
  * @param {number} i - The index of the initials div element to remove.
  * @return {void} This function does not return anything.
  */
-function removeInital(i){
-    let selectedInitials = document.getElementById(`selectedInitial_${i}`);
-    selectedInitials.remove();
+function removeInital(i) {
+  let selectedInitials = document.getElementById(`selectedInitial_${i}`);
+  selectedInitials.remove();
 }
 
 /**
@@ -225,36 +232,36 @@ function removeInital(i){
  * @param {string} name - The name of the contact.
  * @return {void} This function does not return anything.
  */
-function changeCheckedAndColor(i, contact, name){
-    let selectedContact = document.getElementById(`SingleContact_${i}`);
-    let emptySelect = document.getElementById(`empty_${i}`);
-    let checkedSelect = document.getElementById(`checked_${i}`);
-    let element = document.getElementById(`initials_${i}`);
-    let initials = document.getElementById(`initials_${i}`).textContent;
-    let renderInitials = document.getElementById(`contactInitals`);
-    
-    if (emptySelect.classList.contains("d-none")) {
-        selectedContact.style.backgroundColor = "";
-        selectedContact.style.color = "black";
-        emptySelect.classList.remove("d-none");
-        checkedSelect.classList.add("d-none");
-        selectedContacts.splice(selectedContacts.indexOf(i), 1);
-        colors.splice(colors.indexOf(i), 1);
-        names.splice(colors.indexOf(i), 1);
-        singleContactId.splice(id.indexOf(i), 1);
-        removeInital(i);
-    } else {
-        selectedContact.style.backgroundColor = "#2A3647";
-        selectedContact.style.color = "white";
-        emptySelect.classList.add("d-none");
-        checkedSelect.classList.remove("d-none");
-        let computedStyle = window.getComputedStyle(element).backgroundColor;
-        selectedContacts.push(contact);
-        colors.push(computedStyle);
-        names.push(name);
-        singleContactId.push(i);
-        renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
-    }
+function changeCheckedAndColor(i, contact, name) {
+  let selectedContact = document.getElementById(`SingleContact_${i}`);
+  let emptySelect = document.getElementById(`empty_${i}`);
+  let checkedSelect = document.getElementById(`checked_${i}`);
+  let element = document.getElementById(`initials_${i}`);
+  let initials = document.getElementById(`initials_${i}`).textContent;
+  let renderInitials = document.getElementById(`contactInitals`);
+
+  if (emptySelect.classList.contains("d-none")) {
+    selectedContact.style.backgroundColor = "";
+    selectedContact.style.color = "black";
+    emptySelect.classList.remove("d-none");
+    checkedSelect.classList.add("d-none");
+    selectedContacts.splice(selectedContacts.indexOf(i), 1);
+    colors.splice(colors.indexOf(i), 1);
+    names.splice(colors.indexOf(i), 1);
+    singleContactId.splice(id.indexOf(i), 1);
+    removeInital(i);
+  } else {
+    selectedContact.style.backgroundColor = "#2A3647";
+    selectedContact.style.color = "white";
+    emptySelect.classList.add("d-none");
+    checkedSelect.classList.remove("d-none");
+    let computedStyle = window.getComputedStyle(element).backgroundColor;
+    selectedContacts.push(contact);
+    colors.push(computedStyle);
+    names.push(name);
+    singleContactId.push(i);
+    renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
+  }
 }
 
 /**
@@ -264,57 +271,65 @@ function changeCheckedAndColor(i, contact, name){
  * @return {void} This function does not return a value.
  */
 function selectPrio(i) {
-    prio = i;
-    setPrioButtonsColor(prio);
+  prio = i;
+  setPrioButtonsColor(prio);
 }
 
 /**
  * Set color of priority buttons based on given priority
- * 
+ *
  * @param {Priority} i priority
  * @returns {void} undefined
  */
 function setPrioButtonsColor(i) {
-    document.getElementById("medium").classList.remove("highlighted-button-medium");
-    document.getElementById("low").classList.remove("highlighted-button-low");
-    document.getElementById("urgent").classList.remove("highlighted-button-urgent");
-    if (i === "medium") {
-        document.getElementById("medium").classList.add("highlighted-button-medium");
-    } else if (i === "low") {
-        document.getElementById("low").classList.add("highlighted-button-low");
-    } else if (i === "urgent") {
-        document.getElementById("urgent").classList.add("highlighted-button-urgent");
-    }
+  document
+    .getElementById("medium")
+    .classList.remove("highlighted-button-medium");
+  document.getElementById("low").classList.remove("highlighted-button-low");
+  document
+    .getElementById("urgent")
+    .classList.remove("highlighted-button-urgent");
+  if (i === "medium") {
+    document
+      .getElementById("medium")
+      .classList.add("highlighted-button-medium");
+  } else if (i === "low") {
+    document.getElementById("low").classList.add("highlighted-button-low");
+  } else if (i === "urgent") {
+    document
+      .getElementById("urgent")
+      .classList.add("highlighted-button-urgent");
+  }
 }
 
 /**
  * Handle click event on priority buttons.
  * Set the priority to the given value and update the color of the buttons.
- * 
+ *
  * @param {string} i - The priority to be set.
  * @returns {void} This function does not return a value.
  */
 function handleClickPrio(i) {
-    if (i) {
-        selectPrio(i); // Set the given priority
-    }
+  if (i) {
+    selectPrio(i); // Set the given priority
+  }
 }
 
 /**
  * Renders the subtasks on the webpage.
  *
- * @param {none} 
+ * @param {none}
  * @return {void} This function does not return a value.
  */
 function renderSubtasks() {
-    let subTaskContainer = document.getElementById('subTaskContainer');
-    subTaskContainer.innerHTML = ""; // Clear previous content
-    
-    // Iterate through subTasks array and render each subtask
-    for (let i = 0; i < subTasks.length; i++) {
-        let subTaskHTML = addSubtaskHTML(subTasks[i], i);
-        subTaskContainer.innerHTML += subTaskHTML;
-    }
+  let subTaskContainer = document.getElementById("subTaskContainer");
+  subTaskContainer.innerHTML = ""; // Clear previous content
+
+  // Iterate through subTasks array and render each subtask
+  for (let i = 0; i < subTasks.length; i++) {
+    let subTaskHTML = addSubtaskHTML(subTasks[i], i);
+    subTaskContainer.innerHTML += subTaskHTML;
+  }
 }
 
 /**
@@ -324,11 +339,11 @@ function renderSubtasks() {
  * @return {void}
  */
 function addSubtask() {
-    let subTaskInput = document.getElementById('subTaskInput').value;
-    subTasks.push(subTaskInput);
-    console.log(subTaskInput);
-    renderSubtasks(); // Rendere die Unteraufgaben neu
-    document.getElementById('subTaskInput').value = "";
+  let subTaskInput = document.getElementById("subTaskInput").value;
+  subTasks.push(subTaskInput);
+  console.log(subTaskInput);
+  renderSubtasks(); // Rendere die Unteraufgaben neu
+  document.getElementById("subTaskInput").value = "";
 }
 
 /**
@@ -337,7 +352,7 @@ function addSubtask() {
  * @return {void} This function does not return anything.
  */
 function clearInputAddTask() {
-    document.getElementById('subTaskInput').value = '';
+  document.getElementById("subTaskInput").value = "";
 }
 
 /**
@@ -347,6 +362,7 @@ function clearInputAddTask() {
  * @return {void} This function does not return anything.
  */
 function editSubtask(id) {
+<<<<<<< HEAD
     console.log("Subtask bearbeiten:", id);
     let subTaskDiv = document.getElementById(`subTask_${id}`);
     let subTaskText = subTaskDiv.querySelector("div");
@@ -358,6 +374,21 @@ function editSubtask(id) {
     subTaskTextInput.type = "text";
     subTaskTextInput.value = subTaskText.textContent;
     subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
+=======
+  // Hier kannst du die Logik für die Bearbeitung des Subtasks implementieren
+  console.log("Subtask bearbeiten:", id);
+  // Zum Beispiel: Du könntest den Text im Subtask-Div durch ein Eingabefeld ersetzen, um die Bearbeitung zu ermöglichen
+  let subTaskDiv = document.getElementById(`subTask_${id}`);
+  let subTaskText = subTaskDiv.querySelector("div");
+  let subTaskTextInput = document.createElement("input");
+  let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
+  let editSubtasks = document.getElementById(`editSubtasks_${id}`);
+  saveEditSubtasks.classList.remove("d-none");
+  editSubtasks.classList.add("d-none");
+  subTaskTextInput.type = "text";
+  subTaskTextInput.value = subTaskText.textContent;
+  subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
+>>>>>>> 52a64397c3ff1a6caadc926fe89ff9fc99259b34
 }
 
 /**
@@ -367,22 +398,22 @@ function editSubtask(id) {
  * @return {void} This function does not return anything.
  */
 function deleteSubtask(entry, id) {
-    const index = subTasks.findIndex((element) => element.id === id);
-    subTasks.splice(index, 1);
-    entry.remove();
+  const index = subTasks.findIndex((element) => element.id === id);
+  subTasks.splice(index, 1);
+  entry.remove();
 }
 
 function updateSubtaskIds() {
-    // Aktualisiere die IDs im DOM
-    let subTaskElements = document.querySelectorAll('.singleSubTasks');
-    subTaskElements.forEach((element, index) => {
-        element.id = `subTask_${index}`;
-    });
+  // Aktualisiere die IDs im DOM
+  let subTaskElements = document.querySelectorAll(".singleSubTasks");
+  subTaskElements.forEach((element, index) => {
+    element.id = `subTask_${index}`;
+  });
 
-    // Aktualisiere die IDs im subTasks-Array
-    subTasks.forEach((task, index) => {
-        task.id = index;
-    });
+  // Aktualisiere die IDs im subTasks-Array
+  subTasks.forEach((task, index) => {
+    task.id = index;
+  });
 }
 
 /**
@@ -392,19 +423,19 @@ function updateSubtaskIds() {
  * @return {void} This function does not return anything.
  */
 function saveEditSubtask(id) {
-    let elementToRemove = document.getElementById(`subTask_${id}`);
-    let subTaskTextInput = elementToRemove.querySelector("input").value;
-    let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
-    let editSubtasks = document.getElementById(`editSubtasks_${id}`);
-    console.log(subTaskTextInput);
-    if (elementToRemove) {
-        elementToRemove.remove();
-        subTasks.splice(id, 1);
-        subTasks.push(subTaskTextInput);
-        renderSubtasks();
-        saveEditSubtasks.classList.remove("d-none");
-        editSubtasks.classList.add("d-none");
-    }
+  let elementToRemove = document.getElementById(`subTask_${id}`);
+  let subTaskTextInput = elementToRemove.querySelector("input").value;
+  let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
+  let editSubtasks = document.getElementById(`editSubtasks_${id}`);
+  console.log(subTaskTextInput);
+  if (elementToRemove) {
+    elementToRemove.remove();
+    subTasks.splice(id, 1);
+    subTasks.push(subTaskTextInput);
+    renderSubtasks();
+    saveEditSubtasks.classList.remove("d-none");
+    editSubtasks.classList.add("d-none");
+  }
 }
 
 /**
@@ -415,7 +446,7 @@ function saveEditSubtask(id) {
  * @return {string} The HTML markup for the subtask element.
  */
 function addSubtaskHTML(subTask, i) {
-    return `
+  return `
     <div id="subTask_${i}" class="singleSubTasks">
         <div>${subTask}</div>
             <div class="flex edit-trash">
@@ -430,7 +461,7 @@ function addSubtaskHTML(subTask, i) {
             </div>
         </div>
     </div>
-    `
+    `;
 }
 
 /**
@@ -439,7 +470,7 @@ function addSubtaskHTML(subTask, i) {
  * @return {string} The HTML markup for the task element.
  */
 function taskHtml() {
-    return html`
+  return html`
     <div onclick="showTask()" class="tasks">
                 <div class="task-padding">
                     <div class="task-title">User Story</div>
@@ -469,8 +500,8 @@ function taskHtml() {
  * @param {string} computedStyle - The background color of the initials div.
  * @return {string} The HTML code for the initials div.
  */
-function renderInitialsHTML(i, initials, computedStyle){
-    return `
+function renderInitialsHTML(i, initials, computedStyle) {
+  return `
         <div id="selectedInitial_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
     `;
 }
@@ -483,8 +514,8 @@ function renderInitialsHTML(i, initials, computedStyle){
  * @param {string} initialsString - The initials of the user.
  * @return {string} The HTML code for the contact list entry.
  */
-function contactListAddTaskHTML(i, userName, initialsString){
-    return `
+function contactListAddTaskHTML(i, userName, initialsString) {
+  return `
     <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
         <div class="contact-list-entry">
             <div id="initials_${i}" class="initials">${initialsString}</div>

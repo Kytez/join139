@@ -141,7 +141,6 @@ input:focus {
 
 .blue-border {
   border-color: #29abe2;
-  /* color: #29abe2; */
 }
 
 .delete {
@@ -175,7 +174,6 @@ input:focus {
   .container-add {
     border-radius: 30px;
     border: solid 1px;
-    /* height: calc(100vh - 96px); */
     top: 170px;
     left: 90px;
     background-color: white;

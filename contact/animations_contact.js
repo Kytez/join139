@@ -5,7 +5,6 @@ let contactViewOpen;
  *
  * @param {event} event The event is triggered as a click-event
  */
-
 function doNotClose(event) {
   event.stopPropagation();
 }
@@ -13,7 +12,6 @@ function doNotClose(event) {
 /**
  * Listens to a click event once a contact in the contact list has been clicked, and changes its background-color.
  */
-
 document.addEventListener("DOMContentLoaded", function () {
   const list = document.getElementById("list");
   list.addEventListener("click", function (event) {
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
  * @param {object} clickedContact This is the contact that was clicked within the contact-list
  * @param {object} contacts These are all contacts with the contact-class
  */
-
 function changeContactBgDark(clickedContact, contacts) {
   contacts.forEach((contact) => {
     contact.addEventListener("click", function () {
@@ -47,7 +44,6 @@ function changeContactBgDark(clickedContact, contacts) {
  * Opens the view for the options pop-up for editing and deleting contacts.
  * It opens the view by changing the CSS property transform: translateX().
  */
-
 function showOptions() {
   document.getElementById("toggle-options").style = "transform: translateX(0)";
 }
@@ -56,7 +52,6 @@ function showOptions() {
  * Closes the view for the options pop-up for editing and deleting contacts.
  * It closes the view by changing the CSS property transform: translateX().
  */
-
 function closeOptions() {
   document.getElementById("toggle-options").style =
     "transform: translateX(200%)";
@@ -73,7 +68,6 @@ function closeOptions() {
  * @param {String} colour This is the random color assigned to the contact.
  * @param {number} id This is the id of the contact.
  */
-
 function viewContact(userName, email, phone, colour, id) {
   contactViewOpen = true;
   renderViewedContact(userName, email, phone, colour, id);
@@ -86,7 +80,6 @@ function viewContact(userName, email, phone, colour, id) {
 /**
  * Moves the contact container in the desktop version with a slide effect, due to transform: translateX().
  */
-
 function moveContactDesktop() {
   let contactContainer = document.getElementById("contact-container-desktop");
   setTimeout(() => {
@@ -98,7 +91,6 @@ function moveContactDesktop() {
  * Closes the contact view container in the mobile version.
  * It also changes the variable contactViewOpen to signal the closure.
  */
-
 function closeContact() {
   contactViewOpen = false;
   document.getElementById("viewedContact").classList.add("d-non");
@@ -109,7 +101,6 @@ function closeContact() {
  * Enables responsiveness of the contact view container in the event of resizing of the display.
  * It relies on the contactViewOpen variable and display-width as triggers.
  */
-
 window.addEventListener("resize", () => {
   if (contactViewOpen && window.innerWidth > 992) showContactDesktopView();
 
@@ -123,7 +114,6 @@ window.addEventListener("resize", () => {
 /**
  * Hides the contact view in the mobile version to allow responsive view in the desktop version.
  */
-
 function showContactDesktopView() {
   document.getElementById("viewedContact").classList.add("d-non");
   document.getElementById("contact-list").classList.remove("d-non");
@@ -132,7 +122,6 @@ function showContactDesktopView() {
 /**
  * Shows the viewed Contact in the mobile version.
  */
-
 function showContactMobileView() {
   document.getElementById("viewedContact").classList.remove("d-non");
   document.getElementById("contact-list").classList.add("d-non");
@@ -141,7 +130,6 @@ function showContactMobileView() {
 /**
  * Removes the content of the view-container in the desktop version, if it is no longer being viewed after deselection in the mobile-view.
  */
-
 function removeViewedContactDesktop() {
   document.getElementById("viewedContactDesktop").innerHTML = "";
 }
@@ -149,7 +137,6 @@ function removeViewedContactDesktop() {
 /**
  * Removes the background-color of the viewed Contact in the list only when user moves from Desktop display to Mobile display view.
  */
-
 function removeContactBgOnResize() {
   const contacts = document.querySelectorAll(".contact");
   window.onclick = function (event) {
@@ -171,7 +158,6 @@ function removeContactBgOnResize() {
  * @param {String} phone  This is the phone number of the contact.
  * @param {String} colour This is the random color assigned to the contact.
  */
-
 function showNewContactInformation(userName, email, phone, colour) {
   if (window.innerWidth < 992) {
     viewContact(userName, email, phone, colour);
@@ -187,7 +173,6 @@ function showNewContactInformation(userName, email, phone, colour) {
  * Shows the container for adding a new contact, in mobile or desktop.
  * It opens the container by changing the CSS property transform: translateY() or transform: translateX().
  */
-
 function showAddContact() {
   changeBgDark();
   if (window.innerWidth < 992) {
@@ -200,7 +185,6 @@ function showAddContact() {
 /**
  * Changes the background / overlay dark.
  */
-
 function changeBgDark() {
   let overlay = document.getElementById("overlay");
   overlay.style.position = "fixed";
@@ -211,7 +195,6 @@ function changeBgDark() {
  * Closes the container for adding a new contact, in mobile or desktop.
  * It closes the container by changing the CSS property transform: translateY() or transform: translateX().
  */
-
 function closeAddContact() {
   changeBgBright();
   if (window.innerWidth < 992) {
@@ -226,7 +209,6 @@ function closeAddContact() {
 /**
  * Returns the background into its regular color / makes the overlay transparent.
  */
-
 function changeBgBright() {
   let overlay = document.getElementById("overlay");
   overlay.style.backgroundColor = "#00000000";
@@ -238,7 +220,6 @@ function changeBgBright() {
 /**
  * Controls the visual pop-up for successfully adding a new contact, in mobile or desktop.
  */
-
 function successPopUp() {
   if (window.innerWidth < 992) showSucessPopUpMobile();
   else showSuccessPopUpDesktop();
@@ -248,7 +229,6 @@ function successPopUp() {
  * Shows the success pop-up in the mobile version.
  * It shows and hides the container by changing the CSS property transform: translateY().
  */
-
 function showSucessPopUpMobile() {
   setTimeout(() => {
     document.getElementById("success-popup").style = `transform: translateY(0)`;
@@ -264,7 +244,6 @@ function showSucessPopUpMobile() {
  * Shows the success pop-up in the desktop version.
  * It shows and hides the container by changing the CSS property transform: translateX().
  */
-
 function showSuccessPopUpDesktop() {
   setTimeout(() => {
     document.getElementById(
@@ -282,7 +261,6 @@ function showSuccessPopUpDesktop() {
  * Shows the contact edit container, in mobile or desktop.
  * It shows the container by changing the CSS property transform: translateY() or transform: translateX().
  */
-
 function showEditContact() {
   changeBgDark();
   if (window.innerWidth < 992) {
@@ -296,7 +274,6 @@ function showEditContact() {
  * Closes the contact edit container, in mobile or desktop.
  * It closes the container by changing the CSS property transform: translateY() or transform: translateX().
  */
-
 function closeEditContact() {
   changeBgBright();
   if (window.innerWidth < 992) {

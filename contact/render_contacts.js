@@ -1,7 +1,5 @@
 let contacts = [];
-const alphabet = Array.from({ length: 26 }, (_, i) =>
-  String.fromCharCode(65 + i)
-);
+const alphabet = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
 const colorArray = [
   "#FF5EB3",
   "#FF7A00",
@@ -23,7 +21,6 @@ const colorArray = [
 /**
  * Initiates the rendering of HTML headers and footers, loads information from the active user and loads and renders information for all contacts in the contact list, "onload".
  */
-
 async function initContacts() {
   await includeHTML();
   await loadActiveUser();
@@ -36,7 +33,6 @@ async function initContacts() {
 /**
  * Saves the newest information in the contacts array, containing the information on all added contacts, as a JSON on the server within the key "contacts".
  */
-
 async function saveContacts() {
   setItem("contacts", contacts);
 }
@@ -44,16 +40,13 @@ async function saveContacts() {
 /**
  * Loads the newest information in the key "contacts" from the server, containing the information on all added contacts, by parsing the JSON string into the contacts variable.
  */
-
 async function loadContacts(){
     try {
         let contactsResponse = await getItem('contacts');
-        if(contactsResponse != null){
+        if(contactsResponse !== null){
             contacts = contactsResponse;
         }
-        else{
-            contacts = [];
-        }
+        else contacts = [];
     } catch(e) {
         console.error('Loading error:', e);
     }
@@ -63,7 +56,6 @@ async function loadContacts(){
  * Executes the process of adding new contacts into the contacts array, saving them on the server and rendering the contact list with the new contact, and showing the new contact information.
  * It initiates the process by delivering the input-values from the new added contact.
  */
-
 async function addNewContact() {
   let userName = document.getElementById("input-name");
   let email = document.getElementById("input-email");
@@ -84,15 +76,12 @@ async function addNewContact() {
  * @param {string} userName - The name to be capitalized.
  * @returns {string} - The capitalized name.
  */
-
 function capitalizeName(userName) {
   const names = userName.split(" ");
   let capitalName = "";
-
   for (let i = 0; i < names.length; i++) {
     capitalName += names[i][0].toUpperCase() + names[i].slice(1) + " ";
   }
-
   return capitalName.trim();
 }
 
@@ -104,7 +93,6 @@ function capitalizeName(userName) {
  * @param {String} phone  This is the phone number of the contact.
  * @param {String} colour This is the random color assigned to the contact.
  */
-
 function pushContactsArray(userName, email, phone, colour, id) {
   contacts.push({
     userName: userName,
@@ -120,7 +108,6 @@ function pushContactsArray(userName, email, phone, colour, id) {
  * It loops through the alphabet and allows only rendering of contact sections that are ncessary for each contacts, determined by a filter.
  * Thus, rendering empty contact sections is avoided.
  */
-
 function renderContactList() {
   let listDiv = document.getElementById("list");
   listDiv.innerHTML = "";
@@ -143,7 +130,6 @@ function renderContactList() {
  * @param {Array} list This is the list of contacts for each alphabetic contact section.
  * @returns
  */
-
 function returnContactListSectionHTML(letter, list) {
   return /*html*/ `
         <div id="${letter}-section" class="column justify-center margin w100">
@@ -162,7 +148,6 @@ function returnContactListSectionHTML(letter, list) {
  * @param {Array} list This is the list of contacts for each alphabetic contact section.
  * @returns
  */
-
 function contactListPerLetterTemplate(list) {
   let htmlText = "";
   for (let c = 0; c < list.length; c++) {
@@ -178,18 +163,13 @@ function contactListPerLetterTemplate(list) {
  * @param {object} contact This object contains the information for each contact that was added in the contact list.
  * @returns
  */
-
 function returnContactHTML(contact) {
   return /*html*/ `
-        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${
-    contact.phone
-  }', '${contact.colour}', '${contact.id}')" class="d-flex contact">
-            <div id="listCircle" class="contact-circle d-flex justify-center align-center" style="background: ${
-              contact.colour
-            };">
+        <div onclick="viewContact('${contact.userName}', '${contact.email}', '${contact.phone}', '${contact.colour}', '${contact.id}')" class="d-flex contact">
+            <div id="listCircle" class="contact-circle d-flex justify-center align-center" style="background: ${contact.colour};">
                 <span class="contact-letters">${getInitials(
-                  contact.userName
-                )}</span>
+                  contact.userName)}
+                </span>
             </div>
             <div class="d-flex column">
                 <h3 class="margin-block0">${contact.userName}</h3>
@@ -207,7 +187,6 @@ function returnContactHTML(contact) {
  * @param {String} phone  This is the phone number of the contact.
  * @param {String} colour This is the random color assigned to the contact.
  */
-
 function renderViewedContact(userName, email, phone, colour, id) {
   let contactMobile = document.getElementById("viewedContact");
   let contactDesktop = document.getElementById("viewedContactDesktop");
@@ -236,7 +215,6 @@ function renderViewedContact(userName, email, phone, colour, id) {
  * @param {String} colour This is the random color assigned to the contact.
  * @returns
  */
-
 function returnContactViewHTMLMobile(userName, email, phone, colour, id) {
   return /*html*/ `
     <div>
@@ -248,9 +226,9 @@ function returnContactViewHTMLMobile(userName, email, phone, colour, id) {
         </div>
         <div class="d-flex column bottom">
             <div class="d-flex align-center">
-                <div class="person-circle-m d-flex justify-center align-center" style="background: ${colour};"><span class="contact-letters-m">${getInitials(
-    userName
-  )}</span></div>
+                <div class="person-circle-m d-flex justify-center align-center" style="background: ${colour};">
+                <span class="contact-letters-m">${getInitials(userName)}</span>
+                </div>
                 <h2>${userName}</h2>
             </div>
             <h3 class="info-m">Contact Informationen</h3>
@@ -259,15 +237,15 @@ function returnContactViewHTMLMobile(userName, email, phone, colour, id) {
             <span class="txt">Phone</span>
             <span>${phone}</span>
         </div>
-        <div onclick="doNotClose(event); showOptions()" class="toggle pointer open-opt"><img class="open-opt" src="../assets/img/contacts/more_vert.png" alt=""></div>
+        <div onclick="doNotClose(event); showOptions()" class="toggle pointer open-opt">
+            <img class="open-opt" src="../assets/img/contacts/more_vert.png" alt="">
+        </div>
         <div id="toggle-options" class="toggle-options">
             <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}','${id}')" class="pointer">
                 <img src="../assets/img/contacts/edit.png" alt="">
                 <span style="padding-left: 10px;">Edit</span>
             </div>
-            <div onclick="deleteContact(contacts.findIndex(
-              (contact) => contact.userName == userName
-            ))" class="pointer">
+            <div onclick="deleteContact(contacts.findIndex((contact) => contact.userName == userName))" class="pointer">
                 <img style="margin-left: 12px;" src="../assets/img/contacts/delete.png" alt="">
                 <span style="margin-left: 12px;">Delete</span>
             </div>
@@ -290,7 +268,6 @@ function returnContactViewHTMLMobile(userName, email, phone, colour, id) {
  * @param {String} colour This is the random color assigned to the contact.
  * @returns
  */
-
 function returnContactViewHTMLDesktop(userName, email, phone, colour, id) {
   return /*html*/ `
     <div id="contact-container-desktop" class="contact-container-desktop d-flex column bottom">
@@ -302,11 +279,11 @@ function returnContactViewHTMLDesktop(userName, email, phone, colour, id) {
                 <h1>${userName}</h1>
                 <div class="d-flex options align-center">
                     <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}', '${id}')" class="edit-delete edit d-flex align-center pointer">
-                        <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">
-                        Edit</div>
+                        <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">Edit
+                    </div>
                     <div onclick="deleteContact(${id})" class="d-flex blue align-center pointer edit-delete">
-                        <img class="bin" style="margin-right: 10px;" src="../assets/img/contacts/delete.png" alt="">
-                        Delete</div>
+                        <img class="bin" style="margin-right: 10px;" src="../assets/img/contacts/delete.png" alt="">Delete
+                    </div>
                 </div>
             </div>
         </div>
@@ -328,7 +305,6 @@ function returnContactViewHTMLDesktop(userName, email, phone, colour, id) {
  * @param {String} colour This is the random color assigned to the contact.
  * @param {number} id This is the id of the contact.
  */
-
 function editContact(user, mail, number, colour, id) {
   generateEditContainer(user, colour, id);
   let userName = document.getElementById("edit-nameContact");
@@ -348,7 +324,6 @@ function editContact(user, mail, number, colour, id) {
  * @param {number} id This is the id of the contact.
  *
  */
-
 function generateEditContainer(user, colour, id) {
   let editContainer = document.getElementById("edit-input-container");
   editContainer.innerHTML = /*html*/ `
@@ -386,7 +361,6 @@ function generateEditContainer(user, colour, id) {
  *
  * @param {number} id This is the id of the contact.
  */
-
 async function updateContact(id) {
   let userName = document.getElementById("edit-nameContact");
   let email = document.getElementById("edit-emailContact");
@@ -413,7 +387,6 @@ async function updateContact(id) {
  *
  * @param {number} id This is the id of the contact to be deleted.
  */
-
 async function deleteContact(id) {
   contacts.splice(id, 1);
   await saveContacts();
@@ -428,7 +401,6 @@ async function deleteContact(id) {
  *
  * @param {Array} list This is the list of contacts that shows in each alphabetic contact section.
  */
-
 function sortContactsList(list) {
   list.sort((a, b) => a.userName.localeCompare(b.userName));
 }
@@ -440,7 +412,6 @@ function sortContactsList(list) {
  * @param {object} email  This is the input field of the contact email.
  * @param {object} phone  This is the input field of the contact phone number.
  */
-
 function clearContactInputs(userName, email, phone) {
   userName.value = "";
   email.value = "";
@@ -453,7 +424,6 @@ function clearContactInputs(userName, email, phone) {
  * @param {String} name This is the name of the contact.
  * @returns
  */
-
 function getInitials(name) {
   const words = name.split(" ");
   let initials = "";
@@ -468,7 +438,6 @@ function getInitials(name) {
  *
  * @returns
  */
-
 function assignCircleColor() {
   let colour;
   let random = Math.round(Math.random() * 100);
@@ -483,7 +452,6 @@ function assignCircleColor() {
 /**
  * Assigns IDs for each contact when loading the page
  */
-
 function assignIDContacts() {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
