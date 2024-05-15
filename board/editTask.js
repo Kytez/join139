@@ -1,54 +1,11 @@
 let saveSubTasks = [];
 /**
  * moves the edit-task pop-up field into the screenview via translateX and executes rendering of adjusted editable elements for each task.
-<<<<<<< HEAD
- * 
- * @param {number} id This is the id of the task
- * @param {string} prio This is the priority value for the task 
- */
-
-function showEditTask(title, description, date, id, prio, names, tasks, singleContactId){
-    document.getElementById('editTaskSection').style.display = 'flex';
-    document.getElementById('editTaskFullScreen').style.display = 'flex';
-    let popUpElements = document.getElementsByClassName('edit-task-card');
-    for (let i = 0; i < popUpElements.length; i++) {
-        popUpElements[i].style.transition = 'transform 400ms';
-        (function(index) {
-            setTimeout(function() {
-                popUpElements[index].style.transform = 'translateX(0)';
-            }, 100);
-        })(i);
-    }
-    subTasks.push(tasks);
-    console.log(subTasks);
-    setFilterEdit({value: ''});
-    renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId);
-}
-
-/**
- * renders elements of the task into the edit-task pop-up segments for further editing
- * 
-=======
  *
->>>>>>> 52a64397c3ff1a6caadc926fe89ff9fc99259b34
  * @param {number} id This is the id of the task
  * @param {string} prio This is the priority value for the task
  */
 
-<<<<<<< HEAD
-function renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId){
-    let titleEdit = document.getElementById('titleEdit');
-    let descriptionEdit = document.getElementById('descriptionEdit');
-    let dateEdit = document.getElementById('dateEdit');
-    let okButton = document.getElementById('boardEditTaskBtns');
-    titleEdit.value = title;
-    descriptionEdit.value = description;
-    dateEdit.value = date;
-    setPrioButtonsColorEdit(prio);
-    passIdsToSelectTaskContact(singleContactId);
-    addExistingSubtaskEdit();
-    okButton.innerHTML = /*html*/ `
-=======
 function showEditTask(
   title,
   description,
@@ -115,7 +72,6 @@ function renderEditTaskPopUpElements(
   passIdsToSelectTaskContact(singleContactId);
   addSubtaskEdit();
   okButton.innerHTML = /*html*/ `
->>>>>>> 52a64397c3ff1a6caadc926fe89ff9fc99259b34
         <button onclick="editTask(${id})"  class="btn-dark-edit pointer">Ok 
             <img src="../assets/img/icons/check_icon.png" alt="">
         </button> 
@@ -123,19 +79,12 @@ function renderEditTaskPopUpElements(
 }
 
 function addSubtaskEdit() {
-<<<<<<< HEAD
     let subTaskInput = document.getElementById('subTaskInputEdit').value;
     subTaskContainer = document.getElementById('subTaskContainerEdit');
     subTaskContainer.innerHTML = '';
     subTasks.push(subTaskInput);
     renderSubtasksEdit();
     document.getElementById('subTaskInputEdit').value = "";
-=======
-  let subTaskInput = document.getElementById("subTaskInputEdit").value;
-  subTasks.push(subTaskInput);
-  renderSubtasksEdit();
-  document.getElementById("subTaskInputEdit").value = "";
->>>>>>> 52a64397c3ff1a6caadc926fe89ff9fc99259b34
 }
 
 function addExistingSubtaskEdit() {
@@ -155,13 +104,8 @@ function renderSubtasksEdit() {
 }
 
 function addSubtaskHTML(subTask, i) {
-<<<<<<< HEAD
     return `
     <div id="subTaskEdit_${i}" class="singleSubTasks">
-=======
-  return `
-    <div id="subTask_${i}" class="singleSubTasks">
->>>>>>> 52a64397c3ff1a6caadc926fe89ff9fc99259b34
         <div>${subTask}</div>
             <div class="flex edit-trash">
                 <div>
