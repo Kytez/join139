@@ -2,7 +2,6 @@ function showTask(title, description, date, id, category, prio, names, subTasks,
     document.getElementById('tasks').style.display = 'flex';
    let taskPopUp = document.getElementById('taskPopUp')
    taskPopUp.style.display = 'flex';
-    console.log(singleContactId);
     let popUpElements = document.getElementsByClassName('pop-up');
     for (let i = 0; i < popUpElements.length; i++) {
         popUpElements[i].style.transition = 'transform 400ms';

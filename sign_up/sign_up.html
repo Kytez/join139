@@ -17,10 +17,7 @@
     </section>
 
     <div class="center-content">
-      <form
-        onsubmit="signUp(); return false;"
-        class="sign-up-body"
-      >
+      <form onsubmit="signUp(); return false;" class="sign-up-body">
         <a class="backArrow" href="../index.html"
           ><img
             src="../assets/img/icons/arrow-left-line.png"
@@ -39,35 +36,47 @@
             required
           />
           <div class="input-signup-password-and-eye-icon">
-          <input
-            id="passwordInputSignUp"
-            type="password"
-            placeholder="Password"
-            required
-            onkeyup="checkIconChangePassword()"
-            onchange="checkIconChangePassword()"
-            style="background-image: url(../assets/img/icons/lock.png)"
-          />
-          <img onclick="changePasswordVisibility()" id="iconVisibilityPasswordSignUp" class="d-none" src="../assets/img/icons/visibility_off.png">
-        </div>
+            <input
+              id="passwordInputSignUp"
+              type="password"
+              placeholder="Password"
+              required
+              onkeyup="checkIconChangePassword()"
+              onchange="checkIconChangePassword()"
+              style="background-image: url(../assets/img/icons/lock.png)"
+            />
+            <img
+              onclick="changePasswordVisibility()"
+              id="iconVisibilityPasswordSignUp"
+              class="d-none"
+              src="../assets/img/icons/visibility_off.png"
+            />
+          </div>
           <div class="input-and-tooltip">
             <div class="input-signup-confirm-password-and-eye-icon">
-          <input
-            id="confirmPasswordInputSignUp"
-            type="password"
-            placeholder="Confirm Password"
-            required
-            onkeyup="checkPasswordMatch(); checkIconChangeConfirmPassword()"
-            onchange="checkPasswordMatch(); checkIconChangeConfirmPassword()"
-            style="background-image: url(../assets/img/icons/lock.png)"
-          />
-          <img onclick="changeConfirmPasswordVisibility()" id="iconVisibilityPasswordConfirmSignUp" class="d-none" src="../assets/img/icons/visibility_off.png">
-        </div>
-        <p id="tooltipPasswordNotMatching" class="d-none">Ups! Password don't match. Try again.</p>
-        </div>
+              <input
+                id="confirmPasswordInputSignUp"
+                type="password"
+                placeholder="Confirm Password"
+                required
+                onkeyup="checkPasswordMatch(); checkIconChangeConfirmPassword()"
+                onchange="checkPasswordMatch(); checkIconChangeConfirmPassword()"
+                style="background-image: url(../assets/img/icons/lock.png)"
+              />
+              <img
+                onclick="changeConfirmPasswordVisibility()"
+                id="iconVisibilityPasswordConfirmSignUp"
+                class="d-none"
+                src="../assets/img/icons/visibility_off.png"
+              />
+            </div>
+            <p id="tooltipPasswordNotMatching" class="d-none">
+              Ups! Password don't match. Try again.
+            </p>
+          </div>
         </div>
         <div class="checkbox-privacy-policy">
-          <input id="privacyCheckboxInputSignUp" type="checkbox" required/>
+          <input id="privacyCheckboxInputSignUp" type="checkbox" required />
           <span
             >I accept the
             <a href="../privacy_policy/privacy_policy.html"
@@ -75,7 +84,9 @@
             ></span
           >
         </div>
-        <button type="submit" class="btn-dark-large" id="btnSignUp">Sign up</button>
+        <button type="submit" class="btn-dark-large" id="btnSignUp">
+          Sign up
+        </button>
       </form>
     </div>
 

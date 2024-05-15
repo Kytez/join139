@@ -79,7 +79,7 @@ h1 {
 }
 
 .inputs-login input:focus {
-  outline: 2px solid #29ABE2;
+  outline: 2px solid #29abe2;
   border: 1px solid transparent;
 }
 
@@ -90,7 +90,7 @@ h1 {
 }
 
 .checkbox-remember input:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .btns-login {
@@ -182,55 +182,55 @@ h1 {
 /* ////////////////////////////////////////////// RESPONSIVE ///////////////////////////////////////////////// */
 
 @media (min-width: 445px) {
-    .checkbox-remember {
-      padding-left: calc(50% - 80px);
-    }
+  .checkbox-remember {
+    padding-left: calc(50% - 80px);
   }
-  
-  @media (min-width: 992px) {  
-    #logInHeaderLogo {
-      width: 64px;
-      height: 79px;
+}
+
+@media (min-width: 992px) {
+  #logInHeaderLogo {
+    width: 64px;
+    height: 79px;
+  }
+
+  #signUpSectionMobile {
+    display: none;
+  }
+
+  #signUpSectionDesktop {
+    display: flex;
+    position: absolute;
+    right: 10%;
+    top: 4%;
+    height: 79px;
+  }
+
+  #msgBox {
+    width: 400px;
+    left: calc(50% - 200px);
+  }
+
+  @keyframes loading {
+    from {
+      top: calc(50% - 40px);
+      left: calc(50% - 32px);
+      height: 129px;
+      width: 105px;
+      filter: brightness(0) invert(1);
     }
-  
-    #signUpSectionMobile {
-      display: none;
-    }
-  
-    #signUpSectionDesktop {
-      display: flex;
-      position: absolute;
-      right: 10%;
+
+    to {
       top: 4%;
+      left: 10%;
       height: 79px;
-    }
-
-    #msgBox {
-      width: 400px;
-      left: calc(50% - 200px);
-    }
-
-    @keyframes loading {
-      from {
-        top: calc(50% - 40px);
-        left: calc(50% - 32px);
-        height: 129px;
-        width: 105px;
-        filter: brightness(0) invert(1);
-      }
-    
-      to {
-        top: 4%;
-        left: 10%;
-        height: 79px;
-        width: 64px;
-        filter: brightness(1) invert(0);
-      }
+      width: 64px;
+      filter: brightness(1) invert(0);
     }
   }
+}
 
-  @media (max-height: 700px) {
-    .log-in-body {
-      padding: 8px 0;
-    }
+@media (max-height: 700px) {
+  .log-in-body {
+    padding: 8px 0;
   }
+}

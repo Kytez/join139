@@ -7,19 +7,24 @@
 
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../legal_notice/legal_notice.css" />
-    <link rel="stylesheet" href="../assets/templates/nav.css">
-    <link rel="stylesheet" href="../assets/templates/navDesktop.css">
-    <link rel="stylesheet" href="../assets/templates/header.css">
-    <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
+    <link rel="stylesheet" href="../assets/templates/nav.css" />
+    <link rel="stylesheet" href="../assets/templates/navDesktop.css" />
+    <link rel="stylesheet" href="../assets/templates/header.css" />
+    <link rel="stylesheet" href="../assets/templates/headerDesktop.css" />
 
     <script src="../script.js"></script>
     <script src="legal_privacy_wo_user.js"></script>
   </head>
   <body onload="initLegalPrivacyWOUser()" class="margin-body-mobile">
+    <div
+      id="headerMobile"
+      w3-include-html="../assets/templates/header.html"
+    ></div>
 
-    <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
-
-    <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
+    <div
+      id="headerDesktop"
+      w3-include-html="../assets/templates/headerDesktop.html"
+    ></div>
 
     <div class="headline-and-back-button">
       <h1>Legal Notice</h1>
@@ -27,15 +32,17 @@
 
     <h2>Imprint</h2>
     <p>
-      <span class="color-blue">Join</span> has been coded by Daniel Krieger, Iqbal
-      Adel and Marcel Luwinski.<br /><br />
+      <span class="color-blue">Join</span> has been coded by Daniel Krieger,
+      Iqbal Adel and Marcel Luwinski.<br /><br />
       Address of Marcel Luwinski: Mittelstraße 100a, 58285 Gevelsberg, Germany.
     </p>
 
     <h2>Exploring the Board</h2>
     <p>
       Email:
-      <a class="color-blue text-deco-underline" href="mailto:marcel.luwinski@gmail.com"
+      <a
+        class="color-blue text-deco-underline"
+        href="mailto:marcel.luwinski@gmail.com"
         >marcel.luwinski@gmail.com</a
       >
     </p>
@@ -106,13 +113,17 @@
       <span class="color-blue">Join</span> and/or yor breach of this Legal
       Notice. <br /><br />
       For any questions or notices, please contact us at
-      <a class="color-blue text-deco-underline" href="mailto:marcel.luwinski@gmail.com"
+      <a
+        class="color-blue text-deco-underline"
+        href="mailto:marcel.luwinski@gmail.com"
         >marcel.luwinski@gmail.com</a
       >. <br /><br />
       Date: April 11, 2024
     </p>
 
-    <div id="navDesktop" w3-include-html="../assets/templates/navDesktopLegalNoticeWONavLinks.html"></div>
-    
+    <div
+      id="navDesktop"
+      w3-include-html="../assets/templates/navDesktopLegalNoticeWONavLinks.html"
+    ></div>
   </body>
 </html>

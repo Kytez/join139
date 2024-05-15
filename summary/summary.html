@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="summary.css" />
     <link rel="stylesheet" href="greeting.css" />
-    <link rel="stylesheet" href="../assets/templates/nav.css">
-    <link rel="stylesheet" href="../assets/templates/navDesktop.css">
-    <link rel="stylesheet" href="../assets/templates/header.css">
-    <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
-    <link rel="stylesheet" href="../assets/templates/menu_pop_up.css">
+    <link rel="stylesheet" href="../assets/templates/nav.css" />
+    <link rel="stylesheet" href="../assets/templates/navDesktop.css" />
+    <link rel="stylesheet" href="../assets/templates/header.css" />
+    <link rel="stylesheet" href="../assets/templates/headerDesktop.css" />
+    <link rel="stylesheet" href="../assets/templates/menu_pop_up.css" />
 
     <script src="../script.js"></script>
     <script src="greeting.js"></script>
@@ -20,13 +20,21 @@
     <script src="../add_task/tasks.js"></script>
   </head>
   <body onload="initSummary()">
+    <div
+      id="headerMobile"
+      w3-include-html="../assets/templates/header.html"
+    ></div>
 
-    <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
+    <div
+      id="headerDesktop"
+      w3-include-html="../assets/templates/headerDesktop.html"
+    ></div>
 
-    <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
-
-    <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
-
+    <div
+      class="d-none"
+      id="popUpMenuHeader"
+      w3-include-html="../assets/templates/menu_pop_up.html"
+    ></div>
 
     <div class="horizontal-view-desktop-size">
       <div class="center-content">
@@ -42,30 +50,48 @@
           <div class="tasks-first-row">
             <div class="summary-todo-spacer-start">
               <a href="../board/boardMobile.html" class="summary-todo">
-                <img class="summary-img" src="../assets/img/icons/to_do_icon.png" alt="To Do Icon" />
-                <img class="summary-img-hover" src="../assets/img/svg/to-do-white.svg" alt="">
+                <img
+                  class="summary-img"
+                  src="../assets/img/icons/to_do_icon.png"
+                  alt="To Do Icon"
+                />
+                <img
+                  class="summary-img-hover"
+                  src="../assets/img/svg/to-do-white.svg"
+                  alt=""
+                />
                 <div class="count-and-text">
                   <h1 id="summaryToDoCount">0</h1>
                   <span>To-do</span>
                 </div>
               </a>
             </div>
-            
+
             <div class="summary-todo-spacer">
               <a href="../board/boardMobile.html" class="summary-todo-done">
-                <img class="summary-img" src="../assets/img/icons/check_icon.png" alt="Done Icon" />
-                <img class="summary-img-hover" src="../assets/img/icons/check-white.png" alt="Done Icon" />
+                <img
+                  class="summary-img"
+                  src="../assets/img/icons/check_icon.png"
+                  alt="Done Icon"
+                />
+                <img
+                  class="summary-img-hover"
+                  src="../assets/img/icons/check-white.png"
+                  alt="Done Icon"
+                />
                 <div class="count-and-text">
                   <h1 id="summaryDoneCount">0</h1>
                   <span>Done</span>
                 </div>
               </a>
             </div>
-            
           </div>
 
           <div class="tasks-second-row">
-            <a href="../board/boardMobile.html" class="urgent-area summary-part-area">
+            <a
+              href="../board/boardMobile.html"
+              class="urgent-area summary-part-area"
+            >
               <div class="urgent-area-left-side">
                 <img
                   src="../assets/img/icons/urgent_icon_red_circle.png"
@@ -88,7 +114,10 @@
 
           <div class="tasks-third-row">
             <div class="summary-third">
-              <a href="../board/boardMobile.html" class="summary-part-area board">
+              <a
+                href="../board/boardMobile.html"
+                class="summary-part-area board"
+              >
                 <div class="count-and-text">
                   <h1 id="summaryTaskBoardCount">0</h1>
                   <span>Tasks in<br />Board</span>
@@ -96,7 +125,10 @@
               </a>
             </div>
             <div class="summary-third">
-              <a href="../board/boardMobile.html" class="summary-part-area progress">
+              <a
+                href="../board/boardMobile.html"
+                class="summary-part-area progress"
+              >
                 <div class="count-and-text">
                   <h1 id="summaryTasksProgressCount">0</h1>
                   <span>Tasks in<br />Progress</span>
@@ -104,8 +136,11 @@
               </a>
             </div>
             <div class="summary-third tasks-second-rowr">
-              <a href="../board/boardMobile.html" class="summary-part-area feedback">
-                <div class="count-and-text ">
+              <a
+                href="../board/boardMobile.html"
+                class="summary-part-area feedback"
+              >
+                <div class="count-and-text">
                   <h1 id="summaryTasksFeedbackCount">0</h1>
                   <span>Awaiting<br />Feedback</span>
                 </div>
@@ -116,13 +151,21 @@
       </div>
 
       <div id="greetingText">
-        <span>Good morning<span id="commaText"></span><span id="greetingsUserName" class="greetingUserName"></span></span>
+        <span
+          >Good morning<span id="commaText"></span
+          ><span id="greetingsUserName" class="greetingUserName"></span
+        ></span>
       </div>
     </div>
 
-    <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navSummary.html"></div>
+    <div
+      id="navMobile"
+      w3-include-html="../assets/templates/navAktivMobile/navSummary.html"
+    ></div>
 
-    <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navSummaryDesktop.html"></div>
-
+    <div
+      id="navDesktop"
+      w3-include-html="../assets/templates/navAktivDesktop/navSummaryDesktop.html"
+    ></div>
   </body>
 </html>

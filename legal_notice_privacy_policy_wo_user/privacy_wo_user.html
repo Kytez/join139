@@ -7,19 +7,24 @@
 
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../privacy_policy/privacy_policy.css" />
-    <link rel="stylesheet" href="../assets/templates/nav.css">
-    <link rel="stylesheet" href="../assets/templates/navDesktop.css">
-    <link rel="stylesheet" href="../assets/templates/header.css">
-    <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
+    <link rel="stylesheet" href="../assets/templates/nav.css" />
+    <link rel="stylesheet" href="../assets/templates/navDesktop.css" />
+    <link rel="stylesheet" href="../assets/templates/header.css" />
+    <link rel="stylesheet" href="../assets/templates/headerDesktop.css" />
 
     <script src="../script.js"></script>
     <script src="legal_privacy_wo_user.js"></script>
   </head>
   <body onload="initLegalPrivacyWOUser()" class="margin-body-mobile">
+    <div
+      id="headerMobile"
+      w3-include-html="../assets/templates/header.html"
+    ></div>
 
-    <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
-
-    <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
+    <div
+      id="headerDesktop"
+      w3-include-html="../assets/templates/headerDesktop.html"
+    ></div>
 
     <div class="headline-and-back-button">
       <h1>Datenschutzerklärung</h1>
@@ -355,7 +360,9 @@
 
     <p>Quelle: https://www.e-recht24.de</p>
 
-    <div id="navDesktop" w3-include-html="../assets/templates/navDesktopPrivacyPolicyWONavLinks.html"></div>
-    
+    <div
+      id="navDesktop"
+      w3-include-html="../assets/templates/navDesktopPrivacyPolicyWONavLinks.html"
+    ></div>
   </body>
 </html>

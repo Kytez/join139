@@ -18,21 +18,21 @@ p {
 
 /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
 
-@media(min-width: 992px) {
+@media (min-width: 992px) {
   #navMobile {
-      display: none;
+    display: none;
   }
 
   #headerMobile {
-      display: none;
+    display: none;
   }
 
   #navDesktop {
-      display: flex;
+    display: flex;
   }
 
   #headerDesktop {
-      display: flex;
+    display: flex;
   }
 
   .margin-body-mobile {
