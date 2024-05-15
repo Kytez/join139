@@ -1,40 +1,39 @@
 #greetingText {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-size: 36px;
-    color: #2A3647;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    width: 100%;
-    background-color: #f5f5f5;
-    opacity: 1;
-    transition: opacity 1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 36px;
+  color: #2a3647;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: #f5f5f5;
+  opacity: 1;
+  transition: opacity 1s ease;
 }
 
 .greetingUserName {
-    color: #29ABE2;
-    font-size: 47px;
-    font-weight: 700;
+  color: #29abe2;
+  font-size: 47px;
+  font-weight: 700;
 }
 
 .fade-out {
-    opacity: 0 !important;
+  opacity: 0 !important;
 }
 
 /* /////////////////////////////////// RESPONSIVE /////////////////////////////////////////// */
 
-@media(min-width: 992px) {
-    #greetingText {
-        position: static;
-        z-index: 100;
-        width: auto;
-        background-color: transparent;
-        margin-top: 96px;
-        height: calc(100vh - 96px);
-    }
+@media (min-width: 992px) {
+  #greetingText {
+    position: static;
+    z-index: 100;
+    width: auto;
+    background-color: transparent;
+    margin-top: 96px;
+    height: calc(100vh - 96px);
+  }
 }

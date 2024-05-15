@@ -4,8 +4,8 @@
  * @return {Promise<void>} A promise that resolves when the initialization is complete.
  */
 async function initLegalPrivacyWOUser() {
-    await includeHTML();
-    hideUserInHeader();
+  await includeHTML();
+  hideUserInHeader();
 }
 
 /**
@@ -14,7 +14,7 @@ async function initLegalPrivacyWOUser() {
  * @return {void} This function does not return a value.
  */
 function hideUserInHeader() {
-    document.getElementById('userIcon').classList.add('d-none');
-    document.getElementById('userIconDesktop').classList.add('d-none');
-    document.getElementById('helpBtnDesktop').classList.add('d-none');
+  document.getElementById("userIcon").classList.add("d-none");
+  document.getElementById("userIconDesktop").classList.add("d-none");
+  document.getElementById("helpBtnDesktop").classList.add("d-none");
 }

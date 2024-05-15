@@ -1,166 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="./add_contact.css">
-    <link rel="stylesheet" href="./contact.css">
-    <link rel="stylesheet" href="./view_contact.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./add_contact.css" />
+    <link rel="stylesheet" href="./contact.css" />
+    <link rel="stylesheet" href="./view_contact.css" />
 
-    <link rel="stylesheet" href="../assets/templates/nav.css">
-    <link rel="stylesheet" href="../assets/templates/navDesktop.css">
-    <link rel="stylesheet" href="../assets/templates/header.css">
-    <link rel="stylesheet" href="../assets/templates/headerDesktop.css">
-    <link rel="stylesheet" href="../assets/templates/menu_pop_up.css">
+    <link rel="stylesheet" href="../assets/templates/nav.css" />
+    <link rel="stylesheet" href="../assets/templates/navDesktop.css" />
+    <link rel="stylesheet" href="../assets/templates/header.css" />
+    <link rel="stylesheet" href="../assets/templates/headerDesktop.css" />
+    <link rel="stylesheet" href="../assets/templates/menu_pop_up.css" />
 
     <title>List and View-Desktop</title>
 
     <script src="../script.js"></script>
     <script src="./animations_contact.js"></script>
     <script src="./render_contacts.js"></script>
+  </head>
+  <body id="body" onload="initContacts()" class="p-relative">
+    <div
+      id="headerMobile"
+      w3-include-html="../assets/templates/header.html"
+    ></div>
 
+    <div
+      id="headerDesktop"
+      w3-include-html="../assets/templates/headerDesktop.html"
+    ></div>
 
-</head>
-<body id="body" onload="initContacts()" class="p-relative">
-    <div id="headerMobile" w3-include-html="../assets/templates/header.html"></div>
-
-    <div id="headerDesktop" w3-include-html="../assets/templates/headerDesktop.html"></div>
-
-    <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
+    <div
+      class="d-none"
+      id="popUpMenuHeader"
+      w3-include-html="../assets/templates/menu_pop_up.html"
+    ></div>
 
     <div onclick="closeOptions()" class="container d-flex">
-        <div id="contact-list" class="list-container">
-           
-            <div class="add-contact d-non align-center">
-                <button class="btn-dark-large" onclick="showAddContact()">Add new contact<img src="../assets/img/contacts/person_add.png" alt=""></button>
-            </div>
-
-
-            <div class="overflow-auto">
-                <div id="list">
-                </div>
-            <div onclick="showAddContact()" class="person-add pointer">
-                <img class="add-img" src="../assets/img/contacts/person_add.png" alt="">
-            </div>
-        </div>
-    </div>
-
-        <div class="view-container">
-            <div class="d-flex row top">
-                <h1>Contacts</h1>
-                <div class="reverse align-center">
-                    <h2>Better with a team</h2>
-                    <div class="underline"></div>
-                </div>
-            </div>
-            <div id="viewedContactDesktop">
-            </div>
+      <div id="contact-list" class="list-container">
+        <div class="add-contact d-non align-center">
+          <button class="btn-dark-large" onclick="showAddContact()">
+            Add new contact<img
+              src="../assets/img/contacts/person_add.png"
+              alt=""
+            />
+          </button>
         </div>
 
-        <div id="viewedContact" class="contact-container d-non">
+        <div class="overflow-auto">
+          <div id="list"></div>
+          <div onclick="showAddContact()" class="person-add pointer">
+            <img
+              class="add-img"
+              src="../assets/img/contacts/person_add.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="view-container">
+        <div class="d-flex row top">
+          <h1>Contacts</h1>
+          <div class="reverse align-center">
+            <h2>Better with a team</h2>
+            <div class="underline"></div>
+          </div>
+        </div>
+        <div id="viewedContactDesktop"></div>
+      </div>
+
+      <div id="viewedContact" class="contact-container d-non">
+        <div>
+          <img
+            onclick="closeContact()"
+            class="return-arrow pointer"
+            src="../assets/img/icons/arrow-left-line.png"
+            alt=""
+          />
+          <div class="d-flex column top">
+            <h1>Contacts</h1>
+            <h3>Better with a team</h3>
+            <div class="underline-m"></div>
+          </div>
+          <div class="d-flex column bottom">
+            <div class="d-flex align-center">
+              <div
+                id="viewedCircleMobile"
+                class="person-circle-m d-flex justify-center align-center"
+              >
+                <span class="contact-letters-m">AM</span>
+              </div>
+              <h2>Anton Mayer</h2>
+            </div>
+            <h3 class="info-m">Contact Informationen</h3>
+            <span class="txt">Email</span>
+            <a class="person-mail-m">antom@gmail.com</a>
+            <span class="txt">Phone</span>
+            <span>+49 1111 111 11 1</span>
+          </div>
+          <div class="toggle pointer open-opt">
+            <img
+              class="open-opt"
+              src="../assets/img/contacts/more_vert.png"
+              alt=""
+            />
+          </div>
+          <div id="toggle-options" class="toggle-options">
+            <div onclick="showEditContact()" class="pointer">
+              <img src="../assets/img/contacts/edit.png" alt="" />
+              <span style="padding-left: 10px">Edit</span>
+            </div>
+            <div class="pointer">
+              <img
+                style="margin-left: 12px"
+                src="../assets/img/contacts/delete.png"
+                alt=""
+              />
+              <span style="margin-left: 12px">Delete</span>
+            </div>
+          </div>
+          <div id="success-popup" class="popup transform-mobile">
             <div>
-                <img onclick="closeContact()" class="return-arrow pointer" src="../assets/img/icons/arrow-left-line.png" alt="">
-                <div class="d-flex column top">
-                    <h1>Contacts</h1>
-                    <h3>Better with a team</h3>
-                    <div class="underline-m"></div>
-                </div>
-                <div class="d-flex column bottom">
-                    <div class="d-flex align-center">
-                        <div id="viewedCircleMobile" class="person-circle-m d-flex justify-center align-center"><span class="contact-letters-m">AM</span></div>
-                        <h2>Anton Mayer</h2>
-                    </div>
-                    <h3 class="info-m">Contact Informationen</h3>
-                    <span class="txt">Email</span>
-                    <a class="person-mail-m">antom@gmail.com</a>
-                    <span class="txt">Phone</span>
-                    <span>+49 1111 111 11 1</span>
-                </div>
-                <div class="toggle pointer open-opt">
-                    <img class="open-opt" src="../assets/img/contacts/more_vert.png" alt="">
-                </div>
-                <div id="toggle-options" class="toggle-options">
-                    <div onclick="showEditContact()" class="pointer">
-                        <img src="../assets/img/contacts/edit.png" alt="">
-                        <span style="padding-left: 10px;">Edit</span>
-                    </div>
-                    <div class="pointer">
-                        <img style="margin-left: 12px;" src="../assets/img/contacts/delete.png" alt="">
-                        <span style="margin-left: 12px;">Delete</span>
-                    </div>
-                </div>
-                <div id="success-popup" class="popup transform-mobile">
-                    <div>
-                        <span>Contact successfully created</span>
-                    </div>
-                </div>
+              <span>Contact successfully created</span>
             </div>
+          </div>
         </div>
-        <div id="success-popup-desktop" class="popup transform-desktop">
-            <div>
-                <span>Contact successfully created</span>
-            </div>
+      </div>
+      <div id="success-popup-desktop" class="popup transform-desktop">
+        <div>
+          <span>Contact successfully created</span>
         </div>
-
+      </div>
     </div>
     <div id="overlay" class="overlay">
-        <div id="add-contact" class="container-add">
-            <div class="top-bg-contact p-relative">
-                <div class="d-flex column justify-center contact-header">
-                    <img class="logo" src="../../assets/img/logo_white.png" alt="">
-                    <h1 class="head-title-contact">Add contact</h1>
-                    <h3 class="sub-title-contact">Tasks are better with a team!</h3>
-                    <div class="underline-add"></div>
-                    <img onclick="closeAddContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
-                    <!-- <span onclick="closeAddContact()" class="pointer" style="font-size: 40px; position: absolute; top:0; color: white;">X</span> -->
-                </div>
-            </div>
-            <div class="bottom-bg-contact d-flex align-center p-relative">
-                <div class="person-circle-add"><img class="person-img" src="../../assets/img/contacts/person-white.png" alt="">
-                </div>
-                <div class="bottom-right">
-                    <div class="p-relative close-container">
-                        <img onclick="closeAddContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
-                    </div>
-                    <div class="p-relative d-flex align-center justify-center column">
-                        <form onsubmit="addNewContact();return false" class="w100 d-flex column input-container">
-                            <input id="input-name" class="input" placeholder="Name" type="text" required>
-                            <input id="input-email" class="input" placeholder="Email" type="email" required>
-                            <input id="input-phone" class="input" placeholder="Phone" type="tel/" name="tel" required>
-                            <div class="buttons">
-                                <button onclick="closeAddContact()" id="cancel-btn" class="btn-create pointer cancel">
-                                    <span class="blue">Cancel</span>
-                                    <img class="blue x" src="../../assets/img/contacts/close-dark.png" alt="">
-                                </button>
-                                <button type="submit" class="btn-create btn-dark-large pointer">
-                                    <span class="btn-txt">Create contact</span>
-                                    <img src="../../assets/img/contacts/check.png" alt="">
-                                </button>
-                            </div>
-                        </form> 
-                    </div>
-                </div>
-            </div>
+      <div id="add-contact" class="container-add">
+        <div class="top-bg-contact p-relative">
+          <div class="d-flex column justify-center contact-header">
+            <img class="logo" src="../../assets/img/logo_white.png" alt="" />
+            <h1 class="head-title-contact">Add contact</h1>
+            <h3 class="sub-title-contact">Tasks are better with a team!</h3>
+            <div class="underline-add"></div>
+            <img
+              onclick="closeAddContact()"
+              class="close-b pointer"
+              src="./../../assets/img/contacts/close.png"
+              alt=""
+            />
+          </div>
         </div>
-    </div>
-    
-    <div id="overlay" class="overlay">
-        <div id="edit-contact" class="container-add">
-            <div class="top-bg-contact p-relative">
-                <div class="d-flex column justify-center contact-header">
-                    <img class="logo" src="../../assets/img/logo_white.png" alt="">
-                    <h1 class="head-title-contact">Edit contact</h1>
-                    <div class="underline-add"></div>
-                    <img onclick="closeEditContact()" class="close-b pointer" src="./../../assets/img/contacts/close.png" alt="">
+        <div class="bottom-bg-contact d-flex align-center p-relative">
+          <div class="person-circle-add">
+            <img
+              class="person-img"
+              src="../../assets/img/contacts/person-white.png"
+              alt=""
+            />
+          </div>
+          <div class="bottom-right">
+            <div class="p-relative close-container">
+              <img
+                onclick="closeAddContact()"
+                class="close-w pointer"
+                src="./../../assets/img/contacts/close-dark.png"
+                alt=""
+              />
+            </div>
+            <div class="p-relative d-flex align-center justify-center column">
+              <form
+                onsubmit="addNewContact();return false"
+                class="w100 d-flex column input-container"
+              >
+                <input
+                  id="input-name"
+                  class="input"
+                  placeholder="Name"
+                  type="text"
+                  required
+                />
+                <input
+                  id="input-email"
+                  class="input"
+                  placeholder="Email"
+                  type="email"
+                  required
+                />
+                <input
+                  id="input-phone"
+                  class="input"
+                  placeholder="Phone"
+                  type="tel/"
+                  name="tel"
+                  required
+                />
+                <div class="buttons">
+                  <button
+                    onclick="closeAddContact()"
+                    id="cancel-btn"
+                    class="btn-create pointer cancel"
+                  >
+                    <span class="blue">Cancel</span>
+                    <img
+                      class="blue x"
+                      src="../../assets/img/contacts/close-dark.png"
+                      alt=""
+                    />
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn-create btn-dark-large pointer"
+                  >
+                    <span class="btn-txt">Create contact</span>
+                    <img src="../../assets/img/contacts/check.png" alt="" />
+                  </button>
                 </div>
+              </form>
             </div>
-            <div id="edit-input-container" class="bottom-bg-contact d-flex align-center p-relative">
-            </div>
+          </div>
         </div>
+      </div>
     </div>
 
-    <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navContacts.html"></div>
-    <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navContactsDesktop.html"></div>
-</body>
+    <div id="overlay" class="overlay">
+      <div id="edit-contact" class="container-add">
+        <div class="top-bg-contact p-relative">
+          <div class="d-flex column justify-center contact-header">
+            <img class="logo" src="../../assets/img/logo_white.png" alt="" />
+            <h1 class="head-title-contact">Edit contact</h1>
+            <div class="underline-add"></div>
+            <img
+              onclick="closeEditContact()"
+              class="close-b pointer"
+              src="./../../assets/img/contacts/close.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div
+          id="edit-input-container"
+          class="bottom-bg-contact d-flex align-center p-relative"
+        ></div>
+      </div>
+    </div>
+
+    <div
+      id="navMobile"
+      w3-include-html="../assets/templates/navAktivMobile/navContacts.html"
+    ></div>
+    <div
+      id="navDesktop"
+      w3-include-html="../assets/templates/navAktivDesktop/navContactsDesktop.html"
+    ></div>
+  </body>
 </html>

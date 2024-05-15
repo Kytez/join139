@@ -9,7 +9,7 @@
  * @return {Promise<void>} A promise that resolves when all the steps are completed.
  */
 async function initLegalNoticeAndPrivacyPolicy() {
-    await includeHTML();
-    await loadActiveUser();
-    renderUserInitials();
-  }
+  await includeHTML();
+  await loadActiveUser();
+  renderUserInitials();
+}

@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log in - Join</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
 
     <script src="animation.js"></script>
     <script src="script.js"></script>
     <script src="login.js"></script>
-</head>
-<body onload="initLogIn()">
-    <div id="loadAnimation">
-    </div>
-    
+  </head>
+  <body onload="initLogIn()">
+    <div id="loadAnimation"></div>
+
     <section class="header">
-      <img id="logInHeaderLogo" src="assets/img/header/header_logo.png" alt="Join Logo" />
+      <img
+        id="logInHeaderLogo"
+        src="assets/img/header/header_logo.png"
+        alt="Join Logo"
+      />
       <div id="signUpSectionDesktop" class="sign-up">
         <span>Not a Join user?</span>
         <a class="btn-dark-small" href="./sign_up/sign_up.html">Sign up</a>
@@ -38,25 +41,41 @@
             required
           />
           <div class="password-input-and-eye-icon">
-          <input
-            id="passwordInputLogin"
-            type="password"
-            placeholder="Password"
-            required
-            onkeyup="checkIconChange()"
-            onchange="checkIconChange()"
-            style="background-image: url(assets/img/icons/lock.png)"
-          />
-          <img onclick="changePasswordVisibility()" id="iconVisibilityPassword" class="d-none" src="assets/img/icons/visibility_off.png">
-        </div>
+            <input
+              id="passwordInputLogin"
+              type="password"
+              placeholder="Password"
+              required
+              onkeyup="checkIconChange()"
+              onchange="checkIconChange()"
+              style="background-image: url(assets/img/icons/lock.png)"
+            />
+            <img
+              onclick="changePasswordVisibility()"
+              id="iconVisibilityPassword"
+              class="d-none"
+              src="assets/img/icons/visibility_off.png"
+            />
+          </div>
         </div>
         <div class="checkbox-remember">
           <input id="rememberCheckbox" type="checkbox" />
           <span>Remember me</span>
         </div>
         <div class="btns-login">
-          <button type="submit" class="btn-dark-large" id="btnLogin" type="submit">Log in</button>
-          <span onclick="guestLogIn()" class="btn-light-large" id="btnGuestLogin">
+          <button
+            type="submit"
+            class="btn-dark-large"
+            id="btnLogin"
+            type="submit"
+          >
+            Log in
+          </button>
+          <span
+            onclick="guestLogIn()"
+            class="btn-light-large"
+            id="btnGuestLogin"
+          >
             Guest Log in
           </span>
         </div>
@@ -69,28 +88,35 @@
     </section>
 
     <section class="legal-footer">
-      <a target="_blank" href="./legal_notice_privacy_policy_wo_user/privacy_wo_user.html">Privacy Policy</a>
-      <a target="_blank" href="./legal_notice_privacy_policy_wo_user/legal_wo_user.html">Legal Notice</a>
+      <a
+        target="_blank"
+        href="./legal_notice_privacy_policy_wo_user/privacy_wo_user.html"
+        >Privacy Policy</a
+      >
+      <a
+        target="_blank"
+        href="./legal_notice_privacy_policy_wo_user/legal_wo_user.html"
+        >Legal Notice</a
+      >
     </section>
 
     <div class="btn-dark-large d-none" id="msgBox"></div>
 
     <script>
       const urlParams = new URLSearchParams(window.location.search);
-      const msg = urlParams.get('msg');
-      const msgBox = document.getElementById('msgBox');
+      const msg = urlParams.get("msg");
+      const msgBox = document.getElementById("msgBox");
 
-      if(msg) {
+      if (msg) {
         msgBox.innerHTML = msg;
-        msgBox.classList.remove('d-none');
-        setTimeout(function() {
-          msgBox.classList.add('hide-animation');
+        msgBox.classList.remove("d-none");
+        setTimeout(function () {
+          msgBox.classList.add("hide-animation");
         }, 3000);
-        setTimeout(function() {
-          msgBox.classList.add('d-none');
+        setTimeout(function () {
+          msgBox.classList.add("d-none");
         }, 5000);
       }
     </script>
-
   </body>
 </html>

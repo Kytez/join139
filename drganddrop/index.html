@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../board/boardStyleMobile.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="drg.js" defer></script>
-  <title>Document</title>
-</head>
-<body>
-  <div class="dropbox">
-    <div draggable="true" onclick="showTask()" class="draggable tasks">
-      <div class="task-padding">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../board/boardStyleMobile.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="drg.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="dropbox">
+      <div draggable="true" onclick="showTask()" class="draggable tasks">
+        <div class="task-padding">
           <div class="task-title">User Story</div>
-          <span class="task-description">Kochwelt Page & Recipe Recommender</span> <br>
-          <span>Build start page with recipe recoomendation...</span> <br>
+          <span class="task-description"
+            >Kochwelt Page & Recipe Recommender</span
+          >
+          <br />
+          <span>Build start page with recipe recoomendation...</span> <br />
           <div class="subtasks">
-          <span>1/2 Subtasks</span>   
-      </div>
-      <div class="user-container flex">
-          <div class="flex">
+            <span>1/2 Subtasks</span>
+          </div>
+          <div class="user-container flex">
+            <div class="flex">
               <div class="user-circle"><span>AM</span></div>
               <div class="margin-left user-circle"><span>AM</span></div>
+            </div>
+            <img class="priority" src="../assets/img/icons/line.png" alt="" />
           </div>
-              <img class="priority" src="../assets/img/icons/line.png" alt="">
-              </div> 
-          </div>
+        </div>
       </div>
-    <p class="draggable" draggable="true">1</p>
-    <p class="draggable" draggable="true">2</p>
-  </div>
-  <div class="dropbox">
-    <p class="draggable" draggable="true">3</p>
-    <p class="draggable" draggable="true">4</p>
-  </div>
-</body>
+      <p class="draggable" draggable="true">1</p>
+      <p class="draggable" draggable="true">2</p>
+    </div>
+    <div class="dropbox">
+      <p class="draggable" draggable="true">3</p>
+      <p class="draggable" draggable="true">4</p>
+    </div>
+  </body>
 </html>

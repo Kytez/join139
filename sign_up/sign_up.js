@@ -34,8 +34,8 @@ async function signUp() {
 }
 
 /**
- * Checks if the password matches the confirmed password input. 
- * If they match or the confirmed password is empty, it removes the red border class and hides the tooltip. 
+ * Checks if the password matches the confirmed password input.
+ * If they match or the confirmed password is empty, it removes the red border class and hides the tooltip.
  * Otherwise, it adds the red border class and shows the tooltip.
  *
  */
@@ -44,7 +44,10 @@ function checkPasswordMatch() {
   let confirmPassword = document.getElementById("confirmPasswordInputSignUp");
   let tooltip = document.getElementById("tooltipPasswordNotMatching");
 
-  if (password.value === confirmPassword.value || confirmPassword.value === '') {
+  if (
+    password.value === confirmPassword.value ||
+    confirmPassword.value === ""
+  ) {
     confirmPassword.classList.remove("border-red", "border-red:focus");
     tooltip.classList.add("d-none");
   } else {
@@ -60,15 +63,17 @@ function checkPasswordMatch() {
  */
 function checkIconChangePassword() {
   let passwordSignup = document.getElementById("passwordInputSignUp");
-  let visibiltyIconPassword = document.getElementById('iconVisibilityPasswordSignUp');
+  let visibiltyIconPassword = document.getElementById(
+    "iconVisibilityPasswordSignUp"
+  );
 
-  if(passwordSignup.value !== '') {
-    passwordSignup.style.backgroundImage="";
-    visibiltyIconPassword.classList.remove('d-none');
-} else {
-    passwordSignup.style.backgroundImage="url(../assets/img/icons/lock.png)";
-    visibiltyIconPassword.classList.add('d-none');
-}
+  if (passwordSignup.value !== "") {
+    passwordSignup.style.backgroundImage = "";
+    visibiltyIconPassword.classList.remove("d-none");
+  } else {
+    passwordSignup.style.backgroundImage = "url(../assets/img/icons/lock.png)";
+    visibiltyIconPassword.classList.add("d-none");
+  }
 }
 
 /**
@@ -77,15 +82,20 @@ function checkIconChangePassword() {
  * @return {void} This function does not return anything.
  */
 function checkIconChangeConfirmPassword() {
-  let confirmPasswordSignup = document.getElementById("confirmPasswordInputSignUp");
-  let visibiltyIconConfirmPassword = document.getElementById('iconVisibilityPasswordConfirmSignUp');
+  let confirmPasswordSignup = document.getElementById(
+    "confirmPasswordInputSignUp"
+  );
+  let visibiltyIconConfirmPassword = document.getElementById(
+    "iconVisibilityPasswordConfirmSignUp"
+  );
 
-  if(confirmPasswordSignup.value !== '') {
-      confirmPasswordSignup.style.backgroundImage="";
-      visibiltyIconConfirmPassword.classList.remove('d-none');
+  if (confirmPasswordSignup.value !== "") {
+    confirmPasswordSignup.style.backgroundImage = "";
+    visibiltyIconConfirmPassword.classList.remove("d-none");
   } else {
-      confirmPasswordSignup.style.backgroundImage="url(../assets/img/icons/lock.png)";
-      visibiltyIconConfirmPassword.classList.add('d-none');
+    confirmPasswordSignup.style.backgroundImage =
+      "url(../assets/img/icons/lock.png)";
+    visibiltyIconConfirmPassword.classList.add("d-none");
   }
 }
 
@@ -95,15 +105,15 @@ function checkIconChangeConfirmPassword() {
  * @return {void} This function does not return anything.
  */
 function changePasswordVisibility() {
-  let visibiltyIcon = document.getElementById('iconVisibilityPasswordSignUp');
+  let visibiltyIcon = document.getElementById("iconVisibilityPasswordSignUp");
   let inputField = document.getElementById("passwordInputSignUp");
 
-  if(inputField.type === 'password') {
-    visibiltyIcon.src = '../assets/img/icons/visibility.png';
-    inputField.type = 'text';
+  if (inputField.type === "password") {
+    visibiltyIcon.src = "../assets/img/icons/visibility.png";
+    inputField.type = "text";
   } else {
-      visibiltyIcon.src = '../assets/img/icons/visibility_off.png';
-      inputField.type = 'password';
+    visibiltyIcon.src = "../assets/img/icons/visibility_off.png";
+    inputField.type = "password";
   }
 }
 
@@ -113,15 +123,17 @@ function changePasswordVisibility() {
  * @return {void} This function does not return anything.
  */
 function changeConfirmPasswordVisibility() {
-  let visibiltyIcon = document.getElementById('iconVisibilityPasswordConfirmSignUp');
+  let visibiltyIcon = document.getElementById(
+    "iconVisibilityPasswordConfirmSignUp"
+  );
   let inputField = document.getElementById("confirmPasswordInputSignUp");
 
-  if(inputField.type === 'password') {
-    visibiltyIcon.src = '../assets/img/icons/visibility.png';
-    inputField.type = 'text';
+  if (inputField.type === "password") {
+    visibiltyIcon.src = "../assets/img/icons/visibility.png";
+    inputField.type = "text";
   } else {
-      visibiltyIcon.src = '../assets/img/icons/visibility_off.png';
-      inputField.type = 'password';
+    visibiltyIcon.src = "../assets/img/icons/visibility_off.png";
+    inputField.type = "password";
   }
 }
 
@@ -136,7 +148,9 @@ function changeConfirmPasswordVisibility() {
  */
 function resetForm(name, email, password, btnSignUp) {
   let confirmPassword = document.getElementById("confirmPasswordInputSignUp");
-  let privacyCheckboxInputSignUp = document.getElementById("privacyCheckboxInputSignUp");
+  let privacyCheckboxInputSignUp = document.getElementById(
+    "privacyCheckboxInputSignUp"
+  );
   let tooltip = document.getElementById("tooltipPasswordNotMatching");
 
   name.value = "";

@@ -1,46 +1,46 @@
 .headline-and-back-button {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 32px;
-  }
-  
-  p {
-    margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+p {
+  margin-bottom: 24px;
+}
+
+h1 {
+  word-break: break-word;
+}
+
+#navDesktop {
+  display: none;
+}
+
+#headerDesktop {
+  display: none;
+}
+
+/* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
+
+@media (min-width: 992px) {
+  #navMobile {
+    display: none;
   }
 
-  h1 {
-    word-break: break-word;
+  #headerMobile {
+    display: none;
   }
 
   #navDesktop {
-    display: none;
+    display: flex;
   }
-  
+
   #headerDesktop {
-    display: none;
+    display: flex;
   }
-  
-  /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
-  
-  @media(min-width: 992px) {
-    #navMobile {
-        display: none;
-    }
-  
-    #headerMobile {
-        display: none;
-    }
-  
-    #navDesktop {
-        display: flex;
-    }
-  
-    #headerDesktop {
-        display: flex;
-    }
-  
-    .margin-body-mobile {
-      margin: 96px 16px 16px 232px;
-      padding: 32px 0 32px 64px;
-    }
+
+  .margin-body-mobile {
+    margin: 96px 16px 16px 232px;
+    padding: 32px 0 32px 64px;
   }
+}
