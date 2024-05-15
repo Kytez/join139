@@ -3,13 +3,10 @@ body{
     padding: 0;
 }
 
-
 .list-container{
     width: 100%;
     background-color: white;
     overflow: auto;
-    /* padding-left: 38px;
-    padding-right: 38px; */
     margin-top: 80px;
 }
 
@@ -84,7 +81,6 @@ body{
     color: white;
 }
 
-
 .contact-circle{
     width: 35px;
     height: 35px;
@@ -131,8 +127,6 @@ body{
     background-color: #29ABE2;
 }
 
-
-
 .add-img{
     width: 55%;
     height: auto;
@@ -141,7 +135,6 @@ body{
 #headerMobile{
     background-color: white;
 }
-
 
 .toggle-options{
     width: 116px;
@@ -169,8 +162,6 @@ body{
     }
 }
 
-
-
 @media(min-width: 992px) {
     .container{
         margin-top: 96px;
@@ -182,9 +173,7 @@ body{
         margin:0;
         margin-left: 232px;
         width: 456px;
-        /* height: calc(100vh - 96px); */
         padding-left: 0;
-        /* padding-right: 20px; */
         padding-top: 80px;
         position: relative;
     }
@@ -207,16 +196,8 @@ body{
         border-radius: 10px
     }
 
-    /* .margin{
-        padding-left: 20px;
-        margin-right: 20px;
-        margin-left: 0px;
-
-    } */
-
     .letter-i{
-        /* padding: 0; */
-        /* padding-top: 24px; */
+       
         padding-left: 10px;
     }
 
@@ -224,9 +205,6 @@ body{
         font-size: 20px;
         color: #2A3647;
     }
-    /* .focus h3{
-        color: white;
-    } */
 
     .add-container{
         position: fixed;
@@ -240,7 +218,6 @@ body{
         width: 35%;
         margin-left: 152px;
         box-shadow: 4px 0 6px 0px #00000014;
-
     }
 
     .add-contact{
@@ -271,9 +248,7 @@ body{
         margin-block-start: 0;
         margin-block-end: 0;
     }
-
-
-
+    
     .add-contact h2{
         color: white;
         margin-right: 10px;

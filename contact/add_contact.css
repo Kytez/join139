@@ -30,13 +30,9 @@ body{
     justify-content: center
 }
 
-
-
 .contact-header{
     padding: 100px 24px 66px 24px
 }
-
-
 
 .head-title-contact{
     font-weight: 700;
@@ -48,7 +44,6 @@ body{
     font-size: 16px;
     color: white;
     margin-bottom: 10px;
-
 }
 
 .underline-add{
@@ -109,7 +104,6 @@ body{
     border: 1px solid #d1d1d1;
     border-radius: 10px;
     font-size: 20px;
-
 }
 
 input:focus{
@@ -147,7 +141,6 @@ input:focus{
 
 .blue-border{
     border-color: #29abe2;
-    /* color: #29abe2; */
 }
 
 .delete{
@@ -175,14 +168,12 @@ input:focus{
 .delete:hover{
     border-color: #29abe2;
     color: #29abe2;
-
 }
 
 @media(min-width: 992px){
     .container-add{
         border-radius: 30px;
         border: solid 1px;
-        /* height: calc(100vh - 96px); */
         top: 170px;
         left:90px;
         background-color: white;
@@ -193,7 +184,6 @@ input:focus{
         justify-content: space-evenly;
         transform: translateX(200%);
         transition: transform 400ms ease-in-out;
-
     }
 
     .bottom-right{
@@ -292,8 +282,6 @@ input:focus{
     .edit-delete:hover{
         filter: invert(71%) sepia(50%) saturate(5248%) hue-rotate(165deg) brightness(99%) contrast(79%);
     }
-    
-
 }
 
 @media(max-width:992px){

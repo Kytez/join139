@@ -163,10 +163,16 @@ async function saveTasks(){
  */
 async function loadAllTasks(){
     try {
-        allTasks = await getItem('allTasks') || [];
+        let allTasksResponse = await getItem('allTasks') || [];
+        if(allTasksResponse !== null){
+            allTasks = allTasksResponse;
+        }
+        else{
+            allTasks = [];
+        }
     } catch(e) {
         console.error('Loading error:', e);
-    }
+    }   
 }
 
 /**
