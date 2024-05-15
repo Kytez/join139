@@ -11,7 +11,7 @@ async function initBoard() {
     await loadAllTasks();
     await loadContacts();
     updateTasksHTML();
-    renderAssignedContactList()
+    // renderAssignedContactList()
 }
 
 /**
