@@ -45,12 +45,18 @@ async function saveContacts() {
  * Loads the newest information in the key "contacts" from the server, containing the information on all added contacts, by parsing the JSON string into the contacts variable.
  */
 
-async function loadContacts() {
-  try {
-    contacts = await getItem("contacts");
-  } catch (e) {
-    console.error("Loading error:", e);
-  }
+async function loadContacts(){
+    try {
+        let contactsResponse = await getItem('contacts');
+        if(contactsResponse != null){
+            contacts = contactsResponse;
+        }
+        else{
+            contacts = [];
+        }
+    } catch(e) {
+        console.error('Loading error:', e);
+    }
 }
 
 /**
