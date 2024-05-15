@@ -1,3 +1,4 @@
+let saveSubTasks = [];
 /**
  * moves the edit-task pop-up field into the screenview via translateX and executes rendering of adjusted editable elements for each task.
  * 
@@ -5,7 +6,7 @@
  * @param {string} prio This is the priority value for the task 
  */
 
-function showEditTask(title, description, date, id, prio, names, subTasks, singleContactId){
+function showEditTask(title, description, date, id, prio, names, tasks, singleContactId){
     document.getElementById('editTaskSection').style.display = 'flex';
     document.getElementById('editTaskFullScreen').style.display = 'flex';
     
@@ -18,6 +19,9 @@ function showEditTask(title, description, date, id, prio, names, subTasks, singl
             }, 100);
         })(i);
     }
+    subTasks.push(tasks);
+    console.log(subTasks);
+    console.log(subTasks);
     setFilterEdit({value: ''});
     renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId);
 }
@@ -34,12 +38,12 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
     let descriptionEdit = document.getElementById('descriptionEdit');
     let dateEdit = document.getElementById('dateEdit');
     let okButton = document.getElementById('boardEditTaskBtns');
-    passIdsToSelectTaskContact(singleContactId);
-    addSubtaskHTML(subTasks);
     titleEdit.value = title;
     descriptionEdit.value = description;
     dateEdit.value = date;
     setPrioButtonsColorEdit(prio);
+    passIdsToSelectTaskContact(singleContactId);
+    addSubtaskEdit();
     okButton.innerHTML = /*html*/ `
         <button onclick="editTask(${id})"  class="btn-dark-edit pointer">Ok 
             <img src="../assets/img/icons/check_icon.png" alt="">
@@ -47,22 +51,20 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
     `
 }
 
-function passIdsToaddSubtaskHTML(subTasks) {
-    document.getElementById("subTaskInputEdit").innerHTML = "";
-    console.log(subTasks);
-    // Überprüfe, ob singleContactId eine gültige Variable ist
-    if (!subTasks || typeof subTasks !== 'string') {
-        console.error("Ungültige Eingabe.");
-        return;
-    }
+function addSubtaskEdit() {
+    let subTaskInput = document.getElementById('subTaskInputEdit').value;
+    subTasks.push(subTaskInput);
+    renderSubtasksEdit();
+    document.getElementById('subTaskInputEdit').value = "";
+}
 
-    // Durchlaufe jede Zahl in singleContactId und rufe selectTaskContact für jede Zahl auf
+function renderSubtasksEdit() {
+    let subTaskContainer = document.getElementById('subTaskContainerEdit');
+    subTaskContainer.innerHTML = "";
     for (let i = 0; i < subTasks.length; i++) {
-        let id = parseInt(subTasks[i]);
-        if (!isNaN(id)) {
-            console.log(subTasks, i);
-            addSubtaskHTML(id, i);
-        }
+        console.log(subTasks[i]);
+        let subTaskHTML = addSubtaskHTML(subTasks[i], i);
+        subTaskContainer.innerHTML += subTaskHTML;
     }
 }
 
@@ -78,16 +80,21 @@ function addSubtaskHTML(subTask, i) {
                 <div class="seperator">
                 </div>
             <div>
-                <img class="edit" onclick="deleteSubtask(this.parentElement.parentElement, ${i})" src="../assets/img/svg/trash.svg" alt="">
+                <img class="edit" onclick="deleteSubtaskEdit(this.parentElement.parentElement, ${i})" src="../assets/img/svg/trash.svg" alt="">
             </div>
         </div>
     </div>
     `
 }
 
+function deleteSubtaskEdit(entry, id) {
+    const index = subTasks.findIndex((element) => element.id === id);
+    subTasks.splice(index, 1);
+    entry.remove();
+}
+
 function passIdsToSelectTaskContact(singleContactId) {
     document.getElementById("contactInitalsEdit").innerHTML = "";
-    console.log(singleContactId);
     // Überprüfe, ob singleContactId eine gültige Variable ist
     if (!singleContactId || typeof singleContactId !== 'string') {
         console.error("Ungültige Eingabe.");
@@ -165,7 +172,7 @@ function setPrioButtonsColorEdit(i) {
 function hideEditTask() {
     document.getElementById('editTaskSection').style.display = 'none';
     document.getElementById('editTaskFullScreen').style.display = 'none';
-    
+    saveSubTasks = [];
     let popUpElements = document.getElementsByClassName('edit-task-card');
     for (let i = 0; i < popUpElements.length; i++) {
         popUpElements[i].style.transition = 'transform 400ms';
@@ -189,7 +196,6 @@ function showContactListEdit(){
 function setFilterEdit(input) {
     let filter = input.value.trim().toLowerCase();
     let filteredContacts;
-    console.log(filteredContacts);
     if (filter !== '') {
         filteredContacts = contacts.filter(function(contact) {
             return contact.userName.toLowerCase().includes(filter);
@@ -204,7 +210,6 @@ function setFilterEdit(input) {
 function renderAssignedContactListEdit(filteredContacts) {
     let assignedTo = document.getElementById('selected-contactsEdit');
     assignedTo.innerHTML = "";
-    console.log(filteredContacts);
     for (let i = 0; i < filteredContacts.length; i++) {
         let userName = filteredContacts[i].userName;
         let initialsString = ''; 
@@ -248,22 +253,6 @@ function hideAndShowEditBoard() {
 
 function clearInputAddTaskEdit() {
     document.getElementById('subTaskInputEdit').value = '';
-}
-
-function addSubtaskEdit() {
-    let subTaskInput = document.getElementById('subTaskInputEdit').value;
-    subTasks.push(subTaskInput);
-    renderSubtasksEdit();
-    document.getElementById('subTaskInputEdit').value = "";
-}
-
-function renderSubtasksEdit() {
-    let subTaskContainer = document.getElementById('subTaskContainerEdit');
-    subTaskContainer.innerHTML = "";
-    for (let i = 0; i < subTasks.length; i++) {
-        let subTaskHTML = addSubtaskHTML(subTasks[i], i);
-        subTaskContainer.innerHTML += subTaskHTML;
-    }
 }
 
 function selectTaskContactEdit(i) {
