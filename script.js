@@ -102,7 +102,12 @@ async function includeHTML() {
  */
 async function loadUsers() {
   try {
-    users = await getItem("users");
+    let usersResponse = await getItem("users");
+    if(usersResponse !== null) {
+      users = usersResponse;
+    } else {
+      users = [];
+    }
   } catch (e) {
     console.error("Loading error:", e);
   }
