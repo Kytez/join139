@@ -347,9 +347,7 @@ function clearInputAddTask() {
  * @return {void} This function does not return anything.
  */
 function editSubtask(id) {
-    // Hier kannst du die Logik für die Bearbeitung des Subtasks implementieren
     console.log("Subtask bearbeiten:", id);
-    // Zum Beispiel: Du könntest den Text im Subtask-Div durch ein Eingabefeld ersetzen, um die Bearbeitung zu ermöglichen
     let subTaskDiv = document.getElementById(`subTask_${id}`);
     let subTaskText = subTaskDiv.querySelector("div");
     let subTaskTextInput = document.createElement("input");

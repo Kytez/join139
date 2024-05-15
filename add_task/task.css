@@ -227,7 +227,6 @@ textarea::placeholder {
     z-index: 1;
 }
 
-
 #subTaskContainer {
     width: 440px;
     max-height: 160px;
@@ -513,7 +512,7 @@ button{
     }
 
     input{
-        width: 434px;
+        width: 420px;
     }
     .size-100 {
         width: auto;
@@ -600,7 +599,7 @@ button{
         width: 340px;
     }
     input {
-        width: 334px;
+        width: 320px;
     }
     textarea {
         width: 334px;
@@ -650,7 +649,7 @@ button{
         width: 290px;
     }
     input {
-        width: 284px;
+        width: 270px;
     }
     textarea {
         width: 284px;
@@ -699,7 +698,7 @@ button{
         width: 490px;
     }
     input {
-        width: 484px;
+        width: 460px;
     }
     textarea {
         width: 484px;

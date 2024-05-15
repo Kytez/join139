@@ -9,7 +9,6 @@ let saveSubTasks = [];
 function showEditTask(title, description, date, id, prio, names, tasks, singleContactId){
     document.getElementById('editTaskSection').style.display = 'flex';
     document.getElementById('editTaskFullScreen').style.display = 'flex';
-    
     let popUpElements = document.getElementsByClassName('edit-task-card');
     for (let i = 0; i < popUpElements.length; i++) {
         popUpElements[i].style.transition = 'transform 400ms';
@@ -20,7 +19,6 @@ function showEditTask(title, description, date, id, prio, names, tasks, singleCo
         })(i);
     }
     subTasks.push(tasks);
-    console.log(subTasks);
     console.log(subTasks);
     setFilterEdit({value: ''});
     renderEditTaskPopUpElements(title, description, date, id, prio, names, subTasks, singleContactId);
@@ -43,7 +41,7 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
     dateEdit.value = date;
     setPrioButtonsColorEdit(prio);
     passIdsToSelectTaskContact(singleContactId);
-    addSubtaskEdit();
+    addExistingSubtaskEdit();
     okButton.innerHTML = /*html*/ `
         <button onclick="editTask(${id})"  class="btn-dark-edit pointer">Ok 
             <img src="../assets/img/icons/check_icon.png" alt="">
@@ -53,9 +51,17 @@ function renderEditTaskPopUpElements(title, description, date, id, prio, names, 
 
 function addSubtaskEdit() {
     let subTaskInput = document.getElementById('subTaskInputEdit').value;
+    subTaskContainer = document.getElementById('subTaskContainerEdit');
+    subTaskContainer.innerHTML = '';
     subTasks.push(subTaskInput);
     renderSubtasksEdit();
     document.getElementById('subTaskInputEdit').value = "";
+}
+
+function addExistingSubtaskEdit() {
+    subTaskContainer = document.getElementById('subTaskContainerEdit');
+    subTaskContainer.innerHTML = '';
+    renderSubtasksEdit();
 }
 
 function renderSubtasksEdit() {
@@ -70,12 +76,12 @@ function renderSubtasksEdit() {
 
 function addSubtaskHTML(subTask, i) {
     return `
-    <div id="subTask_${i}" class="singleSubTasks">
+    <div id="subTaskEdit_${i}" class="singleSubTasks">
         <div>${subTask}</div>
             <div class="flex edit-trash">
                 <div>
-                    <img id="saveEditSubtasks_${i}" class="edit d-none" onclick="saveEditSubtask(${i})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
-                    <img id="editSubtasks_${i}" class="edit" onclick="editSubtask(${i})" src="../assets/img/svg/pencil.svg" alt="">
+                    <img id="saveEditSubtasksEdit_${i}" class="edit d-none" onclick="saveEditSubtaskEdit(${i})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                    <img id="editSubtasksEdit_${i}" class="edit" onclick="editSubtaskEdit(${i})" src="../assets/img/svg/pencil.svg" alt="">
                 </div>
                 <div class="seperator">
                 </div>
@@ -87,10 +93,40 @@ function addSubtaskHTML(subTask, i) {
     `
 }
 
+function editSubtaskEdit(id) {
+    console.log("Subtask bearbeiten:", id);
+    let subTaskDiv = document.getElementById(`subTaskEdit_${id}`);
+    let subTaskText = subTaskDiv.querySelector("div");
+    let subTaskTextInput = document.createElement("input");
+    let saveEditSubtasks = document.getElementById(`saveEditSubtasksEdit_${id}`);
+    let editSubtasks = document.getElementById(`editSubtasksEdit_${id}`);
+    saveEditSubtasks.classList.remove("d-none");
+    editSubtasks.classList.add("d-none");
+    subTaskTextInput.type = "text";
+    subTaskTextInput.value = subTaskText.textContent;
+    subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
+}
+
 function deleteSubtaskEdit(entry, id) {
     const index = subTasks.findIndex((element) => element.id === id);
     subTasks.splice(index, 1);
     entry.remove();
+}
+
+function saveEditSubtaskEdit(id) {
+    let elementToRemove = document.getElementById(`subTaskEdit_${id}`);
+    let subTaskTextInput = elementToRemove.querySelector("input").value;
+    let saveEditSubtasks = document.getElementById(`saveEditSubtasksEdit_${id}`);
+    let editSubtasks = document.getElementById(`editSubtasksEdit_${id}`);
+    console.log(subTaskTextInput);
+    if (elementToRemove) {
+        elementToRemove.remove();
+        subTasks.splice(id, 1);
+        subTasks.push(subTaskTextInput);
+        renderSubtasksEdit();
+        saveEditSubtasks.classList.remove("d-none");
+        editSubtasks.classList.add("d-none");
+    }
 }
 
 function passIdsToSelectTaskContact(singleContactId) {
@@ -172,7 +208,7 @@ function setPrioButtonsColorEdit(i) {
 function hideEditTask() {
     document.getElementById('editTaskSection').style.display = 'none';
     document.getElementById('editTaskFullScreen').style.display = 'none';
-    saveSubTasks = [];
+    subTasks = [];
     let popUpElements = document.getElementsByClassName('edit-task-card');
     for (let i = 0; i < popUpElements.length; i++) {
         popUpElements[i].style.transition = 'transform 400ms';
