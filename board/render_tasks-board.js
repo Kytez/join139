@@ -144,7 +144,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names, s
     let taskPopUp = document.getElementById('taskPopUp')
 
     taskPopUp.innerHTML = /*html*/`
-        <div class="task-popup-padding width-100">
+        <div class="task-popup-padding scroll width-100">
             <div class="space-between gap subtasks-checkbox">
                 <div class="task-category header-popup">${category}</div> 
                 <img onclick="hideTask()" class="close-img pointer" src="../assets/img/icons/close.png">

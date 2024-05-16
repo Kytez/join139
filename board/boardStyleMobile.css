@@ -439,6 +439,10 @@ span {
   white-space: nowrap;
 }
 
+.scroll{
+  overflow-y: scroll;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -874,6 +878,11 @@ button {
     display: none;
   }
 
+  .pop-up{
+    top:85px;
+    height: 500px;
+  }
+
   .body {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -940,9 +949,9 @@ button {
 }
 
 @media (max-height: 666px) {
-  .pop-up {
+  /* .pop-up {
     top: 0;
-  }
+  } */
 
   .edit-task-card {
     top: 0;
