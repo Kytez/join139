@@ -29,7 +29,7 @@ function showEditTask(
     })(i);
   }
   subTasks.push(tasks);
-  console.log(subTasks);
+  console.log(tasks);
   console.log(subTasks);
   setFilterEdit({ value: "" });
   renderEditTaskPopUpElements(
@@ -58,7 +58,6 @@ function renderEditTaskPopUpElements(
   id,
   prio,
   names,
-  subTasks,
   singleContactId
 ) {
   let titleEdit = document.getElementById("titleEdit");
@@ -70,7 +69,7 @@ function renderEditTaskPopUpElements(
   dateEdit.value = date;
   setPrioButtonsColorEdit(prio);
   passIdsToSelectTaskContact(singleContactId);
-  addSubtaskEdit();
+  addExistingSubtaskEdit(id);
   okButton.innerHTML = /*html*/ `
         <button onclick="editTask(${id})"  class="btn-dark-edit pointer">Ok 
             <img src="../assets/img/icons/check_icon.png" alt="">
@@ -81,23 +80,30 @@ function renderEditTaskPopUpElements(
 function addSubtaskEdit() {
     let subTaskInput = document.getElementById('subTaskInputEdit').value;
     subTaskContainer = document.getElementById('subTaskContainerEdit');
-    subTaskContainer.innerHTML = '';
     subTasks.push(subTaskInput);
     renderSubtasksEdit();
     document.getElementById('subTaskInputEdit').value = "";
 }
 
-function addExistingSubtaskEdit() {
+function addExistingSubtaskEdit(id) {
     subTaskContainer = document.getElementById('subTaskContainerEdit');
     subTaskContainer.innerHTML = '';
-    renderSubtasksEdit();
+    subTasks = [];
+    for (let i = 0; i < allTasks[id]["subTask"].length; i++) {
+      let subTaskHTML = (allTasks[id]["subTask"][i]);
+      console.log(subTaskHTML);
+      console.log(subTasks);
+      subTasks.push(subTaskHTML);
+      subTaskContainer.innerHTML += addSubtaskHTML(subTaskHTML, i);
+    }
 }
 
 function renderSubtasksEdit() {
   let subTaskContainer = document.getElementById("subTaskContainerEdit");
-  subTaskContainer.innerHTML = "";
+  subTaskContainer.innerHTML = '';
+  console.log(subTasks);
   for (let i = 0; i < subTasks.length; i++) {
-    console.log(subTasks[i]);
+    console.log(i);
     let subTaskHTML = addSubtaskHTML(subTasks[i], i);
     subTaskContainer.innerHTML += subTaskHTML;
   }

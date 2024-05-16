@@ -142,7 +142,7 @@ function returnProgressBarHTML(percentage, sumChecked, subTasks) {
  */
 function renderTasksPopUp(title, description, date, id, category, prio, names, subTasks, singleContactId) {
     let taskPopUp = document.getElementById('taskPopUp')
-
+console.log(subTasks);
     taskPopUp.innerHTML = /*html*/`
         <div class="task-popup-padding scroll width-100">
             <div class="space-between gap subtasks-checkbox">
@@ -189,6 +189,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names, s
             </div>
         </div>
     `
+    console.log(subTasks);
 }
 
 /**
