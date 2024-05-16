@@ -440,8 +440,7 @@ span {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
-  background-color: transparent;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -908,6 +907,19 @@ button {
   .add-task-card {
     overflow-y: scroll;
     height: 650px;
+  }
+
+  .add-task-background {
+    z-index: 801;
+  }
+
+  .add-task-card-board {
+    z-index: 801;
+    height: 92% !important;
+  }
+
+  .add-task {
+    margin-bottom: 0 !important;
   }
 }
 
