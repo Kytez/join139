@@ -210,6 +210,17 @@ function editTask(id) {
  * @param {string} i This is the priority value for the task
  */
 
+function handleClickPrioEdit(i) {
+  if (i) {
+    selectPrioEdit(i); // Set the given priority
+  }
+}
+
+function selectPrioEdit(i) {
+  prio = i;
+  setPrioButtonsColorEdit(prio);
+}
+
 function setPrioButtonsColorEdit(i) {
   document
     .getElementById("mediumEdit")
