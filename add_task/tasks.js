@@ -20,6 +20,7 @@ async function initAddTask() {
   renderUserInitials();
   await loadContacts();
   await loadAllTasks();
+  setFilter({ value: `` });
 }
 
 /**
@@ -141,7 +142,6 @@ function showContactList() {
   let contactList = document.getElementById("selected-contacts");
   if (contactList.classList.contains("d-none")) {
     contactList.classList.remove("d-none");
-    setFilter({ value: `` });
   } else {
     contactList.classList.add("d-none");
   }
