@@ -248,7 +248,7 @@ function changeCheckedAndColor(i, contact, name) {
     selectedContacts.splice(selectedContacts.indexOf(i), 1);
     colors.splice(colors.indexOf(i), 1);
     names.splice(names.indexOf(i), 1);
-    singleContactId.splice(id.indexOf(i), 1);
+    singleContactId.splice(singleContactId.indexOf(i), 1);
     removeInital(i);
   } else {
     selectedContact.style.backgroundColor = "#2A3647";
