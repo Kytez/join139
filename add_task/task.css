@@ -715,7 +715,6 @@ button {
   }
   .add-task-section {
     display: flex;
-    /* width: 250px; */
     align-items: center;
   }
   .contact-list {

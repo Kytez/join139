@@ -439,9 +439,12 @@ span {
   white-space: nowrap;
 }
 
+.scroll{
+  overflow-y: scroll;
+}
+
 ::-webkit-scrollbar {
-  width: 4px;
-  background-color: transparent;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -875,6 +878,11 @@ button {
     display: none;
   }
 
+  .pop-up{
+    top:85px;
+    height: 500px;
+  }
+
   .body {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -909,6 +917,19 @@ button {
     overflow-y: scroll;
     height: 650px;
   }
+
+  .add-task-background {
+    z-index: 801;
+  }
+
+  .add-task-card-board {
+    z-index: 801;
+    height: 92% !important;
+  }
+
+  .add-task {
+    margin-bottom: 0 !important;
+  }
 }
 
 @media (max-width: 432px) {
@@ -928,9 +949,9 @@ button {
 }
 
 @media (max-height: 666px) {
-  .pop-up {
+  /* .pop-up {
     top: 0;
-  }
+  } */
 
   .edit-task-card {
     top: 0;
