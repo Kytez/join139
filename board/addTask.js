@@ -15,6 +15,38 @@ function clearInputAddTaskBoard() {
   document.getElementById("subTaskInputBoard").value = "";
 }
 
+function handleClickPrioBoard(i) {
+  if (i) {
+    selectPrioBoard(i); // Set the given priority
+  }
+}
+
+function selectPrioBoard(i) {
+  prio = i;
+  setPrioButtonsColorBoard(prio);
+}
+
+function setPrioButtonsColorBoard(i) {
+  document
+    .getElementById("mediumBoard")
+    .classList.remove("highlighted-button-medium");
+  document.getElementById("lowBoard").classList.remove("highlighted-button-low");
+  document
+    .getElementById("urgentBoard")
+    .classList.remove("highlighted-button-urgent");
+  if (i === "medium") {
+    document
+      .getElementById("mediumBoard")
+      .classList.add("highlighted-button-medium");
+  } else if (i === "low") {
+    document.getElementById("lowBoard").classList.add("highlighted-button-low");
+  } else if (i === "urgent") {
+    document
+      .getElementById("urgentBoard")
+      .classList.add("highlighted-button-urgent");
+  }
+}
+
 function addSubtaskBoard() {
   let subTaskInput = document.getElementById("subTaskInputBoard").value;
   subTasks.push(subTaskInput);
