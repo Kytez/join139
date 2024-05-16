@@ -723,14 +723,6 @@ button {
   .singleSubTasks {
     width: 480px;
   }
-  .add-task-background {
-    z-index: 801;
-  }
-
-  .add-task-card-board {
-    z-index: 801;
-  }
-
 }
 
 @media (max-width: 652px) {
