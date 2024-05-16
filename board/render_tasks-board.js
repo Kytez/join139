@@ -86,7 +86,7 @@ function generateProgressBar(id) {
     let subTaskHTML = '';
     let subTasks = allTasks[id]['subTask']
     let sumChecked = calculateSumCheckedTasks(id);
-    if(subTasks.length > 0){
+    if(subTasks){
         let percentage = Math.round(sumChecked/subTasks.length*100)
         subTaskHTML = returnProgressBarHTML(percentage, sumChecked, subTasks)
     }
@@ -421,8 +421,10 @@ function assignUserColourCard() {
             let divElement = document.getElementById(`assigned-users-${i}`);
             for (let j = 0; j < task['assignedTo'].length; j++) {
                 const user = divElement.children[j];
-                const colour = task['colors'][j];
-                user.style.backgroundColor = colour;
+                if(task['colors']){
+                    const colour = task['colors'][j];
+                    user.style.backgroundColor = colour;
+                }
             }
         }
     }
@@ -441,8 +443,10 @@ function assignUserColourPopUp(names, id) {
         let divElement = document.getElementById(`assigned-taskUsers-${id}`);
         for (let j = 0; j < namesArray.length; j++) {
             const user = divElement.children[j].firstElementChild;
-            const colour = task['colors'][j];
-            user.style.backgroundColor = colour;
+            if(task['colors']){
+                const colour = task['colors'][j];
+                user.style.backgroundColor = colour;
+            }
         }
     }
 }

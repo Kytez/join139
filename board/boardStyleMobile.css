@@ -880,7 +880,6 @@ button {
 
   .pop-up{
     top:85px;
-    height: 500px;
   }
 
   .body {
@@ -955,6 +954,12 @@ button {
 
   .edit-task-card {
     top: 0;
+  }
+}
+
+@media(max-height:870){
+  .pop-up{
+    height: 500px;
   }
 }
 
