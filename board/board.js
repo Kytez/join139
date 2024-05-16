@@ -167,7 +167,6 @@ function addTaskBoard(workMode = "todo") {
   let date = document.getElementById("dateBoard");
   let category = document.getElementById("categoryBoard");
   let subTask = document.getElementById("subTaskBoard");
-  let contactIDs = [];
   if (
     title.value.trim() === "" &&
     category.value.trim() === "" &&
@@ -176,6 +175,7 @@ function addTaskBoard(workMode = "todo") {
   } else {
     let task = {
       id: allTasks.length + 1,
+      singleContactId: singleContactId,
       title: title.value,
       description: description.value,
       assignedTo: selectedContacts,
@@ -183,7 +183,7 @@ function addTaskBoard(workMode = "todo") {
       date: date.value,
       prio: prio,
       category: category.value,
-      subTask: subTask.value,
+      subTask: subTasks,
       createdAt: new Date().getDate(),
       workMode: workMode,
       names: names,
