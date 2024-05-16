@@ -3,14 +3,13 @@
     width: 106px;
     background-color: #2A3647;
     border-radius: 20px 0 20px 20px;
-    position: absolute;
+    position: fixed;
     z-index: 999;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 26px;
-    position: absolute;
     right: 51px;
     top: 55px;
 }

@@ -6,7 +6,7 @@
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
     width: calc(100vw - 32px);
     height: 80px;
-    z-index: 99;
+    z-index: 800;
     position: fixed;
     top: 0;
     left: 0;
