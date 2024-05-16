@@ -74,7 +74,13 @@ function clearTaskBoard() {
   document.getElementById("dateBoard").value = "";
   document.getElementById("subTaskContainerBoard").innerHTML = "";
   document.getElementById("subTaskInputBoard").value = "";
+  let initialsContainer = document.getElementById("contactInitalsBoard");
+  let divs = initialsContainer.querySelectorAll("div");
+        divs.forEach(function(div) {
+            div.remove();
+          });
   prio = "";
+  removeSelectedContactsBoard();
   document
     .getElementById("mediumBoard")
     .classList.remove("highlighted-button-medium");
@@ -85,6 +91,15 @@ function clearTaskBoard() {
     .getElementById("urgentBoard")
     .classList.remove("highlighted-button-urgent");
 }
+
+function removeSelectedContactsBoard() {
+    setFilterBoard({ value: `` });
+    selectedContacts = [];
+            colors = [];
+            names = [];
+            singleContactId = [];
+};
+
 
 function setPrioButtonsColorBoard(i) {
   document
