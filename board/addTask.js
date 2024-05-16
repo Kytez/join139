@@ -79,7 +79,7 @@ function renderAssignedContactListBoard(filteredContacts) {
 
 function contactListAddTaskBoardHTML(i, userName, initialsString) {
   return `
-    <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
+    <div id="SingleContact_${i}" onclick="selectTaskContactBoard(${i})" class="contact-list-entry">
         <div class="contact-list-entry">
             <div id="initials_${i}" class="initials">${initialsString}</div>
             <div class="profile-fullname">${userName} </div> 
@@ -88,4 +88,44 @@ function contactListAddTaskBoardHTML(i, userName, initialsString) {
         <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
     </div>
     `;
+}
+
+function selectTaskContactBoard(i) {
+  let contact = document.getElementById(`initials_${i}`).textContent;
+  let fullNameElement = document.getElementById(`SingleContact_${i}`)
+    .querySelector(".profile-fullname");
+  let name = fullNameElement.textContent.trim();
+  changeCheckedAndColorBoard(i, contact, name);
+}
+
+function changeCheckedAndColorBoard(i, contact, name) {
+  let selectedContact = document.getElementById(`SingleContact_${i}`);
+  let emptySelect = document.getElementById(`empty_${i}`);
+  let checkedSelect = document.getElementById(`checked_${i}`);
+  let element = document.getElementById(`initials_${i}`);
+  let initials = document.getElementById(`initials_${i}`).textContent;
+  let renderInitials = document.getElementById(`contactInitalsBoard`);
+
+  if (emptySelect.classList.contains("d-none")) {
+    selectedContact.style.backgroundColor = "";
+    selectedContact.style.color = "black";
+    emptySelect.classList.remove("d-none");
+    checkedSelect.classList.add("d-none");
+    selectedContacts.splice(selectedContacts.indexOf(i), 1);
+    colors.splice(colors.indexOf(i), 1);
+    names.splice(names.indexOf(i), 1);
+    singleContactId.splice(singleContactId.indexOf(i), 1);
+    removeInital(i);
+  } else {
+    selectedContact.style.backgroundColor = "#2A3647";
+    selectedContact.style.color = "white";
+    emptySelect.classList.add("d-none");
+    checkedSelect.classList.remove("d-none");
+    let computedStyle = window.getComputedStyle(element).backgroundColor;
+    selectedContacts.push(contact);
+    colors.push(computedStyle);
+    names.push(name);
+    singleContactId.push(i);
+    renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
+  }
 }

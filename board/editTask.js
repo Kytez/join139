@@ -236,7 +236,6 @@ function setPrioButtonsColorEdit(i) {
  */
 
 function hideEditTask() {
-<<<<<<< HEAD
     document.getElementById('editTaskSection').style.display = 'none';
     document.getElementById('editTaskFullScreen').style.display = 'none';
     subTasks = [];
@@ -249,20 +248,6 @@ function hideEditTask() {
             }, 100);
         })(i);
     }
-=======
-  document.getElementById("editTaskSection").style.display = "none";
-  document.getElementById("editTaskFullScreen").style.display = "none";
-  saveSubTasks = [];
-  let popUpElements = document.getElementsByClassName("edit-task-card");
-  for (let i = 0; i < popUpElements.length; i++) {
-    popUpElements[i].style.transition = "transform 400ms";
-    (function (index) {
-      setTimeout(function () {
-        popUpElements[index].style.transform = "translateX(275%)";
-      }, 100);
-    })(i);
-  }
->>>>>>> 52a64397c3ff1a6caadc926fe89ff9fc99259b34
 }
 
 function showContactListEdit() {

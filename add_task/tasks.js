@@ -247,7 +247,7 @@ function changeCheckedAndColor(i, contact, name) {
     checkedSelect.classList.add("d-none");
     selectedContacts.splice(selectedContacts.indexOf(i), 1);
     colors.splice(colors.indexOf(i), 1);
-    names.splice(colors.indexOf(i), 1);
+    names.splice(names.indexOf(i), 1);
     singleContactId.splice(id.indexOf(i), 1);
     removeInital(i);
   } else {
@@ -362,19 +362,6 @@ function clearInputAddTask() {
  * @return {void} This function does not return anything.
  */
 function editSubtask(id) {
-<<<<<<< HEAD
-    console.log("Subtask bearbeiten:", id);
-    let subTaskDiv = document.getElementById(`subTask_${id}`);
-    let subTaskText = subTaskDiv.querySelector("div");
-    let subTaskTextInput = document.createElement("input");
-    let saveEditSubtasks = document.getElementById(`saveEditSubtasks_${id}`);
-    let editSubtasks = document.getElementById(`editSubtasks_${id}`);
-    saveEditSubtasks.classList.remove("d-none");
-    editSubtasks.classList.add("d-none");
-    subTaskTextInput.type = "text";
-    subTaskTextInput.value = subTaskText.textContent;
-    subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
-=======
   // Hier kannst du die Logik für die Bearbeitung des Subtasks implementieren
   console.log("Subtask bearbeiten:", id);
   // Zum Beispiel: Du könntest den Text im Subtask-Div durch ein Eingabefeld ersetzen, um die Bearbeitung zu ermöglichen
@@ -388,7 +375,6 @@ function editSubtask(id) {
   subTaskTextInput.type = "text";
   subTaskTextInput.value = subTaskText.textContent;
   subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
->>>>>>> 52a64397c3ff1a6caadc926fe89ff9fc99259b34
 }
 
 /**
