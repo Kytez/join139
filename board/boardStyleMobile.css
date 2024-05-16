@@ -936,3 +936,14 @@ button {
     top: 0;
   }
 }
+
+@media (max-height: 800px){
+  .edit-task-card{
+    height: 650px;
+  }
+}
+@media (max-height: 700px){
+  .edit-task-card{
+    height: 600px;
+  }
+}

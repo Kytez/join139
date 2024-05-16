@@ -350,16 +350,16 @@ function noTasksInArea(category) {
     let taskArea = '';
     switch (category) {
         case 'todo':
-            message = 'No tasks To do';
+            taskArea = 'No tasks To do';
             break;
         case 'inprogress':
-            message = 'No tasks in Progress';
+            taskArea = 'No tasks in Progress';
             break;
         case 'feedback':
-            message = 'No tasks await Feedback';
+            taskArea = 'No tasks await Feedback';
             break;
         case 'done':
-            message = 'No tasks Done';
+            taskArea = 'No tasks Done';
             break;
     }
     let catContainer = document.getElementById(category);
