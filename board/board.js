@@ -1,3 +1,53 @@
+let allTasks = [];
+let emptyArray = [];
+let selectedContacts = [];
+let prio = "";
+let singleContactId = [];
+let colors = [];
+let contactList = [];
+let subTasks = [];
+let names = [];
+
+/**
+ * Initializes the board html and loads all necessary information from the server and renders the page.
+ */
+async function initBoard() {
+    await includeHTML();
+    await loadActiveUser();
+    renderUserInitials();
+    await loadAllTasks();
+    await loadContacts();
+    updateTasksHTML();
+    // renderAssignedContactList()
+}
+
+/**
+ * Loads all tasks from the local storage.
+ *
+ * @return {Promise<void>} A promise that resolves when the tasks are successfully loaded.
+ */
+async function loadAllTasks() {
+    try {
+      let allTasksResponse = (await getItem("allTasks")) || [];
+      if(allTasksResponse !== null) {
+        allTasks = allTasksResponse;
+      } else {
+        allTasks = [];
+      }
+    } catch (e) {
+      console.error("Loading error:", e);
+    }
+  }
+
+  /**
+ * Saves the tasks by storing them in the local storage.
+ *
+ * @return {Promise<void>} A promise that resolves when the tasks are successfully saved.
+ */
+async function saveTasks() {
+    setItem("allTasks", allTasks);
+  }
+
 function showTask(
   title,
   description,
@@ -74,6 +124,8 @@ function clearTaskBoard() {
   document.getElementById("dateBoard").value = "";
   document.getElementById("subTaskContainerBoard").innerHTML = "";
   document.getElementById("subTaskInputBoard").value = "";
+  document.getElementById("categoryBoard").value = "";
+  document.getElementById("contact-selectBoard").value = "";
   let initialsContainer = document.getElementById("contactInitalsBoard");
   let divs = initialsContainer.querySelectorAll("div");
         divs.forEach(function(div) {
@@ -137,83 +189,34 @@ function hideAddTask() {
       }, 100);
     })(i);
   }
+  emptyCurrentContainerInformation();
+  clearTaskBoard()
+
 }
 
 function addTaskToSectionButton(section) {
   showAddTask(section);
 }
 
-function addTaskInProgress() {
-  window.location.href =
-    "https://www.iqbal-adel.developerakademie.net/join9/add_task/add_task.html";
-
-  window.addEventListener("DOMContentLoaded", function () {
-    let buttonAdd = document.getElementById("buttonAdd");
-    if (buttonAdd) {
-      buttonAdd.onclick = function () {
-        addTask("inprogress");
-      };
-    }
-  });
-}
-
-function doNotClose(event) {
-  event.stopPropagation();
-}
-
-function addTaskBoard(workMode = "todo") {
-  let title = document.getElementById("titleBoard");
-  let description = document.getElementById("descriptionBoard");
-  let date = document.getElementById("dateBoard");
-  let category = document.getElementById("categoryBoard");
-  let subTask = document.getElementById("subTaskBoard");
-  if (
-    title.value.trim() === "" &&
-    category.value.trim() === "" &&
-    date.value.trim() === ""
-  ) {
-  } else {
-    let task = {
-      id: allTasks.length + 1,
-      singleContactId: singleContactId,
-      title: title.value,
-      description: description.value,
-      assignedTo: selectedContacts,
-      colors: colors,
-      date: date.value,
-      prio: prio,
-      category: category.value,
-      subTask: subTasks,
-      createdAt: new Date().getDate(),
-      workMode: workMode,
-      names: names,
-      checkbox: [],
-    };
-    allTasks.push(task);
-    updateTasksHTML();
-    saveTasks();
-    hideAddTask();
-  }
-}
 
 async function filterTask() {
   let searchInput = document
-    .getElementById("site-search")
+  .getElementById("site-search")
     .value.trim()
     .toLowerCase();
 
-  if (document.getElementById("site-search").value.length < 1) {
+    if (document.getElementById("site-search").value.length < 1) {
     await loadAllTasks();
     updateTasksHTML();
   } else {
-    let foundTasks = [];
+      let foundTasks = [];
 
-    allTasks.forEach((task) => {
+      allTasks.forEach((task) => {
       if (
         task.title.toLowerCase().includes(searchInput) ||
         (task.description &&
           task.description.toLowerCase().includes(searchInput))
-      ) {
+        ) {
         foundTasks.push(task);
       }
     });
@@ -222,4 +225,39 @@ async function filterTask() {
 
     updateTasksHTML();
   }
+}
+
+function doNotClose(event) {
+  event.stopPropagation();
+}
+
+/**
+ * hides the edit-task pop-up field from the screen via translateX.
+ */
+
+function hideEditTask() {
+    document.getElementById('editTaskSection').style.display = 'none';
+    document.getElementById('editTaskFullScreen').style.display = 'none';
+    subTasks = [];
+    let popUpElements = document.getElementsByClassName('edit-task-card');
+    for (let i = 0; i < popUpElements.length; i++) {
+        popUpElements[i].style.transition = 'transform 400ms';
+        (function(index) {
+            setTimeout(function() {
+                popUpElements[index].style.transform = 'translateX(275%)';
+            }, 100);
+        })(i);
+    }
+    emptyCurrentContainerInformation();
+
+}
+
+function emptyCurrentContainerInformation(){
+    singleContactId = [];
+    subTasks = [];
+    names = [];
+    colors = [];
+    selectedContacts = [];
+    document.getElementById("contactInitalsBoard").innerHTML ="";
+    document.getElementById("contactInitalsEdit").innerHTML ="";
 }

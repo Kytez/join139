@@ -1,57 +1,65 @@
-function hideAndShowEditBoard() {
-  setFilterBoard({ value: `` });
-  let edit = document.getElementById("editBoard");
-  let subtaskt = document.getElementById("subTaskBoard");
-  if (edit.classList.contains("d-none")) {
-    edit.classList.remove("d-none");
-    subtaskt.classList.add("d-none");
+function addTaskBoard(workMode = "todo") {
+  let title = document.getElementById("titleBoard");
+  let description = document.getElementById("descriptionBoard");
+  let date = document.getElementById("dateBoard");
+  let category = document.getElementById("categoryBoard");
+  if (
+    title.value.trim() === "" &&
+    category.value.trim() === "" &&
+    date.value.trim() === ""
+  ) {
   } else {
-    edit.classList.add("d-none");
-    subtaskt.classList.remove("d-none");
+    let task = {
+      id: allTasks.length + 1,
+      singleContactId: singleContactId,
+      title: title.value,
+      description: description.value,
+      assignedTo: selectedContacts,
+      colors: colors,
+      date: date.value,
+      prio: prio,
+      category: category.value,
+      subTask: subTasks,
+      createdAt: new Date().getDate(),
+      workMode: workMode,
+      names: names,
+      checkbox: ['a'],
+    };
+    allTasks.push(task);
+    saveTasks();
+    updateTasksHTML();
+    hideAddTask();
   }
 }
+
+
+function hideAndShowEditBoard() {
+  let edit = document.getElementById("editBoard");
+  let subtaskt = document.getElementById("subTaskBoard");
+  let input = document.getElementById("subTaskInputBoard").value;
+  if(input.length>0){
+    if (edit.classList.contains("d-none")) {
+      edit.classList.remove("d-none");
+      subtaskt.classList.add("d-none");
+    }
+  }
+}
+
 
 function clearInputAddTaskBoard() {
   document.getElementById("subTaskInputBoard").value = "";
 }
 
-function handleClickPrioBoard(i) {
-  if (i) {
-    selectPrioBoard(i); // Set the given priority
-  }
-}
-
-function selectPrioBoard(i) {
-  prio = i;
-  setPrioButtonsColorBoard(prio);
-}
-
-function setPrioButtonsColorBoard(i) {
-  document
-    .getElementById("mediumBoard")
-    .classList.remove("highlighted-button-medium");
-  document.getElementById("lowBoard").classList.remove("highlighted-button-low");
-  document
-    .getElementById("urgentBoard")
-    .classList.remove("highlighted-button-urgent");
-  if (i === "medium") {
-    document
-      .getElementById("mediumBoard")
-      .classList.add("highlighted-button-medium");
-  } else if (i === "low") {
-    document.getElementById("lowBoard").classList.add("highlighted-button-low");
-  } else if (i === "urgent") {
-    document
-      .getElementById("urgentBoard")
-      .classList.add("highlighted-button-urgent");
-  }
-}
-
 function addSubtaskBoard() {
+  let edit = document.getElementById("editBoard");
+  let subtaskt = document.getElementById("subTaskBoard");
   let subTaskInput = document.getElementById("subTaskInputBoard").value;
   subTasks.push(subTaskInput);
   renderSubtasks();
   document.getElementById("subTaskInputBoard").value = "";
+  edit.classList.add("d-none");
+  subtaskt.classList.remove("d-none")
+
 }
 
 function renderSubtasks() {
@@ -73,15 +81,27 @@ function showContactListBoard() {
 }
 
 function setFilterBoard(input) {
+  document.getElementById("contactInitalsBoard").innerHTML ="";
+  selectedContacts = [];
+  colors = [];
+  names = [];
+  singleContactId = [];
+
   let filter = input.value.trim().toLowerCase();
   let filteredContacts;
-  console.log(filteredContacts);
   if (filter !== "") {
     filteredContacts = contacts.filter(function (contact) {
       return contact.userName.toLowerCase().includes(filter);
     });
   } else {
     filteredContacts = contacts;
+    document.getElementById("contactInitalsBoard").innerHTML ="";
+    selectedContacts = [];
+    colors = [];
+    names = [];
+    singleContactId = [];
+
+
   }
   renderAssignedContactListBoard(filteredContacts);
 }
@@ -89,7 +109,7 @@ function setFilterBoard(input) {
 function renderAssignedContactListBoard(filteredContacts) {
   let assignedTo = document.getElementById("selected-contactsBoard");
   assignedTo.innerHTML = "";
-  console.log(filteredContacts);
+  // console.log(filteredContacts);
   for (let i = 0; i < filteredContacts.length; i++) {
     let userName = filteredContacts[i].userName;
     let initialsString = "";
@@ -104,60 +124,72 @@ function renderAssignedContactListBoard(filteredContacts) {
       userName,
       initialsString
     );
-    let user = document.getElementById(`initials_${i}`);
+    let user = document.getElementById(`initialsBoard_${i}`);
     user.style.backgroundColor = color;
   }
 }
 
 function contactListAddTaskBoardHTML(i, userName, initialsString) {
   return `
-    <div id="SingleContact_${i}" onclick="selectTaskContactBoard(${i})" class="contact-list-entry">
+    <div id="SingleContactBoard_${i}" onclick="selectTaskContactBoard(${i})" class="contact-list-entry">
         <div class="contact-list-entry">
-            <div id="initials_${i}" class="initials">${initialsString}</div>
+            <div id="initialsBoard_${i}" class="initials">${initialsString}</div>
             <div class="profile-fullname">${userName} </div> 
         </div>
-        <img id="empty_${i}" class="" src="../assets/img/svg/Check button empty.svg">
-        <img id="checked_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
+        <img id="emptyBoard_${i}" class="" src="../assets/img/svg/Check button empty.svg">
+        <img id="checkedBoard_${i}" class="d-none" src="../assets/img/svg/Check button checked.svg">
     </div>
     `;
 }
 
 function selectTaskContactBoard(i) {
-  let contact = document.getElementById(`initials_${i}`).textContent;
-  let fullNameElement = document.getElementById(`SingleContact_${i}`)
+  let contact = document.getElementById(`initialsBoard_${i}`).textContent;
+  let fullNameElement = document.getElementById(`SingleContactBoard_${i}`)
     .querySelector(".profile-fullname");
   let name = fullNameElement.textContent.trim();
   changeCheckedAndColorBoard(i, contact, name);
 }
 
 function changeCheckedAndColorBoard(i, contact, name) {
-  let selectedContact = document.getElementById(`SingleContact_${i}`);
-  let emptySelect = document.getElementById(`empty_${i}`);
-  let checkedSelect = document.getElementById(`checked_${i}`);
-  let element = document.getElementById(`initials_${i}`);
-  let initials = document.getElementById(`initials_${i}`).textContent;
+  let selectedContact = document.getElementById(`SingleContactBoard_${i}`);
+  let emptySelect = document.getElementById(`emptyBoard_${i}`);
+  let checkedSelect = document.getElementById(`checkedBoard_${i}`);
+  let element = document.getElementById(`initialsBoard_${i}`);
+  let initials = document.getElementById(`initialsBoard_${i}`).textContent;
   let renderInitials = document.getElementById(`contactInitalsBoard`);
+  let computedStyle = window.getComputedStyle(element).backgroundColor;
+
 
   if (emptySelect.classList.contains("d-none")) {
     selectedContact.style.backgroundColor = "";
     selectedContact.style.color = "black";
     emptySelect.classList.remove("d-none");
     checkedSelect.classList.add("d-none");
-    selectedContacts.splice(selectedContacts.indexOf(i), 1);
-    colors.splice(colors.indexOf(i), 1);
-    names.splice(names.indexOf(i), 1);
+    selectedContacts.splice(selectedContacts.indexOf(contact), 1);
+    colors.splice(colors.indexOf(computedStyle), 1);
+    names.splice(names.indexOf(name), 1);
     singleContactId.splice(singleContactId.indexOf(i), 1);
-    removeInital(i);
+    removeInitialBoard(i);
   } else {
     selectedContact.style.backgroundColor = "#2A3647";
     selectedContact.style.color = "white";
     emptySelect.classList.add("d-none");
     checkedSelect.classList.remove("d-none");
-    let computedStyle = window.getComputedStyle(element).backgroundColor;
     selectedContacts.push(contact);
     colors.push(computedStyle);
     names.push(name);
     singleContactId.push(i);
     renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
   }
+}
+
+function removeInitialBoard(i) {
+  let selectedInitials = document.getElementById(`selectedInitialBoard_${i}`);
+  selectedInitials.remove();
+}
+
+function renderInitialsHTML(i, initials, computedStyle) {
+  return `
+        <div id="selectedInitialBoard_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
+    `;
 }

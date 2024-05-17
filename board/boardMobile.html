@@ -19,10 +19,13 @@
     <script src="../board/board.js"></script>
     <script src="../board/render_tasks-board.js"></script>
     <script src="../contact/render_contacts.js"></script>
-    <script src="../add_task/tasks.js"></script>
+    <!-- <script src="../add_task/tasks.js"></script> -->
     <script src="../script.js"></script>
     <script src="../board/addTask.js"></script>
     <script src="../board/editTask.js"></script>
+    <script src="../board/editSubTask.js"></script>
+    <script src="../board/editPrioTask.js"></script>
+    <script src="../board/editFilterTask.js"></script>
 </head>
 <body onload="initBoard()" class="margin-body-mobile">
 
@@ -215,7 +218,7 @@
                         <div>
                             <span>Category <span class="red">*</span></span>
                         </div>
-                        <select name="contacts" id="categoryBoard">
+                        <select required="required" name="contacts" id="categoryBoard">
                             <option value="">Select task category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>

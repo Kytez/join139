@@ -1,18 +1,6 @@
 
 let categories = ['todo', 'inprogress', 'feedback', 'done']
 
-/**
- * Initializes the board html and loads all necessary information from the server and renders the page.
- */
-async function initBoard() {
-    await includeHTML();
-    await loadActiveUser();
-    renderUserInitials();
-    await loadAllTasks();
-    await loadContacts();
-    updateTasksHTML();
-    renderAssignedContactList()
-}
 
 /**
  * Updates the HTML for every task card according to the latest information on the allTasks array on the server.
@@ -86,7 +74,7 @@ function generateProgressBar(id) {
     let subTaskHTML = '';
     let subTasks = allTasks[id]['subTask']
     let sumChecked = calculateSumCheckedTasks(id);
-    if(subTasks){
+    if(subTasks && subTasks.length > 0 ){
         let percentage = Math.round(sumChecked/subTasks.length*100)
         subTaskHTML = returnProgressBarHTML(percentage, sumChecked, subTasks)
     }
@@ -104,7 +92,7 @@ function generateProgressBar(id) {
 function calculateSumCheckedTasks(id) {
     let checkedTasks = allTasks[id]['checkbox'] 
     let sumTrue = 0;
-    if(checkedTasks){
+    if(checkedTasks[0] === true || checkedTasks[0] === false){
         checkedTasks.forEach(value => {
             if (value) {
                 sumTrue++;
@@ -142,7 +130,7 @@ function returnProgressBarHTML(percentage, sumChecked, subTasks) {
  */
 function renderTasksPopUp(title, description, date, id, category, prio, names, subTasks, singleContactId) {
     let taskPopUp = document.getElementById('taskPopUp')
-console.log(subTasks);
+// console.log(subTasks);
     taskPopUp.innerHTML = /*html*/`
         <div class="task-popup-padding scroll width-100">
             <div class="space-between gap subtasks-checkbox">
@@ -182,14 +170,14 @@ console.log(subTasks);
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${names}', '${subTasks}', '${singleContactId}')" class="subtasks-checkbox pointer">
+                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${subTasks}', '${singleContactId}', '${names}' )" class="subtasks-checkbox pointer">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>
             </div>
         </div>
     `
-    console.log(subTasks);
+    // console.log(subTasks);
 }
 
 /**
@@ -200,7 +188,7 @@ console.log(subTasks);
 function generateSubTasksInPopUp(id) {
     let subTasksPopUpHTML = ''
     let subTasksArray = allTasks[id]['subTask'] 
-    if(subTasksArray.length > 0){
+    if(subTasksArray && subTasksArray.length > 0){
         for (let i = 0; i < subTasksArray.length; i++) {
             const subTask = subTasksArray[i];
             subTasksPopUpHTML += returnSubTasksHTML(id, i, subTask)
@@ -266,7 +254,7 @@ function subTaskIsChecked(id, subTasks) {
  */
 function loadCheckBoxStatus(id) {
     let checkBoxValue = allTasks[id]['checkbox']
-    if(checkBoxValue.length > 0){
+    if(checkBoxValue[0] === true || checkBoxValue[0] === false){
         checkSubTasks(id, checkBoxValue)
     }
 }
@@ -456,10 +444,9 @@ function assignUserColourPopUp(names, id) {
  * @param {number} id - The ID of the task to delete.
  */
 function deleteTask(id) {
-    if(id){
-        allTasks.splice(id, 1)
-        updateTasksHTML();
-        hideTask();
-        saveTasks();
-    }
+    allTasks.splice(id, 1)
+    // emptyCurrentContainerInformation();
+    updateTasksHTML();
+    hideTask();
+    saveTasks();
 }
