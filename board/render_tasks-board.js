@@ -140,7 +140,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names, s
             </div>
             <div class="margin-top-24">
                 <span class="detail">Subtasks</span>
-                <div class="margin-top-12" id="subTasksPopUp">
+                <div class="margin-top-12" id="subTasksPopUp${id}">
                     ${generateSubTasksInPopUp(id)}
                 </div>
             </div>

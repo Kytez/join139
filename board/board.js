@@ -7,6 +7,7 @@ let colors = [];
 let contactList = [];
 let subTasks = [];
 let names = [];
+let numberAddedSubtasks = 0;
 
 /**
  * Initializes the board html and loads all necessary information from the server and renders the page.
@@ -291,6 +292,29 @@ function hideEditTask() {
         })(i);
     }
     emptyCurrentContainerInformation();
+}
+
+/**
+ * hides the edit-task pop-up field from the screen via translateX without user actually editing anything
+ */
+function breakEditSession(id) {
+    document.getElementById('editTaskSection').style.display = 'none';
+    document.getElementById('editTaskFullScreen').style.display = 'none';
+    subTasks = [];
+    let popUpElements = document.getElementsByClassName('edit-task-card');
+    for (let i = 0; i < popUpElements.length; i++) {
+        popUpElements[i].style.transition = 'transform 400ms';
+        (function(index) {
+            setTimeout(function() {
+                popUpElements[index].style.transform = 'translateX(275%)';
+            }, 100);
+        })(i);
+      }
+      let checkbox = allTasks[id]['checkbox']
+    emptyCurrentContainerInformation();
+    checkbox.splice(-numberAddedSubtasks)
+    numberAddedSubtasks = 0;
+    checkForEmptyCheckBox(checkbox);
 }
 
 /**

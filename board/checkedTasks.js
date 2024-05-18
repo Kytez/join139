@@ -22,9 +22,11 @@ function calculateSumCheckedTasks(id) {
  */
 function saveCheckBoxStatus(id) {
     let subTasks = allTasks[id]['subTask']
-    subTaskIsChecked(id, subTasks)
-    updateTasksHTML();
-    saveTasks();
+    if(subTasks){
+        subTaskIsChecked(id, subTasks)
+        updateTasksHTML();
+        saveTasks();
+    }
 }
 
 /**
@@ -80,11 +82,24 @@ function checkSubTasks(id, checkBoxValue) {
 /**
  * Deletes the checkbox value from a task
  * 
- * @param {number} id This is the ID of the task 
- * @param {number} i This is the index of the checkbox value in the task 
+ * @param {number} idTask This is the ID of the task 
+ * @param {number} position This is the index of the checkbox value in the task 
  */
-function deleteCheckBox(id, i){
-    let checkbox = allTasks[id]['checkbox']
-    checkbox.splice(i, 1)
+function deleteCheckBox(idTask, checkIndex){
+    let checkbox = allTasks[idTask]['checkbox']
+    checkbox.splice(checkIndex, 1)
+    checkForEmptyCheckBox(checkbox);
+}
+
+/**
+ * Checks if array is empty and pushs a value if true
+ * 
+ * @param {Array} checkboxArray This is the checkbox array of the task 
+ */
+
+function checkForEmptyCheckBox(checkboxArray){
+    if(checkboxArray.length == 0){
+        checkboxArray.push('a')
+    }
 }
 
