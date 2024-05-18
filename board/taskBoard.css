@@ -283,7 +283,6 @@ input[type="date"] {
   background-color: white;
 }
 
-/* Hier auf das Kalender Icon zugreifen */
 input[type="date"]::-webkit-calendar-picker-indicator {
   padding-right: 56px;
   opacity: 0;
@@ -397,8 +396,6 @@ button {
   display: none;
 }
 
-/* ///////////////////////////////////////// Board /////////////////////////////////////////////////////// */
-
 .add-task-card-board {
   padding: 16px;
   background-color: #ffffff;
@@ -409,8 +406,6 @@ button {
   flex-direction: column;
   z-index: 201;
 }
-
-/* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
 
 @media (min-width: 992px) {
   #navMobile {

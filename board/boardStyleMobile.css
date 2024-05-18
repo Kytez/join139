@@ -396,8 +396,6 @@ input[type="search"]::-webkit-search-results-button {
   display: none;
 }
 
-/* ///////////////////////////////////////// ADD TASK ////////////////////////////////////////////////// */
-
 body {
   background-color: #f6f7f8;
 }
@@ -664,7 +662,6 @@ input[type="date"] {
   background-position: 96%;
 }
 
-/* Hier auf das Kalender Icon zugreifen */
 input[type="date"]::-webkit-calendar-picker-indicator {
   padding-right: 56px;
   opacity: 0;
@@ -814,8 +811,6 @@ button {
   border-radius: 8px;
 }
 
-/* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
-
 @media (min-width: 992px) {
   #navMobile {
     display: none;
@@ -948,16 +943,12 @@ button {
 }
 
 @media (max-height: 666px) {
-  /* .pop-up {
-    top: 0;
-  } */
-
   .edit-task-card {
     top: 0;
   }
 }
 
-@media(max-height:870){
+@media(max-height: 850px){
   .pop-up{
     height: 500px;
   }
