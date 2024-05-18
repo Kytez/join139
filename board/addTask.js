@@ -91,9 +91,88 @@ function renderSubtasks() {
   subTaskContainer.innerHTML = "";
   
   for (let i = 0; i < subTasks.length; i++) {
-    let subTaskHTML = addSubtaskHTML(subTasks[i], i);
+    let subTaskHTML = addSubtaskHTMLBoard(subTasks[i], i);
     subTaskContainer.innerHTML += subTaskHTML;
   }
+}
+
+/**
+ * Generates the HTML markup for a subtask element.
+ *
+ * @param {string} subTask - The text content of the subtask.
+ * @param {number} i - The index of the subtask.
+ * @return {string} The HTML markup for the subtask element.
+ */
+function addSubtaskHTMLBoard(subTask, i) {
+  return `
+    <div id="subTaskBoard_${i}" class="singleSubTasks">
+        <div>${subTask}</div>
+            <div class="flex edit-trash">
+                <div>
+                    <img id="saveEditSubtasksBoard_${i}" class="edit d-none" onclick="saveEditSubtaskBoard(${i})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+                    <img id="editSubtasksBoard_${i}" class="edit" onclick="editSubtaskBoard(${i})" src="../assets/img/svg/pencil.svg" alt="">
+                </div>
+                <div class="seperator">
+                </div>
+            <div>
+                <img class="edit" onclick="deleteSubtaskBoard(${i})" src="../assets/img/svg/trash.svg" alt="">
+            </div>
+        </div>
+    </div>
+  `;
+}
+
+/**
+ * Saves the subtask by replacing its text content with the value of the input field.
+ *
+ * @param {number} id - The ID of the subtask to be edited.
+ * @return {void} This function does not return anything.
+ */
+function saveEditSubtaskBoard(id) {
+  let elementToRemove = document.getElementById(`subTaskBoard_${id}`);
+  let subTaskTextInput = elementToRemove.querySelector("input").value;
+  let saveEditSubtasks = document.getElementById(`saveEditSubtasksBoard_${id}`);
+  let editSubtasks = document.getElementById(`editSubtasksBoard_${id}`);
+
+  if (elementToRemove) {
+      elementToRemove.remove();
+      subTasks.splice(id, 1);
+      subTasks.push(subTaskTextInput);
+      renderSubtasks();
+      saveEditSubtasks.classList.remove("d-none");
+      editSubtasks.classList.add("d-none");
+  }
+}
+
+/**
+ * Edits a subtask by replacing its text content with an input field for editing.
+ *
+ * @param {number} id - The ID of the subtask to be edited.
+ * @return {void} This function does not return anything.
+ */
+function editSubtaskBoard(id) {
+  let subTaskDiv = document.getElementById(`subTaskBoard_${id}`);
+  let subTaskText = subTaskDiv.querySelector("div");
+  let subTaskTextInput = document.createElement("input");
+  let saveEditSubtasks = document.getElementById(`saveEditSubtasksBoard_${id}`);
+  let editSubtasks = document.getElementById(`editSubtasksBoard_${id}`);
+
+  saveEditSubtasks.classList.remove("d-none");
+  editSubtasks.classList.add("d-none");
+  subTaskTextInput.type = "text";
+  subTaskTextInput.value = subTaskText.textContent;
+  subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
+}
+
+/**
+ * Deletes a subtask from the subTasks array at the specified index and triggers the rendering of subtasks on the webpage.
+ *
+ * @param {number} id - The index of the subtask to be deleted.
+ * @return {void} This function does not return anything.
+ */
+function deleteSubtaskBoard(id) {
+  subTasks.splice(id, 1);
+  renderSubtasks();
 }
 
 /**

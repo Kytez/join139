@@ -77,3 +77,14 @@ function checkSubTasks(id, checkBoxValue) {
     }
 }
 
+/**
+ * Deletes the checkbox value from a task
+ * 
+ * @param {number} id This is the ID of the task 
+ * @param {number} i This is the index of the checkbox value in the task 
+ */
+function deleteCheckBox(id, i){
+    let checkbox = allTasks[id]['checkbox']
+    checkbox.splice(i, 1)
+}
+

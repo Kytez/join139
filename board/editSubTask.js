@@ -3,14 +3,14 @@
  *
  * @return {void} This function does not return anything.
  */
-function addSubtaskEdit() {
+function addSubtaskEdit(id) {
   let edit = document.getElementById("editEditContainer");
   let subtaskt = document.getElementById("subTaskEdit");
   let subTaskInput = document.getElementById('subTaskInputEdit').value;
 
   subTaskContainer = document.getElementById('subTaskContainerEdit');
   subTasks.push(subTaskInput);
-  renderSubtasksEdit();
+  renderSubtasksEdit(id);
   document.getElementById('subTaskInputEdit').value = "";
   edit.classList.add("d-none");
   subtaskt.classList.remove("d-none");
@@ -33,7 +33,7 @@ function addExistingSubtaskEdit(id) {
       for (let i = 0; i < allTasks[id]["subTask"].length; i++) {
         let subTaskHTML = (allTasks[id]["subTask"][i]);
         subTasks.push(subTaskHTML);
-        subTaskContainer.innerHTML += addSubtaskHTML(subTaskHTML, i);
+        subTaskContainer.innerHTML += addSubtaskHTML(subTaskHTML, i, id);
       }
   }
 }
@@ -43,11 +43,11 @@ function addExistingSubtaskEdit(id) {
  *
  * @return {void} This function does not return anything.
  */
-function renderSubtasksEdit() {
+function renderSubtasksEdit(id) {
   let subTaskContainer = document.getElementById("subTaskContainerEdit");
   subTaskContainer.innerHTML = '';
   for (let i = 0; i < subTasks.length; i++) {
-    let subTaskHTML = addSubtaskHTML(subTasks[i], i);
+    let subTaskHTML = addSubtaskHTML(subTasks[i], i, id);
     subTaskContainer.innerHTML += subTaskHTML;
   }
 }
@@ -59,7 +59,7 @@ function renderSubtasksEdit() {
  * @param {number} i - The index of the subtask.
  * @return {string} The HTML markup for the subtask element.
  */
-function addSubtaskHTML(subTask, i) {
+function addSubtaskHTML(subTask, i, id) {
   return `
     <div id="subTaskEdit_${i}" class="singleSubTasks">
         <div>${subTask}</div>
@@ -71,7 +71,7 @@ function addSubtaskHTML(subTask, i) {
                 <div class="seperator">
                 </div>
             <div>
-                <img class="edit" onclick="deleteSubtaskEdit(${i})" src="../assets/img/svg/trash.svg" alt="">
+                <img class="edit" onclick="deleteSubtaskEdit(${i}, ${id})" src="../assets/img/svg/trash.svg" alt="">
             </div>
         </div>
     </div>
@@ -104,8 +104,9 @@ function editSubtaskEdit(id) {
  * @param {number} id - The index of the subtask to be deleted.
  * @return {void} This function does not return anything.
  */
-function deleteSubtaskEdit(id) {
+function deleteSubtaskEdit(id, i) {
   subTasks.splice(id, 1);
+  deleteCheckBox(i, id)
   renderSubtasksEdit();
 }
 

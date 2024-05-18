@@ -61,6 +61,7 @@ function renderEditTaskPopUpElements(
   let descriptionEdit = document.getElementById("descriptionEdit");
   let dateEdit = document.getElementById("dateEdit");
   let okButton = document.getElementById("boardEditTaskBtns");
+  let addSubTaskBtns = document.getElementById('editEditContainer')
   titleEdit.value = title;
   descriptionEdit.value = description;
   dateEdit.value = date;
@@ -73,6 +74,15 @@ function renderEditTaskPopUpElements(
             <img src="../assets/img/icons/check_icon.png" alt="">
         </button> 
     `;
+  addSubTaskBtns.innerHTML = /*html*/`
+    <div>
+      <img class="edit" onclick="clearInputAddTaskEdit()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
+    </div>
+      <div class="seperator"></div>
+    <div>
+        <img class="edit" onclick="addSubtaskEdit(${id})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
+    </div>
+  `
 }
 
 /**
@@ -233,6 +243,7 @@ function editTask(id) {
   (allTasks[id]["subTask"] = subTasks),
   updateTasksHTML();
   saveTasks();
+  // saveCheckBoxStatus(id);
   hideEditTask();
   hideTask();
 }
