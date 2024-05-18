@@ -1,3 +1,8 @@
+/**
+ * Adds a subtask to the subTasks array and triggers the rendering of subtasks on the webpage.
+ *
+ * @return {void} This function does not return anything.
+ */
 function addSubtaskEdit() {
   let edit = document.getElementById("editEditContainer");
   let subtaskt = document.getElementById("subTaskEdit");
@@ -12,6 +17,12 @@ function addSubtaskEdit() {
 
 }
 
+/**
+ * Adds existing subtasks to the subTaskContainerEdit element and updates the subTasks array.
+ *
+ * @param {number} id - The ID of the task whose subtasks are being added.
+ * @return {void} This function does not return anything.
+ */
 function addExistingSubtaskEdit(id) {
   subTaskContainer = document.getElementById('subTaskContainerEdit');
   subTaskContainer.innerHTML = '';
@@ -27,6 +38,11 @@ function addExistingSubtaskEdit(id) {
   }
 }
 
+/**
+ * Renders the subtasks on the webpage.
+ *
+ * @return {void} This function does not return anything.
+ */
 function renderSubtasksEdit() {
   let subTaskContainer = document.getElementById("subTaskContainerEdit");
   subTaskContainer.innerHTML = '';
@@ -36,6 +52,13 @@ function renderSubtasksEdit() {
   }
 }
 
+/**
+ * Generates the HTML markup for a subtask element.
+ *
+ * @param {string} subTask - The text content of the subtask.
+ * @param {number} i - The index of the subtask.
+ * @return {string} The HTML markup for the subtask element.
+ */
 function addSubtaskHTML(subTask, i) {
   return `
     <div id="subTaskEdit_${i}" class="singleSubTasks">
@@ -55,6 +78,12 @@ function addSubtaskHTML(subTask, i) {
   `;
 }
 
+/**
+ * Edits a subtask by replacing its text content with an input field for editing.
+ *
+ * @param {number} id - The ID of the subtask to be edited.
+ * @return {void} This function does not return anything.
+ */
 function editSubtaskEdit(id) {
   let subTaskDiv = document.getElementById(`subTaskEdit_${id}`);
   let subTaskText = subTaskDiv.querySelector("div");
@@ -69,11 +98,23 @@ function editSubtaskEdit(id) {
   subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
 }
 
+/**
+ * Deletes a subtask from the subTasks array at the specified index and triggers the rendering of subtasks on the webpage.
+ *
+ * @param {number} id - The index of the subtask to be deleted.
+ * @return {void} This function does not return anything.
+ */
 function deleteSubtaskEdit(id) {
   subTasks.splice(id, 1);
   renderSubtasksEdit();
 }
 
+/**
+ * Saves the edited subtask by replacing its text content with the value of the input field.
+ *
+ * @param {number} id - The ID of the subtask to be edited.
+ * @return {void} This function does not return anything.
+ */
 function saveEditSubtaskEdit(id) {
   let elementToRemove = document.getElementById(`subTaskEdit_${id}`);
   let subTaskTextInput = elementToRemove.querySelector("input").value;
@@ -90,6 +131,11 @@ function saveEditSubtaskEdit(id) {
   }
 }
 
+/**
+ * Hides or shows the edit container based on the value of the input field.
+ *
+ * @return {void} This function does not return anything.
+ */
 function hideAndShowEdit() {
   let edit = document.getElementById("editEditContainer");
   let subtaskt = document.getElementById("subTaskEdit");
@@ -103,6 +149,11 @@ function hideAndShowEdit() {
   }
 }
 
+/**
+ * Clears the value of the input element with the ID 'subTaskInputEdit'.
+ *
+ * @return {void} This function does not return anything.
+ */
 function clearInputAddTaskEdit() {
   document.getElementById("subTaskInputEdit").value = "";
 }

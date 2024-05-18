@@ -1,3 +1,9 @@
+/**
+ * Adds a new task to the task board.
+ *
+ * @param {string} [workMode='todo'] - The work mode of the task. Defaults to 'todo'.
+ * @return {void} This function does not return anything.
+ */
 function addTaskBoard(workMode = "todo") {
   let title = document.getElementById("titleBoard");
   let description = document.getElementById("descriptionBoard");
@@ -32,6 +38,11 @@ function addTaskBoard(workMode = "todo") {
   }
 }
 
+/**
+ * Hides or shows the edit board based on the value of the input field.
+ *
+ * @return {void} This function does not return anything.
+ */
 function hideAndShowEditBoard() {
   let edit = document.getElementById("editBoard");
   let subtaskt = document.getElementById("subTaskBoard");
@@ -44,10 +55,20 @@ function hideAndShowEditBoard() {
   }
 }
 
+/**
+ * Clears the value of the input element with the ID 'subTaskInputBoard'.
+ *
+ * @return {void} This function does not return anything.
+ */
 function clearInputAddTaskBoard() {
   document.getElementById("subTaskInputBoard").value = "";
 }
 
+/**
+ * Adds a subtask to the subTasks array and triggers the rendering of subtasks on the webpage.
+ *
+ * @return {void} This function does not return anything.
+ */
 function addSubtaskBoard() {
   let edit = document.getElementById("editBoard");
   let subtaskt = document.getElementById("subTaskBoard");
@@ -60,6 +81,11 @@ function addSubtaskBoard() {
   subtaskt.classList.remove("d-none")
 }
 
+/**
+ * Renders the subtasks on the webpage.
+ *
+ * @return {void} This function does not return anything.
+ */
 function renderSubtasks() {
   let subTaskContainer = document.getElementById("subTaskContainerBoard");
   subTaskContainer.innerHTML = "";
@@ -70,6 +96,11 @@ function renderSubtasks() {
   }
 }
 
+/**
+ * Toggles the visibility of the contact list.
+ *
+ * @return {void} This function does not return a value.
+ */
 function showContactListBoard() {
   let contactList = document.getElementById("selected-contactsBoard");
   if (contactList.classList.contains("d-none")) {
@@ -79,6 +110,12 @@ function showContactListBoard() {
   }
 }
 
+/**
+ * Filters contacts based on the provided input value and renders the filtered contact list.
+ *
+ * @param {Object} input - The input object containing the filter value.
+ * @return {void} This function does not return any value.
+ */
 function setFilterBoard(input) {
   document.getElementById("contactInitalsBoard").innerHTML ="";
   selectedContacts = [];
@@ -103,6 +140,12 @@ function setFilterBoard(input) {
   renderAssignedContactListBoard(filteredContacts);
 }
 
+/**
+ * Renders the list of assigned contacts based on the provided filtered contacts.
+ *
+ * @param {Array} filteredContacts - The array of filtered contacts.
+ * @return {void} This function does not return a value.
+ */
 function renderAssignedContactListBoard(filteredContacts) {
   let assignedTo = document.getElementById("selected-contactsBoard");
   assignedTo.innerHTML = "";
@@ -124,6 +167,14 @@ function renderAssignedContactListBoard(filteredContacts) {
   }
 }
 
+/**
+ * Generates the HTML code for a contact list entry for a task in the board.
+ *
+ * @param {number} i - The index of the contact in the list.
+ * @param {string} userName - The name of the user.
+ * @param {string} initialsString - The initials of the user.
+ * @return {string} The HTML code for the contact list entry.
+ */
 function contactListAddTaskBoardHTML(i, userName, initialsString) {
   return `
     <div id="SingleContactBoard_${i}" onclick="selectTaskContactBoard(${i})" class="contact-list-entry">
@@ -137,6 +188,12 @@ function contactListAddTaskBoardHTML(i, userName, initialsString) {
     `;
 }
 
+/**
+ * Selects a task contact and triggers the changeCheckedAndColor function.
+ *
+ * @param {number} i - The index of the contact in the list.
+ * @return {void} This function does not return anything.
+ */
 function selectTaskContactBoard(i) {
   let contact = document.getElementById(`initialsBoard_${i}`).textContent;
   let fullNameElement = document.getElementById(`SingleContactBoard_${i}`)
@@ -145,6 +202,14 @@ function selectTaskContactBoard(i) {
   changeCheckedAndColorBoard(i, contact, name);
 }
 
+/**
+ * Changes the checked status and color of a contact list entry based on user interaction.
+ *
+ * @param {number} i - The index of the contact list entry.
+ * @param {string} contact - The contact information.
+ * @param {string} name - The name of the contact.
+ * @return {void} This function does not return anything.
+ */
 function changeCheckedAndColorBoard(i, contact, name) {
   let selectedContact = document.getElementById(`SingleContactBoard_${i}`);
   let emptySelect = document.getElementById(`emptyBoard_${i}`);
@@ -177,11 +242,25 @@ function changeCheckedAndColorBoard(i, contact, name) {
   }
 }
 
+/**
+ * Removes the initials div element with the given index from the DOM.
+ *
+ * @param {number} i - The index of the initials div element to remove.
+ * @return {void} This function does not return anything.
+ */
 function removeInitialBoard(i) {
   let selectedInitials = document.getElementById(`selectedInitialBoard_${i}`);
   selectedInitials.remove();
 }
 
+/**
+ * Generates the HTML code for a div element containing initials with a background color.
+ *
+ * @param {number} i - The index of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @param {string} computedStyle - The background color of the initials div.
+ * @return {string} The HTML code for the initials div.
+ */
 function renderInitialsHTML(i, initials, computedStyle) {
   return `
         <div id="selectedInitialBoard_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>

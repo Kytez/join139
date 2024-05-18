@@ -47,6 +47,20 @@ async function saveTasks() {
     setItem("allTasks", allTasks);
   }
 
+/**
+ * Displays a task popup with the given details.
+ *
+ * @param {string} title - The title of the task.
+ * @param {string} description - The description of the task.
+ * @param {string} date - The date of the task.
+ * @param {number} id - The ID of the task.
+ * @param {string} category - The category of the task.
+ * @param {string} prio - The priority of the task.
+ * @param {Array} names - The names of the users assigned to the task.
+ * @param {Array} subTasks - The subtasks of the task.
+ * @param {number} singleContactId - The ID of the single contact assigned to the task.
+ * @return {void} This function does not return anything.
+ */
 function showTask(
   title,
   description,
@@ -86,6 +100,12 @@ function showTask(
     loadCheckBoxStatus(id);
 }
 
+/**
+ * Hides the task by setting the display property of the "tasks" and "taskPopUp" elements to "none".
+ * Also animates the transition of the "pop-up" elements by setting their transition property and applying a translateX transform.
+ *
+ * @return {void} This function does not return anything.
+ */
 function hideTask() {
   document.getElementById("tasks").style.display = "none";
   document.getElementById("taskPopUp").style.display = "none";
@@ -101,6 +121,13 @@ function hideTask() {
   }
 }
 
+/**
+ * Displays the add task section and full screen add task section by setting their display property to "flex".
+ * Animates the transition of the add task card elements by setting their transition property and applying a translateX transform.
+ * Sets the filter board value to an empty string.
+ *
+ * @return {void} This function does not return anything.
+ */
 function showAddTask() {
   document.getElementById("addTaskSection").style.display = "flex";
   document.getElementById("addTaskFullScreen").style.display = "flex";
@@ -117,6 +144,12 @@ function showAddTask() {
   setFilterBoard({ value: "" });
 }
 
+/**
+ * Clears the task board by resetting the values of various input fields and removing any subtasks.
+ * Also removes any selected contacts and resets the priority button highlight.
+ *
+ * @return {void} This function does not return anything.
+ */
 function clearTaskBoard() {
   document.getElementById("titleBoard").value = "";
   document.getElementById("descriptionBoard").value = "";
@@ -146,6 +179,12 @@ function removeSelectedContactsBoard() {
             singleContactId = [];
 };
 
+/**
+ * Sets the color of the priority buttons on the board based on the given priority.
+ *
+ * @param {string} i - The priority of the button ("medium", "low", or "urgent").
+ * @return {void} This function does not return a value.
+ */
 function setPrioButtonsColorBoard(i) {
   document.getElementById("mediumBoard").classList.remove("highlighted-button-medium");
   document.getElementById("lowBoard").classList.remove("highlighted-button-low");
@@ -159,6 +198,13 @@ function setPrioButtonsColorBoard(i) {
   }
 }
 
+/**
+ * Hides the add task section and full screen add task section by setting their display property to "none".
+ * Animates the transition of the add task card elements by setting their transition property and applying a translateX transform.
+ * Calls the emptyCurrentContainerInformation function and the clearTaskBoard function.
+ *
+ * @return {void} This function does not return anything.
+ */
 function hideAddTask() {
   document.getElementById("addTaskSection").style.display = "none";
   document.getElementById("addTaskFullScreen").style.display = "none";
@@ -176,11 +222,24 @@ function hideAddTask() {
   clearTaskBoard()
 }
 
+/**
+ * Displays the add task section and full screen add task section by setting their display property to "flex".
+ * Animates the transition of the add task card elements by setting their transition property and applying a translateX transform.
+ * Sets the filter board value to an empty string.
+ *
+ * @param {string} section - The section to add the task to.
+ * @return {void} This function does not return anything.
+ */
 function addTaskToSectionButton(section) {
   showAddTask(section);
 }
 
 
+/**
+ * Filters tasks based on the search input value.
+ *
+ * @return {Promise<void>} A promise that resolves when the tasks are updated in the HTML.
+ */
 async function filterTask() {
   let searchInput = document.getElementById("site-search").value.trim().toLowerCase();
 
@@ -205,6 +264,12 @@ async function filterTask() {
   }
 }
 
+/**
+ * Stops the propagation of an event.
+ *
+ * @param {Event} event - The event to stop the propagation of.
+ * @return {void} This function does not return a value.
+ */
 function doNotClose(event) {
   event.stopPropagation();
 }
@@ -228,6 +293,11 @@ function hideEditTask() {
     emptyCurrentContainerInformation();
 }
 
+/**
+ * Empties the current container information by resetting various variables and clearing the content of specific HTML elements.
+ *
+ * @return {void} This function does not return anything.
+ */
 function emptyCurrentContainerInformation(){
     singleContactId = [];
     subTasks = [];

@@ -14,6 +14,12 @@ function selectPrioEdit(i) {
   setPrioButtonsColorEdit(prio);
 }
   
+/**
+ * Sets the color of the priority buttons on the edit task form based on the given priority.
+ *
+ * @param {string} i - The priority of the button ("medium", "low", or "urgent").
+ * @return {void} This function does not return a value.
+ */
 function setPrioButtonsColorEdit(i) {
   document.getElementById("mediumEdit").classList.remove("highlighted-button-medium");
   document.getElementById("lowEdit").classList.remove("highlighted-button-low");
@@ -27,17 +33,35 @@ function setPrioButtonsColorEdit(i) {
   }
 }
 
+/**
+ * Handles the click event on the priority buttons on the board.
+ *
+ * @param {string} i - The priority value chosen by the user.
+ * @return {void} This function does not return a value.
+ */
 function handleClickPrioBoard(i) {
   if (i) {
     selectPrioBoard(i);
   }
 }
 
+/**
+ * Sets the priority and updates the color of the priority buttons on the board.
+ *
+ * @param {string} i - The priority to be set.
+ * @return {void} This function does not return a value.
+ */
 function selectPrioBoard(i) {
   prio = i;
   setPrioButtonsColorBoard(prio);
 }
 
+/**
+ * Sets the color of the priority buttons on the board based on the given priority.
+ *
+ * @param {string} i - The priority of the button ("medium", "low", or "urgent").
+ * @return {void} This function does not return a value.
+ */
 function setPrioButtonsColorBoard(i) {
   document.getElementById("mediumBoard").classList.remove("highlighted-button-medium");
   document.getElementById("lowBoard").classList.remove("highlighted-button-low");

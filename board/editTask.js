@@ -75,6 +75,12 @@ function renderEditTaskPopUpElements(
     `;
 }
 
+/**
+ * Passes an array of names to the function `selectTaskContactEdit` to select task contacts.
+ *
+ * @param {string} names - A comma-separated string of names.
+ * @return {void} This function does not return anything.
+ */
 function passArrayToSelectTaskContact(names) {
   document.getElementById("contactInitalsEdit").innerHTML = "";
   let namesArray = names.split(",");
@@ -87,6 +93,11 @@ function passArrayToSelectTaskContact(names) {
   }
 }
 
+/**
+ * Toggles the visibility of the contact list in the edit mode.
+ *
+ * @return {void} This function does not return a value.
+ */
 function showContactListEdit() {
   let contactList = document.getElementById("selected-contactsEdit");
   if (contactList.classList.contains("d-none")) {
@@ -96,6 +107,14 @@ function showContactListEdit() {
   }
 }
 
+/**
+ * Generates the HTML code for a contact list entry in the edit mode.
+ *
+ * @param {number} i - The index of the contact in the list.
+ * @param {string} userName - The name of the user.
+ * @param {string} initialsString - The initials of the user.
+ * @return {string} The HTML code for the contact list entry.
+ */
 function contactListAddTaskEditHTML(i, userName, initialsString) {
   return `
     <div id="SingleContactEdit_${i}" onclick="selectTaskContactEdit(${i})" class="contact-list-entry">
@@ -109,6 +128,12 @@ function contactListAddTaskEditHTML(i, userName, initialsString) {
     `;
 }
 
+/**
+ * Selects a task contact in the edit mode and triggers the changeCheckedAndColorEdit function.
+ *
+ * @param {number} i - The index of the contact in the list.
+ * @return {void} This function does not return a value.
+ */
 function selectTaskContactEdit(i) {
   let contact = document.getElementById(`initialsEdit_${i}`).textContent;
   let fullNameElement = document
@@ -118,6 +143,14 @@ function selectTaskContactEdit(i) {
   changeCheckedAndColorEdit(i, contact, name);
 }
 
+/**
+ * Changes the checked status and color of a contact list entry in the edit mode based on user interaction.
+ *
+ * @param {number} i - The index of the contact list entry.
+ * @param {string} contact - The contact information.
+ * @param {string} name - The name of the contact.
+ * @return {void} This function does not return a value.
+ */
 function changeCheckedAndColorEdit(i, contact, name) {
   let selectedContact = document.getElementById(`SingleContactEdit_${i}`);
   let emptySelect = document.getElementById(`emptyEdit_${i}`);
@@ -154,11 +187,25 @@ function changeCheckedAndColorEdit(i, contact, name) {
   }
 }
 
+/**
+ * Removes the initials div element with the given index from the DOM.
+ *
+ * @param {number} i - The index of the initials div element to remove.
+ * @return {void} This function does not return anything.
+ */
 function removeInitialEdit(i) {
   let selectedInitials = document.getElementById(`selectedInitialEdit_${i}`);
   selectedInitials.remove();
 }
 
+/**
+ * Generates the HTML code for a div element containing initials with a background color in the edit mode.
+ *
+ * @param {number} i - The index of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @param {string} computedStyle - The background color of the initials div.
+ * @return {string} The HTML code for the initials div in the edit mode.
+ */
 function renderInitialsHTMLEdit(i, initials, computedStyle) {
   return `
         <div id="selectedInitialEdit_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>

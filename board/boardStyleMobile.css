@@ -431,23 +431,37 @@ span {
   max-width: 500px;
 }
 
+body {
+  overflow-x: scroll;
+}
+
+body::-webkit-scrollbar {
+  display: block !important;
+}
+
 .horizontal-scroll {
   width: 100%;
   overflow-x: hidden;
   white-space: nowrap;
 }
 
-.scroll{
+.scroll {
   overflow-y: scroll;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #a8a8a8;
-  border-radius: 10px;
+#editBoard {
+  margin-left: -60px;
+  z-index: 1;
+  height: 24px;
 }
 
 .add-task-background {
@@ -873,8 +887,8 @@ button {
     display: none;
   }
 
-  .pop-up{
-    top:85px;
+  .pop-up {
+    top: 85px;
   }
 
   .body {
@@ -948,19 +962,19 @@ button {
   }
 }
 
-@media(max-height: 850px){
-  .pop-up{
+@media (max-height: 850px) {
+  .pop-up {
     height: 500px;
   }
 }
 
-@media (max-height: 800px){
-  .edit-task-card{
+@media (max-height: 800px) {
+  .edit-task-card {
     height: 650px;
   }
 }
-@media (max-height: 700px){
-  .edit-task-card{
+@media (max-height: 700px) {
+  .edit-task-card {
     height: 600px;
   }
 }

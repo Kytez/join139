@@ -28,6 +28,12 @@ function moveTo(workMode) {
   saveTasks();
 }
 
+/**
+ * Sets the overflow property of the container element based on the width of the content element.
+ *
+ * @param {void} - No parameters.
+ * @return {void} - No return value.
+ */
 window.onload = function () {
   let container = document.getElementById("container");
   let content = document.getElementById("content");
