@@ -1,4 +1,3 @@
-
 let saveSubTasks = [];
 /**
  * moves the edit-task pop-up field into the screenview via translateX and executes rendering of adjusted editable elements for each task.
@@ -6,7 +5,6 @@ let saveSubTasks = [];
  * @param {number} id This is the id of the task
  * @param {string} prio This is the priority value for the task
  */
-
 function showEditTask(
   title,
   description,
@@ -30,8 +28,6 @@ function showEditTask(
     })(i);
   }
   subTasks.push(tasks);
-//   console.log(tasks);
-//   console.log(subTasks);
   setFilterEdit({ value: "" });
   renderEditTaskPopUpElements(
     title,
@@ -51,7 +47,6 @@ function showEditTask(
  * @param {number} id This is the id of the task
  * @param {string} prio This is the priority value for the task
  */
-
 function renderEditTaskPopUpElements(
   title,
   description,
@@ -80,14 +75,12 @@ function renderEditTaskPopUpElements(
     `;
 }
 
-
 function passArrayToSelectTaskContact(names) {
   document.getElementById("contactInitalsEdit").innerHTML = "";
   let namesArray = names.split(",");
 
   for (let i = 0; i < namesArray.length; i++) {
     let id = contacts.findIndex(contact => contact.userName === namesArray[i]);
-
     if (!isNaN(id)) {
       selectTaskContactEdit(id);
     }
@@ -134,7 +127,6 @@ function changeCheckedAndColorEdit(i, contact, name) {
   let renderInitials = document.getElementById(`contactInitalsEdit`);
   let computedStyle = window.getComputedStyle(element).backgroundColor;
 
-
   if (emptySelect.classList.contains("d-none")) {
     selectedContact.style.backgroundColor = "";
     selectedContact.style.color = "black";
@@ -170,9 +162,8 @@ function removeInitialEdit(i) {
 function renderInitialsHTMLEdit(i, initials, computedStyle) {
   return `
         <div id="selectedInitialEdit_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
-    `;
+  `;
 }
-
 
 /**
  * saves edited values into the allTasks array, overwriting the old values and updates the array on the server and the HTML of the page.
@@ -180,23 +171,22 @@ function renderInitialsHTMLEdit(i, initials, computedStyle) {
  * @param {number} id This is the id of the task
  */
 function editTask(id) {
-    let titleEdit = document.getElementById("titleEdit");
-    let descriptionEdit = document.getElementById("descriptionEdit");
-    let dateEdit = document.getElementById("dateEdit");
+  let titleEdit = document.getElementById("titleEdit");
+  let descriptionEdit = document.getElementById("descriptionEdit");
+  let dateEdit = document.getElementById("dateEdit");
 
-    (allTasks[id]["title"] = titleEdit.value),
-    (allTasks[id]["description"] = descriptionEdit.value),
-    (allTasks[id]["date"] = dateEdit.value),
-    (allTasks[id]["prio"] = prio),
-    (allTasks[id]["colors"] = colors),
-    (allTasks[id]["names"] = names),
-    (allTasks[id]["singleContactId"] = singleContactId),
-    (allTasks[id]["assignedTo"] = selectedContacts),
-    (allTasks[id]["subTask"] = subTasks),
-    updateTasksHTML();
-    saveTasks();
-    hideEditTask();
-    hideTask();
-
+  (allTasks[id]["title"] = titleEdit.value),
+  (allTasks[id]["description"] = descriptionEdit.value),
+  (allTasks[id]["date"] = dateEdit.value),
+  (allTasks[id]["prio"] = prio),
+  (allTasks[id]["colors"] = colors),
+  (allTasks[id]["names"] = names),
+  (allTasks[id]["singleContactId"] = singleContactId),
+  (allTasks[id]["assignedTo"] = selectedContacts),
+  (allTasks[id]["subTask"] = subTasks),
+  updateTasksHTML();
+  saveTasks();
+  hideEditTask();
+  hideTask();
 }
 

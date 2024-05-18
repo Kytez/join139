@@ -18,7 +18,6 @@ async function initBoard() {
     await loadAllTasks();
     await loadContacts();
     updateTasksHTML();
-    // renderAssignedContactList()
 }
 
 /**
@@ -59,39 +58,39 @@ function showTask(
   subTasks,
   singleContactId
 ) {
-  document.getElementById("tasks").style.display = "flex";
-  let taskPopUp = document.getElementById("taskPopUp");
-  taskPopUp.style.display = "flex";
-  let popUpElements = document.getElementsByClassName("pop-up");
-  for (let i = 0; i < popUpElements.length; i++) {
-    popUpElements[i].style.transition = "transform 400ms";
-    (function (index) {
-      setTimeout(function () {
-        popUpElements[index].style.transform = "translateX(0)";
-      }, 100);
-    })(i);
-  }
-  renderTasksPopUp(
-    title,
-    description,
-    date,
-    id,
-    category,
-    prio,
-    names,
-    subTasks,
-    singleContactId
-  );
-  assignCategoryColour();
-  assignUserColourPopUp(names, id);
-  loadCheckBoxStatus(id);
+    document.getElementById("tasks").style.display = "flex";
+    let taskPopUp = document.getElementById("taskPopUp");
+    taskPopUp.style.display = "flex";
+    let popUpElements = document.getElementsByClassName("pop-up");
+    for (let i = 0; i < popUpElements.length; i++) {
+      popUpElements[i].style.transition = "transform 400ms";
+      (function (index) {
+        setTimeout(function () {
+          popUpElements[index].style.transform = "translateX(0)";
+        }, 100);
+      })(i);
+    }
+    renderTasksPopUp(
+      title,
+      description,
+      date,
+      id,
+      category,
+      prio,
+      names,
+      subTasks,
+      singleContactId
+    );
+    assignCategoryColour();
+    assignUserColourPopUp(names, id);
+    loadCheckBoxStatus(id);
 }
 
 function hideTask() {
   document.getElementById("tasks").style.display = "none";
   document.getElementById("taskPopUp").style.display = "none";
-
   let popUpElements = document.getElementsByClassName("pop-up");
+
   for (let i = 0; i < popUpElements.length; i++) {
     popUpElements[i].style.transition = "transform 400ms";
     (function (index) {
@@ -105,8 +104,8 @@ function hideTask() {
 function showAddTask() {
   document.getElementById("addTaskSection").style.display = "flex";
   document.getElementById("addTaskFullScreen").style.display = "flex";
-
   let popUpElements = document.getElementsByClassName("add-task-card-board");
+
   for (let i = 0; i < popUpElements.length; i++) {
     popUpElements[i].style.transition = "transform 400ms";
     (function (index) {
@@ -133,15 +132,10 @@ function clearTaskBoard() {
           });
   prio = "";
   removeSelectedContactsBoard();
-  document
-    .getElementById("mediumBoard")
-    .classList.remove("highlighted-button-medium");
-  document
-    .getElementById("lowBoard")
-    .classList.remove("highlighted-button-low");
-  document
-    .getElementById("urgentBoard")
-    .classList.remove("highlighted-button-urgent");
+
+  document.getElementById("mediumBoard").classList.remove("highlighted-button-medium");
+  document.getElementById("lowBoard").classList.remove("highlighted-button-low");
+  document.getElementById("urgentBoard").classList.remove("highlighted-button-urgent");
 }
 
 function removeSelectedContactsBoard() {
@@ -152,35 +146,24 @@ function removeSelectedContactsBoard() {
             singleContactId = [];
 };
 
-
 function setPrioButtonsColorBoard(i) {
-  document
-    .getElementById("mediumBoard")
-    .classList.remove("highlighted-button-medium");
-  document
-    .getElementById("lowBoard")
-    .classList.remove("highlighted-button-low");
-  document
-    .getElementById("urgentBoard")
-    .classList.remove("highlighted-button-urgent");
+  document.getElementById("mediumBoard").classList.remove("highlighted-button-medium");
+  document.getElementById("lowBoard").classList.remove("highlighted-button-low");
+  document.getElementById("urgentBoard").classList.remove("highlighted-button-urgent");
   if (i === "medium") {
-    document
-      .getElementById("mediumBoard")
-      .classList.add("highlighted-button-medium");
+    document.getElementById("mediumBoard").classList.add("highlighted-button-medium");
   } else if (i === "low") {
     document.getElementById("lowBoard").classList.add("highlighted-button-low");
   } else if (i === "urgent") {
-    document
-      .getElementById("urgentBoard")
-      .classList.add("highlighted-button-urgent");
+    document.getElementById("urgentBoard").classList.add("highlighted-button-urgent");
   }
 }
 
 function hideAddTask() {
   document.getElementById("addTaskSection").style.display = "none";
   document.getElementById("addTaskFullScreen").style.display = "none";
-
   let popUpElements = document.getElementsByClassName("add-task-card-board");
+
   for (let i = 0; i < popUpElements.length; i++) {
     popUpElements[i].style.transition = "transform 400ms";
     (function (index) {
@@ -191,7 +174,6 @@ function hideAddTask() {
   }
   emptyCurrentContainerInformation();
   clearTaskBoard()
-
 }
 
 function addTaskToSectionButton(section) {
@@ -200,14 +182,11 @@ function addTaskToSectionButton(section) {
 
 
 async function filterTask() {
-  let searchInput = document
-  .getElementById("site-search")
-    .value.trim()
-    .toLowerCase();
+  let searchInput = document.getElementById("site-search").value.trim().toLowerCase();
 
-    if (document.getElementById("site-search").value.length < 1) {
-    await loadAllTasks();
-    updateTasksHTML();
+  if (document.getElementById("site-search").value.length < 1) {
+  await loadAllTasks();
+  updateTasksHTML();
   } else {
       let foundTasks = [];
 
@@ -222,7 +201,6 @@ async function filterTask() {
     });
 
     allTasks = foundTasks;
-
     updateTasksHTML();
   }
 }
@@ -234,7 +212,6 @@ function doNotClose(event) {
 /**
  * hides the edit-task pop-up field from the screen via translateX.
  */
-
 function hideEditTask() {
     document.getElementById('editTaskSection').style.display = 'none';
     document.getElementById('editTaskFullScreen').style.display = 'none';
@@ -249,7 +226,6 @@ function hideEditTask() {
         })(i);
     }
     emptyCurrentContainerInformation();
-
 }
 
 function emptyCurrentContainerInformation(){
@@ -260,4 +236,15 @@ function emptyCurrentContainerInformation(){
     selectedContacts = [];
     document.getElementById("contactInitalsBoard").innerHTML ="";
     document.getElementById("contactInitalsEdit").innerHTML ="";
+}
+
+/**
+ * Deletes a task.
+ * @param {number} id - The ID of the task to delete.
+ */
+function deleteTask(id) {
+  allTasks.splice(id, 1)
+  updateTasksHTML();
+  hideTask();
+  saveTasks();
 }

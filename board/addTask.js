@@ -9,29 +9,28 @@ function addTaskBoard(workMode = "todo") {
     date.value.trim() === ""
   ) {
   } else {
-    let task = {
-      id: allTasks.length + 1,
-      singleContactId: singleContactId,
-      title: title.value,
-      description: description.value,
-      assignedTo: selectedContacts,
-      colors: colors,
-      date: date.value,
-      prio: prio,
-      category: category.value,
-      subTask: subTasks,
-      createdAt: new Date().getDate(),
-      workMode: workMode,
-      names: names,
-      checkbox: ['a'],
+      let task = {
+        id: allTasks.length + 1,
+        singleContactId: singleContactId,
+        title: title.value,
+        description: description.value,
+        assignedTo: selectedContacts,
+        colors: colors,
+        date: date.value,
+        prio: prio,
+        category: category.value,
+        subTask: subTasks,
+        createdAt: new Date().getDate(),
+        workMode: workMode,
+        names: names,
+        checkbox: ['a'],
     };
-    allTasks.push(task);
-    saveTasks();
-    updateTasksHTML();
-    hideAddTask();
+  allTasks.push(task);
+  saveTasks();
+  updateTasksHTML();
+  hideAddTask();
   }
 }
-
 
 function hideAndShowEditBoard() {
   let edit = document.getElementById("editBoard");
@@ -45,7 +44,6 @@ function hideAndShowEditBoard() {
   }
 }
 
-
 function clearInputAddTaskBoard() {
   document.getElementById("subTaskInputBoard").value = "";
 }
@@ -54,17 +52,18 @@ function addSubtaskBoard() {
   let edit = document.getElementById("editBoard");
   let subtaskt = document.getElementById("subTaskBoard");
   let subTaskInput = document.getElementById("subTaskInputBoard").value;
+
   subTasks.push(subTaskInput);
   renderSubtasks();
   document.getElementById("subTaskInputBoard").value = "";
   edit.classList.add("d-none");
   subtaskt.classList.remove("d-none")
-
 }
 
 function renderSubtasks() {
   let subTaskContainer = document.getElementById("subTaskContainerBoard");
   subTaskContainer.innerHTML = "";
+  
   for (let i = 0; i < subTasks.length; i++) {
     let subTaskHTML = addSubtaskHTML(subTasks[i], i);
     subTaskContainer.innerHTML += subTaskHTML;
@@ -86,9 +85,9 @@ function setFilterBoard(input) {
   colors = [];
   names = [];
   singleContactId = [];
-
   let filter = input.value.trim().toLowerCase();
   let filteredContacts;
+
   if (filter !== "") {
     filteredContacts = contacts.filter(function (contact) {
       return contact.userName.toLowerCase().includes(filter);
@@ -100,8 +99,6 @@ function setFilterBoard(input) {
     colors = [];
     names = [];
     singleContactId = [];
-
-
   }
   renderAssignedContactListBoard(filteredContacts);
 }
@@ -109,16 +106,14 @@ function setFilterBoard(input) {
 function renderAssignedContactListBoard(filteredContacts) {
   let assignedTo = document.getElementById("selected-contactsBoard");
   assignedTo.innerHTML = "";
-  // console.log(filteredContacts);
   for (let i = 0; i < filteredContacts.length; i++) {
     let userName = filteredContacts[i].userName;
     let initialsString = "";
     let color = filteredContacts[i].colour;
-
     let words = userName.split(" ");
     let initials = words.map((word) => word.charAt(0).toUpperCase());
-    initialsString = initials.join("");
 
+    initialsString = initials.join("");
     assignedTo.innerHTML += contactListAddTaskBoardHTML(
       i,
       userName,
@@ -158,7 +153,6 @@ function changeCheckedAndColorBoard(i, contact, name) {
   let initials = document.getElementById(`initialsBoard_${i}`).textContent;
   let renderInitials = document.getElementById(`contactInitalsBoard`);
   let computedStyle = window.getComputedStyle(element).backgroundColor;
-
 
   if (emptySelect.classList.contains("d-none")) {
     selectedContact.style.backgroundColor = "";
