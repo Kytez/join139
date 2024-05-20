@@ -114,7 +114,14 @@ input[type="search"]::-webkit-search-results-button {
   display: none;
 }
 
+.seperator {
+  height: 20px;
+  width: 1px;
+  background-color: #c5c1c1;
+}
+
 .search-bar-seperator {
+  z-index: 200;
   width: 1px;
   height: 24px;
   background-color: #e8e8e8;
@@ -792,7 +799,13 @@ button {
 }
 
 #editEditContainer {
-  align-items: center;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -75px;
+    cursor: pointer;
+    gap: 8px;
+    z-index: 1;
 }
 
 .subtask img {

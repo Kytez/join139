@@ -191,7 +191,7 @@
                     <div>
                         <span>Due date</span><span class="red">*</span>
                     </div>
-                    <input id="dateBoard" type="date">
+                    <input onclick="setDateBoard()" class="focus-blue" required id="dateBoard" type="date" min="">
                 </div>
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
@@ -202,7 +202,7 @@
                                 <img src="../assets/img/svg/up.svg">
                             </div>
                         </div>
-                        <div id="mediumBoard" onclick="handleClickPrioBoard('medium', 'board')" class="prio-button">
+                        <div id="mediumBoard" onclick="handleClickPrioBoard('medium', 'board')" class="prio-button highlighted-button-medium">
                             <span id="prio_mediumBoard">Medium</span>  
                             <div class="arrow">
                                 <img src="../assets/img/svg/line.svg">
@@ -219,8 +219,8 @@
                         <div>
                             <span>Category <span class="red">*</span></span>
                         </div>
-                        <select required="required" name="contacts" id="categoryBoard">
-                            <option value="">Select task category</option>
+                        <select required class="focus-blue" name="contacts" id="categoryBoard">
+                            <option value="" disabled selected>Select task category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
                         </select>
@@ -297,7 +297,7 @@
                     <div>
                         <span>Due date</span><span class="red">*</span>
                     </div>
-                    <input id="dateEdit" type="date">
+                    <input id="dateEdit" type="date" min="">
                 </div>
                 <div class="prio-container padding-top-big">
                     <span class="colorEdit">Priority</span>
@@ -369,7 +369,10 @@
         </div>
     </section>
 </section>
-    
+    <script>
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+    </script>
                 
 
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navBoard.html"></div>

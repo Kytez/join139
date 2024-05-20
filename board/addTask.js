@@ -64,6 +64,15 @@ function clearInputAddTaskBoard() {
   document.getElementById("subTaskInputBoard").value = "";
 }
 
+function setDateBoard() {
+  document.addEventListener('click', function(event) {
+    let contactSelect = document.getElementById('contact-select');
+    if (!contactSelect.contains(event.target)) {
+    hideContactList();
+        }
+    });
+}
+
 /**
  * Adds a subtask to the subTasks array and triggers the rendering of subtasks on the webpage.
  *
