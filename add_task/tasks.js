@@ -391,7 +391,10 @@ function editSubtask(id) {
 function deleteSubtask(entry, id) {
   const index = subTasks.findIndex((element) => element.id === id);
   subTasks.splice(index, 1);
-  entry.remove();
+  const subtaskDiv = document.getElementById('subTask_' + id);
+            if (subtaskDiv) {
+                subtaskDiv.remove();
+            }
 }
 
 function updateSubtaskIds() {
