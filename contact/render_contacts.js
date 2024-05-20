@@ -77,7 +77,9 @@ async function addNewContact() {
  * @returns {string} - The capitalized name.
  */
 function capitalizeName(userName) {
-  const names = userName.split(" ");
+  const namesSplit = userName.split(" ");
+  let names = namesSplit.filter(str => str !== "");
+  console.log(names);
   let capitalName = "";
   for (let i = 0; i < names.length; i++) {
     capitalName += names[i][0].toUpperCase() + names[i].slice(1) + " ";
@@ -338,7 +340,7 @@ function generateEditContainer(user, colour, id) {
                 <form onsubmit="updateContact(${id});return false" class="w100 d-flex column input-container">
                     <input id="edit-nameContact" class="input" placeholder="Name" type="text" required>
                     <input id="edit-emailContact" class="input" placeholder="Email" type="email" required>
-                    <input id="edit-phoneContact" class="input" placeholder="Phone" type="tel" required>
+                    <input id="edit-phoneContact" class="input" placeholder="Phone" type="number" required>
                     <div class="d-flex justify-center edit-buttons">
                         <button onclick="deleteContact(${id})" id="delete-btn" class="btn-create pointer delete">
                             <div id="delete" class="blue">
@@ -458,4 +460,14 @@ function assignIDContacts() {
     contact["id"] = i;
   }
   saveContacts();
+}
+
+/**
+ * Stops the propagation of an event.
+ *
+ * @param {Event} event - The event to stop the propagation of.
+ * @return {void} This function does not return a value.
+ */
+function doNotClose(event) {
+  event.stopPropagation();
 }

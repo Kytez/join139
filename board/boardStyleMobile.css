@@ -8,6 +8,8 @@
   justify-content: space-between;
 }
 
+
+
 .close-img {
   width: 13.5px;
 }
@@ -39,6 +41,7 @@
   align-items: center;
   width: 100%;
   margin-top: 4px;
+  overflow-x: scroll;
 }
 
 .user-circle {
@@ -79,6 +82,7 @@
 
 .priority {
   width: 17px;
+  padding-left: 4px;
 }
 
 .margin-left {
@@ -282,6 +286,11 @@ input[type="search"]::-webkit-search-results-button {
   gap: 16px;
 }
 
+.taskUsers{
+  overflow-y: scroll;
+  height: 200px;
+}
+
 .checkbox-custom {
   appearance: none;
   -webkit-appearance: none;
@@ -327,6 +336,7 @@ input[type="search"]::-webkit-search-results-button {
   transform: translateX(275%);
   transition: transform 400ms ease-in-out;
   display: none;
+  height: 650px;
 }
 
 .pop-up-user-circle {
@@ -964,9 +974,31 @@ button {
 
 @media (max-height: 850px) {
   .pop-up {
-    height: 500px;
+    height: 600px;
   }
 }
+@media (max-height: 750px) {
+  .pop-up {
+      height: 550px;
+  }
+  .margin-top-24{
+      margin-top: 16px;
+  }
+}
+@media (max-height: 700px) {
+  .pop-up {
+      height: 500px;
+  }
+  .margin-top-24{
+    margin-top: 12px;
+}
+}
+@media (max-height: 650px) {
+  .pop-up {
+      height: 450px;
+  }
+}
+
 
 @media (max-height: 800px) {
   .edit-task-card {

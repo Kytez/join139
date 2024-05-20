@@ -8,6 +8,18 @@ input::placeholder{
   left: 15px; 
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield; 
+  -webkit-appearance: none;    
+  appearance: textfield;       
+}
+
 .container-add {
   border-radius: 30px;
   border: solid 1px;

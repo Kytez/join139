@@ -480,9 +480,7 @@ button {
     height: 88px;
     bottom: 80px;
   }
-  .btn-dark {
-    margin-right: 32px !important;
-  }
+
   .btn-white {
     display: none;
   }

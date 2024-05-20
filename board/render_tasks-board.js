@@ -54,12 +54,14 @@ function returnTaskHTML(element) {
                     ${generateProgressBar(element['id'])}  
                 </div>
             </div>
-            <div class="user-container flex">
-                <div id="assigned-users-${element['id']}" class="flex m-left">
-                    ${generateAssignedUsers(element)}
-                </div>
+            <div class="flex align-center">
+                <div class="user-container flex">
+                    <div id="assigned-users-${element['id']}" class="flex m-left">
+                        ${generateAssignedUsers(element)}
+                    </div>
+                </div> 
                 <img id="img-${element['id']}" class="priority" src="${assignPriorityImgTask(element['prio'])}" alt="">
-            </div> 
+            </div>
         </div>
     `
 }
@@ -134,7 +136,7 @@ function renderTasksPopUp(title, description, date, id, category, prio, names, s
             </div>
             <div class="margin-top-24">
                 <span class="detail">Assigned To:</span>
-                <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned margin-left-16">
+                <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned taskUsers margin-left-16">
                     ${generateAssignedUsersPopUp(names)}
                 </div>
             </div>

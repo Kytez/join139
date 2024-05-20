@@ -151,7 +151,7 @@
 
 
 <section  onclick="hideAddTask()" id="addTaskFullScreen" class="add-task-background">
-    <form onclick="doNotClose(event)" onsubmit="addTaskBoard('todo'); return false" id="addTaskSection" class="add-task-card-board">
+    <form onclick="doNotClose(event); closeContactList('selected-contactsBoard')" onsubmit="addTaskBoard('todo'); return false" id="addTaskSection" class="add-task-card-board">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -174,7 +174,7 @@
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <input oninput="setFilterBoard(this)" type="text" onclick="showContactListBoard()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts">
+                    <input oninput="setFilterBoard(this)" type="text" onclick="doNotClose(event);showContactListBoard()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts" autocomplete="off">
                     <section class="d-none contact-list" id="selected-contactsBoard"></section>
                     <div id="contactInitalsBoard"></div>
                     
@@ -267,7 +267,7 @@
 
 <section id="editTaskFullScreen" class="add-task-background">
     
-    <section onclick="doNotClose(event)" style="position: relative;" id="editTaskSection" class=" edit-task-card">
+    <section onclick="doNotClose(event); closeContactList('selected-contactsEdit')" style="position: relative;" id="editTaskSection" class=" edit-task-card">
         <div class="edit-close" id="closeEditBtnBoard">
             <img onclick="breakEditSession()" class="close-img pointer" src="../assets/img/icons/close.png">
         </div>
@@ -324,8 +324,8 @@
                         <div>
                             <span class="colorEdit">Assigned to</span>
                         </div>
-                        <input oninput="setFilterEdit(this)" required type="text" onclick="showContactListEdit()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectEdit" name="contacts">
-                        <section class="d-none contact-list" id="selected-contactsEdit"></section>
+                        <input oninput="setFilterEdit(this)" required type="text" onclick="doNotClose(event);showContactListEdit()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectEdit" name="contacts">
+                        <section class="d-none contact-list" id="selected-contactsEdit" autocomplete="off"></section>
                         <div id="contactInitalsEdit"></div>
                     </input>
                     </div>

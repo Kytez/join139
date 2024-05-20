@@ -345,3 +345,8 @@ function renderInitialsHTML(i, initials, computedStyle) {
         <div id="selectedInitialBoard_${i}" style="background-color: ${computedStyle}" class="initials">${initials}</div>
     `;
 }
+
+function closeContactList(origin){
+  let contactList = document.getElementById(origin)
+  contactList.classList.add("d-none");
+}

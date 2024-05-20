@@ -174,7 +174,7 @@ function showNewContactInformation(userName, email, phone, colour) {
  * It opens the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 function showAddContact() {
-  changeBgDark();
+  changeBgDark('overlayAdd');
   if (window.innerWidth < 992) {
     document.getElementById("add-contact").style = "transform: translateY(0)";
   } else {
@@ -185,8 +185,8 @@ function showAddContact() {
 /**
  * Changes the background / overlay dark.
  */
-function changeBgDark() {
-  let overlay = document.getElementById("overlay");
+function changeBgDark(overlayContainer) {
+  let overlay = document.getElementById(overlayContainer);
   overlay.style.position = "fixed";
   overlay.style.backgroundColor = "#0000005c";
 }
@@ -196,7 +196,7 @@ function changeBgDark() {
  * It closes the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 function closeAddContact() {
-  changeBgBright();
+  changeBgBright('overlayAdd');
   if (window.innerWidth < 992) {
     document.getElementById("add-contact").style =
       "transform: translateY(275%)";
@@ -209,8 +209,8 @@ function closeAddContact() {
 /**
  * Returns the background into its regular color / makes the overlay transparent.
  */
-function changeBgBright() {
-  let overlay = document.getElementById("overlay");
+function changeBgBright(overlayContainer) {
+  let overlay = document.getElementById(overlayContainer);
   overlay.style.backgroundColor = "#00000000";
   setTimeout(() => {
     overlay.style.position = "static";
@@ -262,7 +262,7 @@ function showSuccessPopUpDesktop() {
  * It shows the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 function showEditContact() {
-  changeBgDark();
+  changeBgDark('overlayEdit');
   if (window.innerWidth < 992) {
     document.getElementById("edit-contact").style.transform = "translateY(0)";
   } else {
@@ -275,7 +275,7 @@ function showEditContact() {
  * It closes the container by changing the CSS property transform: translateY() or transform: translateX().
  */
 function closeEditContact() {
-  changeBgBright();
+  changeBgBright('overlayEdit');
   if (window.innerWidth < 992) {
     document.getElementById("edit-contact").style.transform =
       "translateY(275%)";
