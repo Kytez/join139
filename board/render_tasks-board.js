@@ -223,19 +223,24 @@ function generateAssignedUsers(element) {
  */
 function generateAssignedUsersPopUp(id) {
     let task = allTasks[id];
+    let names = allTasks[id].names;
     let assignedTo = task.assignedTo;
     if(assignedTo !== 0){
         let usersHTML = '';
-        let namesArray = names.split(",");
-        for (let i = 0; i < namesArray.length; i++) {
-            let user = namesArray[i];
+        // let namesArray = names.split(",");
+        // if(names.length == 0){
+        //     namesArray = names.split(' ');
+        // }
+        for (let i = 0; i < names.length; i++) {
+            let user = names[i];
             usersHTML += returnAssignedUserHTMLPopUp(user)
         }
+        return usersHTML
     }
     else{
         usersHTML = 'No Users Assigned'    
+        return usersHTML
     }
-    return usersHTML
 }
 
 /**
