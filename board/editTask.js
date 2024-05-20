@@ -90,6 +90,44 @@ function renderEditTaskPopUpElements(
 
 }
 
+function editSubtaskEdit(id) {
+    console.log("Subtask bearbeiten:", id);
+    let subTaskDiv = document.getElementById(`subTaskEdit_${id}`);
+    let subTaskText = subTaskDiv.querySelector("div");
+    let subTaskTextInput = document.createElement("input");
+    let saveEditSubtasks = document.getElementById(`saveEditSubtasksEdit_${id}`);
+    let editSubtasks = document.getElementById(`editSubtasksEdit_${id}`);
+    saveEditSubtasks.classList.remove("d-none");
+    editSubtasks.classList.add("d-none");
+    subTaskTextInput.type = "text";
+    subTaskTextInput.value = subTaskText.textContent;
+    subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
+}
+
+function deleteSubtaskEdit(entry, id) {
+  const index = subTasks.findIndex((element) => element.id === id);
+  subTasks.splice(index, 1);
+  entry.remove();
+}
+
+function saveEditSubtaskEdit(id) {
+    let elementToRemove = document.getElementById(`subTaskEdit_${id}`);
+    let subTaskTextInput = elementToRemove.querySelector("input").value;
+    let saveEditSubtasks = document.getElementById(`saveEditSubtasksEdit_${id}`);
+    let editSubtasks = document.getElementById(`editSubtasksEdit_${id}`);
+    console.log(subTaskTextInput);
+    if (elementToRemove) {
+        elementToRemove.remove();
+        subTasks.splice(id, 1);
+        subTasks.push(subTaskTextInput);
+        renderSubtasksEdit();
+        saveEditSubtasks.classList.remove("d-none");
+        editSubtasks.classList.add("d-none");
+    }
+}
+
+function passIdsToSelectTaskContact(singleContactId) {
+  console.log(singleContactId);
 /**
  * Passes an array of names to the function `selectTaskContactEdit` to select task contacts.
  *
@@ -102,7 +140,7 @@ function passArrayToSelectTaskContact(names) {
 
   for (let i = 0; i < namesArray.length; i++) {
     let id = contacts.findIndex(contact => contact.userName === namesArray[i]);
-    if (id !== -1) {
+    if (!isNaN(id)) {
       selectTaskContactEdit(id);
     }
   }
@@ -251,5 +289,4 @@ function editTask(id) {
   saveTasks();
   hideEditTask();
   hideTask();
-}
-
+}}
