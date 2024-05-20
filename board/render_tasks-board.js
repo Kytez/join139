@@ -2,19 +2,6 @@
 let categories = ['todo', 'inprogress', 'feedback', 'done']
 
 /**
- * Initializes the board html and loads all necessary information from the server and renders the page.
- */
-async function initBoard() {
-    await includeHTML();
-    await loadActiveUser();
-    renderUserInitials();
-    await loadAllTasks();
-    await loadContacts();
-    updateTasksHTML();
-    renderAssignedContactList()
-}
-
-/**
  * Updates the HTML for every task card according to the latest information on the allTasks array on the server.
  */
 function updateTasksHTML() {
@@ -86,7 +73,7 @@ function generateProgressBar(id) {
     let subTaskHTML = '';
     let subTasks = allTasks[id]['subTask']
     let sumChecked = calculateSumCheckedTasks(id);
-    if(subTasks){
+    if(subTasks && subTasks.length > 0 ){
         let percentage = Math.round(sumChecked/subTasks.length*100)
         subTaskHTML = returnProgressBarHTML(percentage, sumChecked, subTasks)
     }
@@ -94,24 +81,6 @@ function generateProgressBar(id) {
         subTaskHTML = "No Subtasks"
     }
     return subTaskHTML
-}
-
-/**
- * Returns the number of checked and finished subtasks of a task.
- * @param {number} id - The ID of the task.
- * @returns {number} - sum of all finished subtasks checked for a task.
- */
-function calculateSumCheckedTasks(id) {
-    let checkedTasks = allTasks[id]['checkbox'] 
-    let sumTrue = 0;
-    if(checkedTasks){
-        checkedTasks.forEach(value => {
-            if (value) {
-                sumTrue++;
-            }
-        });
-    }
-    return sumTrue;
 }
 
 /**
@@ -142,7 +111,6 @@ function returnProgressBarHTML(percentage, sumChecked, subTasks) {
  */
 function renderTasksPopUp(title, description, date, id, category, prio, names, subTasks, singleContactId) {
     let taskPopUp = document.getElementById('taskPopUp')
-console.log(subTasks);
     taskPopUp.innerHTML = /*html*/`
         <div class="task-popup-padding scroll width-100">
             <div class="space-between gap subtasks-checkbox">
@@ -172,7 +140,7 @@ console.log(subTasks);
             </div>
             <div class="margin-top-24">
                 <span class="detail">Subtasks</span>
-                <div class="margin-top-12" id="subTasksPopUp">
+                <div class="margin-top-12" id="subTasksPopUp${id}">
                     ${generateSubTasksInPopUp(id)}
                 </div>
             </div>
@@ -182,14 +150,13 @@ console.log(subTasks);
                     <span>Delete</span>
                 </div>
                 <div class="subtasks-seperator"></div>
-                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${names}', '${subTasks}', '${singleContactId}')" class="subtasks-checkbox pointer">
+                <div onclick="showEditTask('${title}', '${description}', '${date}', '${id}', '${prio}', '${subTasks}', '${singleContactId}', '${names}' )" class="subtasks-checkbox pointer">
                     <img src="../assets/img/icons/edit.png" alt="">
                     <span>Edit</span>
                 </div>
             </div>
         </div>
     `
-    console.log(subTasks);
 }
 
 /**
@@ -200,16 +167,14 @@ console.log(subTasks);
 function generateSubTasksInPopUp(id) {
     let subTasksPopUpHTML = ''
     let subTasksArray = allTasks[id]['subTask'] 
-    if(subTasksArray.length > 0){
+    if(subTasksArray && subTasksArray.length > 0){
         for (let i = 0; i < subTasksArray.length; i++) {
             const subTask = subTasksArray[i];
             subTasksPopUpHTML += returnSubTasksHTML(id, i, subTask)
         }
     }
     else{
-        subTasksPopUpHTML = /*html*/ `
-            No Subtasks
-        `
+        subTasksPopUpHTML = /*html*/ `No Subtasks`
     }
     return subTasksPopUpHTML;
 }
@@ -228,67 +193,6 @@ function returnSubTasksHTML(id, i, subTask) {
             <span>${subTask}</span>
         </div>
     `
-}
-
-/**
- * Saves the status of checkboxes, checked or not, for subtasks.
- * @param {number} id - The ID of the task.
- */
-function saveCheckBoxStatus(id) {
-    let subTasks = allTasks[id]['subTask']
-    subTaskIsChecked(id, subTasks)
-    updateTasksHTML();
-    saveTasks();
-}
-
-/**
- * Checks if subtasks are checked and updates the status in the allTasks array in the key checkbox.
- * @param {number} id - The ID of the task.
- * @param {array} subTasks - this is an array with all subtasks for a task
- */
-function subTaskIsChecked(id, subTasks) {
-    if(subTasks){
-        for (let i = 0; i < subTasks.length; i++) {
-            const checkbox = document.getElementById(`box${id}${i}`)
-            if(checkbox.checked){
-                allTasks[id]['checkbox'][i] = true;
-            }
-            else{
-                allTasks[id]['checkbox'][i] = false;
-            }
-        }
-    }
-}
-
-/**
- * Loads the status of checkboxes for subtasks and checks the boxes in the task pop-up accordingly.
- * @param {number} id - The ID of the task.
- */
-function loadCheckBoxStatus(id) {
-    let checkBoxValue = allTasks[id]['checkbox']
-    if(checkBoxValue.length > 0){
-        checkSubTasks(id, checkBoxValue)
-    }
-}
-
-/**
- * Checks subtasks based on their status and updates the corresponding checkboxes.
- * @param {number} id - The ID of the task.
- * @param {array} checkBoxValue - The array of checkbox values for subtasks with boolean values.
- */
-function checkSubTasks(id, checkBoxValue) {
-    if(checkBoxValue){
-        for (let i = 0; i < checkBoxValue.length; i++) {
-            const value = checkBoxValue[i];
-            const checkbox = document.getElementById(`box${id}${i}`)
-            if(value == true){
-                checkbox.checked = true;
-            }
-            else{
-                checkbox.checked = false;
-            }
-        }
-    }
 }
 
 /**
@@ -327,7 +231,6 @@ function generateAssignedUsersPopUp(names) {
     }
 }
 
-
 /**
  * Returns HTML for assigned users in task pop-up.
  * @param {string} user - The name of the assigned user.
@@ -341,7 +244,6 @@ function returnAssignedUserHTMLPopUp(user) {
         </div>
     `
 }
-
 
 /**
  * Displays a message when there are no tasks in an area.
@@ -366,7 +268,6 @@ function noTasksInArea(category) {
     let catContainer = document.getElementById(category);
     catContainer.innerHTML = `<div class="center no-taskts-to-do">${taskArea}</div>`;
 }
-
 
 /**
  * Assigns the source path for the task priority image based on priority level.
@@ -451,15 +352,4 @@ function assignUserColourPopUp(names, id) {
     }
 }
 
-/**
- * Deletes a task.
- * @param {number} id - The ID of the task to delete.
- */
-function deleteTask(id) {
-    if(id){
-        allTasks.splice(id, 1)
-        updateTasksHTML();
-        hideTask();
-        saveTasks();
-    }
-}
+

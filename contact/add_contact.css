@@ -3,6 +3,11 @@ body {
   background-color: white;
 }
 
+input::placeholder{
+  position: absolute; 
+  left: 15px; 
+}
+
 .container-add {
   border-radius: 30px;
   border: solid 1px;
@@ -92,6 +97,7 @@ body {
 
 .input-container {
   margin-top: 70px;
+  overflow-y: scroll;
 }
 
 .input {
@@ -315,3 +321,17 @@ input:focus {
     margin-left: 5px;
   }
 }
+
+@media (max-height: 667px){
+  .input-container{
+    margin-top: 55px;
+  }
+}
+
+@media (max-height: 650px){
+  .input-container{
+    height: 125px;
+  }
+}
+
+

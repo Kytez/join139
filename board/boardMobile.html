@@ -19,10 +19,13 @@
     <script src="../board/board.js"></script>
     <script src="../board/render_tasks-board.js"></script>
     <script src="../contact/render_contacts.js"></script>
-    <script src="../add_task/tasks.js"></script>
     <script src="../script.js"></script>
     <script src="../board/addTask.js"></script>
     <script src="../board/editTask.js"></script>
+    <script src="../board/editSubTask.js"></script>
+    <script src="../board/editPrioTask.js"></script>
+    <script src="../board/editFilterTask.js"></script>
+    <script src="../board/checkedTasks.js"></script>
 </head>
 <body onload="initBoard()" class="margin-body-mobile">
 
@@ -32,7 +35,7 @@
 
     <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
 
-    <section>
+    <section id="boardBodyProgress">
         
         <div class="board-container width-100">
             <div class="board space-between">
@@ -215,7 +218,7 @@
                         <div>
                             <span>Category <span class="red">*</span></span>
                         </div>
-                        <select name="contacts" id="categoryBoard">
+                        <select required="required" name="contacts" id="categoryBoard">
                             <option value="">Select task category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
@@ -265,8 +268,8 @@
 <section id="editTaskFullScreen" class="add-task-background">
     
     <section onclick="doNotClose(event)" style="position: relative;" id="editTaskSection" class=" edit-task-card">
-        <div class="edit-close">
-            <img onclick="hideEditTask()" class="close-img pointer" src="../assets/img/icons/close.png">
+        <div class="edit-close" id="closeEditBtnBoard">
+            <img onclick="breakEditSession()" class="close-img pointer" src="../assets/img/icons/close.png">
         </div>
         <section class="edit-task">
             <section class="add-task-section">
