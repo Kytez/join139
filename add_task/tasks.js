@@ -1,7 +1,7 @@
 let allTasks = [];
 let emptyArray = [];
 let selectedContacts = [];
-let prio = "";
+let prio = "medium";
 let singleContactId = [];
 let saveSingleContact = [];
 let colors = [];
@@ -22,6 +22,11 @@ async function initAddTask() {
   await loadAllTasks();
   setFilter({ value: `` });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById('date').setAttribute('min', today);
+});
 
 /**
  * Filters contacts based on the provided input value and renders the filtered contact list.
@@ -180,8 +185,25 @@ async function loadAllTasks() {
  * @return {void} This function does not return anything.
  */
 function clearTask() {
-  location.reload();
+  handleClickPrio('medium');
+  const form = document.getElementById("addTaskForm");
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.value = '';
+            });
 }
+
+function hideContactList() {
+  let contactList = document.getElementById("selected-contacts");
+  contactList.classList.add("d-none");
+}
+
+document.addEventListener('click', function(event) {
+  let contactSelect = document.getElementById('contact-select');
+  if (!contactSelect.contains(event.target)) {
+      hideContactList();
+  }
+});
 
 /**
  * Selects a task contact and triggers the changeCheckedAndColor function.
@@ -340,10 +362,14 @@ function renderSubtasks() {
  */
 function addSubtask() {
   let subTaskInput = document.getElementById("subTaskInput").value;
-  subTasks.push(subTaskInput);
-  console.log(subTaskInput);
-  renderSubtasks(); // Rendere die Unteraufgaben neu
-  document.getElementById("subTaskInput").value = "";
+  if (subTaskInput.trim() === "") {
+    return; // Falls das Eingabefeld leer ist oder nur aus Leerzeichen besteht, passiert nichts
+  }else {
+    subTasks.push(subTaskInput);
+    console.log(subTaskInput);
+    renderSubtasks(); // Rendere die Unteraufgaben neu
+    document.getElementById("subTaskInput").value = "";
+  }
 }
 
 /**
@@ -386,7 +412,10 @@ function editSubtask(id) {
 function deleteSubtask(entry, id) {
   const index = subTasks.findIndex((element) => element.id === id);
   subTasks.splice(index, 1);
-  entry.remove();
+  const subtaskDiv = document.getElementById('subTask_' + id);
+            if (subtaskDiv) {
+                subtaskDiv.remove();
+            }
 }
 
 function updateSubtaskIds() {

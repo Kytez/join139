@@ -230,6 +230,7 @@ textarea::placeholder {
 #subTaskContainer {
   width: 440px;
   max-height: 160px;
+  position: fixed;
 
   .singleSubTasks {
     display: flex;

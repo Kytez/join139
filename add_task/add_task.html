@@ -24,7 +24,7 @@
 
     <div class="d-none" id="popUpMenuHeader" w3-include-html="../assets/templates/menu_pop_up.html"></div>
 
-    <form onsubmit="addTask(); return false" class="add-task-card margin-body-mobile">
+    <form id="addTaskForm" onsubmit="addTask(); return false" class="add-task-card margin-body-mobile">
         <section class="headline-section">
             <h1>Add Task</h1>
         </section>
@@ -65,7 +65,7 @@
                         <div>
                             <span>Due date</span><span class="red">*</span>
                         </div>
-                        <input class="focus-blue" id="date" type="date">
+                        <input class="focus-blue" required id="date" type="date">
                     </div>
                     
                     <section class="prio-button-section padding-top-big">
@@ -79,7 +79,7 @@
                                     <img src="../assets/img/svg/up.svg">
                                 </div>
                             </div>
-                            <div id="medium" onclick="handleClickPrio('medium')" class="prio-button">
+                            <div id="medium" onclick="handleClickPrio('medium')" class="prio-button highlighted-button-medium">
                                 <span id="prio_medium">Medium</span>  
                                 <div class="arrow">
                                     <img src="../assets/img/svg/line.svg">
@@ -98,8 +98,8 @@
                         <div>
                             <span>Category <span class="red">*</span></span>
                         </div>
-                        <select class="focus-blue" name="contacts" id="category">
-                            <option value="">Select task category</option>
+                        <select required class="focus-blue" name="contacts" id="category">
+                            <option value="" disabled selected>Select task category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
                         </select>
