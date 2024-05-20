@@ -130,7 +130,34 @@ function addTask(workMode = "todo") {
   };
   allTasks.push(task);
   saveTasks();
-  setTimeout(reloadPage, 300);
+  giveAddTaskFeedback();
+  setTimeout(reloadPage, 4000);
+}
+
+/**
+ * Displays a feedback message after adding a task.
+ *
+ * @return {void} This function does not return anything.
+ */
+function giveAddTaskFeedback() {
+  let addTaskFeedback = document.getElementById("addTaskFeedback");
+
+  addTaskFeedback.classList.remove("d-none");
+        setTimeout(function () {
+          addTaskFeedback.classList.add("hide-animation");
+        }, 3000);
+        setTimeout(function () {
+          addTaskFeedback.classList.add("d-none");
+        }, 5000);
+}
+
+/**
+ * Reloads the current page.
+ *
+ * @return {void} This function does not return anything.
+ */
+function reloadPage() {
+  location.reload();
 }
 
 /**
@@ -185,6 +212,21 @@ function clearTask() {
   divsToRemove.forEach(div => {
     subTaskContainer.removeChild(div);
   });
+
+  setFilter({ value: `` });
+  
+  const initialsContainer = document.getElementById("contactInitals");
+  const divsToRemove2 = initialsContainer.querySelectorAll("div");
+  divsToRemove2.forEach(div => {
+    initialsContainer.removeChild(div);
+  });
+  colors = [];
+  selectedContacts = [];
+  singleContactId = [];
+  saveSingleContact = [];
+  names = [];
+
+
   subTasks = [];
   handleClickPrio('medium');
   const form = document.getElementById("addTaskForm");
@@ -193,6 +235,8 @@ function clearTask() {
                 input.value = '';
             });
 }
+
+
 
 function setDate() {
   document.addEventListener('click', function(event) {

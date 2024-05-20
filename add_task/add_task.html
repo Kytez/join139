@@ -145,6 +145,8 @@
     
     </form>
 
+    <div id="addTaskFeedback" class="btn-dark-large d-none">Task successfully added</div>
+
    
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navAddTask.html"></div>
 
@@ -152,6 +154,20 @@
     <script>
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date').setAttribute('min', today);
+        document.addEventListener('click', function(event) {
+        function hideContactList() {
+            let contactList = document.getElementById("selected-contacts");
+            contactList.classList.add("d-none");
+        }
+            document.addEventListener('click', function(event) {
+                let contactSelect = document.getElementById('contact-select');
+                let selectedContacts = document.getElementById('selected-contacts');
+            
+                    if (!contactSelect.contains(event.target) && !selectedContacts.contains(event.target)) {
+                        hideContactList();
+                    }
+                });
+        });
     </script>
 </body>
 </html>
