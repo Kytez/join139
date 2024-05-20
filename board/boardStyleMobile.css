@@ -136,7 +136,6 @@ input[type="search"]::-webkit-search-results-button {
   border-radius: 10px;
   border-style: dotted;
   margin-top: 16px;
-  min-width: 260px;
 }
 
 .height28px {
@@ -896,7 +895,9 @@ button {
   .add-task-button {
     display: none;
   }
-
+  .no-taskts-to-do {
+    min-width: 240px;
+  }
   .pop-up {
     top: 85px;
   }
