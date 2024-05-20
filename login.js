@@ -16,6 +16,7 @@ function guestLogIn() {
 function logIn() {
   let emailLogin = document.getElementById("emailInputLogin");
   let passwordLogin = document.getElementById("passwordInputLogin");
+  let logInFeedback = document.getElementById("logInFeedback");
 
   let userFound = users.find(function (user) {
     return user.email === emailLogin.value;
@@ -27,10 +28,24 @@ function logIn() {
       saveActiveUser(userFound);
       setTimeout(moveToSummary, 1500);
     } else {
-      alert("Email and Password do not match");
+      logInFeedback.innerHTML = "Email and Password do not match";
+      logInFeedback.classList.remove("d-none");
+        setTimeout(function () {
+          logInFeedback.classList.add("hide-animation");
+        }, 3000);
+        setTimeout(function () {
+          logInFeedback.classList.add("d-none");
+        }, 5000);
     }
   } else {
-    alert("Email/User does not exist");
+      logInFeedback.innerHTML = "Email does not exist";
+      logInFeedback.classList.remove("d-none");
+        setTimeout(function () {
+          logInFeedback.classList.add("hide-animation");
+        }, 3000);
+        setTimeout(function () {
+          logInFeedback.classList.add("d-none");
+        }, 5000);
   }
 }
 

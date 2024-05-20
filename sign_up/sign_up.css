@@ -139,7 +139,7 @@ h1 {
 #tooltipPasswordNotMatching {
   position: absolute;
   top: 42px;
-  left: calc(50% - 230px);
+  left: calc(50% - 150px);
   color: red;
   font-size: 12px;
 }
@@ -157,6 +157,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 32px;
+  padding-bottom: 12px;
 }
 
 .legal-footer a {
@@ -181,10 +182,14 @@ h1 {
   .header img {
     width: 64px;
   }
+
+  #tooltipPasswordNotMatching {
+    left: calc(50% - 230px);
+  }
 }
 
 @media (max-height: 700px) {
   .sign-up-body {
-    padding: 8px 0;
+    padding: 8px 0 16px 0;
   }
 }

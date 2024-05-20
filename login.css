@@ -119,6 +119,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 32px;
+  padding-bottom: 12px;
 }
 
 .legal-footer a {
@@ -131,6 +132,19 @@ h1 {
   top: 8px;
   left: calc(50% - 130px);
   transition: all 1s ease-in-out;
+  z-index: 999;
+}
+
+#logInFeedback {
+  width: 230px;
+  position: absolute;
+  top: 8px;
+  left: calc(50% - 115px);
+  transition: all 1s ease-in-out;
+  font-size: 12px;
+  z-index: 999;
+  color: red !important;
+  border: 2px solid red !important;
 }
 
 /* ////////////////////////////////////////////// ANIMATION SECTION ///////////////////////////////////////////////// */
@@ -231,6 +245,6 @@ h1 {
 
 @media (max-height: 700px) {
   .log-in-body {
-    padding: 8px 0;
+    padding: 8px 0 16px 0;
   }
 }
