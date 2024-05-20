@@ -1,7 +1,7 @@
 let allTasks = [];
 let emptyArray = [];
 let selectedContacts = [];
-let prio = "";
+let prio = "medium";
 let singleContactId = [];
 let saveSingleContact = [];
 let colors = [];
@@ -22,6 +22,11 @@ async function initAddTask() {
   await loadAllTasks();
   setFilter({ value: `` });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById('date').setAttribute('min', today);
+});
 
 /**
  * Filters contacts based on the provided input value and renders the filtered contact list.
