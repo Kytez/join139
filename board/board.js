@@ -169,10 +169,10 @@ function clearTaskBoard() {
         divs.forEach(function(div) {
             div.remove();
           });
-  prio = "";
+  prio = "medium";
   removeSelectedContactsBoard();
 
-  document.getElementById("mediumBoard").classList.remove("highlighted-button-medium");
+  document.getElementById("mediumBoard").classList.add("highlighted-button-medium");
   document.getElementById("lowBoard").classList.remove("highlighted-button-low");
   document.getElementById("urgentBoard").classList.remove("highlighted-button-urgent");
 }

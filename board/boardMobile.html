@@ -191,7 +191,7 @@
                     <div>
                         <span>Due date</span><span class="red">*</span>
                     </div>
-                    <input onclick="setDateBoard()" class="focus-blue" required id="dateBoard" type="date" min="">
+                    <input class="focus-blue" required id="dateBoard" type="date" min="">
                 </div>
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
@@ -369,11 +369,10 @@
         </div>
     </section>
 </section>
-    <script>
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('date').setAttribute('min', today);
-    </script>
-                
+<script>
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('dateBoard').setAttribute('min', today);
+</script>         
 
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navBoard.html"></div>
 
