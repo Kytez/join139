@@ -22,10 +22,10 @@ span {
 .add-task {
   width: 100%;
   display: flex;
+  justify-content: space-between;
 }
 
 .add-task-section {
-  width: -webkit-fill-available;
   display: block;
   justify-content: center;
   align-items: center;
@@ -36,8 +36,6 @@ span {
   height: 424px;
   width: 1px;
   background-color: #000000;
-  margin-left: 48px;
-  margin-right: 48px;
 }
 
 .add-task-card {
@@ -269,9 +267,9 @@ textarea::placeholder {
 }
 
 .styled-input {
-  width: -webkit-fill-available;
+  /* width: -webkit-fill-available; */
   height: 48px;
-  padding: 1px 20px;
+  /* padding: 1px 20px; */
   border: 1px solid #d1d1d1;
   border-radius: 10px;
   font-size: 20px;
@@ -439,6 +437,20 @@ button {
   z-index: 800;
 }
 
+#addTaskFeedback {
+  width: 230px;
+  position: fixed;
+  top: 16px;
+  left: calc(50% - 115px);
+  transition: all 1s ease-in-out;
+  font-size: 12px;
+  z-index: 999;
+}
+
+.hide-animation {
+  transform: translateY(-300px);
+}
+
 /* ///////////////////////////////////////// RESPONSIVE ////////////////////////////////////////////////// */
 
 @media (min-width: 992px) {
@@ -466,7 +478,7 @@ button {
   #contact-select {
     font-size: 20px;
     font-weight: 400 !important;
-    width: 402px !important;
+    width: 434px !important;
   }
 
   #category {
@@ -513,9 +525,6 @@ button {
   input {
     width: 434px;
   }
-  .size-100 {
-    width: auto;
-  }
 
   .add-task-section {
     display: flex;
@@ -524,6 +533,20 @@ button {
 
   .subtask-container {
     width: 290px !important;
+  }
+
+  #subTaskInput {
+    width: 420px !important;
+  }
+
+  #addTaskFeedback {
+    width: 230px;
+    position: fixed;
+    top: 108px;
+    left: 50%;
+    transition: all 1s ease-in-out;
+    font-size: 12px;
+    z-index: 999;
   }
 }
 
@@ -606,10 +629,7 @@ button {
     width: 334px;
   }
   #contact-select {
-    width: 302px !important;
-  }
-  .size-100 {
-    width: fit-content;
+    width: 334px !important;
   }
   .prio-container {
     width: fit-content;
@@ -617,12 +637,9 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  .line {
-    margin-left: 0;
-  }
+  
   .add-task-section {
     display: flex;
-    /* width: 250px; */
     align-items: center;
   }
   .contact-list {
@@ -630,6 +647,10 @@ button {
   }
   .singleSubTasks {
     width: 330px;
+  }
+
+  #subTaskInput {
+    width: 320px !important;
   }
 }
 
@@ -659,10 +680,7 @@ button {
     width: 284px;
   }
   #contact-select {
-    width: 252px !important;
-  }
-  .size-100 {
-    width: fit-content;
+    width: 284px !important;
   }
   .prio-container {
     width: fit-content;
@@ -670,9 +688,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  .line {
-    margin-left: 0;
-  }
+  
   .add-task-section {
     display: flex;
     align-items: center;
@@ -682,6 +698,10 @@ button {
   }
   .singleSubTasks {
     width: 280px;
+  }
+
+  #subTaskInput {
+    width: 270px !important;
   }
 }
 
@@ -712,10 +732,7 @@ button {
     width: 484px;
   }
   #contact-select {
-    width: 452px !important;
-  }
-  .size-100 {
-    width: fit-content;
+    width: 484px !important;
   }
   .prio-container {
     width: fit-content;
@@ -723,9 +740,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  .line {
-    margin-left: 0;
-  }
+  
   .add-task-section {
     display: flex;
     align-items: center;
@@ -736,6 +751,12 @@ button {
   .singleSubTasks {
     width: 480px;
   }
+
+  #subTaskInput {
+    width: 470px !important;
+  }
+
+  
 }
 
 @media (max-width: 652px) {
@@ -768,10 +789,7 @@ button {
     width: 384px;
   }
   #contact-select {
-    width: 352px !important;
-  }
-  .size-100 {
-    width: fit-content;
+    width: 384px !important;
   }
   .prio-container {
     width: fit-content;
@@ -779,12 +797,9 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  .line {
-    margin-left: 0;
-  }
+  
   .add-task-section {
     display: flex;
-    /* width: 250px; */
     align-items: center;
   }
   .contact-list {
@@ -796,6 +811,10 @@ button {
 
   .subtask-container {
     width: 390px;
+  }
+
+  #subTaskInput {
+    width: 370px !important;
   }
 }
 
@@ -829,10 +848,7 @@ button {
     width: 284px;
   }
   #contact-select {
-    width: 252px !important;
-  }
-  .size-100 {
-    width: fit-content;
+    width: 284px !important;
   }
   .prio-container {
     width: fit-content;
@@ -840,9 +856,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  .line {
-    margin-left: 0;
-  }
+  
   .add-task-section {
     display: flex;
     align-items: center;
@@ -856,5 +870,9 @@ button {
 
   .subtask-container {
     width: 290px;
+  }
+
+  #subTaskInput {
+    width: 270px !important;
   }
 }
