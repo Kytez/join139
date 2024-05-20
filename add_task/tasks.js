@@ -185,6 +185,21 @@ function clearTask() {
   divsToRemove.forEach(div => {
     subTaskContainer.removeChild(div);
   });
+
+  setFilter({ value: `` });
+  
+  const initialsContainer = document.getElementById("contactInitals");
+  const divsToRemove2 = initialsContainer.querySelectorAll("div");
+  divsToRemove2.forEach(div => {
+    initialsContainer.removeChild(div);
+  });
+  colors = [];
+  selectedContacts = [];
+  singleContactId = [];
+  saveSingleContact = [];
+  names = [];
+
+
   subTasks = [];
   handleClickPrio('medium');
   const form = document.getElementById("addTaskForm");
@@ -193,6 +208,8 @@ function clearTask() {
                 input.value = '';
             });
 }
+
+
 
 function setDate() {
   document.addEventListener('click', function(event) {
