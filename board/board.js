@@ -96,6 +96,11 @@ function showTask(
       subTasks,
       singleContactId
     );
+    let assignedUserDiv = document.getElementById(`assigned-taskUsers-${id}`)
+    let namesArray = names.split(',') 
+    if(namesArray.length >= 4){
+      assignedUserDiv.classList.add('taskUsers')
+    }
     assignCategoryColour();
     assignUserColourPopUp(names, id);
     loadCheckBoxStatus(id);
@@ -310,7 +315,7 @@ function breakEditSession(id) {
             }, 100);
         })(i);
       }
-      let checkbox = allTasks[id]['checkbox']
+    let checkbox = allTasks[id]['checkbox']
     emptyCurrentContainerInformation();
     checkbox.splice(-numberAddedSubtasks)
     numberAddedSubtasks = 0;

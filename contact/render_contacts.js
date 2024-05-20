@@ -24,6 +24,7 @@ const colorArray = [
 async function initContacts() {
   await includeHTML();
   await loadActiveUser();
+  await loadAllTasks();
   renderUserInitials();
   await loadContacts();
   assignIDContacts();
@@ -247,7 +248,7 @@ function returnContactViewHTMLMobile(userName, email, phone, colour, id) {
                 <img src="../assets/img/contacts/edit.png" alt="">
                 <span style="padding-left: 10px;">Edit</span>
             </div>
-            <div onclick="deleteContact(contacts.findIndex((contact) => contact.userName == userName))" class="pointer">
+            <div onclick="deleteContact(contacts.findIndex((contact) => contact.userName == '${userName}'))" class="pointer">
                 <img style="margin-left: 12px;" src="../assets/img/contacts/delete.png" alt="">
                 <span style="margin-left: 12px;">Delete</span>
             </div>
@@ -283,7 +284,7 @@ function returnContactViewHTMLDesktop(userName, email, phone, colour, id) {
                     <div onclick="editContact('${userName}', '${email}', '${phone}', '${colour}', '${id}')" class="edit-delete edit d-flex align-center pointer">
                         <img style="margin-right: 10px;" src="../assets/img/contacts/edit.png" alt="">Edit
                     </div>
-                    <div onclick="deleteContact(${id})" class="d-flex blue align-center pointer edit-delete">
+                    <div onclick="deleteContact(contacts.findIndex((contact) => contact.userName == '${userName}'))" class="d-flex blue align-center pointer edit-delete">
                         <img class="bin" style="margin-right: 10px;" src="../assets/img/contacts/delete.png" alt="">Delete
                     </div>
                 </div>
@@ -342,7 +343,7 @@ function generateEditContainer(user, colour, id) {
                     <input id="edit-emailContact" class="input" placeholder="Email" type="email" required>
                     <input id="edit-phoneContact" class="input" placeholder="Phone" type="number" required>
                     <div class="d-flex justify-center edit-buttons">
-                        <button onclick="deleteContact(${id})" id="delete-btn" class="btn-create pointer delete">
+                        <button onclick="deleteContact(contacts.findIndex((contact) => contact.userName == '${userName}'))" id="delete-btn" class="btn-create pointer delete">
                             <div id="delete" class="blue">
                                 <span class="btn-txt">Delete</span>
                             </div>
@@ -390,12 +391,28 @@ async function updateContact(id) {
  * @param {number} id This is the id of the contact to be deleted.
  */
 async function deleteContact(id) {
+  deleteContactFromTasks(id);
   contacts.splice(id, 1);
   await saveContacts();
   renderContactList();
   closeContact();
   closeEditContact();
   document.getElementById("viewedContactDesktop").innerHTML = "";
+}
+
+function deleteContactFromTasks(idContact){
+  for (let i = 0; i < allTasks.length; i++) {
+    if(allTasks[i].names && allTasks[i].names.length>0){
+      let indexContactInTask = allTasks[i].names.findIndex(name => name === contacts[idContact].userName)
+      if(indexContactInTask !== -1){
+        allTasks[i].assignedTo.splice(indexContactInTask, 1)
+        allTasks[i].colors.splice(indexContactInTask, 1)
+        allTasks[i].names.splice(indexContactInTask, 1)
+        allTasks[i].singleContactId.splice(indexContactInTask, 1)
+      }
+    }
+  }
+  saveTasks()
 }
 
 /**
