@@ -15,6 +15,7 @@
     <script src="../script.js"></script>
     <script src="./tasks.js"></script>
     <script src="../contact/render_contacts.js"></script>
+    
 </head>
 <body onload="initAddTask()">
 
@@ -65,7 +66,7 @@
                         <div>
                             <span>Due date</span><span class="red">*</span>
                         </div>
-                        <input class="focus-blue" required id="date" type="date">
+                        <input onclick="setDate()" class="focus-blue" required id="date" type="date" min="">
                     </div>
                     
                     <section class="prio-button-section padding-top-big">
@@ -148,6 +149,9 @@
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navAddTask.html"></div>
 
     <div id="navDesktop" w3-include-html="../assets/templates/navAktivDesktop/navAddTaskDesktop.html"></div>
-
+    <script>
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+    </script>
 </body>
 </html>
