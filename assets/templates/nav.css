@@ -71,4 +71,8 @@
     width: 72px;
     margin: 0 2px;
   }
+
+  .nav-bar {
+    gap: 4px;
+  }
 }

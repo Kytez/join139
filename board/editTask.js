@@ -66,15 +66,9 @@ function renderEditTaskPopUpElements(
   titleEdit.value = title;
   descriptionEdit.value = description;
   dateEdit.value = date;
-<<<<<<< HEAD
-  setPrioButtonsColorEdit(prio);
-  console.log(singleContactId);
-  passIdsToSelectTaskContact(singleContactId);
-=======
   setPrioButtonsColorEdit(prioTask);
   prio = allTasks[id]["prio"];
   passArrayToSelectTaskContact(names);
->>>>>>> d0d8e29d517dfb79021670f4f27ba3f6328a3b9b
   addExistingSubtaskEdit(id);
   okButton.innerHTML = /*html*/ `
         <button onclick="editTask(${id})"  class="btn-dark-edit pointer">Ok 
@@ -96,46 +90,6 @@ function renderEditTaskPopUpElements(
 
 }
 
-<<<<<<< HEAD
-function editSubtaskEdit(id) {
-    console.log("Subtask bearbeiten:", id);
-    let subTaskDiv = document.getElementById(`subTaskEdit_${id}`);
-    let subTaskText = subTaskDiv.querySelector("div");
-    let subTaskTextInput = document.createElement("input");
-    let saveEditSubtasks = document.getElementById(`saveEditSubtasksEdit_${id}`);
-    let editSubtasks = document.getElementById(`editSubtasksEdit_${id}`);
-    saveEditSubtasks.classList.remove("d-none");
-    editSubtasks.classList.add("d-none");
-    subTaskTextInput.type = "text";
-    subTaskTextInput.value = subTaskText.textContent;
-    subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
-}
-
-function deleteSubtaskEdit(entry, id) {
-  const index = subTasks.findIndex((element) => element.id === id);
-  subTasks.splice(index, 1);
-  entry.remove();
-}
-
-function saveEditSubtaskEdit(id) {
-    let elementToRemove = document.getElementById(`subTaskEdit_${id}`);
-    let subTaskTextInput = elementToRemove.querySelector("input").value;
-    let saveEditSubtasks = document.getElementById(`saveEditSubtasksEdit_${id}`);
-    let editSubtasks = document.getElementById(`editSubtasksEdit_${id}`);
-    console.log(subTaskTextInput);
-    if (elementToRemove) {
-        elementToRemove.remove();
-        subTasks.splice(id, 1);
-        subTasks.push(subTaskTextInput);
-        renderSubtasksEdit();
-        saveEditSubtasks.classList.remove("d-none");
-        editSubtasks.classList.add("d-none");
-    }
-}
-
-function passIdsToSelectTaskContact(singleContactId) {
-  console.log(singleContactId);
-=======
 /**
  * Passes an array of names to the function `selectTaskContactEdit` to select task contacts.
  *
@@ -143,7 +97,6 @@ function passIdsToSelectTaskContact(singleContactId) {
  * @return {void} This function does not return anything.
  */
 function passArrayToSelectTaskContact(names) {
->>>>>>> d0d8e29d517dfb79021670f4f27ba3f6328a3b9b
   document.getElementById("contactInitalsEdit").innerHTML = "";
   let namesArray = names.split(",");
 
