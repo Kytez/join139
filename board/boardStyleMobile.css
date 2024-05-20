@@ -749,6 +749,7 @@ button {
 }
 
 .button-container-board {
+  gap: 320px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -848,7 +849,6 @@ button {
   #navMobile {
     display: none;
   }
-
   #headerMobile {
     display: none;
   }
@@ -904,6 +904,9 @@ button {
 @media (max-width: 992px) {
   .add-task-button {
     display: none;
+  }
+  .button-container-board {
+    gap: 0;
   }
   .no-taskts-to-do {
     min-width: 240px;
