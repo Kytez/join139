@@ -83,6 +83,10 @@ a {
   color: #797d84;
 }
 
+.nav-bar-desktop span {
+  font-size: 16px !important;
+}
+
 /* HOVER SECTION */
 
 .menu-button-desktop:hover {
