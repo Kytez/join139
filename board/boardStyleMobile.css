@@ -732,8 +732,6 @@ button {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  position: absolute;
-  right: 0;
 
   img {
     width: 25.5px;
@@ -747,7 +745,7 @@ button {
 
 .button-container-board {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 

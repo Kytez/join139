@@ -24,6 +24,7 @@ const colorArray = [
 async function initContacts() {
   await includeHTML();
   await loadActiveUser();
+  await loadAllTasks();
   renderUserInitials();
   await loadContacts();
   assignIDContacts();
@@ -390,12 +391,26 @@ async function updateContact(id) {
  * @param {number} id This is the id of the contact to be deleted.
  */
 async function deleteContact(id) {
+  deleteContactFromTasks(id);
   contacts.splice(id, 1);
   await saveContacts();
   renderContactList();
   closeContact();
   closeEditContact();
   document.getElementById("viewedContactDesktop").innerHTML = "";
+}
+
+function deleteContactFromTasks(idContact){
+  for (let i = 0; i < allTasks.length; i++) {
+    let indexContactInTask = allTasks[i].names.findIndex(name => name === contacts[idContact].userName)
+    if(indexContactInTask){
+      allTasks[i].assignedTo.splice(indexContactInTask, 1)
+      allTasks[i].colors.splice(indexContactInTask, 1)
+      allTasks[i].names.splice(indexContactInTask, 1)
+      allTasks[i].singleContactId.splice(indexContactInTask, 1)
+    }
+  }
+  saveTasks()
 }
 
 /**

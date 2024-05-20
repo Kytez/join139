@@ -170,11 +170,11 @@
                     </div>
                     <textarea id="descriptionBoard" placeholder="Enter a Description" name="" id="" cols="30" rows="3"></textarea>
                 </div>
-                <div class="size-100 padding-top-big">
+                <div onclick="doNotClose(event);" class="size-100 padding-top-big">
                     <div>
                         <span>Assigned to</span>
                     </div>
-                    <input oninput="setFilterBoard(this)" type="text" onclick="doNotClose(event);showContactListBoard()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts" autocomplete="off">
+                    <input oninput="setFilterBoard(this)" type="text" onclick="showContactListBoard()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectBoard" name="contacts" autocomplete="off">
                     <section class="d-none contact-list" id="selected-contactsBoard"></section>
                     <div id="contactInitalsBoard"></div>
                     
@@ -320,11 +320,11 @@
                             </div>
                         </div>
                     </section>
-                    <div class="size-100 padding-top-big">
+                    <div onclick="doNotClose(event);" class="size-100 padding-top-big">
                         <div>
                             <span class="colorEdit">Assigned to</span>
                         </div>
-                        <input oninput="setFilterEdit(this)" required type="text" onclick="doNotClose(event);showContactListEdit()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectEdit" name="contacts">
+                        <input oninput="setFilterEdit(this)" required type="text" onclick="showContactListEdit()" class="styled-input" placeholder="Select contacts to assign" id="contact-selectEdit" name="contacts">
                         <section class="d-none contact-list" id="selected-contactsEdit" autocomplete="off"></section>
                         <div id="contactInitalsEdit"></div>
                     </input>

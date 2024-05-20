@@ -310,7 +310,7 @@ function breakEditSession(id) {
             }, 100);
         })(i);
       }
-      let checkbox = allTasks[id]['checkbox']
+    let checkbox = allTasks[id]['checkbox']
     emptyCurrentContainerInformation();
     checkbox.splice(-numberAddedSubtasks)
     numberAddedSubtasks = 0;
