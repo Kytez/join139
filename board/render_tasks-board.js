@@ -227,10 +227,6 @@ function generateAssignedUsersPopUp(id) {
     let assignedTo = task.assignedTo;
     if(assignedTo !== 0){
         let usersHTML = '';
-        // let namesArray = names.split(",");
-        // if(names.length == 0){
-        //     namesArray = names.split(' ');
-        // }
         for (let i = 0; i < names.length; i++) {
             let user = names[i];
             usersHTML += returnAssignedUserHTMLPopUp(user)
