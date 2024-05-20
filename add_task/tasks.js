@@ -185,8 +185,25 @@ async function loadAllTasks() {
  * @return {void} This function does not return anything.
  */
 function clearTask() {
-  location.reload();
+  handleClickPrio('medium');
+  const form = document.getElementById("addTaskForm");
+            const inputs = form.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.value = '';
+            });
 }
+
+function hideContactList() {
+  let contactList = document.getElementById("selected-contacts");
+  contactList.classList.add("d-none");
+}
+
+document.addEventListener('click', function(event) {
+  let contactSelect = document.getElementById('contact-select');
+  if (!contactSelect.contains(event.target)) {
+      hideContactList();
+  }
+});
 
 /**
  * Selects a task contact and triggers the changeCheckedAndColor function.
