@@ -23,11 +23,6 @@ async function initAddTask() {
   setFilter({ value: `` });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  var today = new Date().toISOString().split('T')[0];
-  document.getElementById('date').setAttribute('min', today);
-});
-
 /**
  * Filters contacts based on the provided input value and renders the filtered contact list.
  *
@@ -185,6 +180,12 @@ async function loadAllTasks() {
  * @return {void} This function does not return anything.
  */
 function clearTask() {
+  const subTaskContainer = document.getElementById("subTaskContainer");
+  const divsToRemove = subTaskContainer.querySelectorAll("div");
+  divsToRemove.forEach(div => {
+    subTaskContainer.removeChild(div);
+  });
+  subTasks = [];
   handleClickPrio('medium');
   const form = document.getElementById("addTaskForm");
             const inputs = form.querySelectorAll('input, textarea');
@@ -193,17 +194,19 @@ function clearTask() {
             });
 }
 
+function setDate() {
+  document.addEventListener('click', function(event) {
+    let contactSelect = document.getElementById('contact-select');
+    if (!contactSelect.contains(event.target)) {
+    hideContactList();
+        }
+    });
+}
+
 function hideContactList() {
   let contactList = document.getElementById("selected-contacts");
   contactList.classList.add("d-none");
 }
-
-document.addEventListener('click', function(event) {
-  let contactSelect = document.getElementById('contact-select');
-  if (!contactSelect.contains(event.target)) {
-      hideContactList();
-  }
-});
 
 /**
  * Selects a task contact and triggers the changeCheckedAndColor function.
