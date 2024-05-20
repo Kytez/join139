@@ -345,10 +345,14 @@ function renderSubtasks() {
  */
 function addSubtask() {
   let subTaskInput = document.getElementById("subTaskInput").value;
-  subTasks.push(subTaskInput);
-  console.log(subTaskInput);
-  renderSubtasks(); // Rendere die Unteraufgaben neu
-  document.getElementById("subTaskInput").value = "";
+  if (subTaskInput.trim() === "") {
+    return; // Falls das Eingabefeld leer ist oder nur aus Leerzeichen besteht, passiert nichts
+  }else {
+    subTasks.push(subTaskInput);
+    console.log(subTaskInput);
+    renderSubtasks(); // Rendere die Unteraufgaben neu
+    document.getElementById("subTaskInput").value = "";
+  }
 }
 
 /**
