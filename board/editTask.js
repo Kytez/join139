@@ -68,6 +68,7 @@ function renderEditTaskPopUpElements(
   descriptionEdit.value = description;
   dateEdit.value = date;
   setPrioButtonsColorEdit(prio);
+  console.log(singleContactId);
   passIdsToSelectTaskContact(singleContactId);
   addExistingSubtaskEdit(id);
   okButton.innerHTML = /*html*/ `
@@ -165,6 +166,7 @@ function saveEditSubtaskEdit(id) {
 }
 
 function passIdsToSelectTaskContact(singleContactId) {
+  console.log(singleContactId);
   document.getElementById("contactInitalsEdit").innerHTML = "";
   // Überprüfe, ob singleContactId eine gültige Variable ist
   if (!singleContactId || typeof singleContactId !== "string") {
