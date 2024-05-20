@@ -102,7 +102,7 @@ function passArrayToSelectTaskContact(names) {
 
   for (let i = 0; i < namesArray.length; i++) {
     let id = contacts.findIndex(contact => contact.userName === namesArray[i]);
-    if (!isNaN(id)) {
+    if (id !== -1) {
       selectTaskContactEdit(id);
     }
   }

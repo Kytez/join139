@@ -96,6 +96,11 @@ function showTask(
       subTasks,
       singleContactId
     );
+    let assignedUserDiv = document.getElementById(`assigned-taskUsers-${id}`)
+    let namesArray = names.split(',') 
+    if(namesArray.length >= 4){
+      assignedUserDiv.classList.add('taskUsers')
+    }
     assignCategoryColour();
     assignUserColourPopUp(names, id);
     loadCheckBoxStatus(id);

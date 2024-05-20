@@ -136,8 +136,8 @@ function renderTasksPopUp(title, description, date, id, category, prio, names, s
             </div>
             <div class="margin-top-24">
                 <span class="detail">Assigned To:</span>
-                <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned taskUsers margin-left-16">
-                    ${generateAssignedUsersPopUp(names)}
+                <div id="assigned-taskUsers-${id}" class="margin-top-16 user-flex column user-assigned margin-left-16">
+                    ${generateAssignedUsersPopUp(id)}
                 </div>
             </div>
             <div class="margin-top-24">
@@ -221,16 +221,21 @@ function generateAssignedUsers(element) {
  * @param {string} names - The names of assigned users.
  * @returns {string} - HTML string for the assigned users in task pop-up.
  */
-function generateAssignedUsersPopUp(names) {
-    if(names){
+function generateAssignedUsersPopUp(id) {
+    let task = allTasks[id];
+    let assignedTo = task.assignedTo;
+    if(assignedTo !== 0){
         let usersHTML = '';
         let namesArray = names.split(",");
         for (let i = 0; i < namesArray.length; i++) {
-            const user = namesArray[i];
+            let user = namesArray[i];
             usersHTML += returnAssignedUserHTMLPopUp(user)
         }
-        return usersHTML
     }
+    else{
+        usersHTML = 'No Users Assigned'    
+    }
+    return usersHTML
 }
 
 /**
@@ -340,7 +345,9 @@ function assignUserColourCard() {
  *  * @param {number} id - The ID of the assigned people.
  */
 function assignUserColourPopUp(names, id) {
-    if(names){
+    let task = allTasks[id];
+    let assignedTo = task.assignedTo;
+    if(assignedTo !== 0){
         let namesArray = names.split(","); 
         const task = allTasks[id];
         let divElement = document.getElementById(`assigned-taskUsers-${id}`);
