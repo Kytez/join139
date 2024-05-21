@@ -207,10 +207,12 @@ input[type="search"]::-webkit-search-results-button {
 
 #contactInitalsEdit {
   display: flex;
+  flex-wrap: wrap;
 }
 
 #contactInitalsBoard {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .subtasks {
@@ -915,7 +917,7 @@ button {
     top: 85px;
   }
 
-  .body {
+  body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

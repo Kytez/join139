@@ -44,6 +44,12 @@ function setFilterBoard(input) {
   renderAssignedContactList(filteredContacts);
 }
 
+/**
+ * Filters contacts based on the provided input value and renders the filtered contact list.
+ *
+ * @param {Object} input - The input object containing the filter value.
+ * @return {void} This function does not return any value.
+ */
 function setFilter(input) {
   let filter = input.value.trim().toLowerCase();
   let filteredContacts;
@@ -130,7 +136,34 @@ function addTask(workMode = "todo") {
   };
   allTasks.push(task);
   saveTasks();
-  setTimeout(reloadPage, 300);
+  giveAddTaskFeedback();
+  setTimeout(reloadPage, 4000);
+}
+
+/**
+ * Displays a feedback message for adding a task.
+ *
+ * @return {void} This function does not return anything.
+ */
+function giveAddTaskFeedback() {
+  let addTaskFeedback = document.getElementById("addTaskFeedback");
+
+  addTaskFeedback.classList.remove("d-none");
+        setTimeout(function () {
+          addTaskFeedback.classList.add("hide-animation");
+        }, 3000);
+        setTimeout(function () {
+          addTaskFeedback.classList.add("d-none");
+        }, 5000);
+}
+
+/**
+ * Reloads the current page.
+ *
+ * @return {void} This function does not return a value.
+ */
+function reloadPage() {
+  location.reload();
 }
 
 /**
@@ -208,6 +241,11 @@ function clearTask() {
             });
 }
 
+/**
+ * Hides the contact list by adding the CSS class "d-none" to the contact list element.
+ *
+ * @return {void} This function does not return a value.
+ */
 function hideContactList() {
   let contactList = document.getElementById("selected-contacts");
   contactList.classList.add("d-none");
@@ -426,14 +464,17 @@ function deleteSubtask(entry, id) {
             }
 }
 
+/**
+ * Updates the IDs of subtasks in the DOM and the subTasks array.
+ *
+ * @return {void} This function does not return anything.
+ */
 function updateSubtaskIds() {
-  // Aktualisiere die IDs im DOM
   let subTaskElements = document.querySelectorAll(".singleSubTasks");
   subTaskElements.forEach((element, index) => {
     element.id = `subTask_${index}`;
   });
 
-  // Aktualisiere die IDs im subTasks-Array
   subTasks.forEach((task, index) => {
     task.id = index;
   });

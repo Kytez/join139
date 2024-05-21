@@ -9,6 +9,12 @@ function handleClickPrioEdit(i) {
     }
   }
   
+/**
+ * Sets the priority and updates the color of the priority buttons on the edit task form.
+ *
+ * @param {string} i - The priority to be set.
+ * @return {void} This function does not return a value.
+ */
 function selectPrioEdit(i) {
   prio = i;
   setPrioButtonsColorEdit(prio);

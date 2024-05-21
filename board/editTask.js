@@ -80,6 +80,12 @@ function renderEditTaskPopUpElements(
 
 }
 
+/**
+ * Returns HTML markup for adding a subtask.
+ *
+ * @param {number} id - The ID of the task.
+ * @return {string} The HTML markup for adding a subtask.
+ */
 function returnAddSubtaskBoardHTML(id){
   return /*html*/`
     <div>
@@ -92,6 +98,12 @@ function returnAddSubtaskBoardHTML(id){
 `
 }
 
+/**
+ * Returns HTML markup for a close button in the edit task session.
+ *
+ * @param {number} id - The ID of the task.
+ * @return {string} The HTML markup for the close button.
+ */
 function returnCloseEditButton(id){
   return /*html*/`
     <img onclick="breakEditSession(${id})" class="close-img pointer" src="../assets/img/icons/close.png">
