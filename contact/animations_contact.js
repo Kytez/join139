@@ -202,7 +202,7 @@ function closeAddContact() {
       "transform: translateY(275%)";
   } else {
     document.getElementById("add-contact").style =
-      "transform: translateX(200%)";
+      "transform: translateX(300%)";
   }
 }
 
@@ -281,6 +281,6 @@ function closeEditContact() {
       "translateY(275%)";
   } else {
     document.getElementById("edit-contact").style.transform =
-      "translateX(200%)";
+      "translateX(300%)";
   }
 }
