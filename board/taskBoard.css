@@ -259,7 +259,7 @@ textarea::placeholder {
   }
 }
 
-.contact-list-entry:hover {
+.contact-list-hover:hover {
   background-color: #eeeeee;
 }
 

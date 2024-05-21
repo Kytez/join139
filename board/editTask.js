@@ -75,7 +75,13 @@ function renderEditTaskPopUpElements(
             <img src="../assets/img/icons/check_icon.png" alt="">
         </button> 
     `;
-  addSubTaskBtns.innerHTML = /*html*/`
+  addSubTaskBtns.innerHTML = returnAddSubtaskBoardHTML(id)
+  closeEditBtn.innerHTML = returnCloseEditButton(id);
+
+}
+
+function returnAddSubtaskBoardHTML(id){
+  return /*html*/`
     <div>
       <img class="edit" onclick="clearInputAddTaskEdit()" src="../assets/img/svg/Subtasks icons11.svg" alt="">
     </div>
@@ -83,11 +89,13 @@ function renderEditTaskPopUpElements(
     <div>
         <img class="edit" onclick="addSubtaskEdit(${id})" src="../assets/img/svg/Subtasks icons12.svg" alt="">
     </div>
-  `
-  closeEditBtn.innerHTML =/*html*/`
-    <img onclick="breakEditSession(${id})" class="close-img pointer" src="../assets/img/icons/close.png">
-  `
+`
+}
 
+function returnCloseEditButton(id){
+  return /*html*/`
+    <img onclick="breakEditSession(${id})" class="close-img pointer" src="../assets/img/icons/close.png">
+`
 }
 
 function editSubtaskEdit(id) {
@@ -170,7 +178,7 @@ function showContactListEdit() {
  */
 function contactListAddTaskEditHTML(i, userName, initialsString) {
   return `
-    <div id="SingleContactEdit_${i}" onclick="selectTaskContactEdit(${i})" class="contact-list-entry">
+    <div id="SingleContactEdit_${i}" onclick="selectTaskContactEdit(${i})" class="contact-list-entry contact-list-hover">
         <div class="contact-list-entry">
             <div id="initialsEdit_${i}" class="initials">${initialsString}</div>
             <div class="profile-fullname">${userName} </div> 
@@ -214,30 +222,37 @@ function changeCheckedAndColorEdit(i, contact, name) {
   let computedStyle = window.getComputedStyle(element).backgroundColor;
 
   if (emptySelect.classList.contains("d-none")) {
-    selectedContact.style.backgroundColor = "";
-    selectedContact.style.color = "black";
-    emptySelect.classList.remove("d-none");
-    checkedSelect.classList.add("d-none");
-    selectedContacts.splice(selectedContacts.indexOf(contact), 1);
-    colors.splice(colors.indexOf(computedStyle), 1);
-    names.splice(names.indexOf(name), 1);
-    singleContactId.splice(singleContactId.indexOf(i), 1);
-    removeInitialEdit(i);
+    changeColorForDeselectedContacts(i, contact, name, selectedContact, emptySelect, checkedSelect, computedStyle);
   } else {
-    selectedContact.style.backgroundColor = "#2A3647";
-    selectedContact.style.color = "white";
-    emptySelect.classList.add("d-none");
-    checkedSelect.classList.remove("d-none");
-    selectedContacts.push(contact);
-    colors.push(computedStyle);
-    names.push(name);
-    singleContactId.push(i);
-    renderInitials.innerHTML += renderInitialsHTMLEdit(
-      i,
-      initials,
-      computedStyle
-    );
+    changeColorForSelectedContacts(i, contact, name, selectedContact, emptySelect, checkedSelect, initials, renderInitials, computedStyle);
   }
+}
+
+function changeColorForDeselectedContacts(i, contact, name, selectedContact, emptySelect, checkedSelect, computedStyle){
+  selectedContact.style.backgroundColor = "";
+  selectedContact.style.color = "black";
+  emptySelect.classList.remove("d-none");
+  checkedSelect.classList.add("d-none");
+  selectedContacts.splice(selectedContacts.indexOf(contact), 1);
+  colors.splice(colors.indexOf(computedStyle), 1);
+  names.splice(names.indexOf(name), 1);
+  singleContactId.splice(singleContactId.indexOf(i), 1);
+  removeInitialEdit(i);
+}
+function changeColorForSelectedContacts(i, contact, name, selectedContact, emptySelect, checkedSelect,  initials, renderInitials, computedStyle){
+  selectedContact.style.backgroundColor = "#2A3647";
+  selectedContact.style.color = "white";
+  emptySelect.classList.add("d-none");
+  checkedSelect.classList.remove("d-none");
+  selectedContacts.push(contact);
+  colors.push(computedStyle);
+  names.push(name);
+  singleContactId.push(i);
+  renderInitials.innerHTML += renderInitialsHTMLEdit(
+    i,
+    initials,
+    computedStyle
+  );
 }
 
 /**

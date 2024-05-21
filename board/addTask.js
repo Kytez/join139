@@ -265,7 +265,7 @@ function renderAssignedContactListBoard(filteredContacts) {
  */
 function contactListAddTaskBoardHTML(i, userName, initialsString) {
   return `
-    <div id="SingleContactBoard_${i}" onclick="selectTaskContactBoard(${i})" class="contact-list-entry">
+    <div id="SingleContactBoard_${i}" onclick="selectTaskContactBoard(${i})" class="contact-list-entry contact-list-hover">
         <div class="contact-list-entry">
             <div id="initialsBoard_${i}" class="initials">${initialsString}</div>
             <div class="profile-fullname">${userName} </div> 
@@ -308,25 +308,9 @@ function changeCheckedAndColorBoard(i, contact, name) {
   let computedStyle = window.getComputedStyle(element).backgroundColor;
 
   if (emptySelect.classList.contains("d-none")) {
-    selectedContact.style.backgroundColor = "";
-    selectedContact.style.color = "black";
-    emptySelect.classList.remove("d-none");
-    checkedSelect.classList.add("d-none");
-    selectedContacts.splice(selectedContacts.indexOf(contact), 1);
-    colors.splice(colors.indexOf(computedStyle), 1);
-    names.splice(names.indexOf(name), 1);
-    singleContactId.splice(singleContactId.indexOf(i), 1);
-    removeInitialBoard(i);
+    changeColorForDeselectedContacts(i, contact, name, selectedContact, emptySelect, checkedSelect, computedStyle);
   } else {
-    selectedContact.style.backgroundColor = "#2A3647";
-    selectedContact.style.color = "white";
-    emptySelect.classList.add("d-none");
-    checkedSelect.classList.remove("d-none");
-    selectedContacts.push(contact);
-    colors.push(computedStyle);
-    names.push(name);
-    singleContactId.push(i);
-    renderInitials.innerHTML += renderInitialsHTML(i, initials, computedStyle);
+    changeColorForSelectedContacts(i, contact, name, selectedContact, emptySelect, checkedSelect, initials, renderInitials, computedStyle);
   }
 }
 
