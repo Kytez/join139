@@ -490,3 +490,25 @@ button {
     height: 650px;
   }
 }
+
+@media (max-width: 600px) {
+  #selected-contactsBoard{
+    width: auto;
+  }
+}
+@media (max-width: 500px) {
+  .btn-dark{
+    width: auto;
+  }
+}
+@media (max-width: 440px) {
+  .contact-list{
+    width: auto;
+  }
+}
+@media (max-width: 330px) {
+  .prio-button{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
