@@ -97,6 +97,12 @@ function deleteCheckBox(idTask, checkIndex){
  * @param {Array} checkboxArray This is the checkbox array of the task 
  */
 
+/**
+ * Checks if the given checkbox array is empty and adds a default value if it is.
+ *
+ * @param {Array} checkboxArray - The array of checkbox values.
+ * @return {void} This function does not return anything.
+ */
 function checkForEmptyCheckBox(checkboxArray){
     if(checkboxArray.length == 0){
         checkboxArray.push('a')

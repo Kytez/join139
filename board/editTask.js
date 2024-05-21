@@ -80,6 +80,12 @@ function renderEditTaskPopUpElements(
 
 }
 
+/**
+ * Returns HTML markup for adding a subtask.
+ *
+ * @param {number} id - The ID of the task.
+ * @return {string} The HTML markup for adding a subtask.
+ */
 function returnAddSubtaskBoardHTML(id){
   return /*html*/`
     <div>
@@ -92,14 +98,25 @@ function returnAddSubtaskBoardHTML(id){
 `
 }
 
+/**
+ * Returns HTML markup for a close button in the edit task session.
+ *
+ * @param {number} id - The ID of the task.
+ * @return {string} The HTML markup for the close button.
+ */
 function returnCloseEditButton(id){
   return /*html*/`
     <img onclick="breakEditSession(${id})" class="close-img pointer" src="../assets/img/icons/close.png">
 `
 }
 
+/**
+ * Edits a subtask by replacing its text content with an input field for editing.
+ *
+ * @param {number} id - The ID of the subtask to be edited.
+ * @return {void} This function does not return anything.
+ */
 function editSubtaskEdit(id) {
-    console.log("Subtask bearbeiten:", id);
     let subTaskDiv = document.getElementById(`subTaskEdit_${id}`);
     let subTaskText = subTaskDiv.querySelector("div");
     let subTaskTextInput = document.createElement("input");
@@ -112,12 +129,25 @@ function editSubtaskEdit(id) {
     subTaskDiv.replaceChild(subTaskTextInput, subTaskText);
 }
 
+/**
+ * Deletes a subtask from the subTasks array and removes the corresponding HTML element.
+ *
+ * @param {HTMLElement} entry - The HTML element representing the subtask to be deleted.
+ * @param {number} id - The ID of the subtask to be deleted.
+ * @return {void} This function does not return anything.
+ */
 function deleteSubtaskEdit(entry, id) {
   const index = subTasks.findIndex((element) => element.id === id);
   subTasks.splice(index, 1);
   entry.remove();
 }
 
+/**
+ * Saves the edited subtask by replacing its text content with the value of the input field.
+ *
+ * @param {number} id - The ID of the subtask to be edited.
+ * @return {void} This function does not return anything.
+ */
 function saveEditSubtaskEdit(id) {
     let elementToRemove = document.getElementById(`subTaskEdit_${id}`);
     let subTaskTextInput = elementToRemove.querySelector("input").value;
@@ -134,6 +164,12 @@ function saveEditSubtaskEdit(id) {
     }
 }
 
+/**
+ * Logs the value of the `singleContactId` parameter to the console.
+ *
+ * @param {number} singleContactId - The ID of the single contact.
+ * @return {undefined} This function does not return a value.
+ */
 function passIdsToSelectTaskContact(singleContactId) {
   console.log(singleContactId);}
 

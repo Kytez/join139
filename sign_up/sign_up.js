@@ -17,7 +17,6 @@ async function signUp() {
     resetForm(name, email, password, btnSignUp);
   } else {
     if (password.value !== confirmPassword.value) {
-      alert("Passwords don't match");
       resetForm(name, email, password, btnSignUp);
     } else {
       users.push({

@@ -177,6 +177,12 @@ function clearTaskBoard() {
   document.getElementById("urgentBoard").classList.remove("highlighted-button-urgent");
 }
 
+/**
+ * Removes all selected contacts, their colors, names, and single contact IDs.
+ * Also resets the filter value.
+ *
+ * @return {void} This function does not return anything.
+ */
 function removeSelectedContactsBoard() {
     setFilterBoard({ value: `` });
     selectedContacts = [];
