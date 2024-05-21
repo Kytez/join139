@@ -31,6 +31,7 @@ input[type=number] {
   z-index: 999;
   transform: translateX(275%);
   transition: transform 400ms ease-in-out;
+  max-width: 1200px;
 }
 
 .top-bg-contact {
