@@ -201,7 +201,7 @@ input:focus {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    transform: translateX(200%);
+    transform: translateX(300%);
     transition: transform 400ms ease-in-out;
   }
 

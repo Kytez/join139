@@ -198,11 +198,11 @@ function changeBgDark(overlayContainer) {
 function closeAddContact() {
   changeBgBright('overlayAdd');
   if (window.innerWidth < 992) {
-    document.getElementById("add-contact").style =
-      "transform: translateY(275%)";
+    document.getElementById("add-contact").style.transform =
+      "translateY(275%)";
   } else {
-    document.getElementById("add-contact").style =
-      "transform: translateX(300%)";
+    document.getElementById("add-contact").style.transform =
+      "translateX(300%)";
   }
 }
 
