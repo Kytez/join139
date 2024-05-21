@@ -127,7 +127,8 @@ function saveEditSubtaskEdit(id) {
 }
 
 function passIdsToSelectTaskContact(singleContactId) {
-  console.log(singleContactId);
+  console.log(singleContactId);}
+
 /**
  * Passes an array of names to the function `selectTaskContactEdit` to select task contacts.
  *
@@ -136,14 +137,13 @@ function passIdsToSelectTaskContact(singleContactId) {
  */
 function passArrayToSelectTaskContact(names) {
   document.getElementById("contactInitalsEdit").innerHTML = "";
-  let namesArray = names.split(",");
-
-  for (let i = 0; i < namesArray.length; i++) {
-    let id = contacts.findIndex(contact => contact.userName === namesArray[i]);
-    if (!isNaN(id)) {
-      selectTaskContactEdit(id);
+    let namesArray = names.split(",");
+    for (let i = 0; i < namesArray.length; i++) {
+      let id = contacts.findIndex(contact => contact.userName === namesArray[i]);
+      if (!isNaN(id) && id !== -1) {
+        selectTaskContactEdit(id);
+      }
     }
-  }
 }
 
 /**
@@ -289,4 +289,4 @@ function editTask(id) {
   saveTasks();
   hideEditTask();
   hideTask();
-}}
+}
