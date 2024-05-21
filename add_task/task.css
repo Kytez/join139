@@ -179,6 +179,7 @@ select {
 
 textarea {
   width: -webkit-fill-available;
+  font-size: 20px !important;
   resize: none;
   border-radius: 10px;
   border: 1px solid #dddddd;
@@ -290,6 +291,27 @@ textarea::placeholder {
 }
 
 .contact-list-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  height: 24px;
+  padding: 16px;
+  margin-bottom: 2px;
+  border-radius: 10px;
+  .initials {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    .profile-fullname {
+      margin-left: 16px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.contact-list-entry2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -490,7 +512,6 @@ button {
   }
 
   textarea {
-    font-size: 20px;
     font-weight: 400 !important;
     width: 434px;
   }
@@ -730,6 +751,7 @@ button {
   }
   textarea {
     width: 484px;
+    font-size: 16px !important;
   }
   #contact-select {
     width: 484px !important;

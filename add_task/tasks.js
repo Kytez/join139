@@ -581,7 +581,7 @@ function renderInitialsHTML(i, initials, computedStyle) {
 function contactListAddTaskHTML(i, userName, initialsString) {
   return `
     <div id="SingleContact_${i}" onclick="selectTaskContact(${i})" class="contact-list-entry">
-        <div class="contact-list-entry">
+        <div class="contact-list-entry2">
             <div id="initials_${i}" class="initials">${initialsString}</div>
             <div class="profile-fullname">${userName} </div> 
         </div>
