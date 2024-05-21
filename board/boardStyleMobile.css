@@ -451,6 +451,7 @@ span {
 
 body {
   overflow-x: scroll;
+  overflow: overlay;
 }
 
 body::-webkit-scrollbar {
@@ -848,6 +849,23 @@ button {
   border-radius: 8px;
 }
 
+.pb-16 {
+  padding-bottom: 16px;
+}
+
+.hide-animation {
+  transform: translateY(-100px);
+}
+
+#msgBox {
+  width: 260px;
+  position: absolute;
+  top: 8px;
+  left: calc(50% - 130px);
+  transition: all 1s ease-in-out;
+  z-index: 999;
+}
+
 @media (min-width: 992px) {
   #navMobile {
     display: none;
@@ -913,6 +931,15 @@ button {
       background-color: #f6f7f8;
       padding: 50px 0 0 80px;
       width: calc(100% - 282px);
+  }
+
+  .pb-16 {
+    padding-bottom: 0;
+  }
+
+  #msgBox {
+    width: 400px;
+    left: calc(50% - 200px);
   }
 }
 

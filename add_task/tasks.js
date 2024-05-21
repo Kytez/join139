@@ -136,8 +136,11 @@ function addTask(workMode = "todo") {
   };
   allTasks.push(task);
   saveTasks();
-  giveAddTaskFeedback();
-  setTimeout(reloadPage, 4000);
+  setTimeout(moveToBoard, 500);
+}
+
+function moveToBoard() {
+  window.location.href = "../board/boardMobile.html?msg=Task added successfully";
 }
 
 /**
@@ -145,26 +148,17 @@ function addTask(workMode = "todo") {
  *
  * @return {void} This function does not return anything.
  */
-function giveAddTaskFeedback() {
-  let addTaskFeedback = document.getElementById("addTaskFeedback");
+// function giveAddTaskFeedback() {
+//   let addTaskFeedback = document.getElementById("addTaskFeedback");
 
-  addTaskFeedback.classList.remove("d-none");
-        setTimeout(function () {
-          addTaskFeedback.classList.add("hide-animation");
-        }, 3000);
-        setTimeout(function () {
-          addTaskFeedback.classList.add("d-none");
-        }, 5000);
-}
-
-/**
- * Reloads the current page.
- *
- * @return {void} This function does not return a value.
- */
-function reloadPage() {
-  location.reload();
-}
+//   addTaskFeedback.classList.remove("d-none");
+//         setTimeout(function () {
+//           addTaskFeedback.classList.add("hide-animation");
+//         }, 3000);
+//         setTimeout(function () {
+//           addTaskFeedback.classList.add("d-none");
+//         }, 5000);
+// }
 
 /**
  * Toggles the visibility of the contact list.
