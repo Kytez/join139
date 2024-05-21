@@ -372,6 +372,8 @@
 <script>
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('dateBoard').setAttribute('min', today);
+    const today2 = new Date().toISOString().split('T')[0];
+    document.getElementById('dateEdit').setAttribute('min', today2);
 </script>         
 
     <div id="navMobile" w3-include-html="../assets/templates/navAktivMobile/navBoard.html"></div>
