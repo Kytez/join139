@@ -335,7 +335,7 @@ function generateEditContainer(user, colour, id) {
         </div>
         <div class="bottom-right">
             <div class="p-relative close-container">
-                <img onclick="closeEditContact()" class="close-w pointer" src="./../../assets/img/contacts/close-dark.png" alt="">
+                <img onclick="closeEditContact()" class="close-w pointer" src="./../assets/img/contacts/close-dark.png" alt="">
             </div>
             <div class="p-relative d-flex align-center justify-center column">
                 <form onsubmit="updateContact(${id});return false" class="w100 d-flex column input-container">
@@ -350,7 +350,7 @@ function generateEditContainer(user, colour, id) {
                         </button>
                         <button type="submit" id="save-btn" class="btn-create btn-dark-large pointer">
                             <span class="btn-txt">Save</span>
-                            <img src="../../assets/img/contacts/check.png" alt="">
+                            <img src="./../assets/img/contacts/check.png" alt="">
                         </button>
                     </div>
                 </form>
