@@ -965,10 +965,6 @@ button {
     height: 650px;
   }
 
-  .add-task-background {
-    z-index: 801;
-  }
-
   .add-task-card-board {
     z-index: 801;
     height: 92% !important;
