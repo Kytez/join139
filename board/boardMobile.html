@@ -52,41 +52,41 @@
             </div>
         </div>
         <div class="progress-section">
-            <div class="width-100 pb-16">
+            <div class="width-100 mt-24">
                 <div class="abstand-24 space-between">
                     <h2>To do</h2>
                     <div onclick="addTaskToSectionButton('todo')">
                         <img class="plus-img" src="../assets/img/icons/plus-button-mobile.png">
                     </div>
                 </div>
-                <div class=" horizontal-scroll" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event);">
+                <div class="horizontal-scroll pb-40" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event);">
                 </div>
             </div>
-            <div class="width-100 pb-16">
+            <div class="width-100">
                 <div class="abstand-24 space-between">
                     <h2>In progress</h2>
                     <div onclick="addTaskToSectionButton('inprogress')">
                         <img class="plus-img" src="../assets/img/icons/plus-button-mobile.png">
                     </div>
                 </div>   
-                <div id="inprogress" ondrop="moveTo('inprogress')" ondragover="allowDrop(event);">
+                <div id="inprogress" class="pb-40" ondrop="moveTo('inprogress')" ondragover="allowDrop(event);">
             </div>
             </div>
-            <div class="width-100 pb-16">
+            <div class="width-100">
                 <div class="abstand-24 space-between">
                     <h2>Await feedback</h2>
                     <div onclick="addTaskToSectionButton('feedback')">
                         <img class="plus-img" src="../assets/img/icons/plus-button-mobile.png">
                     </div>
                 </div>
-                <div id="feedback" ondrop="moveTo('feedback')" ondragover="allowDrop(event);">
+                <div id="feedback" class="pb-40" ondrop="moveTo('feedback')" ondragover="allowDrop(event);">
                 </div>
             </div>
             <div class="width-100 pb-16">
                 <div class="abstand-24 space-between height28px">
                     <h2>Done</h2>
                 </div>
-                <div id="done" ondrop="moveTo('done')" ondragover="allowDrop(event);">
+                <div id="done" class="pb-40" ondrop="moveTo('done')" ondragover="allowDrop(event);">
                 </div>
             </div>
         </div>
