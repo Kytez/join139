@@ -8,8 +8,6 @@
   justify-content: space-between;
 }
 
-
-
 .close-img {
   width: 13.5px;
 }
@@ -99,6 +97,8 @@
   background-repeat: no-repeat;
   background-position: 95%;
   padding: 20px;
+  max-width: 400px;
+  min-width: 180px;
 }
 
 input[type="search"]::-webkit-search-results-decoration {
@@ -262,6 +262,7 @@ input[type="search"]::-webkit-search-results-button {
   cursor: pointer;
   transition: 225ms;
   margin-left: 24px;
+  max-width: 150px;
 }
 
 .add-task-button img {
@@ -883,6 +884,7 @@ button {
 
   .progress-section {
     display: flex;
+    margin-top: 120px;
   }
 
   .plus-img {
@@ -900,6 +902,17 @@ button {
   .add-task-section {
     display: flex;
     justify-content: center;
+  }
+
+  .board-container {
+    display: flex;
+      position: fixed;
+      top: 96px;
+      left: 232px;
+      z-index: 801;
+      background-color: #f6f7f8;
+      padding: 50px 0 0 80px;
+      width: calc(100% - 282px);
   }
 }
 
