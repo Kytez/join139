@@ -343,7 +343,7 @@ function generateEditContainer(user, colour, id) {
                     <input id="edit-emailContact" class="input" placeholder="Email" type="email" required>
                     <input id="edit-phoneContact" class="input" placeholder="Phone" type="number" required>
                     <div class="d-flex justify-center edit-buttons">
-                        <button onclick="deleteContact(contacts.findIndex((contact) => contact.userName == '${userName}'))" id="delete-btn" class="btn-create pointer delete">
+                        <button onclick="deleteContact(contacts.findIndex((contact) => contact.userName == '${user}'))" id="delete-btn" class="btn-create pointer delete">
                             <div id="delete" class="blue">
                                 <span class="btn-txt">Delete</span>
                             </div>
