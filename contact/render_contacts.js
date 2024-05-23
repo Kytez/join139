@@ -80,7 +80,6 @@ async function addNewContact() {
 function capitalizeName(userName) {
   const namesSplit = userName.split(" ");
   let names = namesSplit.filter(str => str !== "");
-  console.log(names);
   let capitalName = "";
   for (let i = 0; i < names.length; i++) {
     capitalName += names[i][0].toUpperCase() + names[i].slice(1) + " ";
@@ -375,7 +374,7 @@ async function updateContact(id) {
   contact.phone = phone.value;
 
   closeEditContact();
-  await saveContacts();
+  saveContacts();
   renderViewedContact(
     contact.userName,
     contact.email,
@@ -393,7 +392,7 @@ async function updateContact(id) {
 async function deleteContact(id) {
   deleteContactFromTasks(id);
   contacts.splice(id, 1);
-  await saveContacts();
+  saveContacts();
   renderContactList();
   closeContact();
   closeEditContact();
