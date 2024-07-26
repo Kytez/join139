@@ -73,7 +73,7 @@ input[type=number] {
 .person-circle-add {
   border: solid 2px white;
   background-color: #d1d1d1;
-  border-radius: 70px;
+  border-radius: 50%;
   width: 100px;
   height: 100px;
   display: flex;
