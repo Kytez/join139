@@ -12,8 +12,7 @@ span {
 }
 
 .headline-section {
-  width: 100%;
-  height: 112px;
+  width: 100vw;
   display: flex;
   align-items: end;
   padding-left: 16px;
@@ -165,6 +164,10 @@ span {
 
 .flex {
   display: flex;
+}
+
+#contact-select {
+  font-size: 16px;
 }
 
 select {
@@ -587,7 +590,9 @@ button {
   .margin-body-mobile {
     padding: 0 !important;
   }
+
   .headline-section {
+    padding-top: 16px;
     margin-left: -85px;
     display: flex;
     justify-content: center;
@@ -610,18 +615,29 @@ button {
   .line {
     display: none;
   }
+
   .button-container {
     display: flex;
     justify-content: space-between;
     position: fixed;
     background-color: #f5f5f5;
     width: calc(100% - 32px);
-    height: 88px;
+    height: 64px;
     bottom: 80px;
   }
+  
   .btn-dark {
-    margin-right: 32px !important;
+    margin-right: 8px !important;
+    height: 40px;
+    width: 160px;
+    font-size: 16px;
   }
+
+  .btn-dark img {
+    height: 32px;
+    width: 32px;
+  }
+
   .btn-white {
     display: none;
   }
@@ -631,7 +647,7 @@ button {
   input[type="date"] {
     width: 322px !important;
   }
-  #contactInitals{
+  #contactInitals {
     width: 340px;
   }
   .styled-input {
@@ -658,7 +674,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .add-task-section {
     display: flex;
     align-items: center;
@@ -679,7 +695,7 @@ button {
   input[type="date"] {
     width: 272px !important;
   }
-  #contactInitals{
+  #contactInitals {
     width: 290px;
   }
   .prio-button-section {
@@ -709,7 +725,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .add-task-section {
     display: flex;
     align-items: center;
@@ -730,7 +746,7 @@ button {
   input[type="date"] {
     width: 472px !important;
   }
-  #contactInitals{
+  #contactInitals {
     width: 490px;
     position: relative;
   }
@@ -762,7 +778,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .add-task-section {
     display: flex;
     align-items: center;
@@ -777,15 +793,13 @@ button {
   #subTaskInput {
     width: 470px !important;
   }
-
-  
 }
 
 @media (max-width: 652px) {
   .headline-section {
     margin-left: -30px;
   }
-  #contactInitals{
+  #contactInitals {
     width: 390px;
     position: relative;
   }
@@ -819,7 +833,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .add-task-section {
     display: flex;
     align-items: center;
@@ -844,7 +858,7 @@ button {
   .headline-section {
     margin-left: -30px;
   }
-  #contactInitals{
+  #contactInitals {
     width: 290px;
     position: relative;
   }
@@ -878,7 +892,7 @@ button {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .add-task-section {
     display: flex;
     align-items: center;

@@ -154,7 +154,7 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 .plus-img-dark {
-  height: 40px;
+  height: 32px;
   cursor: pointer;
 }
 
@@ -262,6 +262,7 @@ input[type="search"]::-webkit-search-results-button {
   transition: 225ms;
   margin-left: 24px;
   max-width: 150px;
+  padding-right: 12px;
 }
 
 .add-task-button img {
@@ -437,7 +438,7 @@ span {
 
 #addTaskSection {
   position: fixed;
-  top: -90px;
+  top: -40px;
   max-width: 1260px;
   margin: 100px;
   transform: translateX(275%);
@@ -740,11 +741,11 @@ button {
   justify-content: center;
   align-items: center;
   padding: 10px;
+}
 
-  img {
-    width: 25.5px;
-    height: 25.5px;
-  }
+.btn-dark-edit img {
+  width: 25.5px;
+  height: 25.5px;
 }
 
 .edit-btn {
@@ -950,12 +951,29 @@ button {
   .add-task-button {
     display: none;
   }
+
   .button-container-board {
     gap: 0;
   }
+
+  .button-container-board span {
+    font-size: 14px;
+  }
+
+  .btn-dark {
+    width: 150px !important;
+    height: 40px !important;
+    font-size: 16px !important;
+  }
+
+  .btn-dark img {
+    height: 32px;
+  }
+
   .no-taskts-to-do {
     min-width: 240px;
   }
+
   .pop-up {
     top: 85px;
   }
@@ -969,18 +987,25 @@ button {
     display: block;
   }
 
+  .board {
+    margin-bottom: 0;
+  }
+
   #todo {
     display: flex;
     overflow-x: scroll;
   }
+
   #inprogress {
     display: flex;
     overflow-x: scroll;
   }
+
   #feedback {
     display: flex;
     overflow-x: scroll;
   }
+
   #done {
     display: flex;
     overflow-x: scroll;
@@ -997,7 +1022,7 @@ button {
 
   .add-task-card-board {
     z-index: 801;
-    height: 92% !important;
+    height: 75% !important;
   }
 
   .add-task {

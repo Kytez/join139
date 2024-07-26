@@ -96,6 +96,7 @@ h1 {
   position: relative;
   max-width: 598px;
   width: calc(100% - 32px);
+  margin-top: 8px;
 }
 
 .backArrow {
@@ -117,10 +118,11 @@ h1 {
   width: calc(90% - 42px);
   height: 24px;
   padding: 12px 21px;
-  font-size: 20px;
+  font-size: 16px;
   color: black;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
+  font-family: 'Inter';
 }
 
 .inputs-signup input:focus {
@@ -162,6 +164,7 @@ h1 {
 
 .legal-footer a {
   color: #a8a8a8;
+  font-size: 14px;
 }
 
 .legal-footer a:hover {

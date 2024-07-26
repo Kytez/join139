@@ -1,3 +1,7 @@
+h1 {
+  font-size: 36px;
+}
+
 .horizontal-view-desktop-size {
   width: 100%;
 }
@@ -88,12 +92,12 @@
 .tasks-first-row {
   display: flex;
   justify-content: space-between;
-  height: 110px;
+  height: 96px;
   gap: 16px;
 }
 
 .tasks-second-row {
-  height: 110px;
+  height: 96px;
 }
 
 .tasks-second-rowr {
@@ -197,7 +201,7 @@
 .tasks-third-row {
   display: flex;
   gap: 16px;
-  height: 110px;
+  height: 96px;
 }
 
 #navDesktop {

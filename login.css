@@ -36,7 +36,7 @@ h1 {
 
 #iconVisibilityPassword {
   position: absolute;
-  top: calc(50% - 10px);
+  top: calc(50% - 8px);
   right: 21px;
 }
 
@@ -58,6 +58,7 @@ h1 {
   box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
   max-width: 652px;
   width: calc(100% - 32px);
+  margin-top: 8px;
 }
 
 .inputs-login {
@@ -73,9 +74,10 @@ h1 {
   width: calc(90% - 42px);
   height: 24px;
   padding: 12px 21px;
-  font-size: 20px;
+  font-size: 16px;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
+  font-family: 'Inter';
 }
 
 .inputs-login input:focus {
@@ -100,6 +102,10 @@ h1 {
   gap: 16px;
 }
 
+#btnGuestLogin {
+  margin-bottom: 8px;
+}
+
 .sign-up {
   display: flex;
   align-items: center;
@@ -108,7 +114,7 @@ h1 {
 }
 
 .sign-up span {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 #signUpSectionDesktop {
@@ -124,6 +130,7 @@ h1 {
 
 .legal-footer a {
   color: #a8a8a8;
+  font-size: 14px;
 }
 
 #msgBox {
