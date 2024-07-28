@@ -22,9 +22,14 @@ span {
 #selected-contactsBoard {
   max-width: 370px;
 }
+
 #selected-contactsEdit {
   max-width: 392px;
   max-height: 120px;
+}
+
+#contact-selectBoard, #categoryBoard {
+  padding-left: 16px;
 }
 
 .add-task {
@@ -425,16 +430,14 @@ button {
   }
 
   input[type="text"] {
-    font-size: 20px;
     font-weight: 400 !important;
   }
 
   select {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   textarea {
-    font-size: 20px;
     font-weight: 400 !important;
   }
 
