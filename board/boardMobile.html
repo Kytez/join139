@@ -59,7 +59,7 @@
                         <img class="plus-img" src="../assets/img/icons/plus-button-mobile.png">
                     </div>
                 </div>
-                <div class="horizontal-scroll pb-40" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event);">
+                <div class="horizontal-scroll pb-40" id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event); addDragBorder('todo')" ondragleave="removeDragBorder('todo')">
                 </div>
             </div>
             <div class="width-100">
@@ -69,7 +69,7 @@
                         <img class="plus-img" src="../assets/img/icons/plus-button-mobile.png">
                     </div>
                 </div>   
-                <div id="inprogress" class="pb-40" ondrop="moveTo('inprogress')" ondragover="allowDrop(event);">
+                <div id="inprogress" class="pb-40" ondrop="moveTo('inprogress')" ondragover="allowDrop(event); addDragBorder('inprogress')" ondragleave="removeDragBorder('inprogress')">
             </div>
             </div>
             <div class="width-100">
@@ -79,14 +79,14 @@
                         <img class="plus-img" src="../assets/img/icons/plus-button-mobile.png">
                     </div>
                 </div>
-                <div id="feedback" class="pb-40" ondrop="moveTo('feedback')" ondragover="allowDrop(event);">
+                <div id="feedback" class="pb-40" ondrop="moveTo('feedback')" ondragover="allowDrop(event); addDragBorder('feedback')" ondragleave="removeDragBorder('feedback')">
                 </div>
             </div>
             <div class="width-100 pb-16">
                 <div class="abstand-24 space-between height28px">
                     <h2>Done</h2>
                 </div>
-                <div id="done" class="pb-40" ondrop="moveTo('done')" ondragover="allowDrop(event);">
+                <div id="done" class="pb-40" ondrop="moveTo('done')" ondragover="allowDrop(event); addDragBorder('done')" ondragleave="removeDragBorder('done')">
                 </div>
             </div>
         </div>
@@ -191,7 +191,7 @@
                     <div>
                         <span>Due date</span><span class="red">*</span>
                     </div>
-                    <input class="focus-blue" required id="dateBoard" type="date" min="">
+                    <input class="focus-blue" required id="dateBoard" type="date" min="" max="9999-12-31">
                 </div>
                 <div class="prio-container padding-top-big">
                     <span>Prio</span>
@@ -297,7 +297,7 @@
                     <div>
                         <span>Due date</span><span class="red">*</span>
                     </div>
-                    <input id="dateEdit" type="date" min="">
+                    <input id="dateEdit" type="date" min="" max="9999-12-31">
                 </div>
                 <div class="prio-container padding-top-big">
                     <span class="colorEdit">Priority</span>

@@ -759,6 +759,14 @@ button {
   align-items: center;
 }
 
+.hovered {
+  border: 3px dotted rgba(0, 0, 0, 0.2);
+}
+
+#todo, #inprogress, #feedback, #done {
+  border-radius: 10px;
+}
+
 .btn-white {
   color: #2a3647;
   background-color: white;

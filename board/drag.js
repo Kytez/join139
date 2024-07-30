@@ -7,6 +7,7 @@ let currentDraggedElement;
  */
 function startDragging(id) {
   currentDraggedElement = id;
+  dragging = true;
 }
 
 /**
@@ -26,6 +27,18 @@ function moveTo(workMode) {
   allTasks[currentDraggedElement]["workMode"] = workMode;
   updateTasksHTML();
   saveTasks();
+  document.getElementById('todo').classList.remove('hovered');
+  document.getElementById('inprogress').classList.remove('hovered');
+  document.getElementById('feedback').classList.remove('hovered');
+  document.getElementById('done').classList.remove('hovered');
+}
+
+function addDragBorder(section) {
+  document.getElementById(section).classList.add('hovered');
+}
+
+function removeDragBorder(section) {
+  document.getElementById(section).classList.remove('hovered');
 }
 
 /**
@@ -44,4 +57,3 @@ window.onload = function () {
     container.style.overflowX = "hidden";
   }
 };
-
